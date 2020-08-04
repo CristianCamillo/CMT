@@ -42,6 +42,7 @@ public class DriverManagerConnectionPool
 		{
 			connection = (Connection) freeDbConnections.get(0);
 			DriverManagerConnectionPool.freeDbConnections.remove(0);
+			System.out.println("qua");
 			try
 			{
 				if(connection.isClosed())
