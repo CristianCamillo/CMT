@@ -268,7 +268,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			}
 		</script>
 	</head>
-	<body>		
+	<body>
 		<!-- Pulsante "Homepage" e "Login" "Registrazione" / "Area Personale" "Logout" -->
 		<div>
 			<table style="width: 100%">
