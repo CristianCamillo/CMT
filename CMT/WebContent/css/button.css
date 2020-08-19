@@ -1,0 +1,20 @@
+.button
+{
+  	padding: 4px;
+  	transition-duration: 0.2s;
+  	cursor: pointer;
+  	border: none;
+  	border-radius: 4px;
+  	background-color: #E5913E; 
+  	color: #2E0F05; 
+}
+
+.button:hover
+{
+  	background-color: #995A26;
+}
+
+.homepageButton
+{
+	padding: 16px;
+}

@@ -5,9 +5,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 	<head>
 		<title>CMT - Homepage</title>
 		<link rel="stylesheet" type="text/css" href="css/body.css">
-		<link rel="stylesheet" type="text/css" href="css/hpButton.css">
+		<link rel="stylesheet" type="text/css" href="css/button.css">
 		<link rel="stylesheet" type="text/css" href="css/frame.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
+		<link rel="stylesheet" type="text/css" href="css/misc.css">
 		<script src="js/filtroValidator.js"></script>
 		<script type="text/javascript">
 		
@@ -271,22 +272,22 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 	<body>
 		<!-- Pulsante "Homepage" e "Login" "Registrazione" / "Area Personale" "Logout" -->
 		<div>
-			<table style="width: 100%">
+			<table class="maxWidth">
 				<colgroup>
 					<col>
-					<col style="width: 10%">
+					<col width="10%">
 				</colgroup>
 				<tbody>
 					<tr>
-						<td rowspan="2"><button id="homepageButton" class="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
+						<td rowspan="2"><button id="homepageButton" class="button homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
 						<td>
 							<%			
 								String tipo = (String)request.getSession().getAttribute("tipo");
 							
 								if(tipo == null)							
-									out.print("<button id=\"login\" style=\"width: 100%\" onclick=\"location.href='login.jsp'\">Login</button>");
+									out.print("<button class=\"button maxWidth\" onclick=\"location.href='login.jsp'\">Login</button>");
 								else
-									out.print("<button id=\"areaPersonale\" style=\"width: 100%\" onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
+									out.print("<button class=\"button maxWidth\" onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
 							%>
 						</td>
 					</tr>
@@ -294,16 +295,17 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						<td>
 							<%									
 								if(tipo == null)							
-									out.print("<button id=\"registrazione\" style=\"width: 100%\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
+									out.print("<button class=\"button maxWidth\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
 								else
-									out.print("<button id=\"logout\" style=\"width: 100%\" onclick=\"location.href='logout.jsp'\">Logout</button>");
+									out.print("<button class=\"button maxWidth\" onclick=\"location.href='logout.jsp'\">Logout</button>");
 							%>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<hr>
+		
+		<hr class="darkBrown">
 		
 		<!-- Form del filtro film -->		
 		<div>
@@ -323,13 +325,14 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 							<td>Attore:</td><td><input type="text" name="attore"></td>
 						</tr>
 						<tr>
-							<td><input type="submit" value="Filtra"></td>
+							<td colspan="2"><input class="button maxWidth" type="submit" value="Filtra"></td>
 						</tr>
 					</tbody>
 				</table>
 			</form>
 		</div>
-		<hr>
+		
+		<hr class="darkBrown">
 		
 		<!-- Lista dei film -->
 		<div style="height: 1000px; overflow: auto;">
@@ -337,7 +340,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				<colgroup>
 					<col>
 					<col>
-					<col style="width: 10%;">
+					<col width="10%">
 				</colgroup>
 				<tbody>
 					<%
@@ -350,9 +353,9 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 								out.println("<tr>" +
 												"<td><img src=\"images/" + film.getLocandina() + "\" width=\"200\" height=\"300\"></td>" +
 												"<td valign=\"top\"><b>" + film.getTitolo() + "</b><br><br>" + film.getDescrizione() + "</td>" + 
-												"<td><button style=\"width: 100%; height: 90px;\" onclick=\"openDettagliFrame('"+ i +"')\">Visualizza dettagli</button></td>" +
+												"<td><button class=\"button maxWidth halfHeight\" onclick=\"openDettagliFrame('"+ i +"')\">Visualizza dettagli</button></td>" +
 											"</tr>" +
-											"<tr><td colspan=\"3\"><hr></td></tr>");
+											"<tr><td colspan=\"3\"><hr class=\"darkBrown\"></td></tr>");
 							}
 					%>
 				</tbody>
