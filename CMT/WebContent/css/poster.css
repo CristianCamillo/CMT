@@ -5,6 +5,7 @@
   	cursor: pointer;
   	border-radius: 4px;
   	transition-duration: 0.2s;
+  	margin: 5px;
 }
 
 .poster:hover
