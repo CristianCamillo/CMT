@@ -12,3 +12,10 @@
 {
 	filter: brightness(150%);
 }
+
+.p2
+{
+	width: 315px;
+	height: 450px;
+  	border-radius: 4px;
+}

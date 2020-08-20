@@ -4,6 +4,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 <html>
 	<head>
 		<title>CMT - Homepage</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/button.css">
 		<link rel="stylesheet" type="text/css" href="css/frame.css">
@@ -348,14 +349,14 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						<col>
 					</colgroup>
 					<tbody>
-						<tr><td><b>Dettagli film</b></td><td><button onclick="closeDettagliFrame()">X</button></td></tr>
+						<tr><td><b>Dettagli film</b></td><td><button class="regularButton" onclick="closeDettagliFrame()">&#x02716;</button></td></tr>
 					</tbody>
 				</table>
 				<br>
 				<table style="width: 100%">
 					<tbody>
 						<tr valign="top">
-							<td><img id="locandina" src="" width="300" height="450"></td> 
+							<td><img id="locandina" src="" width="300" height="450" class="p2"></td> 
 							<td>
 								<table style="width: 100%; word-wrap: break-word;">
 									<tbody>
