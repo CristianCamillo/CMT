@@ -358,20 +358,20 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						<tr valign="top">
 							<td><img id="locandina" src="" class="poster"></td> 
 							<td>
-								<table style="width: 100%; word-wrap: break-word;">
+								<table>
 									<tbody>
-										<tr><td><label><b>Titolo:</b></label></td><td><label id="titolo"></label></td></tr>
+										<tr><td><label><b>Titolo</b></label></td><td><label>AA</label></td><td><label id="titolo"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><label><b>Durata:</b></label></td><td><label id="durata"></label></td></tr>
+										<tr><td><label><b>Durata</b></label></td><td><label id="durata"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><label><b>Genere:</b></label></td><td><label id="genere"></label></td></tr>
+										<tr><td><label><b>Genere</b></label></td><td><label id="genere"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><label><b>Regista:</b></label></td><td><label id="regista"></label></td></tr>
+										<tr><td><label><b>Regista</b></label></td><td><label id="regista"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><label><b>Attori:</b></label></td><td><label id="attore1"></label></tr>
+										<tr><td><label><b>Attori</b></label></td><td><label id="attore1"></label></tr>
 										<tr><td></td><td><label id="attore2"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td valign="top"><label><b>Descrizione:</b></label></td><td><label id="descrizione"></label></td></tr>
+										<tr><td valign="top"><label><b>Descrizione</b></label></td><td><label id="descrizione"></label></td></tr>
 									</tbody>
 								</table>
 							</td>
