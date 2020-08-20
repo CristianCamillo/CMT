@@ -330,7 +330,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		</form>
 		
 		<hr>
-		<div style="width:100%">
+		
 		<!-- Lista dei film -->
 		<%
 			ArrayList<Film> films = (ArrayList<Film>)request.getSession().getAttribute("films");
@@ -339,10 +339,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				for(int i = 0; i < films.size(); i++)
 				{
 					Film film = films.get(i);
-					out.println("<img src=\"images/" + film.getLocandina() + "\" class=\"box poster\">");
+					out.println("<img src=\"images/" + film.getLocandina() + "\" class=\"poster\" onclick=\"openDettagliFrame('"+ i +"')\">");
 				}
 		%>
-		</div>
+		
 		<!-- DettagliFrame -->
 		<div id="dettagliFrame" class="frame">
 			<div class="frame-content">

@@ -31,16 +31,3 @@ button:hover
 {
   	background-color: #995A26;
 }
-
-.parent
-{
-	display: flex;
-	flex-wrap : wrap;
-	justify-content: center;
-}
-
-.box
-{
-	flex: 0 1 150px;
-	margin: 5px;
-}
