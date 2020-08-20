@@ -337,12 +337,12 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			ArrayList<Film> films = (ArrayList<Film>)request.getSession().getAttribute("films");
 			
 			for(int i = 0, l = films != null ? films.size() : 0; i < l; i++)
-				out.println("<img src=\"images/" + films.get(i).getLocandina() + "\" class=\"poster\" onclick=\"openDettagliFrame('"+ i +"')\">");
+				out.println("<img src=\"images/" + films.get(i).getLocandina() + "\" class=\"presPoster\" onclick=\"openDettagliFrame('"+ i +"')\">");
 		%>
 		
 		<!-- DettagliFrame -->
-		<div id="dettagliFrame" class="frame">
-			<div class="frame-content">
+		<div id="dettagliFrame" class="frameContainer">
+			<div class="frame">
 				<table style="width: 100%">
 					<colgroup>
 						<col width="100%">
@@ -356,7 +356,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				<table style="width: 100%">
 					<tbody>
 						<tr valign="top">
-							<td><img id="locandina" src="" width="300" height="450" class="p2"></td> 
+							<td><img id="locandina" src="" width="300" height="450" class="poster"></td> 
 							<td>
 								<table style="width: 100%; word-wrap: break-word;">
 									<tbody>
@@ -410,8 +410,8 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		</div>
 		
 		<!-- AcquistoFrame -->
-		<div id="acquistoFrame" class="frame">
-			<div class="frame-content" style="width: 30%">
+		<div id="acquistoFrame" class="frameContainer">
+			<div class="frame" style="width: 30%">
 				<table style="width: 100%">
 					<colgroup>
 						<col style="width: 100%">

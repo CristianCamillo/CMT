@@ -1,4 +1,4 @@
-.poster
+.presPoster
 {
 	width: 315px;
 	height: 450px;
@@ -8,12 +8,12 @@
   	margin: 5px;
 }
 
-.poster:hover
+.presPoster:hover
 {
 	filter: brightness(150%);
 }
 
-.p2
+.poster
 {
 	width: 315px;
 	height: 450px;
