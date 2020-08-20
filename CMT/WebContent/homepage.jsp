@@ -9,6 +9,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<link rel="stylesheet" type="text/css" href="css/frame.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 		<link rel="stylesheet" type="text/css" href="css/misc.css">
+		<link rel="stylesheet" type="text/css" href="css/poster.css">
 		<script src="js/filtroValidator.js"></script>
 		<script type="text/javascript">
 		
@@ -271,97 +272,77 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 	</head>
 	<body>	
 		<!-- Pulsante "Homepage" e "Login" "Registrazione" / "Area Personale" "Logout" -->
-		<div>
-			<table class="maxWidth">
-				<colgroup>
-					<col>
-					<col width="10%">
-				</colgroup>
-				<tbody>
-					<tr>
-						<td rowspan="2"><button class="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
-						<td>
-							<%			
-								String tipo = (String)request.getSession().getAttribute("tipo");
-							
-								if(tipo == null)							
-									out.print("<button class=\"regularButton\" onclick=\"location.href='login.jsp'\">Login</button>");
-								else
-									out.print("<button class=\"regularButton\" onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
-							%>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<%									
-								if(tipo == null)							
-									out.print("<button class=\"regularButton\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
-								else
-									out.print("<button class=\"regularButton\" onclick=\"location.href='logout.jsp'\">Logout</button>");
-							%>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		
-		<hr>
-		
-		<!-- Form del filtro film -->		
-		<div>
-			<form name="form" onsubmit="return validateForm()" action="${pageContext.request.contextPath}/filtro" method="GET">
-				<table>
-					<tbody>
-						<tr>
-							<td>Titolo:</td><td><input type="text" name="titolo"></td>
-						</tr>
-						<tr>
-							<td>Genere:</td><td><input type="text" name="genere"></td>
-						</tr>
-						<tr>
-							<td>Regista:</td><td><input type="text" name="regista"></td>
-						</tr>
-						<tr>
-							<td>Attore:</td><td><input type="text" name="attore"></td>
-						</tr>
-						<tr>						
-							<td colspan="2"><button class="regularButton" type="submit">Filtra</button></td>
-						</tr>
-					</tbody>
-				</table>
-			</form>
-		</div>
-		
-		<hr>
-		
-		<!-- Lista dei film -->
-		<div>
-			<table style="width: 100%; word-wrap: break-word;">
-				<colgroup>
-					<col width="20%">
-					<col>
-					<col width="20%">
-				</colgroup>
-				<tbody>
-					<%
-						ArrayList<Film> films = (ArrayList<Film>)request.getSession().getAttribute("films");
+		<table class="maxWidth">
+			<colgroup>
+				<col>
+				<col width="10%">
+			</colgroup>
+			<tbody>
+				<tr>
+					<td rowspan="2"><button class="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
+					<td>
+						<%			
+							String tipo = (String)request.getSession().getAttribute("tipo");
 						
-						if(films != null)
-							for(int i = 0; i < films.size(); i++)
-							{
-								Film film = films.get(i);
-								out.println("<tr>" +
-												"<td><img src=\"images/" + film.getLocandina() + "\" class=\"maxDims\"></td>" +
-												"<td valign=\"top\"><b>" + film.getTitolo() + "</b><br><br>" + film.getDescrizione() + "</td>" + 
-												"<td><button class=\"baseButton regularButton\" onclick=\"openDettagliFrame('"+ i +"')\">Visualizza dettagli</button></td>" +
-											"</tr>" +
-											"<tr><td colspan=\"3\"><hr></td></tr>");
-							}
-					%>
+							if(tipo == null)							
+								out.print("<button class=\"regularButton\" onclick=\"location.href='login.jsp'\">Login</button>");
+							else
+								out.print("<button class=\"regularButton\" onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
+						%>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<%									
+							if(tipo == null)							
+								out.print("<button class=\"regularButton\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
+							else
+								out.print("<button class=\"regularButton\" onclick=\"location.href='logout.jsp'\">Logout</button>");
+						%>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<hr>
+		
+		<!-- Form del filtro film -->
+		<form name="form" onsubmit="return validateForm()" action="${pageContext.request.contextPath}/filtro" method="GET">
+			<table>
+				<tbody>
+					<tr>
+						<td>Titolo:</td><td><input type="text" name="titolo"></td>
+					</tr>
+					<tr>
+						<td>Genere:</td><td><input type="text" name="genere"></td>
+					</tr>
+					<tr>
+						<td>Regista:</td><td><input type="text" name="regista"></td>
+					</tr>
+					<tr>
+						<td>Attore:</td><td><input type="text" name="attore"></td>
+					</tr>
+					<tr>						
+						<td colspan="2"><button class="regularButton" type="submit">Filtra</button></td>
+					</tr>
 				</tbody>
 			</table>
-		</div>
+		</form>
 		
+		<hr>
+		<div style="width:100%">
+		<!-- Lista dei film -->
+		<%
+					ArrayList<Film> films = (ArrayList<Film>)request.getSession().getAttribute("films");
+					
+					if(films != null)
+						for(int i = 0; i < films.size(); i++)
+						{
+							Film film = films.get(i);
+							out.println("<img src=\"images/" + film.getLocandina() + "\" class=\"box poster\">");
+						}
+				%>
+		</div>
 		<!-- DettagliFrame -->
 		<div id="dettagliFrame" class="frame">
 			<div class="frame-content">
@@ -400,9 +381,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						</tr>
 					</tbody>
 				</table>
-				<br>
 				<hr>
-				<br>
 				<table style="width: 100%">
 					<colgroup>
 						<col>

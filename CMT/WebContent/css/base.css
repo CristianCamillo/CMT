@@ -9,15 +9,12 @@ body
 	background-color: #FFECD1;
 }
 
-div + hr
-{
-	margin-top: 15px;
-	margin-bottom: 15px;
-}
 
 hr
 {
 	color: #2E0F05;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 button
@@ -33,4 +30,17 @@ button
 button:hover
 {
   	background-color: #995A26;
+}
+
+.parent
+{
+	display: flex;
+	flex-wrap : wrap;
+	justify-content: center;
+}
+
+.box
+{
+	flex: 0 1 150px;
+	margin: 5px;
 }
