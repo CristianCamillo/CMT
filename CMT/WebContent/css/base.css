@@ -1,0 +1,36 @@
+*
+{
+   font-family: Arial !important;
+}
+
+body
+{
+	padding: 10px 10px;	
+	background-color: #FFECD1;
+}
+
+div + hr
+{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+hr
+{
+	color: #2E0F05;
+}
+
+button
+{  	
+  	transition-duration: 0.2s;
+  	cursor: pointer;
+  	border: none;
+  	border-radius: 4px;
+  	background-color: #E5913E; 
+  	color: #2E0F05;  	
+}
+
+button:hover
+{
+  	background-color: #995A26;
+}

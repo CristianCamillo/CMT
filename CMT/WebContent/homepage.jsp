@@ -4,7 +4,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 <html>
 	<head>
 		<title>CMT - Homepage</title>
-		<link rel="stylesheet" type="text/css" href="css/body.css">
+		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/button.css">
 		<link rel="stylesheet" type="text/css" href="css/frame.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
@@ -279,15 +279,15 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				</colgroup>
 				<tbody>
 					<tr>
-						<td rowspan="2"><button id="homepageButton" class="button homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
+						<td rowspan="2"><button class="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
 						<td>
 							<%			
 								String tipo = (String)request.getSession().getAttribute("tipo");
 							
 								if(tipo == null)							
-									out.print("<button class=\"button maxWidth\" onclick=\"location.href='login.jsp'\">Login</button>");
+									out.print("<button class=\"regularButton\" onclick=\"location.href='login.jsp'\">Login</button>");
 								else
-									out.print("<button class=\"button maxWidth\" onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
+									out.print("<button class=\"regularButton\" onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
 							%>
 						</td>
 					</tr>
@@ -295,9 +295,9 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						<td>
 							<%									
 								if(tipo == null)							
-									out.print("<button class=\"button maxWidth\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
+									out.print("<button class=\"regularButton\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
 								else
-									out.print("<button class=\"button maxWidth\" onclick=\"location.href='logout.jsp'\">Logout</button>");
+									out.print("<button class=\"regularButton\" onclick=\"location.href='logout.jsp'\">Logout</button>");
 							%>
 						</td>
 					</tr>
@@ -305,7 +305,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			</table>
 		</div>
 		
-		<hr class="darkBrown">
+		<hr>
 		
 		<!-- Form del filtro film -->		
 		<div>
@@ -324,15 +324,15 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						<tr>
 							<td>Attore:</td><td><input type="text" name="attore"></td>
 						</tr>
-						<tr>
-							<td colspan="2"><input class="button maxWidth" type="submit" value="Filtra"></td>
+						<tr>						
+							<td colspan="2"><button class="regularButton" type="submit">Filtra</button></td>
 						</tr>
 					</tbody>
 				</table>
 			</form>
 		</div>
 		
-		<hr class="darkBrown">
+		<hr>
 		
 		<!-- Lista dei film -->
 		<div>
@@ -353,9 +353,9 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 								out.println("<tr>" +
 												"<td><img src=\"images/" + film.getLocandina() + "\" class=\"maxDims\"></td>" +
 												"<td valign=\"top\"><b>" + film.getTitolo() + "</b><br><br>" + film.getDescrizione() + "</td>" + 
-												"<td><button class=\"button maxWidth dettagliButton\" onclick=\"openDettagliFrame('"+ i +"')\">Visualizza dettagli</button></td>" +
+												"<td><button class=\"baseButton regularButton\" onclick=\"openDettagliFrame('"+ i +"')\">Visualizza dettagli</button></td>" +
 											"</tr>" +
-											"<tr><td colspan=\"3\"><hr class=\"darkBrown\"></td></tr>");
+											"<tr><td colspan=\"3\"><hr></td></tr>");
 							}
 					%>
 				</tbody>
@@ -401,9 +401,8 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</tbody>
 				</table>
 				<br>
-				<hr class="darkBrown">
+				<hr>
 				<br>
-				<label style="color: red">PROVA</label>
 				<table style="width: 100%">
 					<colgroup>
 						<col>
@@ -427,7 +426,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 									</table>
 								</div>
 							</td>
-							<td><button id="acquistaButton" class="button" onclick="openAcquistoFrame()" disabled>Acquista biglietti</button></td>
+							<td><button id="acquistaButton" class="baseButton regularButton" onclick="openAcquistoFrame()" disabled>Acquista biglietti</button></td>
 						</tr>
 					</tbody>
 				</table>
