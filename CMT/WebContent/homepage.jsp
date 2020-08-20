@@ -269,7 +269,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			}
 		</script>
 	</head>
-	<body>
+	<body>	
 		<!-- Pulsante "Homepage" e "Login" "Registrazione" / "Area Personale" "Logout" -->
 		<div>
 			<table class="maxWidth">
@@ -335,12 +335,12 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<hr class="darkBrown">
 		
 		<!-- Lista dei film -->
-		<div style="height: 1000px; overflow: auto;">
+		<div>
 			<table style="width: 100%; word-wrap: break-word;">
 				<colgroup>
+					<col width="20%">
 					<col>
-					<col>
-					<col width="10%">
+					<col width="20%">
 				</colgroup>
 				<tbody>
 					<%
@@ -351,9 +351,9 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 							{
 								Film film = films.get(i);
 								out.println("<tr>" +
-												"<td><img src=\"images/" + film.getLocandina() + "\" width=\"200\" height=\"300\"></td>" +
+												"<td><img src=\"images/" + film.getLocandina() + "\" class=\"maxDims\"></td>" +
 												"<td valign=\"top\"><b>" + film.getTitolo() + "</b><br><br>" + film.getDescrizione() + "</td>" + 
-												"<td><button class=\"button maxWidth halfHeight\" onclick=\"openDettagliFrame('"+ i +"')\">Visualizza dettagli</button></td>" +
+												"<td><button class=\"button maxWidth dettagliButton\" onclick=\"openDettagliFrame('"+ i +"')\">Visualizza dettagli</button></td>" +
 											"</tr>" +
 											"<tr><td colspan=\"3\"><hr class=\"darkBrown\"></td></tr>");
 							}
@@ -401,8 +401,9 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</tbody>
 				</table>
 				<br>
-				<hr>
+				<hr class="darkBrown">
 				<br>
+				<label style="color: red">PROVA</label>
 				<table style="width: 100%">
 					<colgroup>
 						<col>
@@ -413,10 +414,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						<tr valign="top">
 							<td>Proiezioni:</td>
 							<td>
-								<div id="proiezioniDiv" style="height: 150px; overflow: auto; border: 1px solid black; border-collapse: collapse;">
-									<table id="proiezioniTable" class="table" style="width: 100%">
+								<div id="proiezioniDiv" class="tableContainer">
+									<table id="proiezioniTable" class="table maxWidth">
 										<colgroup>
-											<col style="width: 50%">
+											<col width="50%">
 											<col>
 											<col>
 										</colgroup>
@@ -426,7 +427,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 									</table>
 								</div>
 							</td>
-							<td><button id="acquistaButton" style="width: 100%; height: 50px;" onclick="openAcquistoFrame()" disabled>Acquista biglietti</button></td>
+							<td><button id="acquistaButton" class="button" onclick="openAcquistoFrame()" disabled>Acquista biglietti</button></td>
 						</tr>
 					</tbody>
 				</table>

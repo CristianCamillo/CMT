@@ -3,6 +3,11 @@
   	color: #2E0F05; 
 }
 
+.brown
+{
+	color: #995A26;
+}
+
 .maxWidth
 {
 	width: 100%;
@@ -11,4 +16,20 @@
 .halfHeight
 {
 	height: 50%;
+}
+
+.maxDims
+{
+	width: 100%;
+	height: 100%;
+}
+
+.medFont
+{
+	font-size: 20px;
+}
+
+.bigFont
+{
+	font-size: 25px;
 }
