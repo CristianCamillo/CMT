@@ -1,4 +1,4 @@
-function validateForm()
+function validateFiltroForm()
 {
 	var titolo = document.forms["form"]["titolo"].value;
 	var genere = document.forms["form"]["genere"].value;

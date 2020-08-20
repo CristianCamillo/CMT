@@ -280,7 +280,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			<tbody>
 				<tr>
 					<td rowspan="2"><button class="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
-					<td>
+					<td align="right">
 						<%			
 							String tipo = (String)request.getSession().getAttribute("tipo");
 						
@@ -292,7 +292,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td align="right">
 						<%									
 							if(tipo == null)							
 								out.print("<button class=\"regularButton\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
@@ -307,20 +307,20 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<hr>
 		
 		<!-- Form del filtro film -->
-		<form name="form" onsubmit="return validateForm()" action="${pageContext.request.contextPath}/filtro" method="GET">
+		<form name="form" onsubmit="return validateFiltroForm()" action="${pageContext.request.contextPath}/filtro" method="GET">
 			<table>
 				<tbody>
 					<tr>
-						<td>Titolo:</td><td><input type="text" name="titolo"></td>
+						<td><label>Titolo:</label></td><td><input type="text" name="titolo"></td>
 					</tr>
 					<tr>
-						<td>Genere:</td><td><input type="text" name="genere"></td>
+						<td><label>Genere:</label></td><td><input type="text" name="genere"></td>
 					</tr>
 					<tr>
-						<td>Regista:</td><td><input type="text" name="regista"></td>
+						<td><label>Regista:</label></td><td><input type="text" name="regista"></td>
 					</tr>
 					<tr>
-						<td>Attore:</td><td><input type="text" name="attore"></td>
+						<td><label>Attore:</label></td><td><input type="text" name="attore"></td>
 					</tr>
 					<tr>						
 						<td colspan="2"><button class="regularButton" type="submit">Filtra</button></td>
@@ -335,12 +335,8 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<%
 			ArrayList<Film> films = (ArrayList<Film>)request.getSession().getAttribute("films");
 			
-			if(films != null)
-				for(int i = 0; i < films.size(); i++)
-				{
-					Film film = films.get(i);
-					out.println("<img src=\"images/" + film.getLocandina() + "\" class=\"poster\" onclick=\"openDettagliFrame('"+ i +"')\">");
-				}
+			for(int i = 0, l = films != null ? films.size() : 0; i < l; i++)
+				out.println("<img src=\"images/" + films.get(i).getLocandina() + "\" class=\"poster\" onclick=\"openDettagliFrame('"+ i +"')\">");
 		%>
 		
 		<!-- DettagliFrame -->
@@ -348,14 +344,14 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			<div class="frame-content">
 				<table style="width: 100%">
 					<colgroup>
-						<col style="width: 100%">
+						<col width="100%">
 						<col>
 					</colgroup>
 					<tbody>
 						<tr><td><b>Dettagli film</b></td><td><button onclick="closeDettagliFrame()">X</button></td></tr>
-						<tr><td>&nbsp;</td></tr>
 					</tbody>
 				</table>
+				<br>
 				<table style="width: 100%">
 					<tbody>
 						<tr valign="top">
@@ -405,7 +401,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 									</table>
 								</div>
 							</td>
-							<td><button id="acquistaButton" class="baseButton regularButton" onclick="openAcquistoFrame()" disabled>Acquista biglietti</button></td>
+							<td><button id="acquistaButton" class="regularButton" onclick="openAcquistoFrame()" disabled>Acquista biglietti</button></td>
 						</tr>
 					</tbody>
 				</table>

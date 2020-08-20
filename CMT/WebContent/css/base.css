@@ -9,13 +9,6 @@ body
 	background-color: #FFECD1;
 }
 
-hr
-{
-	color: #2E0F05;
-	margin-top: 15px;
-	margin-bottom: 15px;
-}
-
 button
 {  	
   	transition-duration: 0.2s;
@@ -29,4 +22,16 @@ button
 button:hover
 {
   	background-color: #995A26;
+}
+
+hr
+{
+	color: #2E0F05;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+label
+{
+	color: #2E0F05;
 }
