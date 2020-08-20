@@ -370,7 +370,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 										<col>
 									</colgroup>
 									<tbody>
-										<tr><td><label><b>Titolo</b></label></td><td></td><td align="left"><label id="titolo"></label></td></tr>
+										<tr><td><label><b>Titolo</b></label></td><td></td><td><label id="titolo"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
 										<tr><td><label><b>Durata</b></label></td><td></td><td><label id="durata"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
@@ -428,21 +428,22 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						<col>
 					</colgroup>
 					<tbody>
-						<tr><td><b>Acquisto biglietti</b></td><td><button onclick="closeAcquistoFrame()">X</button></td></tr>
-						<tr><td>&nbsp;</td></tr>
+						<tr><td><label><b>Acquisto biglietti</b></label></td><td><button class="regularButton" onclick="closeAcquistoFrame()">&#x02716;</button></td></tr>
 					</tbody>
-			 	</table>
-			 	<table style="width: 100%">
+				</table>
+				<br>
+			 	<table>
 			 		<colgroup>
-						<col style="width: 1px">
 						<col>
+						<col width="20px">
+						<col width="200px">
 					</colgroup>
 					<tbody>
-						<tr><td><b>Film:</b><td id="titoloA"></td></tr>
+						<tr><td><label><b>Film:</b></label></td><td></td><td><label id="titoloA"></label></td></tr>
 						<tr><td>&nbsp;</td></tr>
-						<tr><td><b>Proiezione:</b></td><td id="proiezioneA"></td></tr>
+						<tr><td><label><b>Proiezione</b></label></td><td></td><td><label id="proiezioneA"></label></td></tr>
 						<tr><td>&nbsp;</td></tr>
-						<tr><td><b>Totale:</b></td><td id="totaleA"></td></tr>
+						<tr><td><label><b>Totale</b></label></td><td></td><td><label id="totaleA"></label></td></tr>
 						<tr><td>&nbsp;</td></tr>
 					</tbody>
 			 	</table>
