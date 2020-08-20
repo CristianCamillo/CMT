@@ -343,35 +343,35 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<!-- DettagliFrame -->
 		<div id="dettagliFrame" class="frameContainer">
 			<div class="frame">
-				<table style="width: 100%">
+				<table>
 					<colgroup>
 						<col width="100%">
 						<col>
 					</colgroup>
 					<tbody>
-						<tr><td><b>Dettagli film</b></td><td><button class="regularButton" onclick="closeDettagliFrame()">&#x02716;</button></td></tr>
+						<tr><td><label><b>Dettagli film</b></label></td><td><button class="regularButton" onclick="closeDettagliFrame()">&#x02716;</button></td></tr>
 					</tbody>
 				</table>
 				<br>
-				<table style="width: 100%">
+				<table>
 					<tbody>
 						<tr valign="top">
-							<td><img id="locandina" src="" width="300" height="450" class="poster"></td> 
+							<td><img id="locandina" src="" class="poster"></td> 
 							<td>
 								<table style="width: 100%; word-wrap: break-word;">
 									<tbody>
-										<tr><td><b>Titolo:</b></td><td id="titolo"></td></tr>
+										<tr><td><label><b>Titolo:</b></label></td><td><label id="titolo"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><b>Durata:</b></td><td id="durata"></td></tr>
+										<tr><td><label><b>Durata:</b></label></td><td><label id="durata"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><b>Genere:</b></td><td id="genere"></td></tr>
+										<tr><td><label><b>Genere:</b></label></td><td><label id="genere"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><b>Regista:</b></td><td id="regista"></td></tr>
+										<tr><td><label><b>Regista:</b></label></td><td><label id="regista"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><b>Attori:</b></td><td id="attore1"></td></tr>
-										<tr><td></td><td id="attore2"></td></tr>
+										<tr><td><label><b>Attori:</b></label></td><td><label id="attore1"></label></tr>
+										<tr><td></td><td><label id="attore2"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td valign="top"><b>Descrizione:</b></td><td id="descrizione"></td></tr>
+										<tr><td valign="top"><label><b>Descrizione:</b></label></td><td><label id="descrizione"></label></td></tr>
 									</tbody>
 								</table>
 							</td>
@@ -379,10 +379,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</tbody>
 				</table>
 				<hr>
-				<table style="width: 100%">
+				<table>
 					<colgroup>
 						<col>
-						<col style="width: 100%">
+						<col width="100%">
 						<col>
 					</colgroup>
 					<tbody>
@@ -411,10 +411,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		
 		<!-- AcquistoFrame -->
 		<div id="acquistoFrame" class="frameContainer">
-			<div class="frame" style="width: 30%">
-				<table style="width: 100%">
+			<div class="frame">
+				<table>
 					<colgroup>
-						<col style="width: 100%">
+						<col width="100%">
 						<col>
 					</colgroup>
 					<tbody>
