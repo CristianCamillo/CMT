@@ -2,8 +2,6 @@
 {
 	width: 315px;
 	height: 450px;
-	flex: 0 1 150px;
-	margin: 5px;
   	cursor: pointer;
   	border-radius: 4px;
   	transition-duration: 0.2s;
