@@ -4,7 +4,6 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 <html>
 	<head>
 		<title>CMT - Homepage</title>
-		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/button.css">
 		<link rel="stylesheet" type="text/css" href="css/frame.css">
@@ -281,7 +280,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			<tbody>
 				<tr>
 					<td rowspan="2"><button class="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
-					<td align="right">
+					<td>
 						<%			
 							String tipo = (String)request.getSession().getAttribute("tipo");
 						
@@ -293,7 +292,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</td>
 				</tr>
 				<tr>
-					<td align="right">
+					<td>
 						<%									
 							if(tipo == null)							
 								out.print("<button class=\"regularButton\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
@@ -354,24 +353,35 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				</table>
 				<br>
 				<table>
+					<colgroup>
+						<col>
+						<col width="20px">
+						<col>
+					</colgroup>
 					<tbody>
 						<tr valign="top">
-							<td><img id="locandina" src="" class="poster"></td> 
+							<td><img id="locandina" src="" class="poster"></td>
+							<td></td>
 							<td>
 								<table>
+									<colgroup>
+										<col>
+										<col width="20px">
+										<col>
+									</colgroup>
 									<tbody>
-										<tr><td><label><b>Titolo</b></label></td><td><label>AA</label></td><td><label id="titolo"></label></td></tr>
+										<tr><td><label><b>Titolo</b></label></td><td></td><td align="left"><label id="titolo"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><label><b>Durata</b></label></td><td><label id="durata"></label></td></tr>
+										<tr><td><label><b>Durata</b></label></td><td></td><td><label id="durata"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><label><b>Genere</b></label></td><td><label id="genere"></label></td></tr>
+										<tr><td><label><b>Genere</b></label></td><td></td><td><label id="genere"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><label><b>Regista</b></label></td><td><label id="regista"></label></td></tr>
+										<tr><td><label><b>Regista</b></label></td><td></td><td><label id="regista"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><label><b>Attori</b></label></td><td><label id="attore1"></label></tr>
-										<tr><td></td><td><label id="attore2"></label></td></tr>
+										<tr><td><label><b>Attori</b></label></td><td></td><td><label id="attore1"></label></tr>
+										<tr><td></td><td></td><td><label id="attore2"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td valign="top"><label><b>Descrizione</b></label></td><td><label id="descrizione"></label></td></tr>
+										<tr><td valign="top"><label><b>Descrizione</b></label></td><td></td><td><label id="descrizione"></label></td></tr>
 									</tbody>
 								</table>
 							</td>
@@ -387,7 +397,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</colgroup>
 					<tbody>
 						<tr valign="top">
-							<td>Proiezioni:</td>
+							<td><label>Proiezioni:</label></td>
 							<td>
 								<div id="proiezioniDiv" class="tableContainer">
 									<table id="proiezioniTable" class="table maxWidth">
@@ -397,7 +407,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 											<col>
 										</colgroup>
 										<tbody>
-											<tr><th>Data</th><th>Orario</th><th>Costo</th></tr>
+											<tr><th><label>Data</label></th><th><label>Orario</label></th><th><label>Costo</label></th></tr>
 										</tbody>
 									</table>
 								</div>
@@ -437,10 +447,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</tbody>
 			 	</table>
 			 	<form onsubmit="prepareTransaction()" action="${pageContext.request.contextPath}/acquisto" method="POST">
-					<table style="width: 100%">
+					<table>
 						<tbody>
 							<tr>
-								<td align="center">
+								<td>
 									<div style="width: 100%; border: 1px solid black; border-collapse: collapse;">
 										<table id="salaTable">
 											<tbody>								
