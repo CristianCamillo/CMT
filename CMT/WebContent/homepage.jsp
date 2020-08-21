@@ -272,10 +272,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 	</head>
 	<body>	
 		<!-- Pulsante "Homepage" e "Login" "Registrazione" / "Area Personale" "Logout" -->
-		<table style="width: 100%">
+		<table>
 			<colgroup>
 				<col>
-				<col style="width: 100%">
+				<col width="100%">
 				<col>
 			</colgroup>
 			<tbody>
@@ -325,6 +325,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					<tr>
 						<td><input type="text" name="attore" placeholder="Attore"></td>
 					</tr>
+					<tr><td>&nbsp;</td></tr>
 					<tr>						
 						<td><button type="submit">Filtra</button></td>
 					</tr>

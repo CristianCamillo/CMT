@@ -12,11 +12,13 @@ body
 
 input[type="text"], [type="password"]
 {
-	width: 300px;
+	width: 320px;
 	
 	border-radius: 4px;
 	padding: 4px;	
 	font-size: 16px;
+	
+	transition-duration: 0.3s;
 }
 
 button
@@ -25,7 +27,7 @@ button
   	
   	border: none;
   	border-radius: 4px;
-  	padding: 6px 8px;
+  	padding: 4px 8px;
 	font-size: 16px;
 	
 	white-space: nowrap;	

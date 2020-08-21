@@ -5,8 +5,8 @@
 		<title>CMT - Login</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/button.css">
-		<link rel="stylesheet" type="text/css" href="css/frame.css">
 		<script src="js/loginChecker.js"></script>
+		<script src="js/dataChecker.js"></script>
 	</head>
 	<body>
 		<table>
@@ -21,11 +21,12 @@
 			<table>
 				<tbody>
 					<tr>														
-						<td><input name="username" type="text" placeholder="Username" maxlength="20"></td>
+						<td><input id="username" name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)"></td>
 					</tr>
 					<tr>
-						<td><input name="password" type="password" placeholder="Password" maxlength="20"></td>
+						<td><input id="password" name="password" type="password" placeholder="Password" oninput="checkFieldLength('password', 6, 20)"></td>
 					</tr>
+					<tr><td>&nbsp;</td></tr>
 					<tr>
 						<td><button type="submit">Accedi</button></td>
 					</tr>
