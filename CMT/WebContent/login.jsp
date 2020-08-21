@@ -5,7 +5,8 @@
 		<title>CMT - Login</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/button.css">
-		<script src="js/loginValidator.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/frame.css">
+		<script src="js/loginChecker.js"></script>		
 	</head>
 	<body>
 		<table>
@@ -16,20 +17,28 @@
 			</tbody>
 		</table>
 		<hr>
-		<form name="form" onsubmit="return validateLoginForm()" action="${pageContext.request.contextPath}/login" method="POST">
+		<form name="form" onsubmit="return checkLoginForm()" action="${pageContext.request.contextPath}/login" method="POST">
 			<table>
 				<tbody>
 					<tr>														
-						<td><label>Username:</label></td><td><input type="text" name="username"></td>
+						<td><input name="username" type="text" placeholder="Username" maxlength="20"></td>
 					</tr>
 					<tr>
-						<td><label>Password:</label></td><td><input type="password" name="password"></td>
+						<td><input name="password" type="password" placeholder="Password" maxlength="20"></td>
 					</tr>
 					<tr>
-						<td colspan="2"><button class="regularButton" type="submit">Accedi</button></td>
+						<td><button type="submit">Accedi</button></td>
 					</tr>
 				</tbody>
 			</table>
 		</form>
+		
+		<!-- ErrorFrame 
+		<div id="errorFrame" class="frameContainer">
+			<div class="frame">
+				<label id="errorMessage"></label>
+				<button style="border: auto" onclick="document.getElementById('dettagliFrame').style.display = 'none'">OK</button>
+			</div>
+		</div>-->
 	</body>
 </html>

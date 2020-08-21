@@ -1,17 +1,5 @@
 .homepageButton
 {
-	min-width: 350px;
-	padding-top: 16px;
-	padding-bottom: 16px;
+	padding: 16px;
 	font-size: 25px;
-	
-}
-
-.regularButton
-{
-	width: 100%;
-	max-width: 300px;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	font-size: 16px;	
 }

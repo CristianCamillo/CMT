@@ -6,10 +6,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<title>CMT - Homepage</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/button.css">
+		<link rel="stylesheet" type="text/css" href="css/poster.css">
 		<link rel="stylesheet" type="text/css" href="css/frame.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
-		<link rel="stylesheet" type="text/css" href="css/misc.css">
-		<link rel="stylesheet" type="text/css" href="css/poster.css">
+		<link rel="stylesheet" type="text/css" href="css/misc.css">		
 		<script src="js/filtroValidator.js"></script>
 		<script type="text/javascript">
 		
@@ -275,29 +275,32 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<table class="maxWidth">
 			<colgroup>
 				<col>
-				<col width="10%">
+				<col width="100%">
+				<col>
 			</colgroup>
 			<tbody>
 				<tr>
 					<td rowspan="2"><button class="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
+					<td>&nbsp;</td>
 					<td>
 						<%			
 							String tipo = (String)request.getSession().getAttribute("tipo");
 						
 							if(tipo == null)							
-								out.print("<button class=\"regularButton\" onclick=\"location.href='login.jsp'\">Login</button>");
+								out.print("<button onclick=\"location.href='login.jsp'\">Login</button>");
 							else
-								out.print("<button class=\"regularButton\" onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
+								out.print("<button onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
 						%>
 					</td>
 				</tr>
 				<tr>
+					<td>&nbsp;</td>
 					<td>
 						<%									
 							if(tipo == null)							
-								out.print("<button class=\"regularButton\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
+								out.print("<button onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
 							else
-								out.print("<button class=\"regularButton\" onclick=\"location.href='logout.jsp'\">Logout</button>");
+								out.print("<button onclick=\"location.href='logout.jsp'\">Logout</button>");
 						%>
 					</td>
 				</tr>
@@ -311,19 +314,19 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			<table>
 				<tbody>
 					<tr>
-						<td><label>Titolo:</label></td><td><input type="text" name="titolo"></td>
+						<td><input type="text" name="titolo" placeholder="Titolo"></td>
 					</tr>
 					<tr>
-						<td><label>Genere:</label></td><td><input type="text" name="genere"></td>
+						<td><input type="text" name="genere" placeholder="Genere"></td>
 					</tr>
 					<tr>
-						<td><label>Regista:</label></td><td><input type="text" name="regista"></td>
+						<td><input type="text" name="regista" placeholder="Regista"></td>
 					</tr>
 					<tr>
-						<td><label>Attore:</label></td><td><input type="text" name="attore"></td>
+						<td><input type="text" name="attore" placeholder="Attore"></td>
 					</tr>
 					<tr>						
-						<td colspan="2"><button class="regularButton" type="submit">Filtra</button></td>
+						<td><button type="submit">Filtra</button></td>
 					</tr>
 				</tbody>
 			</table>
@@ -348,7 +351,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						<col>
 					</colgroup>
 					<tbody>
-						<tr><td><label><b>Dettagli film</b></label></td><td><button class="regularButton" onclick="closeDettagliFrame()">&#x02716;</button></td></tr>
+						<tr><td><label><b>Dettagli film</b></label></td><td><button onclick="closeDettagliFrame()">&#x02716;</button></td></tr>
 					</tbody>
 				</table>
 				<br>
@@ -412,7 +415,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 									</table>
 								</div>
 							</td>
-							<td><button id="acquistaButton" class="regularButton" onclick="openAcquistoFrame()" disabled>Acquista biglietti</button></td>
+							<td><button id="acquistaButton" onclick="openAcquistoFrame()" disabled>Acquista biglietti</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -428,7 +431,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						<col>
 					</colgroup>
 					<tbody>
-						<tr><td><label><b>Acquisto biglietti</b></label></td><td><button class="regularButton" onclick="closeAcquistoFrame()">&#x02716;</button></td></tr>
+						<tr><td><label><b>Acquisto biglietti</b></label></td><td><button onclick="closeAcquistoFrame()">&#x02716;</button></td></tr>
 					</tbody>
 				</table>
 				<br>

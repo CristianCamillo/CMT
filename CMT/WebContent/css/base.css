@@ -5,18 +5,36 @@
 
 body
 {
-	padding: 10px 10px;	
+	padding: 10px 10px;
+	
 	background-color: #FFECD1;
 }
 
+input[type="text"], [type="password"]
+{
+	width: 300px;
+	
+	border-radius: 4px;
+	padding: 4px;	
+	font-size: 16px;
+}
+
 button
-{  	
-  	transition-duration: 0.2s;
-  	cursor: pointer;
+{  	  
+	width: 100%;
+  	
   	border: none;
   	border-radius: 4px;
+  	padding: 6px 8px;
+	font-size: 16px;
+	
+	white-space: nowrap;	
+	
   	background-color: #E5913E; 
   	color: #2E0F05;  	
+	
+	transition-duration: 0.2s;
+  	cursor: pointer;  	
 }
 
 button:hover
@@ -26,9 +44,10 @@ button:hover
 
 hr
 {
-	color: #2E0F05;
 	margin-top: 15px;
 	margin-bottom: 15px;
+	
+	color: #2E0F05;	
 }
 
 label

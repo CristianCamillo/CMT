@@ -20,19 +20,19 @@
 			<table>
 				<tbody>
 					<tr>												
-						<td><label>Username:</label></td><td><input type="text" name="username"></td>
+						<td colspan="2"><input type="text" name="username" placeholder="Username"></td>
 					</tr>
 					<tr>
-						<td><label>Password:</label></td><td><input type="password" name="password"></td>
+						<td colspan="2"><input type="password" name="password" placeholder="Password"></td>
 					</tr>
 					<tr>
-						<td><label>Conferma password:</label></td><td><input type="password" name="confPassword"></td>
+						<td colspan="2"><input type="password" name="confPassword" placeholder="Conferma password"></td>
 					</tr>
 					<tr>														
-						<td><label>Saldo:</label></td><td><input type="text" name="saldo"></td>
+						<td colspan="2"><input type="text" name="saldo" placeholder="Saldo"></td>
 					</tr>
 					<tr>														
-						<td><label>Acconsento al trattamento dei miei dati personali</label></td><td><input type="checkbox" name="termini"></td>
+						<td><label>Trattamento dei dati personali</label></td><td align="right"><input type="checkbox" name="termini"></td>
 					</tr>
 					<tr>
 						<td colspan="2"><button class="regularButton" type="submit">Registrati</button></td>
