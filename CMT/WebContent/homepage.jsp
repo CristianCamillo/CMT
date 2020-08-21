@@ -272,10 +272,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 	</head>
 	<body>	
 		<!-- Pulsante "Homepage" e "Login" "Registrazione" / "Area Personale" "Logout" -->
-		<table class="maxWidth">
+		<table style="width: 100%">
 			<colgroup>
 				<col>
-				<col width="100%">
+				<col style="width: 100%">
 				<col>
 			</colgroup>
 			<tbody>

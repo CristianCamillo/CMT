@@ -1,10 +1,10 @@
 function checkLoginForm()
-{			
-	var username = document.forms["form"]["username"];
-	var password = document.forms["form"]["password"];
+{		
+	const username = document.forms["form"]["username"];
+	const password = document.forms["form"]["password"];
 	
 	if(username.value.length < 6 || username.value.length > 20)
-    {
+    {		
 		username.style.border = "2px solid red";
 		username.placeholder = "porcod io";
 		return false;

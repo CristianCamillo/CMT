@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/button.css">
 		<link rel="stylesheet" type="text/css" href="css/frame.css">
-		<script src="js/loginChecker.js"></script>		
+		<script src="js/loginChecker.js"></script>
 	</head>
 	<body>
 		<table>
