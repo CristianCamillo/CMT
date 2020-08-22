@@ -5,8 +5,8 @@
 		<title>CMT - Login</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/button.css">
-		<script src="js/loginChecker.js"></script>
-		<script src="js/dataChecker.js"></script>
+		<script src="js/fieldChecker.js"></script>
+		<script src="js/loginChecker.js"></script>		
 	</head>
 	<body>
 		<table>
@@ -18,7 +18,7 @@
 		</table>
 		<hr>
 		<form name="form" onsubmit="return checkLoginForm()" action="${pageContext.request.contextPath}/login" method="POST">
-			<table>
+			<table style="width: 200px">
 				<tbody>
 					<tr>														
 						<td><input id="username" name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)"></td>

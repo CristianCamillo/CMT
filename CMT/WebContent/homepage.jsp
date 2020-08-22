@@ -310,20 +310,20 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<hr>
 		
 		<!-- Form del filtro film -->
-		<form name="form" onsubmit="return validateFiltroForm()" action="${pageContext.request.contextPath}/filtro" method="GET">
-			<table>
+		<form name="form" action="${pageContext.request.contextPath}/filtro" method="GET">
+			<table style="width: 300px">
 				<tbody>
 					<tr>
-						<td><input type="text" name="titolo" placeholder="Titolo"></td>
+						<td><input type="text" name="titolo" placeholder="Titolo" maxlength="30"></td>
 					</tr>
 					<tr>
-						<td><input type="text" name="genere" placeholder="Genere"></td>
+						<td><input type="text" name="genere" placeholder="Genere" maxlength="30"></td>
 					</tr>
 					<tr>
-						<td><input type="text" name="regista" placeholder="Regista"></td>
+						<td><input type="text" name="regista" placeholder="Regista" maxlength="30"></td>
 					</tr>
 					<tr>
-						<td><input type="text" name="attore" placeholder="Attore"></td>
+						<td><input type="text" name="attore" placeholder="Attore" maxlength="30"></td>
 					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>						

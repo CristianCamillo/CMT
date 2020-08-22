@@ -5,7 +5,8 @@
 		<title>CMT - Registrazione</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/button.css">
-		<script src="js/regisChecker.js"></script>  
+		<script src="js/fieldChecker.js"></script>
+		<script src="js/regisChecker.js"></script>
 	</head>
 	<body>
 		<table>
