@@ -12,7 +12,7 @@ function checkIsNotNeg(name)
 {
 	const field = document.getElementsByName(name)[0];
 	
-	var potNumber = parseFloat(field.value);
+	const potNumber = parseFloat(field.value);
 		
 	if(potNumber.toString() !== field.value || potNumber < 0)
 		setRed(field);
