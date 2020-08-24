@@ -22,14 +22,14 @@ function checkIsNotNeg(name)
 
 function setRed(field)
 {
-	field.style.borderColor = "#d02020";
-	field.style.color = "#9a2f2f";
+	field.style.borderColor = "#b22222";
+	field.style.color = "#b22222";
 	field.style.background = "#fffbfb";
 }
 
 function setGreen(field)
 {
-	field.style.borderColor = "#117d11";
-	field.style.color = "#1c631c";
+	field.style.borderColor = "#008000";
+	field.style.color = "#008000";
 	field.style.background = "#fbfffb";
 }

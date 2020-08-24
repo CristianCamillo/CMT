@@ -33,13 +33,5 @@
 				</tbody>
 			</table>
 		</form>
-		
-		<!-- ErrorFrame 
-		<div id="errorFrame" class="frameContainer">
-			<div class="frame">
-				<label id="errorMessage"></label>
-				<button style="border: auto" onclick="document.getElementById('dettagliFrame').style.display = 'none'">OK</button>
-			</div>
-		</div>-->
 	</body>
 </html>
