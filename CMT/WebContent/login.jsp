@@ -6,7 +6,6 @@
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/button.css">
 		<script src="js/fieldChecker.js"></script>
-		<script src="js/loginChecker.js"></script>		
 	</head>
 	<body>
 		<table>
@@ -17,7 +16,7 @@
 			</tbody>
 		</table>
 		<hr>
-		<form name="form" onsubmit="return checkLoginForm()" action="${pageContext.request.contextPath}/login" method="POST">
+		<form name="form" action="${pageContext.request.contextPath}/login" method="POST">
 			<table style="width: 200px">
 				<tbody>
 					<tr>														
