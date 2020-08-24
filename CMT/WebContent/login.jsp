@@ -17,7 +17,7 @@
 		</table>
 		<hr>
 		<form name="form" action="${pageContext.request.contextPath}/login" method="POST">
-			<table style="width: 200px">
+			<table style="width: 211px">
 				<tbody>
 					<tr>														
 						<td><input name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)" minlength="6" maxlength="20" required></td>
