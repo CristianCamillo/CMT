@@ -352,7 +352,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						<col>
 					</colgroup>
 					<tbody>
-						<tr><td><label><b>Dettagli film</b></label></td><td><button onclick="closeDettagliFrame()">&#x02716;</button></td></tr>
+						<tr><td><label style="font-size: 20px"><b>Dettagli film</b></label></td><td><button onclick="closeDettagliFrame()">&#x02716;</button></td></tr>
 					</tbody>
 				</table>
 				<br>
@@ -370,7 +370,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 								<table>
 									<colgroup>
 										<col>
-										<col width="20px">
+										<col width="15px">
 										<col>
 									</colgroup>
 									<tbody>
