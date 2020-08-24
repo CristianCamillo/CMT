@@ -21,16 +21,16 @@
 			<table>
 				<tbody>
 					<tr>												
-						<td colspan="2"><input name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)" required></td>
+						<td colspan="2"><input name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)" minlength="6" maxlength="20" required></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input name="password" type="password"  placeholder="Password" oninput="checkFieldLength('password', 6, 20)" required></td>
+						<td colspan="2"><input name="password" type="password"  placeholder="Password" oninput="checkFieldLength('password', 6, 20)" minlength="6" maxlength="20" required></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input name="confPassword" type="password"  placeholder="Conferma password" oninput="checkFieldLength('confPassword', 6, 20)" required></td>
+						<td colspan="2"><input name="confPassword" type="password"  placeholder="Conferma password" oninput="checkFieldLength('confPassword', 6, 20)" minlength="6" maxlength="20" required></td>
 					</tr>
 					<tr>														
-						<td colspan="2"><input name="saldo" type="text"  placeholder="Saldo" oninput="checkIsNotNeg('saldo')" required></td>
+						<td colspan="2"><input name="saldo" type="number" placeholder="Saldo" oninput="checkIsNotNeg('saldo')"  min="0" required></td>
 					</tr>
 					<tr>														
 						<td><label>Trattamento dei dati personali</label></td><td align="right"><input type="checkbox" name="termini" required></td>
