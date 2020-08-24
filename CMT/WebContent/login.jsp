@@ -21,10 +21,10 @@
 			<table style="width: 200px">
 				<tbody>
 					<tr>														
-						<td><input id="username" name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)"></td>
+						<td><input name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)" required></td>
 					</tr>
 					<tr>
-						<td><input id="password" name="password" type="password" placeholder="Password" oninput="checkFieldLength('password', 6, 20)"></td>
+						<td><input name="password" type="password" placeholder="Password" oninput="checkFieldLength('password', 6, 20)" required></td>
 					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>

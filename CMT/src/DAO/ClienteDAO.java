@@ -28,7 +28,7 @@ public class ClienteDAO
 	    	throw new UserNotRegisteredException();  
 	}
 	
-	public static boolean isRegistered(String username) throws SQLException
+	public static boolean isRegistered(String username) throws SQLException // username assumed to be lower cased
 	{		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		

@@ -125,7 +125,7 @@ public class DataChecker
 			return false;
 		}
 		
-		if(!checkIsNumber(saldo))
+		if(!checkIsNumber(saldo) || Float.parseFloat(saldo) < 0)
 		{
 			writeErrorMessage(response, errorMsgMap.get(Field.SALDO), pageMap.get(Page.REGISTRAZIONE));
 			return false;

@@ -17,26 +17,26 @@
 			</tbody>
 		</table>
 		<hr>
-		<form name="form" onsubmit="return validateRegisForm()" action="${pageContext.request.contextPath}/registrazione" method="POST">
+		<form name="form" onsubmit="return checkRegisForm()" action="${pageContext.request.contextPath}/registrazione" method="POST">
 			<table>
 				<tbody>
 					<tr>												
-						<td colspan="2"><input type="text" name="username" placeholder="Username"></td>
+						<td colspan="2"><input name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)" required></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input type="password" name="password" placeholder="Password"></td>
+						<td colspan="2"><input name="password" type="password"  placeholder="Password" oninput="checkFieldLength('password', 6, 20)" required></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input type="password" name="confPassword" placeholder="Conferma password"></td>
+						<td colspan="2"><input name="confPassword" type="password"  placeholder="Conferma password" oninput="checkFieldLength('confPassword', 6, 20)" required></td>
 					</tr>
 					<tr>														
-						<td colspan="2"><input type="text" name="saldo" placeholder="Saldo"></td>
+						<td colspan="2"><input name="saldo" type="text"  placeholder="Saldo" oninput="checkIsNotNeg('saldo')" required></td>
 					</tr>
 					<tr>														
-						<td><label>Trattamento dei dati personali</label></td><td align="right"><input type="checkbox" name="termini"></td>
+						<td><label>Trattamento dei dati personali</label></td><td align="right"><input type="checkbox" name="termini" required></td>
 					</tr>
 					<tr>
-						<td colspan="2"><button class="regularButton" type="submit">Registrati</button></td>
+						<td colspan="2"><button type="submit">Registrati</button></td>
 					</tr>
 				</tbody>
 			</table>
