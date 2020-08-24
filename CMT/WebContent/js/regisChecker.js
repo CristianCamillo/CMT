@@ -7,11 +7,11 @@ function checkRegisForm()
 	
 	var potNumber = parseFloat(saldo);
 		
+	var numIsOk = true;
+		
 	if(potNumber.toString() !== saldo || potNumber < 0)
-		return false;
-	else
-		return true;
+		numIsOk = false;
 	
-	return 6 <= username.value.length && username.value.length <= 20 && 6 <= password.value.length && password.value.length <= 20 &&
+	return numIsOK && 6 <= username.value.length && username.value.length <= 20 && 6 <= password.value.length && password.value.length <= 20 &&
 		   password.value == confPassword.value; 
 }
