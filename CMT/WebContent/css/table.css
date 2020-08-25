@@ -1,38 +1,48 @@
-.table
-{
+table.table
+{	
+	width: 100%;
+	height: 200px;
+	
 	text-align: left;
+	
+	display: block;
+    overflow: auto;
+    
+    background-color: white;
+}
+
+div.tableContainer
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+	
 	background-color: white;
 }
 
-.tableContainer
-{
-	height: 150px;
-	overflow: auto;
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-
-.table th
+table.table th
 {
 	padding: 5px;
 	background-color: #E5913E;
 }
 
-.table tr
+table.table th:hover
+{
+	cursor: default;
+}
+
+table.table tr
 {
 	padding: 5px;
 	cursor: pointer;
 }
 
-.table tr:hover
+table.table tr:hover
 {
-	padding: 5px;
 	background-color: #955;
 	cursor: pointer;
 }
 
-.selected
+tr.selected
 {
 	background-color: #00FF40;
 }
-

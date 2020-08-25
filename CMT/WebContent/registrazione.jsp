@@ -34,6 +34,7 @@
 					<tr>														
 						<td><label>Trattamento dei dati personali</label></td><td align="right"><input type="checkbox" name="termini" required></td>
 					</tr>
+					<tr><td>&nbsp;</td></tr>
 					<tr>
 						<td colspan="2"><button type="submit">Registrati</button></td>
 					</tr>

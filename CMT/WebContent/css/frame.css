@@ -1,4 +1,4 @@
-.frameContainer
+div.frameContainer
 {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
@@ -8,15 +8,14 @@
 	width: 100%;
 	height: 100%;
 	overflow: auto;
-	background-color: rgba(0,0,0,0.4); /* colore esterno */
+	background-color: rgba(0,0,0,0.4);
 }
 
-.frame
+div.frame
 {
 	background-color: #FFECD1;
 	padding: 15px;
 	
-	margin: 0;
 	position: absolute;
 	top: 50%;
 	left: 50%;

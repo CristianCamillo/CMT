@@ -3,6 +3,11 @@
    font-family: Arial !important;
 }
 
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
 body
 {
 	padding: 10px 10px;
@@ -58,6 +63,17 @@ button
 button:hover
 {
   	filter: brightness(70%);
+}
+
+button:disabled,
+button[disabled]
+{
+  background-color: #aaaaaa;
+  color: #666666;
+  
+  cursor: default;
+  
+  filter: brightness(100%);
 }
 
 hr

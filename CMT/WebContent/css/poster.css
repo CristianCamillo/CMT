@@ -1,21 +1,24 @@
-.presPoster
+img.presPoster
 {
 	width: 315px;
 	height: 450px;
   	cursor: pointer;
+  	padding: 2px;
+  	border: 1px solid #2E0F05;  	
   	border-radius: 4px;
   	transition-duration: 0.2s;
   	margin: 5px;
 }
 
-.presPoster:hover
+img.presPoster:hover
 {
-	filter: brightness(150%);
+	filter: brightness(130%);
 }
 
-.poster
+img.poster
 {
 	width: 315px;
 	height: 450px;
+	border: 1px solid #2E0F05;
   	border-radius: 4px;
 }
