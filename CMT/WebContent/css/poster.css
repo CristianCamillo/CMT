@@ -2,12 +2,15 @@ img.presPoster
 {
 	width: 315px;
 	height: 450px;
-  	cursor: pointer;
+	  	
   	padding: 2px;
-  	border: 1px solid #2E0F05;  	
-  	border-radius: 4px;
-  	transition-duration: 0.2s;
+  	border: 1px solid #2E0F05;
   	margin: 5px;
+  	
+  	cursor: pointer;
+  	
+  	transition-duration: 0.2s;
+  	
 }
 
 img.presPoster:hover
@@ -19,6 +22,6 @@ img.poster
 {
 	width: 315px;
 	height: 450px;
+	
 	border: 1px solid #2E0F05;
-  	border-radius: 4px;
 }

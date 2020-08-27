@@ -1,11 +1,8 @@
 *
 {
-   font-family: Arial !important;
-}
-
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
+   font-family: Arial;
+   color: #2E0F05;
+   border-radius: 4px;
 }
 
 body
@@ -21,8 +18,8 @@ input[type="text"], [type="password"], [type="number"]
 	
 	box-sizing: border-box;
 	
-	border-radius: 4px;
-	padding: 4px;	
+	padding: 4px;
+		
 	font-size: 16px;
 	
 	transition-duration: 0.3s;
@@ -46,15 +43,14 @@ button
 {  	  
 	width: 100%;
   	
-  	border: none;
-  	border-radius: 4px;
   	padding: 4px 8px;
+  	border: 1px solid #2E0F05;
+  	
 	font-size: 16px;
 	
 	white-space: nowrap;	
 	
-  	background-color: #E5913E; 
-  	color: #2E0F05;  	
+  	background-color: #E5913E;
 	
 	transition-duration: 0.2s;
   	cursor: pointer;  	
@@ -65,26 +61,18 @@ button:hover
   	filter: brightness(70%);
 }
 
-button:disabled,
-button[disabled]
+button:disabled
 {
-  background-color: #aaaaaa;
-  color: #666666;
-  
-  cursor: default;
-  
-  filter: brightness(100%);
+	cursor: default;
+	
+	background-color: #aaaaaa;
+	color: #666666;
+	
+	filter: brightness(100%);
 }
 
 hr
 {
 	margin-top: 15px;
 	margin-bottom: 15px;
-	
-	color: #2E0F05;	
-}
-
-label
-{
-	color: #2E0F05;
 }

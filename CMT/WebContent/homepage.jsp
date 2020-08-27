@@ -6,9 +6,9 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<title>CMT - Homepage</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/button.css">
-		<link rel="stylesheet" type="text/css" href="css/poster.css">
-		<link rel="stylesheet" type="text/css" href="css/filmDetails.css">
 		<link rel="stylesheet" type="text/css" href="css/frame.css">
+		<link rel="stylesheet" type="text/css" href="css/poster.css">
+		<link rel="stylesheet" type="text/css" href="css/projRoom.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">	
 		<script src="js/filtroValidator.js"></script>
 		<script type="text/javascript">
@@ -91,7 +91,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			function closeDettagliFrame()
 			{
 				// scrolla la tabella delle proiezioni all'inizio
-				document.getElementById("proiezioniDiv").scrollTop = 0;
+				document.getElementById("proiezioniTable").tBodies[0].scrollTop = 0;
 				
 				// rende il frame non visibile				
 				document.getElementById("dettagliFrame").style.display = "none";
@@ -366,7 +366,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 							<td></td>
 							<td><label><b>Titolo</b></label></td>
 							<td></td>
-							<td><label id="titolo" class="detailData"></label></td>
+							<td><label id="titolo"></label></td>
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr><td>&nbsp;</td><td><label><b>Durata</b></label></td><td></td><td><label id="durata"></label></td></tr>
@@ -384,22 +384,15 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				<hr>
 				<label><b>Proiezioni:</b></label><br>
 				<br>
-				<div id="proiezioniDiv">
 					<table id="proiezioniTable" class="table">
-						<colgroup>
-							<col style="width: 50%">
-							<col>
-							<col>
-						</colgroup>
 						<thead>
 							<tr><th><label>Data</label></th><th><label>Orario</label></th><th><label>Costo</label></th></tr>
 						</thead>
 						<tbody>
 						</tbody>
 					</table>
-				</div>
 				<br>
-				<button id="acquistaButton" onclick="openAcquistoFrame()" disabled>Acquista biglietti</button>
+				<button id="acquistaButton" onclick="openAcquistoFrame()" disabled>Procedi all'acquisto biglietti</button>
 			</div>
 		</div>
 		
@@ -419,7 +412,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						<col>
 					</colgroup>
 					<tbody>
-						<tr><td><label><b>Film:</b></label></td><td></td><td><label id="titoloA"></label></td></tr>
+						<tr><td><label><b>Film</b></label></td><td></td><td><label id="titoloA"></label></td></tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr><td><label><b>Proiezione</b></label></td><td></td><td><label id="proiezioneA"></label></td></tr>
 						<tr><td>&nbsp;</td></tr>
@@ -427,18 +420,16 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</tbody>
 			 	</table>
 			 	<br>
-			 	<form onsubmit="prepareTransaction()" action="${pageContext.request.contextPath}/acquisto" method="POST">					
-					<div style="width: 100%; border: 1px solid black; border-collapse: collapse;">
-						<table id="salaTable">
-							<tbody>								
-							</tbody>
-						</table>
-					</div>
+			 	<form onsubmit="prepareTransaction()" action="${pageContext.request.contextPath}/acquisto" method="POST">
+					<table id="salaTable" class="projRoom">
+						<tbody>								
+						</tbody>
+					</table>
 					<br>
 					<button type="submit">Acquista biglietti</button>
-					<input id="posti"  name="posti" type="hidden" value="">
-					<input id="idProiezione" name="idProiezione" type="hidden" value="">
-					<input id="totale" name="totale" type="hidden" value="">					
+					<input id="posti" name="posti" type="hidden">
+					<input id="idProiezione" name="idProiezione" type="hidden">
+					<input id="totale" name="totale" type="hidden">					
 				</form>
 			</div>
 		</div>
