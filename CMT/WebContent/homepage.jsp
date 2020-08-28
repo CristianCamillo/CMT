@@ -307,6 +307,8 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			</tbody>
 		</table>
 		
+		
+		
 		<hr>
 		
 		<!-- Form del filtro film -->

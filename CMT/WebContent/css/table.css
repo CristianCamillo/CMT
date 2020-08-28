@@ -2,11 +2,11 @@ table.table
 {
     width:100%;
     
-    border: 1px solid black;
+	border: none;/*1px solid #2E0F05;*/
     
     text-align: left;
     
-    background-color: #E5913E;
+    background-color: var(--orange);
 }
 
 table.table thead
@@ -25,7 +25,7 @@ table.table tbody
 	display: block;
 	overflow: auto;
 	
-	border: 1px solid black;
+	border: none;/*1px solid #2E0F05;*/
 	
 	background-color: white;
 }
@@ -38,13 +38,13 @@ table.table tbody tr
 
 	table-layout: fixed;
 	
-	border: 1px solid #bbbbbb;
+	border: 1px solid var(--light-gray);
 	border-style: none none solid none;
 }
 
 table.table tbody tr:hover
 {	
-	background-color: #6eff92;
+	background-color: var(--light-green);
 	
 	cursor: pointer;
 }

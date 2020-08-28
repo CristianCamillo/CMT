@@ -1,7 +1,19 @@
+:root
+{
+	--yellow: #FFECD1;
+	--orange: #DE8C3C;
+	--brown: #3D1508; /*#2E0F05*/
+	
+	--light-gray: #AAAAAA;
+	--dark-gray: #666666;
+	
+	--light-green: #6EFF92;
+}
+
 *
 {
    font-family: Arial;
-   color: #2E0F05;
+   color: var(--brown);
    border-radius: 4px;
 }
 
@@ -9,7 +21,7 @@ body
 {
 	padding: 10px 10px;
 	
-	background-color: #FFECD1;
+	background-color: var(--yellow);
 }
 
 input[type="text"], [type="password"], [type="number"]
@@ -44,13 +56,13 @@ button
 	width: 100%;
   	
   	padding: 4px 8px;
-  	border: 1px solid #2E0F05;
+  	border: none;/*1px solid #2E0F05;*/
   	
 	font-size: 16px;
 	
 	white-space: nowrap;	
 	
-  	background-color: #E5913E;
+  	background-color: var(--orange);
 	
 	transition-duration: 0.2s;
   	cursor: pointer;  	
@@ -65,8 +77,8 @@ button:disabled
 {
 	cursor: default;
 	
-	background-color: #aaaaaa;
-	color: #666666;
+	background-color: var(--light-gray);
+	color: var(--dark-gray);
 	
 	filter: brightness(100%);
 }
