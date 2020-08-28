@@ -31,7 +31,7 @@ public class DriverManagerConnectionPool
 		String username = "root";
 		String password = "f4s4n4r4";
 		
-		newConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + db + "?characterEncoding=latin1", username, password);
+		newConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + db + "?characterEncoding=latin1&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username, password);
 		
 		return newConnection;
 	}
