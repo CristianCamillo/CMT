@@ -7,6 +7,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/button.css">
 		<link rel="stylesheet" type="text/css" href="css/frame.css">
+		<link rel="stylesheet" type="text/css" href="css/hpButton.css">
 		<link rel="stylesheet" type="text/css" href="css/poster.css">
 		<link rel="stylesheet" type="text/css" href="css/projRoom.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">	
@@ -280,7 +281,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			</colgroup>
 			<tbody>
 				<tr>
-					<td rowspan="2"><button class="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
+					<td rowspan="2"><div class="hpButton"><img src="icons/bigIcon.jpg" style="width: 80px; height: 100px"><label><b>CASTLE MOVIE THEATER</b></label></div></td>
 					<td></td>
 					<td>
 						<%			

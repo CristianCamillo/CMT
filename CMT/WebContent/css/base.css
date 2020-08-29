@@ -2,7 +2,7 @@
 {
 	--yellow: #FFECD1;
 	--orange: #DE8C3C;
-	--brown: #3D1508; /*#2E0F05*/
+	--brown: #3D1508;
 	
 	--light-gray: #AAAAAA;
 	--dark-gray: #666666;
@@ -12,7 +12,7 @@
 
 *
 {
-   font-family: Arial;
+   font-family: arial;
    color: var(--brown);
    border-radius: 4px;
 }
@@ -24,7 +24,7 @@ body
 	background-color: var(--yellow);
 }
 
-input[type="text"], [type="password"], [type="number"]
+input[type=text], input[type=password], input[type=number]
 {
 	width: 100%;
 	
@@ -60,7 +60,7 @@ button
   	
 	font-size: 16px;
 	
-	white-space: nowrap;	
+	white-space: nowrap;
 	
   	background-color: var(--orange);
 	
