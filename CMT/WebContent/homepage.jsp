@@ -91,7 +91,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			function closeDettagliFrame()
 			{
 				// scrolla la tabella delle proiezioni all'inizio
-				document.getElementById("proiezioniDiv").scrollTop = 0;
+				document.getElementById("proiezioniTable").scrollTop = 0;
 				
 				// rende il frame non visibile				
 				document.getElementById("dettagliFrame").style.display = "none";
@@ -275,7 +275,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<table>
 			<colgroup>
 				<col>
-				<col width="100%">
+				<col style="width: 100%">
 				<col>
 			</colgroup>
 			<tbody>
@@ -340,7 +340,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			ArrayList<Film> films = (ArrayList<Film>)request.getSession().getAttribute("films");
 			
 			for(int i = 0, l = films != null ? films.size() : 0; i < l; i++)
-				out.println("<img src=\"images/" + films.get(i).getLocandina() + "\" class=\"presPoster\" onclick=\"openDettagliFrame('"+ i +"')\">");
+				out.println("<img src=\"posters/" + films.get(i).getLocandina() + "\" class=\"presPoster\" onclick=\"openDettagliFrame('"+ i +"')\">");
 		%>
 		
 		<!-- DettagliFrame -->
@@ -348,18 +348,18 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			<div class="frame">
 				<table>
 					<colgroup>
-						<col width="100%">
+						<col style="width: 100%">
 						<col>
 					</colgroup>
 					<tbody>
 						<tr><td><label style="font-size: 20px"><b>Dettagli film</b></label></td><td><button onclick="closeDettagliFrame()">&#x02716;</button></td></tr>
 					</tbody>
-				</table>
-				<br>
+				</table>				
+				<br>				
 				<table>
 					<colgroup>
 						<col>
-						<col width="20px">
+						<col style="width: 20px">
 						<col>
 					</colgroup>
 					<tbody>
@@ -393,33 +393,22 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</tbody>
 				</table>
 				<hr>
-				<table>
+				<label>Proiezioni:</label><br>
+				<br>
+				<table id="proiezioniTable" class="table maxWidth">
 					<colgroup>
+						<col width="50%">
 						<col>
-						<col width="100%">
 						<col>
 					</colgroup>
-					<tbody>
-						<tr valign="top">
-							<td><label>Proiezioni:</label></td>
-							<td>
-								<div id="proiezioniDiv" class="tableContainer">
-									<table id="proiezioniTable" class="table maxWidth">
-										<colgroup>
-											<col width="50%">
-											<col>
-											<col>
-										</colgroup>
-										<tbody>
-											<tr><th><label>Data</label></th><th><label>Orario</label></th><th><label>Costo</label></th></tr>
-										</tbody>
-									</table>
-								</div>
-							</td>
-							<td><button id="acquistaButton" onclick="openAcquistoFrame()" disabled>Acquista biglietti</button></td>
-						</tr>
+					<thead>
+						<tr><th><label>Data</label></th><th><label>Orario</label></th><th><label>Costo</label></th></tr>
+					</thead>
+					<tbody>						
 					</tbody>
 				</table>
+				<br>
+				<button id="acquistaButton" onclick="openAcquistoFrame()" disabled>Acquista biglietti</button>
 			</div>
 		</div>
 		
