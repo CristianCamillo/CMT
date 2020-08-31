@@ -1,0 +1,21 @@
+#header
+{
+	width: auto;
+	
+	position: fixed;
+}
+
+#headerLogo
+{
+	width: 112px;
+	height: 106px;
+	
+	padding-right: 20px;
+}
+
+#homepageButton
+{
+	padding: 16px;
+	
+	font-size: 25px;
+}

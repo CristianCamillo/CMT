@@ -5,11 +5,11 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 	<head>
 		<title>CMT - Homepage</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
-		<link rel="stylesheet" type="text/css" href="css/button.css">
-		<link rel="stylesheet" type="text/css" href="css/poster.css">
 		<link rel="stylesheet" type="text/css" href="css/frame.css">
+		<link rel="stylesheet" type="text/css" href="css/header.css">
+		<link rel="stylesheet" type="text/css" href="css/poster.css">
+		<link rel="stylesheet" type="text/css" href="css/projRoom.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
-		<link rel="stylesheet" type="text/css" href="css/misc.css">		
 		<script src="js/filtroValidator.js"></script>
 		<script type="text/javascript">
 		
@@ -272,42 +272,54 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 	</head>
 	<body>	
 		<!-- Pulsante "Homepage" e "Login" "Registrazione" / "Area Personale" "Logout" -->
-		<table>
-			<colgroup>
-				<col>
-				<col style="width: 100%">
-				<col>
-			</colgroup>
-			<tbody>
-				<tr>
-					<td rowspan="2"><button class="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
-					<td>&nbsp;</td>
-					<td>
-						<%			
-							String tipo = (String)request.getSession().getAttribute("tipo");
-						
-							if(tipo == null)							
-								out.print("<button onclick=\"location.href='login.jsp'\">Login</button>");
-							else
-								out.print("<button onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
-						%>
-					</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td>
-						<%									
-							if(tipo == null)							
-								out.print("<button onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
-							else
-								out.print("<button onclick=\"location.href='logout.jsp'\">Logout</button>");
-						%>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<div id="header">
+			<table>
+				<colgroup>
+					<col>
+					<col>
+					<col>
+					<col>
+				</colgroup>
+				<tbody>
+					<tr>
+						<td><img id="headerLogo" src="icons/bigIcon.jpg" ></td>
+						<td><button id="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
+						<td></td>
+						<td>
+							<table>
+								<tbody>
+									<tr>
+										<td>
+											<%			
+												String tipo = (String)request.getSession().getAttribute("tipo");
+											
+												if(tipo == null)							
+													out.print("<button onclick=\"location.href='login.jsp'\">Login</button>");
+												else
+													out.print("<button onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
+											%>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<%									
+												if(tipo == null)							
+													out.print("<button onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
+												else
+													out.print("<button onclick=\"location.href='logout.jsp'\">Logout</button>");
+											%>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+				</tbody>
+			</table>
 		
-		<hr>
+			<hr>
+		</div>
+		
+		<div style="margin-top: 200px">
 		
 		<!-- Form del filtro film -->
 		<form name="form" action="${pageContext.request.contextPath}/filtro" method="GET">
@@ -343,6 +355,8 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				out.println("<img src=\"posters/" + films.get(i).getLocandina() + "\" class=\"presPoster\" onclick=\"openDettagliFrame('"+ i +"')\">");
 		%>
 		
+		</div>
+		
 		<!-- DettagliFrame -->
 		<div id="dettagliFrame" class="frameContainer">
 			<div class="frame">
@@ -370,7 +384,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 								<table>
 									<colgroup>
 										<col>
-										<col width="15px">
+										<col style="width: 15px">
 										<col>
 									</colgroup>
 									<tbody>
@@ -395,12 +409,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				<hr>
 				<label>Proiezioni:</label><br>
 				<br>
-				<table id="proiezioniTable" class="table maxWidth">
-					<colgroup>
-						<col width="50%">
-						<col>
-						<col>
-					</colgroup>
+				<table id="proiezioniTable" class="table">
 					<thead>
 						<tr><th><label>Data</label></th><th><label>Orario</label></th><th><label>Costo</label></th></tr>
 					</thead>
@@ -408,7 +417,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</tbody>
 				</table>
 				<br>
-				<button id="acquistaButton" onclick="openAcquistoFrame()" disabled>Acquista biglietti</button>
+				<button id="acquistaButton" onclick="openAcquistoFrame()" disabled>Procedi all'acquisto biglietti</button>
 			</div>
 		</div>
 		
@@ -417,7 +426,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			<div class="frame">
 				<table>
 					<colgroup>
-						<col width="100%">
+						<col style="width: 100%">
 						<col>
 					</colgroup>
 					<tbody>
@@ -428,11 +437,11 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			 	<table>
 			 		<colgroup>
 						<col>
-						<col width="20px">
-						<col width="200px">
+						<col style="width: 20px">
+						<col style="width: 200px">
 					</colgroup>
 					<tbody>
-						<tr><td><label><b>Film:</b></label></td><td></td><td><label id="titoloA"></label></td></tr>
+						<tr><td><label><b>Film</b></label></td><td></td><td><label id="titoloA"></label></td></tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr><td><label><b>Proiezione</b></label></td><td></td><td><label id="proiezioneA"></label></td></tr>
 						<tr><td>&nbsp;</td></tr>
@@ -441,22 +450,12 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</tbody>
 			 	</table>
 			 	<form onsubmit="prepareTransaction()" action="${pageContext.request.contextPath}/acquisto" method="POST">
-					<table>
-						<tbody>
-							<tr>
-								<td>
-									<div style="width: 100%; border: 1px solid black; border-collapse: collapse;">
-										<table id="salaTable">
-											<tbody>								
-											</tbody>
-										</table>
-									</div>
-								</td>
-							</tr>
-							<tr><td>&nbsp;</td></tr>
-							<tr><td><input type="submit" style="width: 100%; height: 80px;" value="Acquista biglietti"></td></tr> 
+					<table id="salaTable" class="projRoom">
+						<tbody>								
 						</tbody>
 					</table>
+					<br>
+					<button type="submit">Acquista biglietti</button>
 					<input id="posti"  name="posti" type="hidden" value="">
 					<input id="idProiezione" name="idProiezione" type="hidden" value="">
 					<input id="totale" name="totale" type="hidden" value="">

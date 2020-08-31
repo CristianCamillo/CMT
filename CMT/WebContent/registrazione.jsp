@@ -4,7 +4,7 @@
 	<head>
 		<title>CMT - Registrazione</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
-		<link rel="stylesheet" type="text/css" href="css/button.css">
+		<link rel="stylesheet" type="text/css" href="css/hpButton.css">
 		<script src="js/fieldChecker.js"></script>
 	</head>
 	<body>
