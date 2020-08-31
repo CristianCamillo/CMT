@@ -9,13 +9,22 @@
 	</head>
 	<body>
 		<table>
+			<colgroup>
+				<col>						<!-- icon -->
+				<col style="width: 20px">
+				<col>						<!-- hp button -->
+			</colgroup>
 			<tbody>
 				<tr>
+					<td><img src="icons/bigIcon.jpg" style="width: 112px; height: 106px;"></td>
+					<td></td>
 					<td><button class="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
 				</tr>
 			</tbody>
 		</table>
+		
 		<hr>
+		
 		<form name="form" action="${pageContext.request.contextPath}/login" method="POST">
 			<table style="width: 211px">
 				<tbody>

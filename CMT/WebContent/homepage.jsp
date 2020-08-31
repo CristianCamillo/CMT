@@ -6,11 +6,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<title>CMT - Homepage</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/button.css">
-		<link rel="stylesheet" type="text/css" href="css/frame.css">
-		<link rel="stylesheet" type="text/css" href="css/hpButton.css">
 		<link rel="stylesheet" type="text/css" href="css/poster.css">
-		<link rel="stylesheet" type="text/css" href="css/projRoom.css">
-		<link rel="stylesheet" type="text/css" href="css/table.css">	
+		<link rel="stylesheet" type="text/css" href="css/frame.css">
+		<link rel="stylesheet" type="text/css" href="css/table.css">
+		<link rel="stylesheet" type="text/css" href="css/misc.css">		
 		<script src="js/filtroValidator.js"></script>
 		<script type="text/javascript">
 		
@@ -32,7 +31,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				var film = films[n];
 				
 				// aggiorna i campi dei dettagli
-				document.getElementById("locandina").src = "images/" + film[8];
+				document.getElementById("locandina").src = "posters/" + film[8];
 				document.getElementById("titolo").innerHTML = film[1];
 				document.getElementById("durata").innerHTML = film[2] + " min";
 				document.getElementById("genere").innerHTML = film[3] != "null" ? film[3] : "";
@@ -92,7 +91,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			function closeDettagliFrame()
 			{
 				// scrolla la tabella delle proiezioni all'inizio
-				document.getElementById("proiezioniTable").tBodies[0].scrollTop = 0;
+				document.getElementById("proiezioniDiv").scrollTop = 0;
 				
 				// rende il frame non visibile				
 				document.getElementById("dettagliFrame").style.display = "none";
@@ -276,13 +275,13 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<table>
 			<colgroup>
 				<col>
-				<col style="width: 100%">
+				<col width="100%">
 				<col>
 			</colgroup>
 			<tbody>
 				<tr>
-					<td rowspan="2"><div class="hpButton"><img src="icons/bigIcon.jpg" style="width: 80px; height: 100px"><label><b>CASTLE MOVIE THEATER</b></label></div></td>
-					<td></td>
+					<td rowspan="2"><button class="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
+					<td>&nbsp;</td>
 					<td>
 						<%			
 							String tipo = (String)request.getSession().getAttribute("tipo");
@@ -295,7 +294,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</td>
 				</tr>
 				<tr>
-					<td></td>
+					<td>&nbsp;</td>
 					<td>
 						<%									
 							if(tipo == null)							
@@ -308,13 +307,11 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			</tbody>
 		</table>
 		
-		
-		
 		<hr>
 		
 		<!-- Form del filtro film -->
 		<form name="form" action="${pageContext.request.contextPath}/filtro" method="GET">
-			<table style="width: 290px">
+			<table style="width: 300px">
 				<tbody>
 					<tr>
 						<td><input type="text" name="titolo" placeholder="Titolo" maxlength="30"></td>
@@ -350,52 +347,79 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<div id="dettagliFrame" class="frameContainer">
 			<div class="frame">
 				<table>
+					<colgroup>
+						<col width="100%">
+						<col>
+					</colgroup>
 					<tbody>
-						<tr><td style="width: 100%"><label style="font-size: 20px"><b>Dettagli film</b></label></td><td><button onclick="closeDettagliFrame()">&#x02716;</button></td></tr>
+						<tr><td><label style="font-size: 20px"><b>Dettagli film</b></label></td><td><button onclick="closeDettagliFrame()">&#x02716;</button></td></tr>
 					</tbody>
 				</table>
 				<br>
 				<table>
 					<colgroup>
 						<col>
-						<col style="width: 20px">
-						<col>
-						<col style="width: 15px">
+						<col width="20px">
 						<col>
 					</colgroup>
 					<tbody>
-						<tr>
-							<td rowspan="0"><img id="locandina" class="poster"></td>
+						<tr valign="top">
+							<td><img id="locandina" class="poster"></td>
 							<td></td>
-							<td><label><b>Titolo</b></label></td>
-							<td></td>
-							<td><label id="titolo"></label></td>
+							<td>
+								<table>
+									<colgroup>
+										<col>
+										<col width="15px">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr><td><label><b>Titolo</b></label></td><td></td><td><label id="titolo"></label></td></tr>
+										<tr><td>&nbsp;</td></tr>
+										<tr><td><label><b>Durata</b></label></td><td></td><td><label id="durata"></label></td></tr>
+										<tr><td>&nbsp;</td></tr>
+										<tr><td><label><b>Genere</b></label></td><td></td><td><label id="genere"></label></td></tr>
+										<tr><td>&nbsp;</td></tr>
+										<tr><td><label><b>Regista</b></label></td><td></td><td><label id="regista"></label></td></tr>
+										<tr><td>&nbsp;</td></tr>
+										<tr><td><label><b>Attori</b></label></td><td></td><td><label id="attore1"></label></tr>
+										<tr><td></td><td></td><td><label id="attore2"></label></td></tr>
+										<tr><td>&nbsp;</td></tr>
+										<tr><td valign="top"><label><b>Descrizione</b></label></td><td></td><td><label id="descrizione"></label></td></tr>
+									</tbody>
+								</table>
+							</td>
 						</tr>
-						<tr><td>&nbsp;</td></tr>
-						<tr><td>&nbsp;</td><td><label><b>Durata</b></label></td><td></td><td><label id="durata"></label></td></tr>
-						<tr><td>&nbsp;</td></tr>
-						<tr><td>&nbsp;</td><td><label><b>Genere</b></label></td><td></td><td><label id="genere"></label></td></tr>
-						<tr><td>&nbsp;</td></tr>
-						<tr><td>&nbsp;</td><td><label><b>Regista</b></label></td><td></td><td><label id="regista"></label></td></tr>
-						<tr><td>&nbsp;</td></tr>
-						<tr><td>&nbsp;</td><td><label><b>Attori</b></label></td><td></td><td><label id="attore1"></label></tr>
-						<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><label id="attore2"></label></td></tr>
-						<tr><td>&nbsp;</td></tr>
-						<tr style="vertical-align: top"><td>&nbsp;</td><td><label><b>Descrizione</b></label></td><td></td><td><label id="descrizione"></label></td></tr>
 					</tbody>
 				</table>
 				<hr>
-				<label><b>Proiezioni:</b></label><br>
-				<br>
-					<table id="proiezioniTable" class="table">
-						<thead>
-							<tr><th><label>Data</label></th><th><label>Orario</label></th><th><label>Costo</label></th></tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
-				<br>
-				<button id="acquistaButton" onclick="openAcquistoFrame()" disabled>Procedi all'acquisto biglietti</button>
+				<table>
+					<colgroup>
+						<col>
+						<col width="100%">
+						<col>
+					</colgroup>
+					<tbody>
+						<tr valign="top">
+							<td><label>Proiezioni:</label></td>
+							<td>
+								<div id="proiezioniDiv" class="tableContainer">
+									<table id="proiezioniTable" class="table maxWidth">
+										<colgroup>
+											<col width="50%">
+											<col>
+											<col>
+										</colgroup>
+										<tbody>
+											<tr><th><label>Data</label></th><th><label>Orario</label></th><th><label>Costo</label></th></tr>
+										</tbody>
+									</table>
+								</div>
+							</td>
+							<td><button id="acquistaButton" onclick="openAcquistoFrame()" disabled>Acquista biglietti</button></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		
@@ -403,36 +427,50 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<div id="acquistoFrame" class="frameContainer">
 			<div class="frame">
 				<table>
+					<colgroup>
+						<col width="100%">
+						<col>
+					</colgroup>
 					<tbody>
-						<tr><td style="width: 100%"><label style="font-size: 20px"><b>Acquisto biglietti</b></label></td><td><button onclick="closeAcquistoFrame()">&#x02716;</button></td></tr>
+						<tr><td><label><b>Acquisto biglietti</b></label></td><td><button onclick="closeAcquistoFrame()">&#x02716;</button></td></tr>
 					</tbody>
 				</table>
 				<br>
 			 	<table>
 			 		<colgroup>
 						<col>
-						<col style="width: 20px">
-						<col>
+						<col width="20px">
+						<col width="200px">
 					</colgroup>
 					<tbody>
-						<tr><td><label><b>Film</b></label></td><td></td><td><label id="titoloA"></label></td></tr>
+						<tr><td><label><b>Film:</b></label></td><td></td><td><label id="titoloA"></label></td></tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr><td><label><b>Proiezione</b></label></td><td></td><td><label id="proiezioneA"></label></td></tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr><td><label><b>Totale</b></label></td><td></td><td><label id="totaleA"></label></td></tr>
+						<tr><td>&nbsp;</td></tr>
 					</tbody>
 			 	</table>
-			 	<br>
 			 	<form onsubmit="prepareTransaction()" action="${pageContext.request.contextPath}/acquisto" method="POST">
-					<table id="salaTable" class="projRoom">
-						<tbody>								
+					<table>
+						<tbody>
+							<tr>
+								<td>
+									<div style="width: 100%; border: 1px solid black; border-collapse: collapse;">
+										<table id="salaTable">
+											<tbody>								
+											</tbody>
+										</table>
+									</div>
+								</td>
+							</tr>
+							<tr><td>&nbsp;</td></tr>
+							<tr><td><input type="submit" style="width: 100%; height: 80px;" value="Acquista biglietti"></td></tr> 
 						</tbody>
 					</table>
-					<br>
-					<button type="submit">Acquista biglietti</button>
-					<input id="posti" name="posti" type="hidden">
-					<input id="idProiezione" name="idProiezione" type="hidden">
-					<input id="totale" name="totale" type="hidden">					
+					<input id="posti"  name="posti" type="hidden" value="">
+					<input id="idProiezione" name="idProiezione" type="hidden" value="">
+					<input id="totale" name="totale" type="hidden" value="">
 				</form>
 			</div>
 		</div>
