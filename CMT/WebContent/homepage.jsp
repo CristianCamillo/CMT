@@ -275,28 +275,31 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			<span id="logo" onclick="location.href='homepage.jsp'">
 				<img id="headerLogo" src="icons/bigIcon.png">
 				<label id="siteName">Castle Movie Theater</label>
+				<span style="float: right">
+				<table style="padding-left: >
+					<tbody>
+						<tr><td>
+							<%			
+								String tipo = (String)request.getSession().getAttribute("tipo");
+							
+								if(tipo == null)							
+									out.print("<button onclick=\"location.href='login.jsp'\">Login</button>");
+								else
+									out.print("<button onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
+							%>
+						</td></tr>
+						<tr><td>
+							<%									
+								if(tipo == null)							
+									out.print("<button style=\"float: bottom\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
+								else
+									out.print("<button onclick=\"location.href='logout.jsp'\">Logout</button>");
+							%></td></tr>
+					</tbody>
+				</table>
+				</span>
 			</span>
-			<table style="float: right">
-				<tbody>
-					<tr><td>
-						<%			
-							String tipo = (String)request.getSession().getAttribute("tipo");
-						
-							if(tipo == null)							
-								out.print("<button onclick=\"location.href='login.jsp'\">Login</button>");
-							else
-								out.print("<button onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
-						%>
-					</td></tr>
-					<tr><td>
-						<%									
-							if(tipo == null)							
-								out.print("<button style=\"float: bottom\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
-							else
-								out.print("<button onclick=\"location.href='logout.jsp'\">Logout</button>");
-						%></td></tr>
-				</tbody>
-			</table>							
+										
 			<hr>
 		</header>
 	
