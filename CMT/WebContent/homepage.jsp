@@ -271,55 +271,37 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		</script>
 	</head>
 	<body>	
-		<!-- Pulsante "Homepage" e "Login" "Registrazione" / "Area Personale" "Logout" -->
-		<div id="header">
-			<table>
-				<colgroup>
-					<col>
-					<col>
-					<col>
-					<col>
-				</colgroup>
+		<header>	
+			<span id="logo" onclick="location.href='homepage.jsp'">
+				<img id="headerLogo" src="icons/bigIcon.png">
+				<label id="siteName">Castle Movie Theater</label>
+			</span>
+			<table style="float: right">
 				<tbody>
-					<tr>
-						<td><img id="headerLogo" src="icons/bigIcon.jpg" ></td>
-						<td><button id="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
-						<td></td>
-						<td>
-							<table>
-								<tbody>
-									<tr>
-										<td>
-											<%			
-												String tipo = (String)request.getSession().getAttribute("tipo");
-											
-												if(tipo == null)							
-													out.print("<button onclick=\"location.href='login.jsp'\">Login</button>");
-												else
-													out.print("<button onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
-											%>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<%									
-												if(tipo == null)							
-													out.print("<button onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
-												else
-													out.print("<button onclick=\"location.href='logout.jsp'\">Logout</button>");
-											%>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</td>
+					<tr><td>
+						<%			
+							String tipo = (String)request.getSession().getAttribute("tipo");
+						
+							if(tipo == null)							
+								out.print("<button onclick=\"location.href='login.jsp'\">Login</button>");
+							else
+								out.print("<button onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
+						%>
+					</td></tr>
+					<tr><td>
+						<%									
+							if(tipo == null)							
+								out.print("<button style=\"float: bottom\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
+							else
+								out.print("<button onclick=\"location.href='logout.jsp'\">Logout</button>");
+						%></td></tr>
 				</tbody>
-			</table>
-		
+			</table>							
 			<hr>
-		</div>
+		</header>
+	
 		
-		<div style="margin-top: 200px">
+		<div>
 		
 		<!-- Form del filtro film -->
 		<form name="form" action="${pageContext.request.contextPath}/filtro" method="GET">
@@ -366,7 +348,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						<col>
 					</colgroup>
 					<tbody>
-						<tr><td><label style="font-size: 20px"><b>Dettagli film</b></label></td><td><button onclick="closeDettagliFrame()">&#x02716;</button></td></tr>
+						<tr><td><label style="font-size: 26px"><b>Dettagli film</b></label></td><td><button onclick="closeDettagliFrame()">&#x02716;</button></td></tr>
 					</tbody>
 				</table>				
 				<br>				

@@ -10,15 +10,19 @@
 	--light-green: #6EFF92;
 }
 
+@font-face
+{
+	font-family: 'test';
+	src: url(../fonts/hamletTertia.otf);
+}
+
 *
 {
-   font-family: arial;
-   color: var(--brown);
-   border-radius: 4px;
-   marging: 0;
-   paddint: 0;
-   list-style: none;
-   text-decoration: none;
+	font-family: test;
+	letter-spacing: 0.02em;
+	word-spacing: 0.1em;
+ 	color: var(--brown);
+	border-radius: 4px;
 }
 
 body
@@ -38,7 +42,7 @@ input[type=text], input[type=password], input[type=number]
 	
 	padding: 4px;
 		
-	font-size: 16px;
+	font-size: 18px;
 	
 	transition-duration: 0.3s;
 }
@@ -61,10 +65,12 @@ button
 {  	  
 	width: 100%;
   	
-  	padding: 4px 8px;
+  	padding-left: 8px;
+  	padding-right: 8px;
+  	padding-top: 4px;
   	border: none;
   	
-	font-size: 16px;
+	font-size: 18px;
 	
 	white-space: nowrap;
 	
@@ -93,4 +99,9 @@ hr
 {
 	margin-top: 15px;
 	margin-bottom: 15px;
+}
+
+label
+{
+	padding-top: 0.3em;
 }
