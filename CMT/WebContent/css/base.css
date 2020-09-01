@@ -12,15 +12,13 @@
 
 @font-face
 {
-	font-family: 'test';
-	src: url(../fonts/test.ttf);
+	font-family: 'hamletOsf';
+	src: url(../fonts/hamletOsf.ttf);
 }
 
 *
 {
-	font-family: test;
-	/*letter-spacing: 0.02em;
-	word-spacing: 0.1em;*/
+	font-family: hamletOsf;
  	color: var(--brown);
 	border-radius: 4px;
 }

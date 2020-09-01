@@ -345,7 +345,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				<span style="display: block">
 					<label style="font-size: 26px"><b>Dettagli film</b></label>
 					<button style="width: auto; float: right;" onclick="closeDettagliFrame()">&#x02716;</button>
-				</span>				
+				</span>
 				<br>				
 				<table>
 					<colgroup>
@@ -401,15 +401,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<!-- AcquistoFrame -->
 		<div id="acquistoFrame" class="frameContainer">
 			<div class="frame">
-				<table>
-					<colgroup>
-						<col style="width: 100%">
-						<col>
-					</colgroup>
-					<tbody>
-						<tr><td><label><b>Acquisto biglietti</b></label></td><td><button onclick="closeAcquistoFrame()">&#x02716;</button></td></tr>
-					</tbody>
-				</table>
+				<span style="display: block">
+					<label style="font-size: 26px"><b>Acquisto biglietti</b></label>
+					<button style="width: auto; float: right;" onclick="closeAcquistoFrame()">&#x02716;</button>
+				</span>
 				<br>
 			 	<table>
 			 		<colgroup>
