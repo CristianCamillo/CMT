@@ -12,15 +12,13 @@
 
 @font-face
 {
-	font-family: 'test';
-	src: url(../fonts/hamletTertia.otf);
+	font-family: 'hamletOsf';
+	src: url(../fonts/hamletOsf.ttf);
 }
 
 *
 {
-	font-family: test;
-	letter-spacing: 0.02em;
-	word-spacing: 0.1em;
+	font-family: hamletOsf;
  	color: var(--brown);
 	border-radius: 4px;
 }
@@ -65,9 +63,7 @@ button
 {  	  
 	width: 100%;
   	
-  	padding-left: 8px;
-  	padding-right: 8px;
-  	padding-top: 4px;
+  	padding: 4px 8px;
   	border: none;
   	
 	font-size: 18px;
@@ -99,9 +95,4 @@ hr
 {
 	margin-top: 15px;
 	margin-bottom: 15px;
-}
-
-label
-{
-	padding-top: 0.3em;
 }

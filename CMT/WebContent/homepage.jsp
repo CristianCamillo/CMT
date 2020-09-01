@@ -342,15 +342,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<!-- DettagliFrame -->
 		<div id="dettagliFrame" class="frameContainer">
 			<div class="frame">
-				<table>
-					<colgroup>
-						<col style="width: 100%">
-						<col>
-					</colgroup>
-					<tbody>
-						<tr><td><label style="font-size: 26px"><b>Dettagli film</b></label></td><td><button onclick="closeDettagliFrame()">&#x02716;</button></td></tr>
-					</tbody>
-				</table>				
+				<span style="display: block">
+					<label style="font-size: 26px"><b>Dettagli film</b></label>
+					<button style="width: auto; float: right;" onclick="closeDettagliFrame()">&#x02716;</button>
+				</span>				
 				<br>				
 				<table>
 					<colgroup>
