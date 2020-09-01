@@ -271,12 +271,13 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		</script>
 	</head>
 	<body>	
-		<header>	
-			<span id="logo" onclick="location.href='homepage.jsp'">
-				<img id="headerLogo" src="icons/bigIcon.png">
-				<label id="siteName">Castle Movie Theater</label>
-				<span style="float: right">
-				<table style="padding-left: >
+		<header>
+			<span id="headerSpan">
+				<span id="logo" onclick="location.href='homepage.jsp'">
+					<img id="headerLogo" src="icons/bigIcon.png">
+					<label id="siteName">Castle Movie Theater</label>					
+				</span>
+				<table>
 					<tbody>
 						<tr><td>
 							<%			
@@ -297,9 +298,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 							%></td></tr>
 					</tbody>
 				</table>
-				</span>
-			</span>
-										
+			</span>						
 			<hr>
 		</header>
 	
