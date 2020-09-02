@@ -14,9 +14,14 @@
 
 #filtroForm input, #loginForm input, #regisForm input
 {
-	display: block;
+	width: 100%;
 	
-	margin: 4px 0px;
+	margin: 2px 0px;
+}
+
+#filtroForm button, #loginForm button, #regisForm button
+{
+	width: 100%;
 }
 
 #regisForm span
@@ -26,4 +31,9 @@
 	justify-content: space-between;
 	
 	margin: 6px 4px;
+}
+
+#regisForm span input
+{
+	width: 1px;
 }

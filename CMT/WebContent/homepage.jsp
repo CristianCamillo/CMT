@@ -299,6 +299,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			<input type="text" name="regista" placeholder="Regista" maxlength="30">
 			<input type="text" name="attore" placeholder="Attore" maxlength="30">
 			<br>
+			<br>
 			<button type="submit">Filtra</button>
 		</form>
 		

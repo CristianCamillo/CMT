@@ -68,8 +68,6 @@ h2
 
 input[type=text], input[type=password], input[type=number]
 {
-	width: 100%;
-	
 	padding: 4px 6px;
 }
 
@@ -88,9 +86,7 @@ input[type=number]
 }
 
 button
-{  	  
-	width: 100%;
-  	
+{  	   	
   	padding: 4px 6px;
   	border: none;
 	

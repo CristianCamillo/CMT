@@ -31,17 +31,13 @@ div.frame
 
 span.frameHeader
 {
-	display: block;
-}
-
-span.frameHeader label
-{
-	font-size: 26px;
-	font-weight: 1000;
+	display: flex;
+	align-items: center;	
+	justify-content: space-between;
 }
 
 span.frameHeader button
 {
-	width: auto;
-	float: right;
+	padding-left: 8px;
+	padding-right: 8px;
 }
