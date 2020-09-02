@@ -16,7 +16,7 @@
 						
 		<hr>
 		
-		<form name="form" onsubmit="return password.value == confPassword.value" action="${pageContext.request.contextPath}/registrazione" method="POST">
+		<form id="regisForm" name="form" onsubmit="return password.value == confPassword.value" action="${pageContext.request.contextPath}/registrazione" method="POST">
 			<table>
 				<tbody>
 					<tr>												

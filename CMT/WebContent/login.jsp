@@ -16,7 +16,7 @@
 				
 		<hr>
 		
-		<form name="form" action="${pageContext.request.contextPath}/login" method="POST">
+		<form id="loginForm" name="form" action="${pageContext.request.contextPath}/login" method="POST">
 			<table>
 				<tbody>
 					<tr>														

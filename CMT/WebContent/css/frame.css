@@ -29,3 +29,15 @@ div.frame
 	
 	background-color: var(--yellow);
 }
+
+label.frameTitle
+{
+	font-size: 26px;
+	font-weight: 1000;
+}
+
+button.frameExitButton
+{
+	width: auto;
+	float: right;
+}
