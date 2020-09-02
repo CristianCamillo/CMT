@@ -52,8 +52,6 @@ header div
 
 header div button
 {
-	width: 100%;
-	display: block;
-	
+	display: block;	
 	margin: 3px;
 }
