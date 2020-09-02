@@ -11,6 +11,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<link rel="stylesheet" type="text/css" href="css/poster.css">
 		<link rel="stylesheet" type="text/css" href="css/projRoom.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
+		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<script src="js/filtroValidator.js"></script>
 		<script type="text/javascript">
 		
@@ -86,7 +87,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				}
 				
 				// rende il frame visibile
-				document.getElementById("dettagliFrame").style.display = "block";
+				document.getElementById("dettagliFrame").style.display = "flex";
 			}
 			
 			function closeDettagliFrame()
@@ -156,7 +157,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					document.getElementById(id).src = "seats/occupied.jpg";
 				}
 				
-				document.getElementById("acquistoFrame").style.display = "block";
+				document.getElementById("acquistoFrame").style.display = "flex";
 			}
 			
 			function closeAcquistoFrame()

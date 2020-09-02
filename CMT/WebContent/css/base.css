@@ -32,10 +32,7 @@
  	list-style: none;
  	text-decoration: none;
  	
- 	color: var(--brown);
-	border-radius: 4px;
-	
-	box-sizing: border-box;
+ 	color: var(--brown);	
 }
 
 /* body*/
@@ -74,6 +71,9 @@ h3
 input[type=text], input[type=password], input[type=number]
 {
 	padding: 4px 6px;
+	border-radius: 4px;
+	
+	box-sizing: border-box;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -94,6 +94,7 @@ button
 {  	   	
   	padding: 4px 8px;
   	border: none;
+	border-radius: 4px;
 	
 	white-space: nowrap;
 	

@@ -36,6 +36,8 @@ header div
 {	
 	display: flex;
 	flex-direction: column;
+	
+	padding-left: 100px;
 }
 
 header div button

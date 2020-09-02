@@ -1,0 +1,29 @@
+.overlay
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 1;
+	
+	background: #000;
+	pointer-events: none;
+	
+	-webkit-transform: scale(0.5);
+			transform: scale(0.5);
+}
+
+input[type="checked"]:checked ~ .overlay
+{
+	pointer-events: auto;
+	
+	opacity: 0.9;
+	
+	-webkit-transform: scale(1);
+			transform: scale(1);
+			
+	-webkit-transition: transform 0.5s ease, opacity 0.5s ease;
+			transition: transform 0.5s ease, opacity 0.5s ease;
+
+}

@@ -5,6 +5,7 @@ img.presPoster
 	  	
   	padding: 2px;
   	border: 1px solid var(--brown);
+  	border-radius: 4px;
   	margin: 5px;
   	
   	cursor: pointer;
@@ -24,4 +25,5 @@ img.poster
 	height: 450px;
 	
 	border: 1px solid var(--brown);
+	border-radius: 4px;
 }
