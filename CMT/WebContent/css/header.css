@@ -34,8 +34,6 @@ header span h1
 
 header div
 {	
-	width: auto;
-	
 	display: flex;
 	flex-direction: column;
 }
