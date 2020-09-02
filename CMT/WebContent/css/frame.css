@@ -1,13 +1,15 @@
 div.frameContainer
 {
 	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
+	position: absolute; /* Stay in place */
 	z-index: 1; /* Sit on top */
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
 	overflow: auto;
+	
+	border-radius: 0px;
 	
 	background-color: rgba(0,0,0,0.4);
 }
@@ -34,10 +36,4 @@ span.frameHeader
 	display: flex;
 	align-items: center;	
 	justify-content: space-between;
-}
-
-span.frameHeader button
-{
-	padding-left: 8px;
-	padding-right: 8px;
 }
