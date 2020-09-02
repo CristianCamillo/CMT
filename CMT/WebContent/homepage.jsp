@@ -283,18 +283,16 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				
 					if(tipo == null)							
 						out.print("<button onclick=\"location.href='login.jsp'\">Login</button>" +
-								  "<button style=\"float: bottom\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
+								  "<button onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
 					else
 						out.print("<button onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>" +
 								  "<button onclick=\"location.href='logout.jsp'\">Logout</button>");
 				%>
 			</div>			
 		</header>
+		
 		<hr>
 		
-		<div>
-		
-		<!-- Form del filtro film -->
 		<form id="filtroForm" name="form" action="${pageContext.request.contextPath}/filtro" method="GET">
 			<input type="text" name="titolo" placeholder="Titolo" maxlength="30">
 			<input type="text" name="genere" placeholder="Genere" maxlength="30">
@@ -303,31 +301,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			<br>
 			<button type="submit">Filtra</button>
 		</form>
-			<!--  <table style="width: 300px">
-				<tbody>
-					<tr>
-						<td><input type="text" name="titolo" placeholder="Titolo" maxlength="30"></td>
-					</tr>
-					<tr>
-						<td><input type="text" name="genere" placeholder="Genere" maxlength="30"></td>
-					</tr>
-					<tr>
-						<td><input type="text" name="regista" placeholder="Regista" maxlength="30"></td>
-					</tr>
-					<tr>
-						<td><input type="text" name="attore" placeholder="Attore" maxlength="30"></td>
-					</tr>
-					<tr><td>&nbsp;</td></tr>
-					<tr>						
-						<td><button type="submit">Filtra</button></td>
-					</tr>
-				</tbody>
-			</table>
-		</form>-->
 		
 		<hr>
 		
-		<!-- Lista dei film -->
+		<!-- Lista dei poster dei film -->
 		<%
 			ArrayList<Film> films = (ArrayList<Film>)request.getSession().getAttribute("films");
 			
@@ -335,13 +312,11 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				out.println("<img src=\"posters/" + films.get(i).getLocandina() + "\" class=\"presPoster\" onclick=\"openDettagliFrame('"+ i +"')\">");
 		%>
 		
-		</div>
-		
 		<!-- DettagliFrame -->
 		<div id="dettagliFrame" class="frameContainer">
 			<div class="frame">
 				<span class="frameHeader">
-					<label>Dettagli film</label>
+					<h2>Dettagli film</h2>
 					<button onclick="closeDettagliFrame()">&#x02716;</button>
 				</span>
 				<br>				

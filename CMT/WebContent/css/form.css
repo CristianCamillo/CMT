@@ -3,8 +3,26 @@
 	width: 300px;
 }
 
-#filtroForm input
+#loginForm, #regisForm
+{
+	width: 25%;	
+	min-width: 300px;
+	max-width: 500px;
+	
+	margin: 100px auto;
+}
+
+#filtroForm input, #loginForm input, #regisForm input
 {
 	display: block;
-	margin: 3px;
+	margin: 4px 0px;
+}
+
+#regisForm span
+{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	
+	margin: 6px 4px;
 }

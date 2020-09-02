@@ -1,3 +1,5 @@
+/* colors */
+
 :root
 {
 	--yellow: #FFECD1;
@@ -10,11 +12,15 @@
 	--light-green: #6EFF92;
 }
 
+/* font */
+
 @font-face
 {
 	font-family: 'hamletOsf';
 	src: url(../fonts/hamletOsf.ttf);
 }
+
+/* everything */
 
 *
 {
@@ -32,6 +38,8 @@
 	box-sizing: border-box;
 }
 
+/* body*/
+
 body
 {
 	margin: 20px;
@@ -39,13 +47,30 @@ body
 	background-color: var(--yellow);
 }
 
+/* h tags */
+
+h1, h2
+{
+	font-weight: 1000;
+}
+
+h1
+{
+	font-size: 55px;	
+}
+
+h2
+{
+	font-size: 26px;
+}
+
+/* misc stuff */
+
 input[type=text], input[type=password], input[type=number]
 {
 	width: 100%;
 	
-	box-sizing: border-box;
-	
-	padding: 4px;
+	padding: 4px 6px;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -66,7 +91,7 @@ button
 {  	  
 	width: 100%;
   	
-  	padding: 4px;
+  	padding: 4px 6px;
   	border: none;
 	
 	white-space: nowrap;
@@ -94,6 +119,5 @@ button:disabled
 
 hr
 {
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin: 15px 0px;
 }
