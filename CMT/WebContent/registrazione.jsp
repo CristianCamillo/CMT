@@ -4,18 +4,18 @@
 	<head>
 		<title>CMT - Registrazione</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
-		<link rel="stylesheet" type="text/css" href="css/hpButton.css">
+		<link rel="stylesheet" type="text/css" href="css/header.css">
+		<link rel="stylesheet" type="text/css" href="css/logRegForm.css">
 		<script src="js/fieldChecker.js"></script>
 	</head>
 	<body>
-		<table>
-			<tbody>
-				<tr>
-					<td><button class="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
-				</tr>
-			</tbody>
-		</table>
+		<span id="logo" onclick="location.href='homepage.jsp'">
+			<img id="siteLogo" src="icons/bigIcon.png">
+			<label id="siteName">Castle Movie Theater</label>					
+		</span>
+						
 		<hr>
+		
 		<form name="form" onsubmit="return password.value == confPassword.value" action="${pageContext.request.contextPath}/registrazione" method="POST">
 			<table>
 				<tbody>

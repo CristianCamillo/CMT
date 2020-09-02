@@ -272,12 +272,12 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 	</head>
 	<body>	
 		<header>
-			<span id="headerSpan">
+			<div id="headerSpan">
 				<span id="logo" onclick="location.href='homepage.jsp'">
-					<img id="headerLogo" src="icons/bigIcon.png">
+					<img id="siteLogo" src="icons/bigIcon.png">
 					<label id="siteName">Castle Movie Theater</label>					
 				</span>
-				<table>
+				<table style="display: grid; place-items: end">
 					<tbody>
 						<tr><td>
 							<%			
@@ -298,7 +298,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 							%></td></tr>
 					</tbody>
 				</table>
-			</span>						
+			</div>						
 			<hr>
 		</header>
 	
@@ -344,10 +344,11 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<!-- DettagliFrame -->
 		<div id="dettagliFrame" class="frameContainer">
 			<div class="frame">
-				<span style="display: block">
+				<span>
 					<label style="font-size: 26px"><b>Dettagli film</b></label>
 					<button style="width: auto; float: right;" onclick="closeDettagliFrame()">&#x02716;</button>
 				</span>
+				<br>
 				<br>				
 				<table>
 					<colgroup>

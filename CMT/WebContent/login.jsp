@@ -4,23 +4,20 @@
 	<head>
 		<title>CMT - Login</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
-		<link rel="stylesheet" type="text/css" href="css/hpButton.css">
+		<link rel="stylesheet" type="text/css" href="css/header.css">
+		<link rel="stylesheet" type="text/css" href="css/logRegForm.css">
 		<script src="js/fieldChecker.js"></script>
 	</head>
 	<body>
-		<table>
-			<tbody>
-				<tr>
-					<td><img src="icons/bigIcon.jpg" style="width: 112px; height: 106px; padding-right: 20px"></td>
-					<td><button class="homepageButton" onclick="location.href='homepage.jsp'"><b>CASTLE MOVIE THEATER</b></button></td>
-				</tr>
-			</tbody>
-		</table>
-		
+		<span id="logo" onclick="location.href='homepage.jsp'">
+			<img id="siteLogo" src="icons/bigIcon.png">
+			<label id="siteName">Castle Movie Theater</label>					
+		</span>
+				
 		<hr>
 		
 		<form name="form" action="${pageContext.request.contextPath}/login" method="POST">
-			<table style="width: 220px">
+			<table>
 				<tbody>
 					<tr>														
 						<td><input name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)" minlength="6" maxlength="20" required></td>
