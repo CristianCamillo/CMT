@@ -339,18 +339,18 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 										<col>
 									</colgroup>
 									<tbody>
-										<tr><td><label><b>Titolo</b></label></td><td></td><td><label id="titolo"></label></td></tr>
+										<tr><td><h3>Titolo</h3></td><td></td><td><label id="titolo"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><label><b>Durata</b></label></td><td></td><td><label id="durata"></label></td></tr>
+										<tr><td><h3>Durata</h3></td><td></td><td><label id="durata"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><label><b>Genere</b></label></td><td></td><td><label id="genere"></label></td></tr>
+										<tr><td><h3>Genere</h3></td><td></td><td><label id="genere"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><label><b>Regista</b></label></td><td></td><td><label id="regista"></label></td></tr>
+										<tr><td><h3>Regista</h3></td><td></td><td><label id="regista"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td><label><b>Attori</b></label></td><td></td><td><label id="attore1"></label></tr>
+										<tr><td><h3>Attori</h3></td><td></td><td><label id="attore1"></label></tr>
 										<tr><td></td><td></td><td><label id="attore2"></label></td></tr>
 										<tr><td>&nbsp;</td></tr>
-										<tr><td valign="top"><label><b>Descrizione</b></label></td><td></td><td><label id="descrizione"></label></td></tr>
+										<tr><td valign="top"><h3>Descrizione</h3></td><td></td><td><label id="descrizione"></label></td></tr>
 									</tbody>
 								</table>
 							</td>
@@ -358,7 +358,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</tbody>
 				</table>
 				<hr>
-				<label>Proiezioni:</label><br>
+				<h3>Proiezioni</h3>
 				<br>
 				<table id="proiezioniTable" class="table">
 					<thead>
