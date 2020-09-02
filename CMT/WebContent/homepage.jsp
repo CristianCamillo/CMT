@@ -5,6 +5,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 	<head>
 		<title>CMT - Homepage</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/form.css">
 		<link rel="stylesheet" type="text/css" href="css/frame.css">
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/poster.css">
@@ -272,42 +273,37 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 	</head>
 	<body>	
 		<header>
-			<div id="headerDiv">
-				<span id="logo" onclick="location.href='homepage.jsp'">
-					<img id="siteLogo" src="icons/bigIcon.png">
-					<label id="siteName">Castle Movie Theater</label>					
-				</span>
-				<table id="headerButtons">
-					<tbody>
-						<tr><td>
-							<%			
-								String tipo = (String)request.getSession().getAttribute("tipo");
-							
-								if(tipo == null)							
-									out.print("<button onclick=\"location.href='login.jsp'\">Login</button>");
-								else
-									out.print("<button onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>");
-							%>
-						</td></tr>
-						<tr><td>
-							<%									
-								if(tipo == null)							
-									out.print("<button style=\"float: bottom\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
-								else
-									out.print("<button onclick=\"location.href='logout.jsp'\">Logout</button>");
-							%></td></tr>
-					</tbody>
-				</table>
-			</div>						
-			<hr>
+			<span onclick="location.href='homepage.jsp'">
+				<img src="icons/bigIcon.png">
+				<h1>Castle Movie Theater</h1>					
+			</span>
+			<div>
+				<%			
+					String tipo = (String)request.getSession().getAttribute("tipo");
+				
+					if(tipo == null)							
+						out.print("<button onclick=\"location.href='login.jsp'\">Login</button>" +
+								  "<button style=\"float: bottom\" onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
+					else
+						out.print("<button onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>" +
+								  "<button onclick=\"location.href='logout.jsp'\">Logout</button>");
+				%>
+			</div>			
 		</header>
-	
+		<hr>
 		
 		<div>
 		
 		<!-- Form del filtro film -->
-		<form name="form" action="${pageContext.request.contextPath}/filtro" method="GET">
-			<table style="width: 300px">
+		<form id="filtroForm" name="form" action="${pageContext.request.contextPath}/filtro" method="GET">
+			<input type="text" name="titolo" placeholder="Titolo" maxlength="30">
+			<input type="text" name="genere" placeholder="Genere" maxlength="30">
+			<input type="text" name="regista" placeholder="Regista" maxlength="30">
+			<input type="text" name="attore" placeholder="Attore" maxlength="30">
+			<br>
+			<button type="submit">Filtra</button>
+		</form>
+			<!--  <table style="width: 300px">
 				<tbody>
 					<tr>
 						<td><input type="text" name="titolo" placeholder="Titolo" maxlength="30"></td>
@@ -327,7 +323,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</tr>
 				</tbody>
 			</table>
-		</form>
+		</form>-->
 		
 		<hr>
 		
@@ -344,11 +340,10 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<!-- DettagliFrame -->
 		<div id="dettagliFrame" class="frameContainer">
 			<div class="frame">
-				<span>
-					<label class="frameTitle">Dettagli film</label>
-					<button class="frameExitButton" onclick="closeDettagliFrame()">&#x02716;</button>
+				<span class="frameHeader">
+					<label>Dettagli film</label>
+					<button onclick="closeDettagliFrame()">&#x02716;</button>
 				</span>
-				<br>
 				<br>				
 				<table>
 					<colgroup>
@@ -404,9 +399,9 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		<!-- AcquistoFrame -->
 		<div id="acquistoFrame" class="frameContainer">
 			<div class="frame">
-				<span style="display: block">
-					<label style="font-size: 26px"><b>Acquisto biglietti</b></label>
-					<button style="width: auto; float: right;" onclick="closeAcquistoFrame()">&#x02716;</button>
+				<span class="frameHeader">
+					<label>Acquisto biglietti</label>
+					<button onclick="closeAcquistoFrame()">&#x02716;</button>
 				</span>
 				<br>
 			 	<table>

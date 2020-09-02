@@ -8,6 +8,17 @@ function checkFieldLength(name, min, max)
 		setGreen(field);
 }
 
+function checkPswMatching(password, confPassword)
+{
+	const psw = document.getElementsByName(password)[0];
+	const cnfPsw = document.getElementsByName(confPassword)[0];
+	
+	if(psw.value == cnfPsw.value)
+		setGreen(cnfPsw);
+	else
+		setRed(cnfPsw);	
+}
+
 function checkIsNotNeg(name)
 {
 	const field = document.getElementsByName(name)[0];

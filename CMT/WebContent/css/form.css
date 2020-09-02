@@ -1,0 +1,10 @@
+#filtroForm
+{
+	width: 300px;
+}
+
+#filtroForm input
+{
+	display: block;
+	margin: 3px;
+}

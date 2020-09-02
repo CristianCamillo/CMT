@@ -9,11 +9,12 @@
 		<script src="js/fieldChecker.js"></script>
 	</head>
 	<body>
-		<span id="logo" onclick="location.href='homepage.jsp'">
-			<img id="siteLogo" src="icons/bigIcon.png">
-			<label id="siteName">Castle Movie Theater</label>					
-		</span>
-						
+		<header>
+			<span onclick="location.href='homepage.jsp'">
+				<img src="icons/bigIcon.png">
+				<h1>Castle Movie Theater</h1>					
+			</span>
+		</header>
 		<hr>
 		
 		<form id="regisForm" name="form" onsubmit="return password.value == confPassword.value" action="${pageContext.request.contextPath}/registrazione" method="POST">
@@ -23,10 +24,10 @@
 						<td colspan="2"><input name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)" minlength="6" maxlength="20" required></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input name="password" type="password"  placeholder="Password" oninput="checkFieldLength('password', 6, 20)" minlength="6" maxlength="20" required></td>
+						<td colspan="2"><input name="password" type="password"  placeholder="Password" oninput="checkFieldLength('password', 6, 20); checkPswMatching('password', 'confPassword');" minlength="6" maxlength="20" required></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input name="confPassword" type="password"  placeholder="Conferma password" oninput="checkFieldLength('confPassword', 6, 20)" minlength="6" maxlength="20" required></td>
+						<td colspan="2"><input name="confPassword" type="password"  placeholder="Conferma password" oninput="checkPswMatching('password', 'confPassword')" minlength="6" maxlength="20" required></td>
 					</tr>
 					<tr>														
 						<td colspan="2"><input name="saldo" type="number" placeholder="Saldo" oninput="checkIsNotNeg('saldo')"  min="0" required></td>

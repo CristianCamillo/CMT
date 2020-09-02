@@ -1,10 +1,10 @@
-#headerDiv
+header
 {
 	display: table;
 	width: 100%;
 }
 
-#logo
+header span
 {
 	display: inline-flex;
   	align-items: center;
@@ -13,12 +13,12 @@
 	cursor: pointer;
 }
 
-#logo:hover
+header span:hover
 {
 	filter: brightness(115%);
 }
 
-#siteLogo
+header span img
 {
 	width: 112px;
 	height: 106px;
@@ -26,7 +26,7 @@
 	padding-right: 20px;
 }
 
-#siteName
+header span h1
 {
 	font-size: 40px;
 	font-weight: 1000;
@@ -36,9 +36,24 @@
 	cursor: pointer;
 }
 
-#headerButtons
+header table
 {
 	display: table-cell;
 	vertical-align: middle;
 	width: 1px;
+}
+
+header div
+{	
+	width: 1px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+header div button
+{
+	width: 100%;
+	display: block;
+	
+	margin: 3px;
 }

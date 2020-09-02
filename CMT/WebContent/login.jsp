@@ -9,11 +9,12 @@
 		<script src="js/fieldChecker.js"></script>
 	</head>
 	<body>
-		<span id="logo" onclick="location.href='homepage.jsp'">
-			<img id="siteLogo" src="icons/bigIcon.png">
-			<label id="siteName">Castle Movie Theater</label>					
-		</span>
-				
+		<header>
+			<span onclick="location.href='homepage.jsp'">
+				<img src="icons/bigIcon.png">
+				<h1>Castle Movie Theater</h1>					
+			</span>
+		</header>
 		<hr>
 		
 		<form id="loginForm" name="form" action="${pageContext.request.contextPath}/login" method="POST">

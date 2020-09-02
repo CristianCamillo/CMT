@@ -13,8 +13,7 @@ div.frameContainer
 }
 
 div.frame
-{
-	
+{	
 	padding: 15px;
 	
 	position: absolute;
@@ -30,13 +29,18 @@ div.frame
 	background-color: var(--yellow);
 }
 
-label.frameTitle
+span.frameHeader
+{
+	display: block;
+}
+
+span.frameHeader label
 {
 	font-size: 26px;
 	font-weight: 1000;
 }
 
-button.frameExitButton
+span.frameHeader button
 {
 	width: auto;
 	float: right;
