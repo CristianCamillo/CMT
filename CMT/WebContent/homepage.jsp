@@ -23,7 +23,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 			var films = <%= request.getSession().getAttribute("films") %>;
 			var projections2D = <%= request.getSession().getAttribute("projections") %>;
 			var roomStates2D = <%= request.getSession().getAttribute("roomStates") %>;
-			
+
 			function openDetailsFrame(n)
 			{			
 				// salva il film selezionato
@@ -37,7 +37,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 				document.getElementById("title").innerHTML = film[1];
 				document.getElementById("runningTime").innerHTML = film[2] + " min";
 				document.getElementById("genre").innerHTML = film[3] != "null" ? film[3] : "";
-				document.getElementById("direction").innerHTML = film[4] != "null" ? film[4] : "";
+				document.getElementById("director").innerHTML = film[4] != "null" ? film[4] : "";
 				document.getElementById("actor1").innerHTML = film[5] != "null" ? film[5] : "";
 				document.getElementById("actor2").innerHTML = film[6] != "null" ? film[6] : "";
 				document.getElementById("description").innerHTML = film[7] != "null" ? film[7] : "";
@@ -55,7 +55,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 				
 				// si prende la lista delle proiezioni del film selezionato
 				var projections = projections2D[selectedFilm];
-				
+					
 				// si itera sulla lista delle proiezioni selezionata
 				for(var i = 0; i < projections.length; i++)
 				{
@@ -184,7 +184,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 				selectedProjection = n;
 				
 				// abilita il pulsante di acquisto
-				document.getElementById("purchaseButton").disabled = false;
+				document.getElementById("selectSeatsButton").disabled = false;
 			}
 			
 			function selectSeat(id)
@@ -379,7 +379,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 				<hr>
 				<h3>Proiezioni</h3>
 				<br>
-				<table id="projectionTable" class="table">
+				<table id="projectionsTable" class="table">
 					<thead>
 						<tr><th><label>Data</label></th><th><label>Orario</label></th><th><label>Costo</label></th></tr>
 					</thead>
@@ -414,8 +414,8 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 						<tr><td>&nbsp;</td></tr>
 					</tbody>
 			 	</table>
-			 	<form onsubmit="prepareTransaction()" action="${pageContext.request.contextPath}/acquisto" method="POST">
-					<table id="salaTable" class="projRoom">
+			 	<form onsubmit="prepareTransaction()" action="${pageContext.request.contextPath}/purchase" method="POST">
+					<table id="roomTable" class="projRoom">
 						<tbody>								
 						</tbody>
 					</table>
