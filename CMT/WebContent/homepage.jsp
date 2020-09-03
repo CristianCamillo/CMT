@@ -18,11 +18,11 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 			var selectedFilm;
 			var selectedProjection;
 		
-			var totale;
+			var amount;
 			
 			var films = <%= request.getSession().getAttribute("films") %>;
 			var projections2D = <%= request.getSession().getAttribute("projections") %>;
-			var roomStates2D = <%= request.getSession().getAttribute("roomStates") %>;			
+			var roomStates2D = <%= request.getSession().getAttribute("roomStates") %>;
 			
 			function openDetailsFrame(n)
 			{			
@@ -37,7 +37,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 				document.getElementById("title").innerHTML = film[1];
 				document.getElementById("runningTime").innerHTML = film[2] + " min";
 				document.getElementById("genre").innerHTML = film[3] != "null" ? film[3] : "";
-				document.getElementById("directior").innerHTML = film[4] != "null" ? film[4] : "";
+				document.getElementById("direction").innerHTML = film[4] != "null" ? film[4] : "";
 				document.getElementById("actor1").innerHTML = film[5] != "null" ? film[5] : "";
 				document.getElementById("actor2").innerHTML = film[6] != "null" ? film[6] : "";
 				document.getElementById("description").innerHTML = film[7] != "null" ? film[7] : "";
@@ -167,9 +167,9 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 			
 			function selectRow(n)
 			{			
-				var tipo = <% out.print("\"" + request.getSession().getAttribute("type") + "\""); %>;
+				var userType = <% out.print("\"" + request.getSession().getAttribute("userType") + "\""); %>;
 				
-				if(tipo != "client")
+				if(userType != "client")
 					return;
 					
 				n = parseInt(n);
