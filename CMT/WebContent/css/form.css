@@ -1,4 +1,4 @@
-#filtroForm
+#filtreForm
 {
 	width: 300px;
 }
@@ -12,14 +12,14 @@
 	margin: 100px auto;
 }
 
-#filtroForm input, #loginForm input, #regisForm input
+#filtreForm input, #loginForm input, #regisForm input
 {
 	width: 100%;
 	
 	margin: 2px 0px;
 }
 
-#filtroForm button, #loginForm button, #regisForm button
+#filtreForm button, #loginForm button, #regisForm button
 {
 	width: 100%;
 }

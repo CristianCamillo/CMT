@@ -3,26 +3,26 @@ package beans;
 public class Film
 {
 	private int id;
-	private String titolo;
-	private short durata;
-	private String genere;
-	private String regista;
-	private String attore1;
-	private String attore2;
-	private String descrizione;
-	private String locandina;
+	private String title;
+	private short runningTime;
+	private String genre;
+	private String director;
+	private String actor1;
+	private String actor2;
+	private String description;
+	private String poster;
 	
-	public Film(int id, String titolo, short durata, String genere, String regista, String attore1, String attore2, String descrizione, String locandina)
+	public Film(int id, String title, short runningTime, String genre, String director, String actor1, String actor2, String description, String poster)
 	{
 		this.id = id;
-		this.titolo = titolo;
-		this.durata = durata;
-		this.genere = genere;
-		this.regista = regista;
-		this.attore1 = attore1;
-		this.attore2 = attore2;
-		this.descrizione = descrizione;
-		this.locandina = locandina;
+		this.title = title;
+		this.runningTime = runningTime;
+		this.genre = genre;
+		this.director = director;
+		this.actor1 = actor1;
+		this.actor2 = actor2;
+		this.description = description;
+		this.poster = poster;
 	}
 
 	public int getId()
@@ -35,89 +35,89 @@ public class Film
 		this.id = id;
 	}
 
-	public String getTitolo()
+	public String getTitle()
 	{
-		return titolo;
+		return title;
 	}
 
-	public void setTitolo(String titolo)
+	public void setTitle(String title)
 	{
-		this.titolo = titolo;
+		this.title = title;
 	}
 
-	public short getDurata()
+	public short getRunningTime()
 	{
-		return durata;
+		return runningTime;
 	}
 
-	public void setDurata(short durata)
+	public void setRunningTime(short runningTime)
 	{
-		this.durata = durata;
+		this.runningTime = runningTime;
 	}
 
-	public String getGenere()
+	public String getGenre()
 	{
-		return genere;
+		return genre;
 	}
 
-	public void setGenere(String genere)
+	public void setGenre(String genre)
 	{
-		this.genere = genere;
+		this.genre = genre;
 	}
 
-	public String getRegista()
+	public String getDirector()
 	{
-		return regista;
+		return director;
 	}
 
-	public void setRegista(String regista)
+	public void setDirector(String director)
 	{
-		this.regista = regista;
+		this.director = director;
 	}
 
-	public String getAttore1()
+	public String getActor1()
 	{
-		return attore1;
+		return actor1;
 	}
 
-	public void setAttore1(String attore1)
+	public void setActor1(String actor1)
 	{
-		this.attore1 = attore1;
+		this.actor1 = actor1;
 	}
 
-	public String getAttore2()
+	public String getActor2()
 	{
-		return attore2;
+		return actor2;
 	}
 
-	public void setAttore2(String attore2)
+	public void setActor2(String actor2)
 	{
-		this.attore2 = attore2;
+		this.actor2 = actor2;
 	}
 
-	public String getDescrizione()
+	public String getDescription()
 	{
-		return descrizione;
+		return description;
 	}
 
-	public void setDescrizione(String descrizione)
+	public void setDescription(String description)
 	{
-		this.descrizione = descrizione;
+		this.description = description;
 	}
 
-	public String getLocandina()
+	public String getPoster()
 	{
-		return locandina;
+		return poster;
 	}
 
-	public void setLocandina(String locandina)
+	public void setPoster(String poster)
 	{
-		this.locandina = locandina;
+		this.poster = poster;
 	}
 	
-	// sistemato per javascript
+	// for javascript
 	public String toString()
 	{
-		return "[\"" + id + "\", \"" + titolo + "\", \"" + durata + "\", \"" + genere + "\", \"" + regista + "\", \"" + attore1 + "\", \"" + attore2 + "\", \"" + descrizione + "\", \"" + locandina + "\"]";
+		return "[\"" + id + "\", \"" + title + "\", \"" + runningTime + "\", \"" + genre + "\", \"" + director + "\", \"" + actor1 + "\", \"" + actor2 + "\", \"" + description + "\", \"" + poster + "\"]";
 	}
 }

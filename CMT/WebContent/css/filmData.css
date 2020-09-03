@@ -1,0 +1,16 @@
+.filmDataContainer
+{
+	display: grid;
+	gridgap: 20px;
+}
+
+.titleItem
+{
+	
+}
+
+.posterItem
+{
+	grid-row-start: 1;
+	grid-end-start: 7;
+}

@@ -1,6 +1,6 @@
 table.table
 {
-    width:100%;
+    width: 500px;
     
 	border: none;
 	border-radius: 4px;
@@ -53,5 +53,5 @@ table.table tbody tr:hover
 
 table.table tr.selected
 {
-	background-color: #00FF40;
+	background-color: var(--green);
 }

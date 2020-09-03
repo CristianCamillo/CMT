@@ -10,17 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.ClienteDAO;
-import DAO.GestoreDAO;
-import beans.Cliente;
+import DAO.ClientDAO;
+import DAO.ManagerDAO;
+import beans.Client;
 import utils.DataChecker;
 
-@WebServlet("/registrazione")
-public class RegisServlet extends HttpServlet
+@WebServlet("/registration")
+public class RegistrationServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
        
-	public RegisServlet()
+	public RegistrationServlet()
     {
         super();
     }
@@ -29,22 +29,22 @@ public class RegisServlet extends HttpServlet
 	{
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String saldo = request.getParameter("saldo");
+		String balance = request.getParameter("balance");
 		
-		if(!DataChecker.checkRegistrazione(response, username, password, saldo))
+		if(!DataChecker.checkForRegistration(response, username, password, balance))
 			return;
 		
 		try
 		{					
-			if(ClienteDAO.isRegistered(username) || GestoreDAO.isRegistered(username))
+			if(ClientDAO.isRegistered(username) || ManagerDAO.isRegistered(username))
 			{
 				writeErrorMessage(response, "Questo utente è già registrato");
 				return;
 			}
 
-			Cliente nuovoCliente = new Cliente(ClienteDAO.getLastId() + 1, username, password, Float.parseFloat(saldo));
+			Client newClient = new Client(ClientDAO.getLastId() + 1, username, password, Float.parseFloat(balance));
 
-			ClienteDAO.addCliente(nuovoCliente);
+			ClientDAO.addClient(newClient);
 
 			HttpSession oldSession = request.getSession(false);
 			
@@ -56,10 +56,10 @@ public class RegisServlet extends HttpServlet
 			HttpSession currentSession = request.getSession();
 			
 			// attributo "id"
-			currentSession.setAttribute("id", nuovoCliente.getId());
+			currentSession.setAttribute("id", newClient.getId());
 			
 			// attributo "tipo"
-			currentSession.setAttribute("tipo", "cliente");
+			currentSession.setAttribute("userType", "client");
 			
 			// vengono impostati massimo 5 minuti di inattività prima che la sessione venga eliminata
 			currentSession.setMaxInactiveInterval(5 * 60);
@@ -69,7 +69,7 @@ public class RegisServlet extends HttpServlet
 		}
 		catch(SQLException e)
 		{
-			System.out.println("Regis Servlet SQL Exception");
+			System.out.println(e);
 		}		
 	}
 	

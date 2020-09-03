@@ -1,30 +1,30 @@
 <%@ page language="java" contentType="text/html charset=UTF-8" pageEncoding="UTF-8"
-import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaDAO"%>
+import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>CMT - Homepage</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/filmData.css">
 		<link rel="stylesheet" type="text/css" href="css/form.css">
 		<link rel="stylesheet" type="text/css" href="css/frame.css">
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/poster.css">
 		<link rel="stylesheet" type="text/css" href="css/projRoom.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
-		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<script src="js/filtroValidator.js"></script>
 		<script type="text/javascript">
 		
 			var selectedFilm;
-			var selectedProiezione;
+			var selectedProjection;
 		
 			var totale;
 			
 			var films = <%= request.getSession().getAttribute("films") %>;
-			var proiezioni2D = <%= request.getSession().getAttribute("proiezioni") %>;
-			var statoSale2D = <%= request.getSession().getAttribute("statoSale") %>;			
+			var projections2D = <%= request.getSession().getAttribute("projections") %>;
+			var roomStates2D = <%= request.getSession().getAttribute("roomStates") %>;			
 			
-			function openDettagliFrame(n)
+			function openDetailsFrame(n)
 			{			
 				// salva il film selezionato
 				selectedFilm = n;
@@ -33,17 +33,17 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				var film = films[n];
 				
 				// aggiorna i campi dei dettagli
-				document.getElementById("locandina").src = "posters/" + film[8];
-				document.getElementById("titolo").innerHTML = film[1];
-				document.getElementById("durata").innerHTML = film[2] + " min";
-				document.getElementById("genere").innerHTML = film[3] != "null" ? film[3] : "";
-				document.getElementById("regista").innerHTML = film[4] != "null" ? film[4] : "";
-				document.getElementById("attore1").innerHTML = film[5] != "null" ? film[5] : "";
-				document.getElementById("attore2").innerHTML = film[6] != "null" ? film[6] : "";
-				document.getElementById("descrizione").innerHTML = film[7] != "null" ? film[7] : "";
+				document.getElementById("poster").src = "posters/" + film[8];
+				document.getElementById("title").innerHTML = film[1];
+				document.getElementById("runningTime").innerHTML = film[2] + " min";
+				document.getElementById("genre").innerHTML = film[3] != "null" ? film[3] : "";
+				document.getElementById("directior").innerHTML = film[4] != "null" ? film[4] : "";
+				document.getElementById("actor1").innerHTML = film[5] != "null" ? film[5] : "";
+				document.getElementById("actor2").innerHTML = film[6] != "null" ? film[6] : "";
+				document.getElementById("description").innerHTML = film[7] != "null" ? film[7] : "";
 				
 				// prende la tabella delle proiezioni e il suo tbody
-				var table = document.getElementById("proiezioniTable");
+				var table = document.getElementById("projectionsTable");
 				var tbody = table.tBodies[0];
 					
 				// svuota la tabella delle proiezioni
@@ -54,13 +54,13 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				// vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 				
 				// si prende la lista delle proiezioni del film selezionato
-				var proiezioni = proiezioni2D[selectedFilm];
+				var projections = projections2D[selectedFilm];
 				
 				// si itera sulla lista delle proiezioni selezionata
-				for(var i = 0; i < proiezioni.length; i++)
+				for(var i = 0; i < projections.length; i++)
 				{
 					// si prende una proiezione dalla lista delle proiezioni del film
-					var proiezione = proiezioni[i];
+					var projection = projections[i];
 					
 					// si crea la riga
 					var tr = document.createElement('tr');
@@ -69,17 +69,17 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					
 					// si aggiunge una cella con la data
 					var td = document.createElement('td');
-					td.appendChild(document.createTextNode(parseDate(proiezione[1])));
+					td.appendChild(document.createTextNode(parseDate(projection[1])));
 					tr.appendChild(td);
 															
 					// si aggiunge una cella con l'orario
 					td = document.createElement('td');
-					td.appendChild(document.createTextNode(parseTime(proiezione[2])));
+					td.appendChild(document.createTextNode(parseTime(projection[2])));
 					tr.appendChild(td);
 					
 					// si aggiunge una cella con il costo
 					td = document.createElement('td');
-					td.appendChild(document.createTextNode(proiezione[3]));
+					td.appendChild(document.createTextNode(projection[3]));
 					tr.appendChild(td);
 					
 					// si aggiunge la riga al tbody della tabella
@@ -87,21 +87,21 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				}
 				
 				// rende il frame visibile
-				document.getElementById("dettagliFrame").style.display = "flex";
+				document.getElementById("detailsFrame").style.display = "flex";
 			}
 			
-			function closeDettagliFrame()
+			function closeDetailsFrame()
 			{
 				// scrolla la tabella delle proiezioni all'inizio
-				document.getElementById("proiezioniTable").scrollTop = 0;
+				document.getElementById("projectionsTable").scrollTop = 0;
 				
 				// rende il frame non visibile				
-				document.getElementById("dettagliFrame").style.display = "none";
+				document.getElementById("detailsFrame").style.display = "none";
 				
 				deselectRows();
 				
 				// disabilita il pulsante di acquisto
-				document.getElementById("acquistaButton").disabled = true;
+				document.getElementById("selectSeatsButton").disabled = true;
 			}
 			
 			function openAcquistoFrame()
@@ -109,18 +109,18 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				var proiezione = proiezioni2D[selectedFilm][selectedProiezione];
 				totale = 0;
 				
-				document.getElementById("titoloA").innerHTML = films[selectedFilm][1];
-				document.getElementById("proiezioneA").innerHTML = parseDate(proiezione[1]) + " - " + parseTime(proiezione[2]);
-				document.getElementById("totaleA").innerHTML = "0";
+				document.getElementById("titleA").innerHTML = films[selectedFilm][1];
+				document.getElementById("projectionA").innerHTML = parseDate(projection[1]) + " - " + parseTime(projection[2]);
+				document.getElementById("amountA").innerHTML = "0";
 				
-				var table = document.getElementById("salaTable");
+				var table = document.getElementById("roomTable");
 				var tbody = table.tBodies[0];
 					
 				for(var i = 0, l = table.rows.length; i < l; i++)
 					table.deleteRow(0);
 				
-				var statoSala = statoSale2D[selectedFilm][selectedProiezione];
-				var dims = statoSala[0].split("-");
+				var roomState = roomState2D[selectedFilm][selectedProjection];
+				var dims = roomState[0].split("-");
 				var width = parseInt(dims[0]);
 				var height = parseInt(dims[1]);
 				
@@ -147,9 +147,9 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					tbody.appendChild(tr);
 				}
 				
-				for(var i = 1, l = statoSala.length; i < l; i++)
+				for(var i = 1, l = roomState.length; i < l; i++)
 				{					
-					var pos = statoSala[i].split("-");
+					var pos = roomState[i].split("-");
 					var x = parseInt(pos[0]);
 					var y = parseInt(pos[1]);
 					var id = x + "-" + y;
@@ -157,19 +157,19 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					document.getElementById(id).src = "seats/occupied.jpg";
 				}
 				
-				document.getElementById("acquistoFrame").style.display = "flex";
+				document.getElementById("purchaseFrame").style.display = "flex";
 			}
 			
-			function closeAcquistoFrame()
+			function closePurchaseFrame()
 			{		
-				document.getElementById("acquistoFrame").style.display = "none";
+				document.getElementById("purchaseFrame").style.display = "none";
 			}			
 			
 			function selectRow(n)
 			{			
-				var tipo = <% out.print("\"" + request.getSession().getAttribute("tipo") + "\""); %>;
+				var tipo = <% out.print("\"" + request.getSession().getAttribute("type") + "\""); %>;
 				
-				if(tipo != "cliente")
+				if(tipo != "client")
 					return;
 					
 				n = parseInt(n);
@@ -178,13 +178,13 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				deselectRows();
 				
 				// aggiunge la classe "selected" alla riga indicata
-				document.getElementById("proiezioniTable").rows[n + 1].classList.add("selected"); 
+				document.getElementById("projectionsTable").rows[n + 1].classList.add("selected"); 
 				
 				// salva la proiezione selezionata
-				selectedProiezione = n;
+				selectedProjection = n;
 				
 				// abilita il pulsante di acquisto
-				document.getElementById("acquistaButton").disabled = false;
+				document.getElementById("purchaseButton").disabled = false;
 			}
 			
 			function selectSeat(id)
@@ -197,22 +197,22 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				if(seat.src.includes("vacant.jpg"))
 				{
 					seat.src = "seats/selected.jpg";
-					totale += parseInt(proiezioni2D[selectedFilm][selectedProiezione][3]);
+					amount += parseInt(projections2D[selectedFilm][selectedProjection][3]);
 				}
 				else
 				{
 					seat.src = "seats/vacant.jpg";
-					totale -= parseInt(proiezioni2D[selectedFilm][selectedProiezione][3]);
+					amount -= parseInt(projections2D[selectedFilm][selectedProjection][3]);
 				}
 				
-				document.getElementById("totaleA").innerHTML = totale;
+				document.getElementById("amountA").innerHTML = totale;
 			}
 			
 			function prepareTransaction()
 			{
-				var posti = "";
+				var seats = "";
 				
-				var statoSala = statoSale2D[selectedFilm][selectedProiezione];
+				var roomState = roomState2D[selectedFilm][selectedProjection];
 				var dims = statoSala[0].split("-");
 				var width = parseInt(dims[0]);
 				var height = parseInt(dims[1]);
@@ -220,11 +220,11 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 				for(var y = 0; y < height; y++)
 					for(var x = 0; x < width; x++)
 						if(document.getElementById((x + 1) + "-" + (y + 1)).src.includes("selected.jpg"))
-							posti += x + "-" + y + "/";
+							seats += x + "-" + y + "/";
 				
-				document.getElementById("posti").value = posti;				
-				document.getElementById("idProiezione").value = proiezioni2D[selectedFilm][selectedProiezione][0];
-				document.getElementById("totale").value = totale;
+				document.getElementById("seats").value = seats;				
+				document.getElementById("idProjections").value = projections2D[selectedFilm][selectedProjection][0];
+				document.getElementById("amount").value = totale;
 			}
 			
 			//---------------------//
@@ -265,7 +265,7 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			// deseleziona tutte le righe della tabella proiezioni
 			function deselectRows()
 			{
-				var table = document.getElementById("proiezioniTable");
+				var table = document.getElementById("projectionsTable");
 				
 				for(var i = 1; i < table.rows.length; i++)			// la riga 0 è l'intestazione, quindi viene saltata
 					table.rows[i].classList.remove("selected");
@@ -280,13 +280,13 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			</span>
 			<div>
 				<%			
-					String tipo = (String)request.getSession().getAttribute("tipo");
+					String userType = (String)request.getSession().getAttribute("userType");
 				
-					if(tipo == null)							
+					if(userType == null)							
 						out.print("<button onclick=\"location.href='login.jsp'\">Login</button>" +
-								  "<button onclick=\"location.href='registrazione.jsp'\">Registrazione</button>");
+								  "<button onclick=\"location.href='registration.jsp'\">Registrazione</button>");
 					else
-						out.print("<button onclick=\"location.href='areaPersonale" + tipo.substring(0, 1).toUpperCase() + tipo.substring(1) + ".jsp'\">Area Personale</button>" +
+						out.print("<button onclick=\"location.href='personalArea" + userType.substring(0, 1).toUpperCase() + userType.substring(1) + ".jsp'\">Area Personale</button>" +
 								  "<button onclick=\"location.href='logout.jsp'\">Logout</button>");
 				%>
 			</div>			
@@ -294,11 +294,11 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 		
 		<hr>
 		
-		<form id="filtroForm" name="form" action="${pageContext.request.contextPath}/filtro" method="GET">
-			<input type="text" name="titolo" placeholder="Titolo" maxlength="30">
-			<input type="text" name="genere" placeholder="Genere" maxlength="30">
-			<input type="text" name="regista" placeholder="Regista" maxlength="30">
-			<input type="text" name="attore" placeholder="Attore" maxlength="30">
+		<form id="filtreForm" name="form" action="${pageContext.request.contextPath}/filtre" method="GET">
+			<input type="text" name="title" placeholder="Titolo" maxlength="30">
+			<input type="text" name="genre" placeholder="Genere" maxlength="30">
+			<input type="text" name="director" placeholder="Regista" maxlength="30">
+			<input type="text" name="actor" placeholder="Attore" maxlength="30">
 			<br>
 			<br>
 			<button type="submit">Filtra</button>
@@ -311,17 +311,34 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 			ArrayList<Film> films = (ArrayList<Film>)request.getSession().getAttribute("films");
 			
 			for(int i = 0, l = films != null ? films.size() : 0; i < l; i++)
-				out.println("<img src=\"posters/" + films.get(i).getLocandina() + "\" class=\"presPoster\" onclick=\"openDettagliFrame('"+ i +"')\">");
+				out.println("<img src=\"posters/" + films.get(i).getPoster() + "\" class=\"presPoster\" onclick=\"openDetailsFrame('"+ i +"')\">");
 		%>
-		
+
 		<!-- DettagliFrame -->
-		<div id="dettagliFrame" class="frameContainer">
-			<div class="frame">
+		<div id="detailsFrame" class="frameContainer">
+			<div class="frameContent">
 				<span class="frameHeader">
 					<h2>Dettagli film</h2>
-					<button onclick="closeDettagliFrame()">&#x02716;</button>
+					<button onclick="closeDetailsFrame()">&#x02716;</button>
 				</span>
-				<br>				
+				<br>
+				<div class="detailsContainer">
+					<img id="poster" class="poster posterItem">
+					<h3>Titolo</h3>
+					<label id="title" class="titleItem"></label>
+					<h3>Durata</h3>
+					<label id="runningTime" class="runningTimeItem"></label>
+					<h3>Genere</h3>
+					<label id="genre" class="genreItem"></label>
+					<h3>Regista</h3>
+					<label id="director" class="directorItem"></label>
+					<h3>Attori</h3>
+					<label id="actor1" class="actorItem"></label>
+					<h3>Descrizione</h3>
+					<label id="description" class="descriptionItem"></label>
+				</div>
+				<label id="actor2" class="actorItem"></label>
+				<!-- 	
 				<table>
 					<colgroup>
 						<col>
@@ -358,10 +375,11 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						</tr>
 					</tbody>
 				</table>
+				 -->	
 				<hr>
 				<h3>Proiezioni</h3>
 				<br>
-				<table id="proiezioniTable" class="table">
+				<table id="projectionTable" class="table">
 					<thead>
 						<tr><th><label>Data</label></th><th><label>Orario</label></th><th><label>Costo</label></th></tr>
 					</thead>
@@ -369,16 +387,16 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</tbody>
 				</table>
 				<br>
-				<button id="acquistaButton" onclick="openAcquistoFrame()" disabled>Procedi all'acquisto biglietti</button>
+				<button id="selectSeatsButton" onclick="openPurchaseFrame()" disabled>Procedi all'acquisto biglietti</button>
 			</div>
 		</div>
 		
 		<!-- AcquistoFrame -->
-		<div id="acquistoFrame" class="frameContainer">
+		<div id="purchaseFrame" class="frameContainer">
 			<div class="frame">
 				<span class="frameHeader">
 					<h2>Acquisto biglietti</h2>
-					<button onclick="closeAcquistoFrame()">&#x02716;</button>
+					<button onclick="closePurchaseFrame()">&#x02716;</button>
 				</span>
 				<br>
 			 	<table>
@@ -388,11 +406,11 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 						<col style="width: 200px">
 					</colgroup>
 					<tbody>
-						<tr><td><h3>Film</h3></td><td></td><td><label id="titoloA"></label></td></tr>
+						<tr><td><h3>Film</h3></td><td></td><td><label id="titleA"></label></td></tr>
 						<tr><td>&nbsp;</td></tr>
-						<tr><td><h3>Proiezione</h3></td><td></td><td><label id="proiezioneA"></label></td></tr>
+						<tr><td><h3>Proiezione</h3></td><td></td><td><label id="projectionA"></label></td></tr>
 						<tr><td>&nbsp;</td></tr>
-						<tr><td><h3>Totale</h3></td><td></td><td><label id="totaleA"></label></td></tr>
+						<tr><td><h3>Totale</h3></td><td></td><td><label id="amountA"></label></td></tr>
 						<tr><td>&nbsp;</td></tr>
 					</tbody>
 			 	</table>
@@ -403,9 +421,9 @@ import="java.util.ArrayList, beans.Film, beans.Proiezione, beans.Sala, DAO.SalaD
 					</table>
 					<br>
 					<button type="submit">Acquista biglietti</button>
-					<input id="posti"  name="posti" type="hidden" value="">
-					<input id="idProiezione" name="idProiezione" type="hidden" value="">
-					<input id="totale" name="totale" type="hidden" value="">
+					<input id="seats" name="seats" type="hidden" value="">
+					<input id="idProjection" name="idProjection" type="hidden" value="">
+					<input id="amount" name="cost" type="hidden" value="">
 				</form>
 			</div>
 		</div>

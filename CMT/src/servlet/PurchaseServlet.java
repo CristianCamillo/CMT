@@ -10,29 +10,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.BigliettoDAO;
-import DAO.ClienteDAO;
-import beans.Biglietto;
+import DAO.TicketDAO;
+import DAO.ClientDAO;
+import beans.Ticket;
 import exceptions.CannotPurchaseException;
 
-@WebServlet("/acquisto")
-public class AcquistoServlet extends HttpServlet
+@WebServlet("/purchase")
+public class PurchaseServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
-    public AcquistoServlet()
+    public PurchaseServlet()
     {
         super();
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		int idCliente = (Integer)request.getSession().getAttribute("id");	
-		float totale = Float.parseFloat(request.getParameter("totale"));
+		int idClient = (Integer)request.getSession().getAttribute("id");	
+		float amount = Float.parseFloat(request.getParameter("amount"));
 		
 		try
 		{
-			ClienteDAO.spend(idCliente, totale);
+			ClientDAO.spend(idClient, amount);
 		}
 		catch(CannotPurchaseException e)
 		{
@@ -40,27 +40,27 @@ public class AcquistoServlet extends HttpServlet
 		}
 		catch(SQLException e)
 		{
-			System.out.println("Acquisto Servlet SQL Exception");
+			System.out.println("Purchase Servlet SQL Exception");
 		}		
 		
-		String postiString = request.getParameter("posti");
-		int idProiezione = Integer.parseInt(request.getParameter("idProiezione"));
+		String seatsString = request.getParameter("seats");
+		int idProjection = Integer.parseInt(request.getParameter("idProjection"));
 		
-		String[] aPosti = postiString.split("/");
+		String[] aSeats = seatsString.split("/");
 		
 		try
 		{
-			int lastId = BigliettoDAO.getLastId();
+			int lastId = TicketDAO.getLastId();
 			int counter = 0;
 			
-			for(String sPosto : aPosti)
+			for(String sSeat : aSeats)
 			{
 				counter++;
-				String[] aPosto = sPosto.split("-");
+				String[] aSeat = sSeat.split("-");
 				
-				short posto = (short)((Integer.parseInt(aPosto[0]) + 1) * 100 + Integer.parseInt(aPosto[1]) + 1);
+				short seat = (short)((Integer.parseInt(aSeat[0]) + 1) * 100 + Integer.parseInt(aSeat[1]) + 1);
 				
-				BigliettoDAO.addBiglietto(new Biglietto(lastId + counter, posto, idCliente, idProiezione));
+				TicketDAO.addTicket(new Ticket(lastId + counter, seat, idClient, idProjection));
 			}
 			
 			 HttpSession oldSession = request.getSession(false);
@@ -73,10 +73,10 @@ public class AcquistoServlet extends HttpServlet
 			HttpSession currentSession = request.getSession();
 			
 			// attributo "id"
-			currentSession.setAttribute("id", idCliente);
+			currentSession.setAttribute("id", idClient);
 			
 			// attributo "tipo"
-			currentSession.setAttribute("tipo", "cliente");
+			currentSession.setAttribute("tipo", "client");
 			
 			// vengono impostati massimo 5 minuti di inattività prima che la sessione venga eliminata
 			currentSession.setMaxInactiveInterval(5 * 60);
@@ -90,7 +90,7 @@ public class AcquistoServlet extends HttpServlet
 		}
 		catch(SQLException e)
 		{
-			System.out.println("Acquisto Servlet SQL Exception");
+			System.out.println(e);
 		}
 	}
 	

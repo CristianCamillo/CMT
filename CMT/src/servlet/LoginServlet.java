@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.ClienteDAO;
-import DAO.GestoreDAO;
-import exceptions.UserNotRegisteredException;
+import DAO.ClientDAO;
+import DAO.ManagerDAO;
+import exceptions.UsernamePasswordNotFoundException;
 import utils.DataChecker;
 
 @WebServlet("/login")
@@ -30,27 +30,27 @@ public class LoginServlet extends HttpServlet
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		if(!DataChecker.checkLogin(response, username, password))
+		if(!DataChecker.checkForLogin(response, username, password))
 			return;
 		
 		try
 		{
 			int id;
-			boolean isCliente;
+			boolean isClient;
 			
 			try
 			{
-				id = ClienteDAO.getId(username, password);
-				isCliente = true;
+				id = ClientDAO.getId(username, password);
+				isClient = true;
 			}
-			catch(UserNotRegisteredException e)
+			catch(UsernamePasswordNotFoundException e)
 			{
 				try
 				{
-					id = GestoreDAO.getId(username, password);
-				   	isCliente = false;
+					id = ManagerDAO.getId(username, password);
+				   	isClient = false;
 				}
-				catch(UserNotRegisteredException e1)
+				catch(UsernamePasswordNotFoundException e1)
 				{
 					writeErrorMessage(response, "Dati non associati ad alcun utente");
 					return;
@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet
 			currentSession.setAttribute("id", id);
 			
 			// attributo "tipo"
-			currentSession.setAttribute("tipo", isCliente ? "cliente" : "gestore");
+			currentSession.setAttribute("userType", isClient ? "client" : "manager");
 			
 			// vengono impostati massimo 5 minuti di inattività prima che la sessione venga eliminata
 			currentSession.setMaxInactiveInterval(5 * 60);
@@ -80,7 +80,7 @@ public class LoginServlet extends HttpServlet
 		}
 		catch(SQLException e)
 		{
-			System.out.println("Login Servlet SQL Exception");
+			System.out.println(e);
 		}		
 	}
 	

@@ -10,28 +10,28 @@ import utils.DriverManagerConnectionPool;
 
 public class FilmDAO
 {
-	public static ArrayList<Film> findFilm(String titolo, String genere, String regista, String attore) throws SQLException
+	public static ArrayList<Film> findFilm(String title, String genre, String director, String actor) throws SQLException
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 
-		String query = "SELECT distinct(film.id) as id, film.titolo, film.durata, film.genere, film.regista, film.attore1, film.attore2, film.descrizione, film.locandina FROM film INNER JOIN proiezione ON film.id = proiezione.idfilm WHERE strcmp(proiezione.data, DATE_FORMAT(SYSDATE(), '%Y%m%d')) >= 0";
+		String query = "SELECT distinct(film.id) as id, film.title, film.runningTime, film.genre, film.director, film.actor1, film.actor2, film.description, film.poster FROM film INNER JOIN projection ON film.id = projection.idfilm WHERE strcmp(projection.date, DATE_FORMAT(SYSDATE(), '%Y%m%d')) >= 0";
 		
 		String toAdd = "";
 		
-		if(!titolo.equals(""))
-			toAdd += " AND LOWER(titolo) = '" + titolo.toLowerCase() + "'";
+		if(!title.equals(""))
+			toAdd += " AND LOWER(title) = '" + title.toLowerCase() + "'";
 		
-		if(!genere.equals(""))
-			toAdd += " AND LOWER(genere) = '" + genere.toLowerCase() + "'";
+		if(!genre.equals(""))
+			toAdd += " AND LOWER(genre) = '" + genre.toLowerCase() + "'";
 		
-		if(!regista.equals(""))
-			toAdd += " AND LOWER(regista) = '" + regista.toLowerCase() + "'";
+		if(!director.equals(""))
+			toAdd += " AND LOWER(director) = '" + director.toLowerCase() + "'";
 		
-		if(!attore.equals(""))
+		if(!actor.equals(""))
 		{
-			String al = attore.toLowerCase();
+			String al = actor.toLowerCase();
 			
-			toAdd += " AND (LOWER(attore1) = '" + al + "' or LOWER(attore2) = '" + al + "')";
+			toAdd += " AND (LOWER(actor1) = '" + al + "' or LOWER(actor2) = '" + al + "')";
 		}
 		
 		ResultSet rs = con.createStatement().executeQuery(query + toAdd);
@@ -41,9 +41,9 @@ public class FilmDAO
 		ArrayList<Film> list = new ArrayList<Film>();
 		
 		while(rs.next())	
-			list.add(new Film(rs.getInt("id"), rs.getString("titolo"), rs.getShort("durata"),
-							  rs.getString("genere"), rs.getString("regista"), rs.getString("attore1"),
-							  rs.getString("attore2"), rs.getString("descrizione"), rs.getString("locandina")));
+			list.add(new Film(rs.getInt("id"), rs.getString("title"), rs.getShort("runningTime"),
+							  rs.getString("genre"), rs.getString("director"), rs.getString("actor1"),
+							  rs.getString("actor2"), rs.getString("description"), rs.getString("poster")));
 
 		return list;
 	}

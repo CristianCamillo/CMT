@@ -3,23 +3,23 @@ package DAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import beans.Sala;
+import beans.Room;
 import utils.DriverManagerConnectionPool;
 
-public class SalaDAO
+public class RoomDAO
 {
-	public static Sala getSala(int id) throws SQLException
+	public static Room getRoom(int id) throws SQLException
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String query = "SELECT * FROM sala WHERE id = " + id;
+		String query = "SELECT * FROM room WHERE id = " + id;
 	    
 	    ResultSet rs = con.createStatement().executeQuery(query);
 	    
 	    DriverManagerConnectionPool.releaseConnection(con);
 		
 		if(rs.next())
-			return new Sala(rs.getInt("id"), rs.getByte("numerofile"), rs.getByte("postifila"));
+			return new Room(rs.getInt("id"), rs.getByte("rows"), rs.getByte("seatsperrow"));
 		else
 			return null;
 	}

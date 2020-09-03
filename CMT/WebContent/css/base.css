@@ -10,6 +10,7 @@
 	--dark-gray: #666666;
 	
 	--light-green: #6EFF92;
+	--green: #00FF40;
 }
 
 /* font */
@@ -35,11 +36,11 @@
  	color: var(--brown);	
 }
 
-/* body*/
+/* body */
 
 body
 {
-	margin: 20px;
+	margin: 15px;
 	
 	background-color: var(--yellow);
 }

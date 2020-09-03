@@ -4,16 +4,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import exceptions.UserNotRegisteredException;
+import exceptions.UsernamePasswordNotFoundException;
 import utils.DriverManagerConnectionPool;
 
-public class GestoreDAO
+public class ManagerDAO
 {
-	public static int getId(String username, String password) throws SQLException, UserNotRegisteredException
+	public static int getId(String username, String password) throws SQLException, UsernamePasswordNotFoundException
 	{		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String query = "SELECT id FROM gestore WHERE LOWER(username) = '" + username.toLowerCase() + "' AND password = '" + password + "'";
+		String query = "SELECT id FROM manager WHERE LOWER(username) = '" + username.toLowerCase() + "' AND password = '" + password + "'";
 	    
 	    ResultSet rs = con.createStatement().executeQuery(query);
 	    
@@ -22,14 +22,14 @@ public class GestoreDAO
 	    if(rs.next())
 	    	return rs.getInt("id");
 	    else
-	    	throw new UserNotRegisteredException();  
+	    	throw new UsernamePasswordNotFoundException();  
 	}
 	
 	public static boolean isRegistered(String username) throws SQLException
 	{		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String query = "SELECT id FROM gestore WHERE LOWER(username) = '" + username.toLowerCase() + "'";
+		String query = "SELECT id FROM manager WHERE LOWER(username) = '" + username.toLowerCase() + "'";
 	    
 	    ResultSet rs = con.createStatement().executeQuery(query);
 	    
