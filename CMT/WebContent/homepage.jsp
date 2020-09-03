@@ -106,28 +106,24 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 			
 			function openPurchaseFrame()
 			{		
-				
-				
 				var projection = projections2D[selectedFilm][selectedProjection];
 				amount = 0;
-				
+
 				document.getElementById("titleA").innerHTML = films[selectedFilm][1];
 				document.getElementById("projectionA").innerHTML = parseDate(projection[1]) + " - " + parseTime(projection[2]);
 				document.getElementById("amountA").innerHTML = "0";
-				alert("aafad");
+
 				var table = document.getElementById("roomTable");
 				var tbody = table.tBodies[0];
-				alert("1231233123");
+
 				for(var i = 0, l = table.rows.length; i < l; i++)
 					table.deleteRow(0);
-				
-				alert("fsbfbbb");
-				
+
 				var roomState = roomStates2D[selectedFilm][selectedProjection];
 				var dims = roomState[0].split("-");
 				var width = parseInt(dims[0]);
 				var height = parseInt(dims[1]);
-				
+
 				for(var y = 0; y < height; y++)
 				{
 					var tr = document.createElement('tr');
@@ -209,7 +205,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 					amount -= parseInt(projections2D[selectedFilm][selectedProjection][3]);
 				}
 				
-				document.getElementById("amountA").innerHTML = totale;
+				document.getElementById("amountA").innerHTML = amount;
 			}
 			
 			function prepareTransaction()
@@ -217,7 +213,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 				var seats = "";
 				
 				var roomState = roomState2D[selectedFilm][selectedProjection];
-				var dims = statoSala[0].split("-");
+				var dims = roomState[0].split("-");
 				var width = parseInt(dims[0]);
 				var height = parseInt(dims[1]);
 				
@@ -228,7 +224,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 				
 				document.getElementById("seats").value = seats;				
 				document.getElementById("idProjections").value = projections2D[selectedFilm][selectedProjection][0];
-				document.getElementById("amount").value = totale;
+				document.getElementById("amount").value = amount;
 			}
 			
 			//---------------------//
