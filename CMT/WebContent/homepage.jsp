@@ -210,9 +210,12 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 			
 			function prepareTransaction()
 			{
+				if(amount == 0)
+					return;
+				
 				var seats = "";
 				
-				var roomState = roomState2D[selectedFilm][selectedProjection];
+				var roomState = roomStates2D[selectedFilm][selectedProjection];
 				var dims = roomState[0].split("-");
 				var width = parseInt(dims[0]);
 				var height = parseInt(dims[1]);
@@ -222,8 +225,8 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 						if(document.getElementById((x + 1) + "-" + (y + 1)).src.includes("selected.jpg"))
 							seats += x + "-" + y + "/";
 				
-				document.getElementById("seats").value = seats;				
-				document.getElementById("idProjections").value = projections2D[selectedFilm][selectedProjection][0];
+				document.getElementById("seats").value = seats;
+				document.getElementById("idProjection").value = projections2D[selectedFilm][selectedProjection][0];
 				document.getElementById("amount").value = amount;
 			}
 			
@@ -423,7 +426,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 					<button type="submit">Acquista biglietti</button>
 					<input id="seats" name="seats" type="hidden" value="">
 					<input id="idProjection" name="idProjection" type="hidden" value="">
-					<input id="amount" name="cost" type="hidden" value="">
+					<input id="amount" name="amount" type="hidden" value="">
 				</form>
 			</div>
 		</div>

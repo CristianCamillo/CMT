@@ -26,7 +26,7 @@ public class PurchaseServlet extends HttpServlet
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
+	{				
 		int idClient = (Integer)request.getSession().getAttribute("id");	
 		float amount = Float.parseFloat(request.getParameter("amount"));
 		
@@ -63,25 +63,6 @@ public class PurchaseServlet extends HttpServlet
 				TicketDAO.addTicket(new Ticket(lastId + counter, seat, idClient, idProjection));
 			}
 			
-			 HttpSession oldSession = request.getSession(false);
- 			
-			// se esiste già una sessione per questo utente, viene invalidata
-			if(oldSession != null)
-				oldSession.invalidate();
-			
-			// crea una nuova sessione
-			HttpSession currentSession = request.getSession();
-			
-			// attributo "id"
-			currentSession.setAttribute("id", idClient);
-			
-			// attributo "tipo"
-			currentSession.setAttribute("tipo", "client");
-			
-			// vengono impostati massimo 5 minuti di inattività prima che la sessione venga eliminata
-			currentSession.setMaxInactiveInterval(5 * 60);
-			
-			// reindirizzamento a homepage
 			response.sendRedirect("homepage.jsp");
 		}
 		catch(CannotPurchaseException e)
