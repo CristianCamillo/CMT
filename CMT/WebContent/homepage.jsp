@@ -104,22 +104,26 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 				document.getElementById("selectSeatsButton").disabled = true;
 			}
 			
-			function openAcquistoFrame()
+			function openPurchaseFrame()
 			{		
-				var proiezione = proiezioni2D[selectedFilm][selectedProiezione];
-				totale = 0;
+				
+				
+				var projection = projections2D[selectedFilm][selectedProjection];
+				amount = 0;
 				
 				document.getElementById("titleA").innerHTML = films[selectedFilm][1];
 				document.getElementById("projectionA").innerHTML = parseDate(projection[1]) + " - " + parseTime(projection[2]);
 				document.getElementById("amountA").innerHTML = "0";
-				
+				alert("aafad");
 				var table = document.getElementById("roomTable");
 				var tbody = table.tBodies[0];
-					
+				alert("1231233123");
 				for(var i = 0, l = table.rows.length; i < l; i++)
 					table.deleteRow(0);
 				
-				var roomState = roomState2D[selectedFilm][selectedProjection];
+				alert("fsbfbbb");
+				
+				var roomState = roomStates2D[selectedFilm][selectedProjection];
 				var dims = roomState[0].split("-");
 				var width = parseInt(dims[0]);
 				var height = parseInt(dims[1]);
@@ -393,7 +397,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 		
 		<!-- AcquistoFrame -->
 		<div id="purchaseFrame" class="frameContainer">
-			<div class="frame">
+			<div class="frameContent">
 				<span class="frameHeader">
 					<h2>Acquisto biglietti</h2>
 					<button onclick="closePurchaseFrame()">&#x02716;</button>
