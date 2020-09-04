@@ -18,7 +18,7 @@
 		
 		<hr>
 		
-		<form id="regisForm" name="form" onsubmit="return password.value == confPassword.value" action="${pageContext.request.contextPath}/registration" method="POST">
+		<form id="registrationForm" name="form" onsubmit="return password.value == confPassword.value" action="${pageContext.request.contextPath}/registration" method="POST">
 			<input name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)" minlength="6" maxlength="20" required>
 			<input name="password" type="password"  placeholder="Password" oninput="checkFieldLength('password', 6, 20); checkPswMatching('password', 'confPassword');" minlength="6" maxlength="20" required>
 			<input name="confPassword" type="password"  placeholder="Conferma password" oninput="checkPswMatching('password', 'confPassword')" minlength="6" maxlength="20" required>

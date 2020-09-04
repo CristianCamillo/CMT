@@ -10,7 +10,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 		<link rel="stylesheet" type="text/css" href="css/frame.css">
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/poster.css">
-		<link rel="stylesheet" type="text/css" href="css/projRoom.css">
+		<link rel="stylesheet" type="text/css" href="css/projectionRoom.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 		<script src="js/filtroValidator.js"></script>
 		<script type="text/javascript">
@@ -303,7 +303,6 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 			<input type="text" name="director" placeholder="Regista" maxlength="30">
 			<input type="text" name="actor" placeholder="Attore" maxlength="30">
 			<br>
-			<br>
 			<button type="submit">Filtra</button>
 		</form>
 		
@@ -325,22 +324,26 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 					<button onclick="closeDetailsFrame()">&#x02716;</button>
 				</span>
 				<br>
-				<div class="detailsContainer">
-					<img id="poster" class="poster posterItem">
-					<h3>Titolo</h3>
-					<label id="title" class="titleItem"></label>
-					<h3>Durata</h3>
-					<label id="runningTime" class="runningTimeItem"></label>
-					<h3>Genere</h3>
-					<label id="genre" class="genreItem"></label>
-					<h3>Regista</h3>
-					<label id="director" class="directorItem"></label>
-					<h3>Attori</h3>
-					<label id="actor1" class="actorItem"></label>
-					<h3>Descrizione</h3>
-					<label id="description" class="descriptionItem"></label>
-				</div>
-				<label id="actor2" class="actorItem"></label>
+				<div style="display: flex; flex-direction: column; max-width: 1000px;">
+					<div class="filmDataContainer">
+						<img id="poster" class="poster posterItem">
+						<h3>Titolo</h3>
+						<label id="title"></label>
+						<h3>Durata</h3>
+						<label id="runningTime"></label>
+						<h3>Genere</h3>
+						<label id="genre"></label>
+						<h3>Regista</h3>
+						<label id="director"></label>
+						<h3>Attori</h3>
+						<div class="multiple">
+							<label id="actor1"></label>
+							<label id="actor2"></label>
+						</div>
+						<h3>Descrizione</h3>
+						<label id="description"></label>
+					</div>
+				
 				<!-- 	
 				<table>
 					<colgroup>
@@ -378,19 +381,22 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 						</tr>
 					</tbody>
 				</table>
-				 -->	
-				<hr>
-				<h3>Proiezioni</h3>
-				<br>
-				<table id="projectionsTable" class="table">
-					<thead>
-						<tr><th><label>Data</label></th><th><label>Orario</label></th><th><label>Costo</label></th></tr>
-					</thead>
-					<tbody>						
-					</tbody>
-				</table>
-				<br>
-				<button id="selectSeatsButton" onclick="openPurchaseFrame()" disabled>Procedi all'acquisto biglietti</button>
+				 -->
+				<div>
+					<hr>
+					<h3>Proiezioni</h3>
+					<br>
+					<table id="projectionsTable" class="table">
+						<thead>
+							<tr><th><label>Data</label></th><th><label>Orario</label></th><th><label>Costo</label></th></tr>
+						</thead>
+						<tbody>						
+						</tbody>
+					</table>
+					<br>
+					<button id="selectSeatsButton" onclick="openPurchaseFrame()" disabled>Procedi all'acquisto biglietti</button>
+					</div>
+				</div>
 			</div>
 		</div>
 		

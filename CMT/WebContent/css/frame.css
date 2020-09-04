@@ -2,6 +2,9 @@ div.frameContainer
 {
 	display: none;
 	
+	align-items: center;	
+	justify-content: center;
+	
 	z-index: 1;
 	
 	position: fixed;	
@@ -17,10 +20,6 @@ div.frameContainer
 
 div.frameContent
 {	
-	
-	/*width: fit-content;
-    height: fit-content;*/
-    
     padding: 15px;
 	border: 3px solid var(--brown);
 	
@@ -37,7 +36,7 @@ span.frameHeader
 /*
 div.frameContainer
 {
-	display: none;	/* is set to flex when made visible*/
+	display: none;
 	
 	justify-content: center;
 	align-items: center;
@@ -57,17 +56,8 @@ div.frameContainer
 
 div.frameContent
 {	
-	/*position: absolute;
+	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);*/
-	
-	/*width: fit-content;
-    height: fit-content;*/
-    
-    padding: 15px;
-	border: 3px solid var(--brown);
-	border-radius: 4px;
-	
-	background-color: var(--yellow);
+	transform: translate(-50%, -50%);
 }*/

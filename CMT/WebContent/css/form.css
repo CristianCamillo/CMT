@@ -3,7 +3,7 @@
 	width: 300px;
 }
 
-#loginForm, #regisForm
+#loginForm, #registrationForm
 {
 	width: 25%;	
 	min-width: 300px;
@@ -12,19 +12,23 @@
 	margin: 100px auto;
 }
 
-#filtreForm input, #loginForm input, #regisForm input
+#filtreForm input, #loginForm input, #registrationForm input
 {
 	width: 100%;
 	
-	margin: 2px 0px;
+	display: block;
+	
+	margin: 0px 0px 4px 0px;
 }
 
-#filtreForm button, #loginForm button, #regisForm button
+#filtreForm button, #loginForm button, #registrationForm button
 {
 	width: 100%;
+	
+	display: block;
 }
 
-#regisForm span
+#registrationForm span
 {
 	display: flex;
 	align-items: center;
@@ -33,7 +37,7 @@
 	margin: 6px 4px;
 }
 
-#regisForm span input
+#registrationForm span input
 {
 	width: 1px;
 }

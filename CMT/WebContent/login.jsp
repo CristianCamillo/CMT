@@ -22,7 +22,6 @@
 			<input name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)" minlength="6" maxlength="20" required>
 			<input name="password" type="password" placeholder="Password" oninput="checkFieldLength('password', 6, 20)" minlength="6" maxlength="20" required>
 			<br>
-			<br>
 			<button type="submit">Accedi</button></td>
 		</form>
 	</body>

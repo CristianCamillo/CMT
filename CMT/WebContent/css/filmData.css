@@ -1,16 +1,23 @@
 .filmDataContainer
-{
+{	
 	display: grid;
-	gridgap: 20px;
-}
-
-.titleItem
-{
-	
+	grid-template-columns: auto auto auto;
+	grid-gap: 20px;
 }
 
 .posterItem
 {
 	grid-row-start: 1;
-	grid-end-start: 7;
+	grid-row-end: 10;
+}
+
+.multiple
+{
+	display: flex;
+	flex-direction: column;	
+}
+
+.multiple label
+{
+	margin: 0px 0px 4px 0px;
 }
