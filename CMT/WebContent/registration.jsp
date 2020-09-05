@@ -4,8 +4,9 @@
 	<head>
 		<title>CMT - Registrazione</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
-		<link rel="stylesheet" type="text/css" href="css/header.css">
-		<link rel="stylesheet" type="text/css" href="css/form.css">
+		<link rel="stylesheet" type="text/css" href="css/centeredForm.css">
+		<link rel="stylesheet" type="text/css" href="css/header.css">		
+		<link rel="stylesheet" type="text/css" href="css/optionsList.css">		
 		<script src="js/fieldChecker.js"></script>
 	</head>
 	<body>
@@ -18,13 +19,13 @@
 		
 		<hr>
 		
-		<form id="registrationForm" name="form" onsubmit="return password.value == confPassword.value" action="${pageContext.request.contextPath}/registration" method="POST">
+		<form class="optionsList centeredForm" name="form" onsubmit="return password.value == confPassword.value" action="${pageContext.request.contextPath}/registration" method="POST">
 			<input name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)" minlength="6" maxlength="20" required>
 			<input name="password" type="password"  placeholder="Password" oninput="checkFieldLength('password', 6, 20); checkPswMatching('password', 'confPassword');" minlength="6" maxlength="20" required>
 			<input name="confPassword" type="password"  placeholder="Conferma password" oninput="checkPswMatching('password', 'confPassword')" minlength="6" maxlength="20" required>
 			<input name="balance" type="number" placeholder="Saldo" oninput="checkIsNotNeg('balance')"  min="0" required>
-			<span><label for="dataTreatment">Trattamento dei dati personali</label><input id="dataTreatment" type="checkbox" required></span>
-			<br>
+			<span><label for="dataTreatment">Trattamento dei dati personali</label><input id="dataTreatment" type="checkbox" style="width: 1px" required></span>
+			<span>&nbsp;</span>
 			<button type="submit">Registrati</button>
 		</form>
 	</body>

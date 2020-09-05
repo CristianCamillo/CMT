@@ -4,12 +4,14 @@
 	flex-direction: column;
 }
 
-.optionsList input, .optionsList button, .optionsList span
-{
-	width: 100%;
-}
-
 .optionsList *
 {
+	width: 100%;
 	margin: 2px;
+}
+
+.optionsList span
+{
+	display: flex;
+	justify-content: space-between;
 }

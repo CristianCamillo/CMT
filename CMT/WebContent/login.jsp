@@ -4,6 +4,7 @@
 	<head>
 		<title>CMT - Login</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/centeredForm.css">
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
 		<script src="js/fieldChecker.js"></script>
@@ -18,10 +19,10 @@
 		
 		<hr>
 		
-		<form class="optionsList" style="width: 300px" name="form" action="${pageContext.request.contextPath}/login" method="POST">
+		<form class="optionsList centeredForm" name="form" action="${pageContext.request.contextPath}/login" method="POST">
 			<input name="username" type="text" placeholder="Username" oninput="checkFieldLength('username', 6, 20)" minlength="6" maxlength="20" required>
 			<input name="password" type="password" placeholder="Password" oninput="checkFieldLength('password', 6, 20)" minlength="6" maxlength="20" required>
-			<br>
+			<span>&nbsp;</span>
 			<button type="submit">Accedi</button></td>
 		</form>
 	</body>

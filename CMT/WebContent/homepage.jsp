@@ -6,9 +6,9 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		<title>CMT - Homepage</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/filmData.css">
-		<link rel="stylesheet" type="text/css" href="css/form.css">
-		<link rel="stylesheet" type="text/css" href="css/frame.css">
+		<link rel="stylesheet" type="text/css" href="css/frame.css">		
 		<link rel="stylesheet" type="text/css" href="css/header.css">
+		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
 		<link rel="stylesheet" type="text/css" href="css/poster.css">
 		<link rel="stylesheet" type="text/css" href="css/projectionRoom.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
@@ -295,12 +295,12 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		
 		<hr>
 		
-		<form id="filtreForm" name="form" action="${pageContext.request.contextPath}/filtre" method="GET">
+		<form class="optionsList" style="width: 300px" name="form" action="${pageContext.request.contextPath}/filtre" method="GET">
 			<input type="text" name="title" placeholder="Titolo" maxlength="30">
 			<input type="text" name="genre" placeholder="Genere" maxlength="30">
 			<input type="text" name="director" placeholder="Regista" maxlength="30">
 			<input type="text" name="actor" placeholder="Attore" maxlength="30">
-			<br>
+			<span>&nbsp;</span>
 			<button type="submit">Filtra</button>
 		</form>
 		
