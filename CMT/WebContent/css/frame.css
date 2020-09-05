@@ -15,15 +15,16 @@ div.frameContainer
 	
 	overflow: auto;
 	
-	background-color: rgba(0,0,0,0.4);
+	background-color: rgba(0,0,0,0.5);
 }
 
 div.frameContent
-{		
+{			
     padding: 15px;
 	border: 3px solid var(--brown);
 	
 	background-color: var(--yellow);
+	box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.75);
 }
 
 span.frameHeader

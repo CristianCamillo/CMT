@@ -1,0 +1,15 @@
+.optionsList
+{
+	display: flex;
+	flex-direction: column;
+}
+
+.optionsList input, .optionsList button, .optionsList span
+{
+	width: 100%;
+}
+
+.optionsList *
+{
+	margin: 2px;
+}

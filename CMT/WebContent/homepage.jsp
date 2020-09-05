@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html charset=UTF-8" pageEncoding="UTF-8"
-import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"%>
+import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -135,8 +135,6 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 						
 						seat.setAttribute("id", (x + 1) + "-" + (y + 1));
 						seat.setAttribute("src", "seats/vacant.jpg");
-						seat.setAttribute("width", 30);
-						seat.setAttribute("height", 30);
 						
 						seat.onclick = function() { selectSeat(this.id); };
 						
@@ -289,7 +287,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 						out.print("<button onclick=\"location.href='login.jsp'\">Login</button>" +
 								  "<button onclick=\"location.href='registration.jsp'\">Registrazione</button>");
 					else
-						out.print("<button onclick=\"location.href='personalArea" + userType.substring(0, 1).toUpperCase() + userType.substring(1) + ".jsp'\">Area Personale</button>" +
+						out.print("<button onclick=\"location.href='" + userType + "PersonalArea.jsp'\">Area Personale</button>" +
 								  "<button onclick=\"location.href='logout.jsp'\">Logout</button>");
 				%>
 			</div>			
@@ -307,6 +305,123 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 		</form>
 		
 		<hr>
+		
+		<table style="width: 100%; height: 100px; overflow: auto;">
+			
+			<tbody style="height: 200px">
+				<tr>
+					<td>Alfreds Futterkiste</td>
+				    <td>Maria Anders</td>
+				    <td>Germany</td>
+				</tr>
+				<tr>
+					<td>Alfreds Futterkiste</td>
+				    <td>Maria Anders</td>
+				    <td>Germany</td>
+				</tr>
+				<tr>
+					<td>Alfreds Futterkiste</td>
+				    <td>Maria Anders</td>
+				    <td>Germany</td>
+				</tr>
+				<tr>
+					<td>Alfreds Futterkiste</td>
+				    <td>Maria Anders</td>
+				    <td>Germany</td>
+				</tr>
+				<tr>
+					<td>Alfreds Futterkiste</td>
+				    <td>Maria Anders</td>
+				    <td>Germany</td>
+				</tr>
+				<tr>
+					<td>Alfreds Futterkiste</td>
+				    <td>Maria Anders</td>
+				    <td>Germany</td>
+				</tr>
+				<tr>
+					<td>Alfreds Futterkiste</td>
+				    <td>Maria Anders</td>
+				    <td>Germany</td>
+				</tr>
+				<tr>
+					<td>Alfreds Futterkiste</td>
+				    <td>Maria Anders</td>
+				    <td>Germany</td>
+				</tr>
+				<tr>
+					<td>Alfreds Futterkiste</td>
+				    <td>Maria Anders</td>
+				    <td>Germany</td>
+				</tr>
+				<tr>
+					<td>Alfreds Futterkiste</td>
+				    <td>Maria Anders</td>
+				    <td>Germany</td>
+				</tr>
+				<tr>
+					<td>Alfreds Futterkiste</td>
+				    <td>Maria Anders</td>
+				    <td>Germany</td>
+				</tr>
+				<tr>
+					<td>Alfreds Futterkiste</td>
+				    <td>Maria Anders</td>
+				    <td>Germany</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<div class="table" style="width: 300px; height: 300px">
+			<span style="width: 100%; display: flex; "><h3>Data</h3><h3>Orario</h3><h3>Costo</h3></span>
+			<div>		
+				<table id="projectionsTable">
+					<tr>
+						<th>Data</th>
+					    <th>Orario</th>
+					    <th>Costo</th>
+					</tr>
+					<tr>
+						<td>Alfreds Futterkiste</td>
+					    <td>Maria Anders</td>
+					    <td>Germany</td>
+					</tr>
+					<tr>
+						<td>Alfreds Futterkiste</td>
+					    <td>Maria Anders</td>
+					    <td>Germany</td>
+					</tr>
+					<tr>
+						<td>Alfreds Futterkiste</td>
+					    <td>Maria Anders</td>
+					    <td>Germany</td>
+					</tr>
+					<tr>
+						<td>Alfreds Futterkiste</td>
+					    <td>Maria Anders</td>
+					    <td>Germany</td>
+					</tr>
+					<tr>
+						<td>Alfreds Futterkiste</td>
+					    <td>Maria Anders</td>
+					    <td>Germany</td>
+					</tr>
+					<tr>
+						<td>Alfreds Futterkiste</td>
+					    <td>Maria Anders</td>
+					    <td>Germany</td>
+					</tr>
+					<tr>
+						<td>Alfreds Futterkiste</td>
+					    <td>Maria Anders</td>
+					    <td>Germany</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+		
+		
 		
 		<!-- Lista dei poster dei film -->
 		<%
@@ -343,60 +458,16 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 						<h3>Descrizione</h3>
 						<label id="description"></label>
 					</div>
-				
-				<!-- 	
-				<table>
-					<colgroup>
-						<col>
-						<col style="width: 20px">
-						<col>
-					</colgroup>
-					<tbody>
-						<tr valign="top">
-							<td><img id="locandina" class="poster"></td>
-							<td></td>
-							<td>
-								<table>
-									<colgroup>
-										<col>
-										<col style="width: 18px">
-										<col>
-									</colgroup>
-									<tbody>
-										<tr><td><h3>Titolo</h3></td><td></td><td><label id="titolo"></label></td></tr>
-										<tr><td>&nbsp;</td></tr>
-										<tr><td><h3>Durata</h3></td><td></td><td><label id="durata"></label></td></tr>
-										<tr><td>&nbsp;</td></tr>
-										<tr><td><h3>Genere</h3></td><td></td><td><label id="genere"></label></td></tr>
-										<tr><td>&nbsp;</td></tr>
-										<tr><td><h3>Regista</h3></td><td></td><td><label id="regista"></label></td></tr>
-										<tr><td>&nbsp;</td></tr>
-										<tr><td><h3>Attori</h3></td><td></td><td><label id="attore1"></label></tr>
-										<tr><td></td><td></td><td><label id="attore2"></label></td></tr>
-										<tr><td>&nbsp;</td></tr>
-										<tr><td valign="top"><h3>Descrizione</h3></td><td></td><td><label id="descrizione"></label></td></tr>
-									</tbody>
-								</table>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				 -->
-				<div>
-					<hr>
-					<h3>Proiezioni</h3>
-					<br>
-					<table id="projectionsTable" class="table">
-						<thead>
-							<tr><th><label>Data</label></th><th><label>Orario</label></th><th><label>Costo</label></th></tr>
-						</thead>
-						<tbody>						
-						</tbody>
-					</table>
-					<br>
-					<button id="selectSeatsButton" onclick="openPurchaseFrame()" disabled>Procedi all'acquisto biglietti</button>
+					<div>
+						<hr>
+						<h3>Proiezioni</h3>
+						<br>
+						
+						<br>
+						<button id="selectSeatsButton" onclick="openPurchaseFrame()" disabled>Procedi all'acquisto biglietti</button>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 		
@@ -424,7 +495,7 @@ import="java.util.ArrayList, beans.Film,beans.Projection,beans.Room,DAO.RoomDAO"
 					</tbody>
 			 	</table>
 			 	<form onsubmit="prepareTransaction()" action="${pageContext.request.contextPath}/purchase" method="POST">
-					<table id="roomTable" class="projRoom">
+					<table id="roomTable" class="projectionRoom">
 						<tbody>								
 						</tbody>
 					</table>

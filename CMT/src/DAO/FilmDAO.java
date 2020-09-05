@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import beans.Film;
+import model.Film;
 import utils.DriverManagerConnectionPool;
 
 public class FilmDAO

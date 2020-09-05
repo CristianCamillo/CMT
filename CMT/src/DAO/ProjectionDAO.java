@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import beans.Projection;
+import model.Projection;
 import utils.DriverManagerConnectionPool;
 
 public class ProjectionDAO

@@ -3,7 +3,8 @@ package DAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import beans.Room;
+
+import model.Room;
 import utils.DriverManagerConnectionPool;
 
 public class RoomDAO

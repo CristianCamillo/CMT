@@ -1,4 +1,4 @@
-package servlet;
+package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import DAO.ClientDAO;
 import DAO.ManagerDAO;
-import beans.Client;
+import model.Client;
 import utils.DataChecker;
 
 @WebServlet("/registration")

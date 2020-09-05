@@ -1,4 +1,4 @@
-package servlet;
+package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.TicketDAO;
+import model.Film;
+import model.Projection;
+import model.Room;
 import DAO.FilmDAO;
 import DAO.ProjectionDAO;
 import DAO.RoomDAO;
-import beans.Film;
-import beans.Projection;
-import beans.Room;
 import utils.DataChecker;
 
 @WebServlet("/filtre")

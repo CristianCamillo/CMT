@@ -5,8 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import beans.Ticket;
 import exceptions.CannotPurchaseException;
+import model.Ticket;
 import utils.DriverManagerConnectionPool;
 
 public class TicketDAO

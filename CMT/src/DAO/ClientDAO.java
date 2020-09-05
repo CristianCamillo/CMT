@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import beans.Client;
 import exceptions.CannotPurchaseException;
 import exceptions.UsernamePasswordNotFoundException;
 import exceptions.UsernameTakenException;
+import model.Client;
 import utils.DriverManagerConnectionPool;
 
 public class ClientDAO

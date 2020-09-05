@@ -1,18 +1,16 @@
-package beans;
+package model;
 
-public class Client
-{	
+public class Manager
+{
 	private int id;
 	private String username;
 	private String password;
-	private float balance;
 	
-	public Client(int id, String username, String password, float balance)
+	public Manager(int id, String username, String password)
 	{
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.balance = balance;
 	}
 	
 	public int getId()
@@ -43,15 +41,5 @@ public class Client
 	public void setPassword(String password)
 	{
 		this.password = password;
-	}
-	
-	public float getBalance()
-	{
-		return balance;
-	}
-	
-	public void setBalance(float balance)
-	{
-		this.balance = balance;
 	}
 }
