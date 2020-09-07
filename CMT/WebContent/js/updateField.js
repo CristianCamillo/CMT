@@ -2,6 +2,7 @@ function setupModal(idUser, idField)
 {
 	const title = document.getElementById("modalTitle");
 	const input = document.getElementById("modalInput");
+	const confPassword = document.getElementById('modalConfPassword');
 	
 	smartReset();
 	
