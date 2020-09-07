@@ -42,3 +42,5 @@ function setGreen(field)
 	field.style.color = "#008000";
 	field.style.background = "#fbfffb";
 }
+
+export { checkFieldLength, checkPswMatching, checkIsNotNeg }
