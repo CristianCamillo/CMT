@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
-		<script src="js/updateField.js"></script>
+		<script src="js/setupModal.js"></script>
 			<script type="text/javascript">
 				$("document").ready(function()
 				{
