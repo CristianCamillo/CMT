@@ -8,6 +8,27 @@
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
 		<script src="js/colorField.js"></script>
+		<script type="text/javascript">
+			function closeUsernameModal()
+			{
+				document.getElementsByName("newUsername")[0].value = "";
+				document.getElementsByName("newUsername")[0].style.outline = "none";
+				document.getElementById("usernameModal").style.display = "none";
+			}
+			
+			function closePasswordModal()
+			{
+				document.getElementsByName("newPassword")[0].value = "";
+				document.getElementsByName("confPassword")[0].value = "";
+				document.getElementById("passwordModal").style.display = "none";
+			}
+		
+			function closeAmountModal()
+			{
+				document.getElementsByName("amount")[0].value = "";
+				document.getElementById("amountModal").style.display = "none";
+			}
+		</script>
 			<script type="text/javascript">
 				$("document").ready(function()
 				{
@@ -57,7 +78,7 @@
 				</span>
 				<br>
 				<form name="passwordForm" class="optionsList" onsubmit="return password.value == confPassword.value" method="post">
-					<input name="newPassword" type="password"  oninput="checkFieldLength(this, 6, 20); checkPswMatching('password', 'confPassword');" minlength="6" maxlength="20" required>
+					<input name="newPassword" type="password" oninput="checkFieldLength(this, 6, 20); checkPswMatching('newPassword', 'confPassword');" minlength="6" maxlength="20" required>
 					<input name="confPassword" type="password" oninput="checkPswMatching('newPassword', 'confPassword')" minlength="6" maxlength="20" required>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiorna</button>
@@ -73,7 +94,7 @@
 				</span>
 				<br>
 				<form name="amountForm" class="optionsList" method="post">
-					<input name="amount" type="number" oninput="checkIsNotNeg(this)"  min="0" required>
+					<input name="amount" type="number" oninput="checkIsPos(this)"  min="0.000000000000000001" required>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiungi</button>
 				</form>

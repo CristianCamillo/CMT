@@ -29,6 +29,18 @@ function checkIsNotNeg(caller)
 		setGreen(caller);
 }
 
+function checkIsPos(caller)
+{
+	const field = document.getElementsByName(name)[0];
+	
+	const potNumber = parseFloat(caller.value);
+		
+	if(potNumber.toString() !== caller.value || potNumber <= 0)
+		setRed(caller);
+	else
+		setGreen(caller);
+}
+
 function setRed(field)
 {
 	field.style.borderColor = "#b22222";
