@@ -1,4 +1,4 @@
-div.frameContainer
+div.modalContainer
 {
 	display: none;
 	
@@ -18,42 +18,25 @@ div.frameContainer
 	background-color: rgba(0,0,0,0.5);
 }
 
-div.frameContent
-{			
+div.modalContent
+{				
     padding: 15px;
 	border: 3px solid var(--brown);
+	border-radius: 4px;
 	
 	background-color: var(--yellow);
 	box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.75);
 }
 
-span.frameHeader
+span.modalHeader
 {
 	display: flex;
 	align-items: center;	
 	justify-content: space-between;
 }
 
+
 /*
-div.frameContainer
-{
-	display: none;
-	
-	justify-content: center;
-	align-items: center;
-	
-	z-index: 1;
-	
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	
-	overflow: auto;
-	
-	background-color: rgba(0,0,0,0.4);
-}
 
 div.frameContent
 {	

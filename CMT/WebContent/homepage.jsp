@@ -295,7 +295,7 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		
 		<hr>
 		
-		<form class="optionsList" style="width: 300px" name="form" action="${pageContext.request.contextPath}/filtre" method="GET">
+		<form class="optionsList" name="form" action="${pageContext.request.contextPath}/filtre" method="GET">
 			<input type="text" name="title" placeholder="Titolo" maxlength="30">
 			<input type="text" name="genre" placeholder="Genere" maxlength="30">
 			<input type="text" name="director" placeholder="Regista" maxlength="30">

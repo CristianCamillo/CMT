@@ -46,23 +46,16 @@ public class RegistrationServlet extends HttpServlet
 
 			ClientDAO.addClient(newClient);
 
-			HttpSession oldSession = request.getSession(false);
-			
-			// se esiste già una sessione per questo utente, viene invalidata
+			HttpSession oldSession = request.getSession(false);		    			
 			if(oldSession != null)
 				oldSession.invalidate();
 			
-			// crea una nuova sessione
 			HttpSession currentSession = request.getSession();
 			
-			// attributo "id"
 			currentSession.setAttribute("id", newClient.getId());
-			
-			// attributo "tipo"
-			currentSession.setAttribute("userType", "client");
-			
-			// vengono impostati massimo 5 minuti di inattività prima che la sessione venga eliminata
-			currentSession.setMaxInactiveInterval(5 * 60);
+			currentSession.setAttribute("userType", "client");			
+	
+			currentSession.setMaxInactiveInterval(60 * 60);
 			
 			// reindirizzamento a homepage
 			response.sendRedirect("homepage.jsp");

@@ -1,11 +1,9 @@
-function checkFieldLength(name, min, max)
-{
-	const field = document.getElementsByName(name)[0];
-	
-	if(field.value.length < min || field.value.length > max)
-		setRed(field);
+function checkFieldLength(caller, min, max)
+{	
+	if(caller.value.length < min || caller.value.length > max)
+		setRed(caller);
     else
-		setGreen(field);
+		setGreen(caller);
 }
 
 function checkPswMatching(password, confPassword)
@@ -19,16 +17,16 @@ function checkPswMatching(password, confPassword)
 		setRed(cnfPsw);	
 }
 
-function checkIsNotNeg(name)
+function checkIsNotNeg(caller)
 {
 	const field = document.getElementsByName(name)[0];
 	
-	const potNumber = parseFloat(field.value);
+	const potNumber = parseFloat(caller.value);
 		
-	if(potNumber.toString() !== field.value || potNumber < 0)
-		setRed(field);
+	if(potNumber.toString() !== caller.value || potNumber < 0)
+		setRed(caller);
 	else
-		setGreen(field);
+		setGreen(caller);
 }
 
 function setRed(field)
