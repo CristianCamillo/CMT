@@ -6,6 +6,6 @@ public class UsernameTakenException extends RuntimeException
 
 	public UsernameTakenException(String username)
 	{
-		super("L'username \"" + username + "\" è già in uso.");
+		super("Username \"" + username + "\" già in uso.");
 	}
 }

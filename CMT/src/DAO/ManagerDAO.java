@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import exceptions.IdNotFoundException;
 import exceptions.UsernamePasswordNotFoundException;
 import utils.DriverManagerConnectionPool;
 
@@ -35,9 +36,17 @@ public class ManagerDAO
 	    
 	    DriverManagerConnectionPool.releaseConnection(con);
 	    
-	    if(rs.next())
-	    	return true;
-	    else
-	    	return false;
+	    return rs.next();
+	}
+	
+	public static void updateUsername(int id, String newUsername) throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String update = "UPDATE client SET username = '" + newUsername + "' WHERE id = " + id;
+		
+		con.createStatement().executeUpdate(update);
+		    
+		DriverManagerConnectionPool.releaseConnection(con);
 	}
 }

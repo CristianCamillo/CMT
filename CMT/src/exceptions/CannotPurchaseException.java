@@ -6,6 +6,6 @@ public class CannotPurchaseException extends RuntimeException
 	
 	public CannotPurchaseException()
 	{
-		super();
+		super("Acquisto non ultimabile.");
 	}
 }
