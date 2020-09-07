@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/header.css">		
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">		
-		<script src="js/fieldChecker.js"></script>
+		<script src="js/colorField.js"></script>
 	</head>
 	<body>
 		<header>

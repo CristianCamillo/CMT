@@ -1,10 +1,11 @@
-import { checkFieldLength, checkPswMatching, checkIsNotNeg } from "./fieldChecker.js";
-
 function setupModal(idUser, idField)
 {
 	const title = document.getElementById("modalTitle");
 	const input = document.getElementById("modalInput");
 	const confPassword = document.getElementById('modalConfPassword');
+	
+	const script = document.createElement("script");
+	script.src = "./fieldChecker.js";
 	
 	smartReset();
 	
