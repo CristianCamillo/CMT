@@ -94,7 +94,7 @@
 				</span>
 				<br>
 				<form name="amountForm" class="optionsList" method="post">
-					<input name="amount" type="number" oninput="checkIsPos(this)"  min="0.000000000000000001" required>
+					<input name="amount" type="number" oninput="checkIsPos(this)" min="0.000000000000000001" required>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiungi</button>
 				</form>

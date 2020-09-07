@@ -18,7 +18,7 @@
 		
 		<hr>
 		
-		<form class="optionsList" style="margin: 100px auto" name="form" action="${pageContext.request.contextPath}/login" method="POST">
+		<form name="form" class="optionsList" style="margin: 100px auto" action="${pageContext.request.contextPath}/login" method="POST">
 			<input name="username" type="text" placeholder="Username" oninput="checkFieldLength(this, 6, 20)" minlength="6" maxlength="20" required>
 			<input name="password" type="password" placeholder="Password" oninput="checkFieldLength(this, 6, 20)" minlength="6" maxlength="20" required>
 			<span>&nbsp;</span>
