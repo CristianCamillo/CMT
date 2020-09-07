@@ -31,7 +31,7 @@ function setupModal(idUser, idField)
 			title.innerHTML = "Aggiunta fondi al saldo";
 			
 			input.type = "number";
-			
+			input.min = 0;
 	}
 	
 	document.getElementById('modalContainer').style.display = "flex";
