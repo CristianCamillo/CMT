@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
-		<script src="js/setupModal.js"></script>
+		<script src="js/colorField.js"></script>
 			<script type="text/javascript">
 				$("document").ready(function()
 				{
@@ -29,25 +29,55 @@
 			<span><h3>Saldo</h3><label id="amount"></label></span>
 			<span>&nbsp;</span>
 			<span>&nbsp;</span>
-			<button onclick="setupModal(<%=request.getSession().getAttribute("id")%>, 0)">Modifica username</button>
-			<button onclick="setupModal(<%=request.getSession().getAttribute("id")%>, 1)">Modifica password</button>
-			<button onclick="setupModal(<%=request.getSession().getAttribute("id")%>, 2)">Aggiungi fondi</button>
+			<button onclick="document.getElementById('usernameModal').style.display = 'flex'">Modifica username</button>
+			<button onclick="document.getElementById('passwordModal').style.display = 'flex'">Modifica password</button>
+			<button onclick="document.getElementById('amountModal').style.display = 'flex'">Aggiungi fondi</button>
 		</div>
 		
-		<div id="modalContainer" class="modalContainer">
+		<div id="usernameModal" class="modalContainer">
 			<div class="modalContent">
 				<span class="modalHeader">
-					<h2 id="modalTitle"></h2>
-					<button onclick="document.getElementById('modalContainer').style.display = 'none'">&#x02716;</button>
+					<h2>Modifica username</h2>
+					<button onclick="document.getElementById('usernameModal').style.display = 'none'">&#x02716;</button>
 				</span>
 				<br>
-				<form class="optionsList" name="form" method="post">
-					<input id="modalInput" name="updateValue" required>
-					<input id="modalConfPassword" name="confPassword" minlength="6" maxlength="20">
+				<form name="usernameForm" class="optionsList" method="post">
+					<input name="newUsername" type="text" oninput="checkFieldLength(this, 6, 20)" minlength="6" maxlength="20" required>
 					<span>&nbsp;</span>
-					<button type="submit" onclick="">Aggiorna</button>
+					<button type="submit">Aggiorna</button>
 				</form>
 			</div>
-		</div>		
+		</div>
+		
+		<div id="passwordModal" class="modalContainer">
+			<div class="modalContent">
+				<span class="modalHeader">
+					<h2>Modifica password</h2>
+					<button onclick="document.getElementById('passwordModal').style.display = 'none'">&#x02716;</button>
+				</span>
+				<br>
+				<form name="passwordForm" class="optionsList" onsubmit="return password.value == confPassword.value" method="post">
+					<input name="newPassword" type="password"  oninput="checkFieldLength(this, 6, 20); checkPswMatching('password', 'confPassword');" minlength="6" maxlength="20" required>
+					<input name="confPassword" type="password" oninput="checkPswMatching('newPassword', 'confPassword')" minlength="6" maxlength="20" required>
+					<span>&nbsp;</span>
+					<button type="submit">Aggiorna</button>
+				</form>
+			</div>
+		</div>
+		
+		<div id="amountModal" class="modalContainer">
+			<div class="modalContent">
+				<span class="modalHeader">
+					<h2>Aggiunta fondi</h2>
+					<button onclick="document.getElementById('amountModal').style.display = 'none'">&#x02716;</button>
+				</span>
+				<br>
+				<form name="amountForm" class="optionsList" method="post">
+					<input name="amount" type="number" oninput="checkIsNotNeg(this)"  min="0" required>
+					<span>&nbsp;</span>
+					<button type="submit">Aggiungi</button>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>
