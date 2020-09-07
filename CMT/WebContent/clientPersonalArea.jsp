@@ -9,32 +9,11 @@
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
 		<script src="js/colorField.js"></script>
 		<script type="text/javascript">
-			function closeUsernameModal()
+			$("document").ready(function()
 			{
-				document.getElementsByName("newUsername")[0].value = "";
-				document.getElementsByName("newUsername")[0].style.outline = "none";
-				document.getElementById("usernameModal").style.display = "none";
-			}
-			
-			function closePasswordModal()
-			{
-				document.getElementsByName("newPassword")[0].value = "";
-				document.getElementsByName("confPassword")[0].value = "";
-				document.getElementById("passwordModal").style.display = "none";
-			}
-		
-			function closeAmountModal()
-			{
-				document.getElementsByName("amount")[0].value = "";
-				document.getElementById("amountModal").style.display = "none";
-			}
+				
+			});
 		</script>
-			<script type="text/javascript">
-				$("document").ready(function()
-				{
-					
-				});
-			</script>
 	</head>
 	<body>
 		<header>
