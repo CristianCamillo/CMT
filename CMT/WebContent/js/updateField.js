@@ -28,7 +28,7 @@ function setupModal(idUser, idField)
 			break;
 			
 		case 2:
-			title.innerHTML = "Aggiunta fondi al saldo";
+			title.innerHTML = "Aggiunta fondi";
 			
 			input.type = "number";
 			input.min = 0;

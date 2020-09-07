@@ -9,9 +9,9 @@
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
 		<script src="js/updateField.js"></script>
 			<script type="text/javascript">
-				$("document").ready(funtion()
+				$("document").ready(function()
 				{
-					$
+					
 				});
 			</script>
 	</head>
@@ -31,7 +31,7 @@
 			<span>&nbsp;</span>
 			<button onclick="setupModal(<%=request.getSession().getAttribute("id")%>, 0)">Modifica username</button>
 			<button onclick="setupModal(<%=request.getSession().getAttribute("id")%>, 1)">Modifica password</button>
-			<button onclick="setupModal(<%=request.getSession().getAttribute("id")%>, 2)">Aggiungi fondi al saldo</button>
+			<button onclick="setupModal(<%=request.getSession().getAttribute("id")%>, 2)">Aggiungi fondi</button>
 		</div>
 		
 		<div id="modalContainer" class="modalContainer">
