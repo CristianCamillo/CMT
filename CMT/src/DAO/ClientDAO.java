@@ -82,7 +82,6 @@ public class ClientDAO
 	{
 		if(amount <= 0)
 			return;
-			//throw new IllegalArgumentException("Ammontare da spendere " + amount + " deve essere positivo.");
 		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
@@ -92,10 +91,6 @@ public class ClientDAO
 		
 		if(!rs.next())
 			return;
-		/*{
-			DriverManagerConnectionPool.releaseConnection(con);
-			throw new IdNotFoundException(id);
-		}*/	
 	
 		float balance = rs.getFloat("balance");
 		
@@ -121,5 +116,30 @@ public class ClientDAO
 		con.createStatement().executeUpdate(update);
 		    
 		DriverManagerConnectionPool.releaseConnection(con);
+	}
+	
+	public static void updatePassword(int id, String newPassword) throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String update = "UPDATE client SET password = '" + newPassword + "' WHERE id = " + id;
+		
+		con.createStatement().executeUpdate(update);
+		    
+		DriverManagerConnectionPool.releaseConnection(con);
+	}
+	
+	public static void addAmount(int id, float amount) throws SQLException
+	{
+		if(amount <= 0)
+			return;
+		
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String update = "UPDATE client SET balance = balance + " + amount + " WHERE id = " + id;
+		
+	    con.createStatement().executeUpdate(update);
+	    
+	    DriverManagerConnectionPool.releaseConnection(con);
 	}
 }

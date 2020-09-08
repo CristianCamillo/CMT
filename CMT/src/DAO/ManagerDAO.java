@@ -42,7 +42,18 @@ public class ManagerDAO
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String update = "UPDATE client SET username = '" + newUsername + "' WHERE id = " + id;
+		String update = "UPDATE manager SET username = '" + newUsername + "' WHERE id = " + id;
+		
+		con.createStatement().executeUpdate(update);
+		    
+		DriverManagerConnectionPool.releaseConnection(con);
+	}
+	
+	public static void updatePassword(int id, String newPassword) throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String update = "UPDATE manager SET password = '" + newPassword + "' WHERE id = " + id;
 		
 		con.createStatement().executeUpdate(update);
 		    

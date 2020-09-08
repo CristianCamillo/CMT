@@ -10,7 +10,7 @@
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
 		<script src="js/colorField.js"></script>
 		<script type="text/javascript">
-			$("document").ready(function()
+			$(document).ready(function()
 			{
 				$(document).on("submit", "#usernameForm", function(event)
 				{
@@ -18,7 +18,7 @@
 					
 					$.post($form.attr("action"), $form.serialize(), function(responseText)
 					{
-						$("#username").text = responseText;
+						$("#username").text(responseText);
 					});
 				});
 				

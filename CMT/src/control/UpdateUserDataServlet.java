@@ -28,6 +28,8 @@ public class UpdateUserDataServlet extends HttpServlet
 		
 		String userType = (String)request.getSession().getAttribute("userType");
 		
+		int id = (Integer)request.getSession().getAttribute("id");
+		
 		try
 		{
 			switch(toChange)
@@ -36,12 +38,24 @@ public class UpdateUserDataServlet extends HttpServlet
 					String newUsername = request.getParameter("newUsername");
 					
 					if(userType.equals("client"))
-						ClientDAO.updateUsername((Integer)request.getSession().getAttribute("id"), newUsername);
+						ClientDAO.updateUsername(id, newUsername);
 					else
-						ManagerDAO.updateUsername((Integer)request.getSession().getAttribute("id"), newUsername);
+						ManagerDAO.updateUsername(id, newUsername);
 						
 					break;
+				case "1":
+					String newPassword = request.getParameter("newPassword");
 					
+					if(userType.equals("client"))
+						ClientDAO.updatePassword(id, newPassword);
+					else
+						ManagerDAO.updatePassword(id, newPassword);
+					
+					break;
+				case "2":
+					float amount = Float.parseFloat(request.getParameter("amount"));
+					
+					ClientDAO.addAmount(id, amount);					
 			}
 		}
 		catch (SQLException e)
