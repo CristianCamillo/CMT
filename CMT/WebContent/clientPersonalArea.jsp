@@ -7,11 +7,22 @@
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
 		<script src="js/colorField.js"></script>
 		<script type="text/javascript">
 			$("document").ready(function()
 			{
+				$(document).on("submit", "#usernameForm", function(event)
+				{
+					var $form = $(this);
+					
+					$.post($form.attr("action"), $form.serialize(), function(responseText)
+					{
+						$("#username").text = responseText;
+					});
+				});
 				
+				event.preventDefault();
 			});
 		</script>
 	</head>
@@ -49,7 +60,7 @@
 					<button onclick="document.getElementById('usernameModal').style.display = 'none'">&#x02716;</button>
 				</span>
 				<br>
-				<form name="usernameForm" class="optionsList" action="${pageContext.request.contextPath}/updateUserData" method="post">
+				<form id="usernameForm" class="optionsList" action="${pageContext.request.contextPath}/updateUserData" method="post">
 					<input name="newUsername" type="text" oninput="checkFieldLength(this, 6, 20)" minlength="6" maxlength="20" required>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiorna</button>
@@ -65,7 +76,7 @@
 					<button onclick="document.getElementById('passwordModal').style.display = 'none'">&#x02716;</button>
 				</span>
 				<br>
-				<form name="passwordForm" class="optionsList" onsubmit="return password.value == confPassword.value" action="${pageContext.request.contextPath}/updateUserData" method="post">
+				<form id="passwordForm" class="optionsList" onsubmit="return password.value == confPassword.value" action="${pageContext.request.contextPath}/updateUserData" method="post">
 					<input name="newPassword" type="password" oninput="checkFieldLength(this, 6, 20); checkPswMatching('newPassword', 'confPassword');" minlength="6" maxlength="20" required>
 					<input name="confPassword" type="password" oninput="checkPswMatching('newPassword', 'confPassword')" minlength="6" maxlength="20" required>
 					<span>&nbsp;</span>
@@ -82,7 +93,7 @@
 					<button onclick="document.getElementById('amountModal').style.display = 'none'">&#x02716;</button>
 				</span>
 				<br>
-				<form name="amountForm" class="optionsList" action="${pageContext.request.contextPath}/updateUserData" method="post">
+				<form id="amountForm" class="optionsList" action="${pageContext.request.contextPath}/updateUserData" method="post">
 					<input name="amount" type="number" oninput="checkIsPos(this)" min="0.000000000000000001" required>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiungi</button>

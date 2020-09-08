@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import exceptions.CannotPurchaseException;
-import exceptions.IdNotFoundException;
 import exceptions.UsernamePasswordNotFoundException;
 import exceptions.UsernameTakenException;
 import model.Client;

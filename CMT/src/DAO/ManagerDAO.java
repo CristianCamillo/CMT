@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import exceptions.IdNotFoundException;
 import exceptions.UsernamePasswordNotFoundException;
 import utils.DriverManagerConnectionPool;
 

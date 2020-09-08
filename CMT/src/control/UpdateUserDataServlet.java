@@ -49,6 +49,10 @@ public class UpdateUserDataServlet extends HttpServlet
 			System.out.println(e);
 		}
 		
-		request.getRequestDispatcher(userType + "PersonalArea.jsp").forward(request, response);
+
+		response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
+	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+	    response.getWriter().write(request.getParameter("newUsername"));
+		//request.getRequestDispatcher(userType + "PersonalArea.jsp").forward(request, response);
 	}
 }
