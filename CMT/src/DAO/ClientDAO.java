@@ -5,27 +5,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import exceptions.CannotPurchaseException;
-import exceptions.UsernamePasswordNotFoundException;
 import exceptions.UsernameTakenException;
 import model.Client;
 import utils.DriverManagerConnectionPool;
 
 public class ClientDAO
 {	
-	public static int getId(String username, String password) throws SQLException, UsernamePasswordNotFoundException
-	{				
+	public static Client getClient(String username, String password) throws SQLException
+	{		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String query = "SELECT id FROM client WHERE LOWER(username) = '" + username.toLowerCase() + "' AND password = '" + password + "'";
+		String query = "SELECT * FROM client WHERE LOWER(username) = '" + username.toLowerCase() + "' AND password = '" + password + "'";
 	    
 	    ResultSet rs = con.createStatement().executeQuery(query);
 	    
 	    DriverManagerConnectionPool.releaseConnection(con);
 	    
 	    if(rs.next())
-	    	return rs.getInt("id");
+	    	return new Client(rs.getInt("id"), rs.getString("username"), rs.getString("password"), rs.getFloat("balance"));
 	    else
-	    	throw new UsernamePasswordNotFoundException();  
+	    	return null;
 	}
 	
 	public static boolean isRegistered(String username) throws SQLException
@@ -61,17 +60,13 @@ public class ClientDAO
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String query = "SELECT id FROM client WHERE LOWER(username) = '" + client.getUsername().toLowerCase() + "'";
-		
-		ResultSet rs = con.createStatement().executeQuery(query);
-		
-		if(rs.next())
+		if(isRegistered(client.getUsername()))
 		{
 			DriverManagerConnectionPool.releaseConnection(con);
 			throw new UsernameTakenException(client.getUsername());
 		}
 		
-		String insert = "INSERT INTO client VALUES (" + client.getId() + ", '" + client.getUsername() + "', '" + client.getPassword() + "', '" + client.getBalance() + "')";
+		String insert = "INSERT INTO client VALUES (" + client.getId() + ", '" + client.getUsername() + "', '" + client.getPassword() + "', " + client.getBalance() + ")";
 		
 	    con.createStatement().executeUpdate(insert);
 	    

@@ -10,16 +10,13 @@
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
 		<script src="js/colorField.js"></script>
 		<script type="text/javascript">
-			$(document).ready(function()
+			$(document).on("submit", "#usernameForm", function(event)
 			{
-				$(document).on("submit", "#usernameForm", function(event)
+				var $form = $(this);
+				
+				$.post($form.attr("action"), $form.serialize(), function(responseText)
 				{
-					var $form = $(this);
-					
-					$.post($form.attr("action"), $form.serialize(), function(responseText)
-					{
-						$("#username").text(responseText);
-					});
+					$("#username").text(responseText);
 				});
 				
 				event.preventDefault();
@@ -38,8 +35,8 @@
 		
 		<div style="display: flex">
 			<div class="optionsList" style="margin-right: 20px">
-				<span><h3>Username</h3><label id="username"></label></span>
-				<span><h3>Saldo</h3><label id="amount"></label></span>
+				<span><h3>Username</h3><label id="username"><%=request.getSession().getAttribute("username")%></label></span>
+				<span><h3>Saldo</h3><span><label id="balance" style="width: auto"><%=request.getSession().getAttribute("balance")%></label><label> </label></span></span>
 				<span>&nbsp;</span>
 				<span>&nbsp;</span>
 				<button onclick="document.getElementById('usernameModal').style.display = 'flex'">Modifica username</button>

@@ -4,25 +4,25 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import exceptions.UsernamePasswordNotFoundException;
+import model.Manager;
 import utils.DriverManagerConnectionPool;
 
 public class ManagerDAO
 {
-	public static int getId(String username, String password) throws SQLException, UsernamePasswordNotFoundException
+	public static Manager getManager(String username, String password) throws SQLException
 	{		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String query = "SELECT id FROM manager WHERE LOWER(username) = '" + username.toLowerCase() + "' AND password = '" + password + "'";
+		String query = "SELECT * FROM manager WHERE LOWER(username) = '" + username.toLowerCase() + "' AND password = '" + password + "'";
 	    
 	    ResultSet rs = con.createStatement().executeQuery(query);
 	    
 	    DriverManagerConnectionPool.releaseConnection(con);
 	    
 	    if(rs.next())
-	    	return rs.getInt("id");
+	    	return new Manager(rs.getInt("id"), rs.getString("username"), rs.getString("password"));
 	    else
-	    	throw new UsernamePasswordNotFoundException();  
+	    	return null;  
 	}
 	
 	public static boolean isRegistered(String username) throws SQLException

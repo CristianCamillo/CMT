@@ -21,6 +21,7 @@
 		<form class="optionsList" style="margin: 100px auto" action="${pageContext.request.contextPath}/login" method="POST">
 			<input name="username" type="text" placeholder="Username" oninput="checkFieldLength(this, 6, 20)" minlength="6" maxlength="20" required>
 			<input name="password" type="password" placeholder="Password" oninput="checkFieldLength(this, 6, 20)" minlength="6" maxlength="20" required>
+			<span><label for="isManager">Accedi come manager</label><input id="isManager" name="isManager" type="checkbox" style="width: 1px"></span>
 			<span>&nbsp;</span>
 			<button type="submit">Accedi</button></td>
 		</form>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.ClientDAO;
 import DAO.ManagerDAO;
+import utils.DataChecker;
 
 @WebServlet("/updateUserData")
 public class UpdateUserDataServlet extends HttpServlet
@@ -26,47 +27,67 @@ public class UpdateUserDataServlet extends HttpServlet
 	{		
 		String toChange = request.getParameter("toChange");
 		
-		String userType = (String)request.getSession().getAttribute("userType");
+		if(!DataChecker.checkRange(toChange, 0, 2))
+			return;
+		
+		String data = "";
+		
+		switch(toChange)
+		{
+			case "0":
+				data = request.getParameter("newUsername");
+				if(!DataChecker.checkLength(data, 6, 20))
+					return;
+				break;
+			case "1":
+				data = request.getParameter("newPassword");
+				if(!DataChecker.checkLength(data, 6, 20))
+					return;
+				break;
+			case "2":
+				data = request.getParameter("amount");
+				if(!DataChecker.checkIsPos(data))
+					return;
+		}
 		
 		int id = (Integer)request.getSession().getAttribute("id");
+		String userType = (String)request.getSession().getAttribute("userType");
+		
+		// setup per risposta ajax
+		response.setContentType("text/plain");
+	    response.setCharacterEncoding("UTF-8");
 		
 		try
 		{
 			switch(toChange)
 			{
-				case "0":
-					String newUsername = request.getParameter("newUsername");
-					
+				case "0":					
 					if(userType.equals("client"))
-						ClientDAO.updateUsername(id, newUsername);
+						ClientDAO.updateUsername(id, data);
 					else
-						ManagerDAO.updateUsername(id, newUsername);
+						ManagerDAO.updateUsername(id, data);
 						
+					response.getWriter().write(data);
+				
 					break;
-				case "1":
-					String newPassword = request.getParameter("newPassword");
-					
+				case "1":					
 					if(userType.equals("client"))
-						ClientDAO.updatePassword(id, newPassword);
+						ClientDAO.updatePassword(id, data);
 					else
-						ManagerDAO.updatePassword(id, newPassword);
+						ManagerDAO.updatePassword(id, data);
 					
 					break;
 				case "2":
-					float amount = Float.parseFloat(request.getParameter("amount"));
+					float amount = Float.parseFloat(data);
 					
-					ClientDAO.addAmount(id, amount);					
+					ClientDAO.addAmount(id, amount);
+					
+					response.getWriter().write(((Float)request.getSession().getAttribute("balance") + amount) + "");
 			}
 		}
 		catch (SQLException e)
 		{
 			System.out.println(e);
 		}
-		
-
-		response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
-	    response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-	    response.getWriter().write(request.getParameter("newUsername"));
-		//request.getRequestDispatcher(userType + "PersonalArea.jsp").forward(request, response);
 	}
 }

@@ -12,7 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import DAO.ClientDAO;
 import DAO.ManagerDAO;
-import exceptions.UsernamePasswordNotFoundException;
+import model.Client;
+import model.Manager;
 import utils.DataChecker;
 
 @WebServlet("/login")
@@ -30,31 +31,34 @@ public class LoginServlet extends HttpServlet
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		if(!DataChecker.checkForLogin(response, username, password))
+		if(!DataChecker.checkForLogin(username, password))
 			return;
+		
+		boolean isManager = request.getParameter("isManager") != null;
 		
 		try
 		{
 			int id;
-			boolean isClient;
+			float balance = -1;
 			
-			try
+			if(!isManager)
 			{
-				id = ClientDAO.getId(username, password);
-				isClient = true;
+				Client client = ClientDAO.getClient(username, password);
+				
+				if(client == null)
+					return; // mettere messaggio errore
+				
+				id = client.getId();
+				balance = client.getBalance();
 			}
-			catch(UsernamePasswordNotFoundException e)
+			else
 			{
-				try
-				{
-					id = ManagerDAO.getId(username, password);
-				   	isClient = false;
-				}
-				catch(UsernamePasswordNotFoundException e1)
-				{
-					writeErrorMessage(response, "Dati non associati ad alcun utente");
-					return;
-				}
+				Manager manager = ManagerDAO.getManager(username, password);
+				
+				if(manager == null)
+					return; // mettere messaggio errore
+				
+				id = manager.getId();
 			}
 		    
 		    HttpSession oldSession = request.getSession(false);		    			
@@ -64,24 +68,20 @@ public class LoginServlet extends HttpServlet
 			HttpSession currentSession = request.getSession();
 			
 			currentSession.setAttribute("id", id);
-			currentSession.setAttribute("userType", isClient ? "client" : "manager");			
+			currentSession.setAttribute("username", username);
+			
+			if(!isManager)
+				currentSession.setAttribute("balance", balance);
+			
+			currentSession.setAttribute("userType", !isManager ? "client" : "manager");			
 	
 			currentSession.setMaxInactiveInterval(60 * 60);
-			
-			// reindirizzamento a homepage
+
 			response.sendRedirect("homepage.jsp");				
 		}
 		catch(SQLException e)
 		{
 			System.out.println(e);
 		}		
-	}
-	
-	private void writeErrorMessage(HttpServletResponse response, String msg) throws IOException
-	{
-		response.setContentType("text/html");	
-		response.getOutputStream().println("<script>alert(\"" + msg + "\");</script>" + 
-										   "<meta http-equiv=\"refresh\" content=\"0;URL=login.jsp\">");
-		response.getOutputStream().flush();
 	}
 }

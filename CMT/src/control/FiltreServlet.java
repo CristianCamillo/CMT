@@ -36,7 +36,7 @@ public class FiltreServlet extends HttpServlet
 		String director = request.getParameter("director");
 		String actor = request.getParameter("actor");
 
-		if(!DataChecker.checkForFiltre(response, title, genre, director, actor))
+		if(!DataChecker.checkForFiltre(title, genre, director, actor))
 			return;
 		
 		try

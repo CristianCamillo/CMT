@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.ClientDAO;
-import DAO.ManagerDAO;
 import model.Client;
 import utils.DataChecker;
 
@@ -31,15 +30,18 @@ public class RegistrationServlet extends HttpServlet
 		String password = request.getParameter("password");
 		String balance = request.getParameter("balance");
 		
-		if(!DataChecker.checkForRegistration(response, username, password, balance))
+		if(!DataChecker.checkForRegistration(username, password, balance))
 			return;
+		
+		response.setContentType("text/plain");
+	    response.setCharacterEncoding("UTF-8");
 		
 		try
 		{					
-			if(ClientDAO.isRegistered(username) || ManagerDAO.isRegistered(username))
+			if(ClientDAO.isRegistered(username))
 			{
-				writeErrorMessage(response, "Questo utente è già registrato");
-				return;
+				response.getWriter().write("usernameTaken");
+				return; // mettere messaggio errore
 			}
 
 			Client newClient = new Client(ClientDAO.getLastId() + 1, username, password, Float.parseFloat(balance));
@@ -53,24 +55,17 @@ public class RegistrationServlet extends HttpServlet
 			HttpSession currentSession = request.getSession();
 			
 			currentSession.setAttribute("id", newClient.getId());
+			currentSession.setAttribute("username", newClient.getUsername());
+			currentSession.setAttribute("balance", newClient.getBalance());
 			currentSession.setAttribute("userType", "client");			
 	
 			currentSession.setMaxInactiveInterval(60 * 60);
 			
-			// reindirizzamento a homepage
 			response.sendRedirect("homepage.jsp");
 		}
 		catch(SQLException e)
 		{
 			System.out.println(e);
 		}		
-	}
-	
-	private void writeErrorMessage(HttpServletResponse response, String msg) throws IOException
-	{
-		response.setContentType("text/html");	
-		response.getOutputStream().println("<script>alert(\"" + msg + "\");</script>" + 
-										   "<meta http-equiv=\"refresh\" content=\"0;URL=registrazione.jsp\">");
-		response.getOutputStream().flush();
 	}
 }
