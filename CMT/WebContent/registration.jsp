@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="js/colorField.js"></script>
 		<script type="text/javascript">
 			$(document).on("submit", "#registrationForm", function(event)
@@ -15,7 +16,8 @@
 				
 				$.post($form.attr("action"), $form.serialize(), function(responseText)
 				{
-					alert(responseText);
+					if(responseText.localeCompare("1"))
+						$("#errorModal").css("display", "flex");
 				});
 				
 				event.preventDefault();

@@ -40,8 +40,8 @@ public class RegistrationServlet extends HttpServlet
 		{					
 			if(ClientDAO.isRegistered(username))
 			{
-				response.getWriter().write("usernameTaken");
-				return; // mettere messaggio errore
+				response.getWriter().write("1");
+				return;
 			}
 
 			Client newClient = new Client(ClientDAO.getLastId() + 1, username, password, Float.parseFloat(balance));
@@ -61,6 +61,7 @@ public class RegistrationServlet extends HttpServlet
 	
 			currentSession.setMaxInactiveInterval(60 * 60);
 			
+			response.getWriter().write("0");
 			response.sendRedirect("homepage.jsp");
 		}
 		catch(SQLException e)
