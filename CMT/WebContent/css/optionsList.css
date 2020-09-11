@@ -6,18 +6,51 @@
 	flex-direction: column;
 }
 
-.optionsList *
+.optionsList > *
 {
 	width: 100%;
 }
 
-.optionsList * + *
+.optionsList > * + *
 {
 	margin-top: 4px;
 }
 
+/**********************************************/
+
 .optionsList span
 {
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
+}
+
+/**********************************************/
+
+.optionsList span.passwordSpan input
+{
+	width: 100%;
+}
+
+.optionsList span.passwordSpan img
+{
+	margin: 0px 5px;
+}
+
+
+/**********************************************/
+
+.optionsList span.checkboxSpan
+{
+	margin: 5px 3px;
+}
+
+.optionsList span.checkboxSpan label
+{
+	width: 100%;
+}
+
+.optionsList span.checkboxSpan input
+{
+	margin: 0px 5px;
 }

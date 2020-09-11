@@ -1,0 +1,12 @@
+.eye
+{
+	width: 27px;
+	height: 24px;
+	
+	filter: invert(11%) sepia(14%) saturate(5308%) hue-rotate(345deg) brightness(93%) contrast(99%);
+}
+
+.eye:hover
+{
+	filter: invert(11%) sepia(14%) saturate(5308%) hue-rotate(345deg) brightness(170%) contrast(99%);
+}

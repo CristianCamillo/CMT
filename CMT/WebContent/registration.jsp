@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
-		<script src="js/validator.js"></script>
+		<script src="js/fieldValidator.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script type="text/javascript">
 			function validateForm()
@@ -55,7 +55,7 @@
 			<input name="password" type="password" placeholder="Password" oninput="validatePassword(this)">
 			<input name="confPassword" type="password"  placeholder="Conferma password">
 			<input name="balance" type="text" placeholder="Saldo" oninput="validateBalance(this)">
-			<span><label for="dataTreatment">Trattamento dei dati personali</label><input id="dataTreatment" type="checkbox" style="width: 1px" required></span>
+			<span class="checkboxSpan"><label for="dataTreatment">Trattamento dei dati personali</label><input id="dataTreatment" type="checkbox" required></span>
 			<span>&nbsp;</span>
 			<button type="submit">Registrati</button>
 		</form>
