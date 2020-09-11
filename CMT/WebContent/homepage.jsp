@@ -6,7 +6,6 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		<title>CMT - Homepage</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/filmData.css">	
-		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">	
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
 		<link rel="stylesheet" type="text/css" href="css/poster.css">

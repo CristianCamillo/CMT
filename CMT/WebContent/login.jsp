@@ -5,7 +5,6 @@
 		<title>CMT - Login</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/eye.css">
-		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
 		<script src="js/alterPasswordVisibility.js"></script>

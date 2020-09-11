@@ -4,7 +4,6 @@
 	<head>	
 		<title>CMT - Area Personale Gestore</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
-		<link rel="stylesheet" type="text/css" href="css/header.css">
 	</head>
 	<body>
 		<header>

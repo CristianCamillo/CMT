@@ -4,7 +4,6 @@
 	<head>	
 		<title>CMT - Area Personale Cliente</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
-		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script> 

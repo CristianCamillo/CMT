@@ -28,14 +28,64 @@
 	font-family: hamletOsf;
  	font-size: 18px;
  	
+ 	box-sizing: border-box;	
+ 	
  	margin: 0px;
  	padding: 0px;
+ 	
  	list-style: none;
  	text-decoration: none;
  	
- 	color: var(--brown);
- 	
- 	box-sizing: border-box;	
+ 	color: var(--brown); 	
+}
+
+/* header */
+
+header
+{	
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+header span
+{	
+	display: flex;
+  	align-items: center;
+	
+	transition-duration: 0.2s;
+	cursor: pointer;
+}
+
+header span:hover
+{
+	filter: brightness(115%);
+}
+
+header span img
+{
+	min-width: 140px;
+	width: 140px;
+	
+	margin-right: 20px;
+}
+
+header span h1
+{
+	cursor: pointer;
+}
+
+header div
+{	
+	display: flex;
+	flex-direction: column;
+	
+	padding-left: 100px;
+}
+
+header div button + button
+{
+	margin-top: 4px;
 }
 
 /* body */
