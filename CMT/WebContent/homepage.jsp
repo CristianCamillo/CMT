@@ -275,7 +275,7 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 	<body>	
 		<header>
 			<span onclick="location.href='homepage.jsp'">
-				<img src="icons/bigIcon.png">
+				<img src="icons/siteIcon.png">
 				<h1>Castle Movie Theater</h1>					
 			</span>
 			<div>
@@ -294,11 +294,11 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		
 		<hr>
 		
-		<form class="optionsList" name="form" action="${pageContext.request.contextPath}/filtre" method="GET">
-			<input type="text" name="title" placeholder="Titolo" maxlength="30">
-			<input type="text" name="genre" placeholder="Genere" maxlength="30">
-			<input type="text" name="director" placeholder="Regista" maxlength="30">
-			<input type="text" name="actor" placeholder="Attore" maxlength="30">
+		<form id="filtreForm" class="optionsList" action="${pageContext.request.contextPath}/filtre" method="get">
+			<input name="title" type="text" placeholder="Titolo" maxlength="30">
+			<input name="genre" type="text" placeholder="Genere" maxlength="30">
+			<input name="director" type="text" placeholder="Regista" maxlength="30">
+			<input name="actor" type="text" placeholder="Attore" maxlength="30">
 			<span>&nbsp;</span>
 			<button type="submit">Filtra</button>
 		</form>
@@ -433,10 +433,10 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		<!-- DettagliFrame -->
 		<div id="detailsFrame" class="frameContainer">
 			<div class="frameContent">
-				<span class="frameHeader">
+				<header>
 					<h2>Dettagli film</h2>
 					<button onclick="closeDetailsFrame()">&#x02716;</button>
-				</span>
+				</header>
 				<br>
 				<div style="display: flex; flex-direction: column; max-width: 1000px;">
 					<div class="filmDataContainer">
@@ -473,10 +473,10 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		<!-- AcquistoFrame -->
 		<div id="purchaseFrame" class="frameContainer">
 			<div class="frameContent">
-				<span class="frameHeader">
+				<header>
 					<h2>Acquisto biglietti</h2>
 					<button onclick="closePurchaseFrame()">&#x02716;</button>
-				</span>
+				</header>
 				<br>
 			 	<table>
 			 		<colgroup>

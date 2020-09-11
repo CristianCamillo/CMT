@@ -28,20 +28,31 @@ div.modalContent
 	box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.75);
 }
 
-span.modalHeader
+div.modalContent header
 {
 	display: flex;
 	align-items: center;	
 	justify-content: space-between;
 }
 
-
-/*
-
-div.frameContent
+div.modalContent header span
 {	
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}*/
+	display: flex;
+  	align-items: center;
+  	
+  	cursor: default;
+}
+
+div.modalContent header span:hover
+{
+	filter: brightness(100%);
+}
+
+
+div.modalContent header span img
+{
+	min-width: 30px;
+	width: 30px;
+	
+	margin-right: 10px;
+}

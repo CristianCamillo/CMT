@@ -48,7 +48,7 @@ public class RegistrationServlet extends HttpServlet
 
 			ClientDAO.addClient(newClient);
 
-			HttpSession oldSession = request.getSession(false);		    			
+			HttpSession oldSession = request.getSession(false);
 			if(oldSession != null)
 				oldSession.invalidate();
 			
@@ -62,7 +62,6 @@ public class RegistrationServlet extends HttpServlet
 			currentSession.setMaxInactiveInterval(60 * 60);
 			
 			response.getWriter().write("0");
-			response.sendRedirect("homepage.jsp");
 		}
 		catch(SQLException e)
 		{

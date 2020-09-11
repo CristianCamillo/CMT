@@ -9,7 +9,7 @@
 	<body>
 		<header>
 			<span onclick="location.href='homepage.jsp'">
-				<img src="icons/bigIcon.png">
+				<img src="icons/siteIcon.png">
 				<h1>Castle Movie Theater</h1>					
 			</span>
 		</header>

@@ -36,6 +36,9 @@ public class LoginServlet extends HttpServlet
 		
 		boolean isManager = request.getParameter("isManager") != null;
 		
+		response.setContentType("text/plain");
+	    response.setCharacterEncoding("UTF-8");
+		
 		try
 		{
 			int id;
@@ -46,7 +49,10 @@ public class LoginServlet extends HttpServlet
 				Client client = ClientDAO.getClient(username, password);
 				
 				if(client == null)
-					return; // mettere messaggio errore
+				{
+					response.getWriter().write("1");
+					return;
+				}
 				
 				id = client.getId();
 				balance = client.getBalance();
@@ -56,28 +62,29 @@ public class LoginServlet extends HttpServlet
 				Manager manager = ManagerDAO.getManager(username, password);
 				
 				if(manager == null)
-					return; // mettere messaggio errore
+				{
+					response.getWriter().write("2");
+					return;
+				}
 				
 				id = manager.getId();
 			}
 		    
-		    HttpSession oldSession = request.getSession(false);		    			
+		    HttpSession oldSession = request.getSession(false);
 			if(oldSession != null)
 				oldSession.invalidate();
 			
 			HttpSession currentSession = request.getSession();
 			
 			currentSession.setAttribute("id", id);
-			currentSession.setAttribute("username", username);
-			
+			currentSession.setAttribute("username", username);			
 			if(!isManager)
-				currentSession.setAttribute("balance", balance);
-			
+				currentSession.setAttribute("balance", balance);			
 			currentSession.setAttribute("userType", !isManager ? "client" : "manager");			
 	
 			currentSession.setMaxInactiveInterval(60 * 60);
 
-			response.sendRedirect("homepage.jsp");				
+			response.getWriter().write("0");
 		}
 		catch(SQLException e)
 		{

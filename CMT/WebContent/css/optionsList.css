@@ -9,7 +9,11 @@
 .optionsList *
 {
 	width: 100%;
-	margin: 2px;
+}
+
+.optionsList * + *
+{
+	margin-top: 4px;
 }
 
 .optionsList span
