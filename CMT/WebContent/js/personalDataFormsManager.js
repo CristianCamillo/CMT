@@ -7,7 +7,17 @@ $(document).ready(function()
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
 		{
 			if(responseText != "")
-				$("#username").text(responseText);
+				if(responseText != "1")
+				{
+					$("#username").text(responseText);
+					$("#successLabel").html("L'username e' stato modificato con successo");
+					$("#successModal").css("display", "flex");
+				}
+				else
+				{
+					$("#errorLabel").html("L'username indicato e' gia' memorizzato");
+					$("#errorModal").css("display", "flex");
+				}
 		});
 		
 		event.preventDefault();
@@ -19,6 +29,11 @@ $(document).ready(function()
 		
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
 		{
+			if(responseText != "")
+			{
+				$("#successLabel").html("La password e' stata modificata con successo");
+				$("#successModal").css("display", "flex");
+			}
 		});
 		
 		event.preventDefault();
@@ -31,7 +46,11 @@ $(document).ready(function()
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
 		{
 			if(responseText != "")
-				$("#amount").text(responseText);
+			{
+				$("#balance").text(responseText);
+				$("#successLabel").html("I fondi sono stati aggiunti con successo");
+				$("#successModal").css("display", "flex");				
+			}	
 		});
 		
 		event.preventDefault();

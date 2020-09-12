@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import exceptions.UsernameTakenException;
 import model.Manager;
 import utils.DriverManagerConnectionPool;
 
@@ -38,8 +39,11 @@ public class ManagerDAO
 	    return rs.next();
 	}
 	
-	public static void updateUsername(int id, String newUsername) throws SQLException
+	public static void updateUsername(int id, String newUsername) throws SQLException, UsernameTakenException
 	{
+		if(isRegistered(newUsername))
+			throw new UsernameTakenException(newUsername);
+		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
 		String update = "UPDATE manager SET username = '" + newUsername + "' WHERE id = " + id;

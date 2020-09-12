@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.ClientDAO;
 import DAO.ManagerDAO;
+import exceptions.UsernameTakenException;
 import utils.FieldValidator;
 
 @WebServlet("/updateUserData")
@@ -26,8 +28,6 @@ public class UpdateUserDataServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{		
 		String toChange = request.getParameter("toChange");
-		
-		System.out.println(toChange);
 		
 		String data = "";
 		
@@ -47,12 +47,15 @@ public class UpdateUserDataServlet extends HttpServlet
 				data = request.getParameter("amount");
 				if(!FieldValidator.validateAmount(data))
 					return;
+				break;
 			default:
 				return;
-		}
+		}		
 		
-		int id = (Integer)request.getSession().getAttribute("id");
-		String userType = (String)request.getSession().getAttribute("userType");
+		HttpSession currentSession = request.getSession();
+		
+		int id = (Integer)currentSession.getAttribute("id");
+		String userType = (String)currentSession.getAttribute("userType");
 
 		response.setContentType("text/plain");
 	    response.setCharacterEncoding("UTF-8");
@@ -66,7 +69,9 @@ public class UpdateUserDataServlet extends HttpServlet
 						ClientDAO.updateUsername(id, data);
 					else
 						ManagerDAO.updateUsername(id, data);
-						
+					
+					currentSession.setAttribute("username", data);
+					
 					response.getWriter().write(data);
 				
 					break;
@@ -76,16 +81,26 @@ public class UpdateUserDataServlet extends HttpServlet
 					else
 						ManagerDAO.updatePassword(id, data);
 					
+					response.getWriter().write("_success_");
+					
 					break;
 				case "2":
 					float amount = Float.parseFloat(data);
 					
 					ClientDAO.addAmount(id, amount);
 					
-					response.getWriter().write(((Float)request.getSession().getAttribute("balance") + amount) + "");
+					float newBalance = (Float)currentSession.getAttribute("balance") + amount;
+					
+					currentSession.setAttribute("balance", newBalance + "");
+					
+					response.getWriter().write(newBalance + "");
 			}
 		}
-		catch (SQLException e)
+		catch(UsernameTakenException e)
+		{
+			response.getWriter().write("1");
+		}
+		catch(SQLException e)
 		{
 			System.out.println(e);
 		}

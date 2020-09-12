@@ -86,5 +86,39 @@
 				</form>
 			</div>
 		</div>
+		
+		<div id="successModal" class="modalContainer">
+			<div>
+				<header>
+					<span>
+						<img src="icons/successIcon.png">
+						<h2>Successo</h2>
+					</span>
+				</header>
+				<br>
+				<div class="optionsList">
+					<label id="successLabel"></label>
+					<label>&nbsp;</label>
+					<button onclick="document.getElementById('successModal').style.display = 'none'">Ok</button>
+				</div>
+			</div>
+		</div>
+		
+		<div id="errorModal" class="modalContainer">
+			<div>
+				<header>
+					<span>
+						<img src="icons/errorIcon.png">
+						<h2>Errore</h2>
+					</span>
+				</header>
+				<br>
+				<div class="optionsList">
+					<label id="errorLabel"></label>
+					<label>&nbsp;</label>
+					<button onclick="document.getElementById('errorModal').style.display = 'none'">Ok</button>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
