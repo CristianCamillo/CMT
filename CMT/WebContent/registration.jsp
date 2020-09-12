@@ -4,40 +4,13 @@
 	<head>
 		<title>CMT - Registrazione</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/eye.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
+		<script src="js/alterPasswordVisibility.js"></script>
 		<script src="js/fieldValidator.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-		<script type="text/javascript">
-			function validateForm()
-			{
-				var usr = validateUsername(document.getElementsByName("username")[0]);
-				var psw = validatePassword(document.getElementsByName("password")[0]);
-				var blc = validateBalance(document.getElementsByName("balance")[0]);
-				
-				return usr && psw && blc;
-			}
-		</script>
-		<script type="text/javascript">
-			$(document).ready(function()
-			{
-				$(document).on("submit", "#registrationForm", function(event)
-				{
-					var $form = $(this);
-					
-					$.post($form.attr("action"), $form.serialize(), function(responseText)
-					{	
-						if(responseText != "")				
-							if(responseText === "0")
-								$("#successModal").css("display", "flex");
-							else
-								$("#errorModal").css("display", "flex");
-					});
-					
-					event.preventDefault();
-				});
-			});
-		</script>	
+		<script src="js/registrationFormManager.js"></script>
 	</head>
 	<body id="prova">
 		<header>
@@ -49,10 +22,9 @@
 		
 		<hr>
 		
-		<form id="registrationForm" class="optionsList" style="margin: 100px auto" onsubmit="return validateForm()" action="${pageContext.request.contextPath}/registration" method="post">
+		<form id="registrationForm" class="optionsList" style="margin: 100px auto" onsubmit="return validateRegistrationForm()" action="${pageContext.request.contextPath}/registration" method="post">
 			<input name="username" type="text" placeholder="Username" oninput="validateUsername(this)">
-			<input name="password" type="password" placeholder="Password" oninput="validatePassword(this)">
-			<input name="confPassword" type="password"  placeholder="Conferma password">
+			<span class="passwordSpan"><input name="password" type="password" placeholder="Password" oninput="validatePassword(this)"><img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('password')[0], this)"></span>
 			<input name="balance" type="text" placeholder="Saldo" oninput="validateBalance(this)">
 			<span class="checkboxSpan"><label for="dataTreatment">Trattamento dei dati personali</label><input id="dataTreatment" type="checkbox" required></span>
 			<span>&nbsp;</span>

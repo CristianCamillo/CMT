@@ -10,44 +10,7 @@
 		<script src="js/alterPasswordVisibility.js"></script>
 		<script src="js/fieldValidator.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-		<script type="text/javascript">
-			function validateForm()
-			{
-				var usr = validateUsername(document.getElementsByName("username")[0]);
-				var psw = validatePassword(document.getElementsByName("password")[0]);
-				
-				return usr && psw;
-			}			
-		</script>
-		<script type="text/javascript">
-			$(document).ready(function()
-			{
-				$(document).on("submit", "#loginForm", function(event)
-				{
-					var $form = $(this);
-					
-					$.post($form.attr("action"), $form.serialize(), function(responseText)
-					{											
-						if(responseText != "")
-							if(responseText === "0")
-								window.location.href = 'homepage.jsp';
-							else 
-							{
-								var msg = "Dati non associati ad alcun ";
-								if(responseText === "1")
-									msg += "cliente";
-								else
-									msg += "gestore";
-								
-								$("#errorLabel").html(msg);
-								$("#errorModal").css("display", "flex");
-							}
-					});
-					
-					event.preventDefault();
-				});
-			});
-		</script>
+		<script src="js/loginFormManager.js"></script>
 	</head>
 	<body>		
 		<header>
@@ -59,7 +22,7 @@
 		
 		<hr>
 		
-		<form id="loginForm" class="optionsList" style="margin: 100px auto" onsubmit="return validateForm()" action="${pageContext.request.contextPath}/login" method="post">
+		<form id="loginForm" class="optionsList" style="margin: 100px auto" onsubmit="return validateLoginForm()" action="${pageContext.request.contextPath}/login" method="post">
 			<input name="username" type="text" placeholder="Username" oninput="validateUsername(this)">
 			<span class="passwordSpan"><input name="password" type="password" placeholder="Password" oninput="validatePassword(this)"><img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('password')[0], this)"></span>
 			<span class="checkboxSpan"><label for="isManager">Accedi come manager</label><input id="isManager" name="isManager" type="checkbox"></span>
