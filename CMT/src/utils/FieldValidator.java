@@ -18,7 +18,7 @@ public class FieldValidator
 	{
 		if(username == null) return false;
 		
-		String regex = "^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$";
+		String regex = "^(?=.{6,20}$)(?![_.0-9])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$";
 		
         Matcher m = Pattern.compile(regex).matcher(username); 
         
