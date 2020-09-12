@@ -25,7 +25,7 @@
 		<form id="registrationForm" class="optionsList" style="margin: 100px auto" onsubmit="return validateRegistrationForm()" action="${pageContext.request.contextPath}/registration" method="post">
 			<input name="username" type="text" placeholder="Username" oninput="validateUsername(this)">
 			<span class="passwordSpan"><input name="password" type="password" placeholder="Password" oninput="validatePassword(this)"><img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('password')[0], this)"></span>
-			<input name="balance" type="text" placeholder="Saldo" oninput="validateBalance(this)">
+			<span class="euroSpan"><input name="balance" type="text" placeholder="Saldo" oninput="validateBalance(this)"><label>&euro;</label></span>
 			<span class="checkboxSpan"><label for="dataTreatment">Trattamento dei dati personali</label><input id="dataTreatment" type="checkbox" required></span>
 			<span>&nbsp;</span>
 			<button type="submit">Registrati</button>

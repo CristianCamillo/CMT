@@ -25,7 +25,7 @@
 		<div style="display: flex">
 			<div class="optionsList" style="margin-right: 20px">
 				<span><h3>Username</h3><label id="username"><%= request.getSession().getAttribute("username") %></label></span>
-				<span><h3>Saldo</h3><span><label id="balance"><%= request.getSession().getAttribute("balance") %></label><label> </label></span></span>
+				<span><h3>Saldo</h3><span><label id="balance"><%= request.getSession().getAttribute("balance") %></label><label> &euro;</label></span></span>
 				<span>&nbsp;</span>
 				<span>&nbsp;</span>
 				<button onclick="document.getElementById('usernameModal').style.display = 'flex'">Modifica username</button>
@@ -79,7 +79,7 @@
 				</header>
 				<br>
 				<form id="amountForm" class="optionsList" onsubmit="return validateAmount(document.getElementsByName('amount')[0])" action="${pageContext.request.contextPath}/updateUserData" method="post">
-					<input name="amount" type="text" oninput="validateAmount(this)">
+					<span class="euroSpan"><input name="amount" type="text" oninput="validateAmount(this)"><label>&euro;</label></span>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiungi</button>
 					<input name="toChange" type="hidden" value="2">

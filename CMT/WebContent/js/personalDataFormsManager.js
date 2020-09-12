@@ -9,7 +9,7 @@ $(document).ready(function()
 			if(responseText != "")
 				if(responseText != "1")
 				{
-					$("#username").text(responseText);
+					$("#username").html(responseText);
 					$("#successLabel").html("L'username e' stato modificato con successo");
 					$("#successModal").css("display", "flex");
 					$("#usernameModal").css("display", "none");
@@ -50,7 +50,7 @@ $(document).ready(function()
 			alert("qua");
 			if(responseText != "")
 			{
-				$("#balance").text(responseText);
+				$("#balance").html(responseText);
 				$("#successLabel").html("I fondi sono stati aggiunti con successo");
 				$("#successModal").css("display", "flex");				
 			}	
