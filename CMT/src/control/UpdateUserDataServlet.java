@@ -50,7 +50,7 @@ public class UpdateUserDataServlet extends HttpServlet
 				break;
 			default:
 				return;
-		}		
+		}
 		
 		HttpSession currentSession = request.getSession();
 		
@@ -89,7 +89,7 @@ public class UpdateUserDataServlet extends HttpServlet
 					
 					ClientDAO.addAmount(id, amount);
 					
-					float newBalance = (Float)currentSession.getAttribute("balance") + amount;
+					float newBalance = Float.parseFloat((String)currentSession.getAttribute("balance")) + amount;
 					
 					currentSession.setAttribute("balance", newBalance + "");
 					

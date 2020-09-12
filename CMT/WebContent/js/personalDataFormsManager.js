@@ -47,12 +47,12 @@ $(document).ready(function()
 		
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
 		{
-			alert("qua");
 			if(responseText != "")
 			{
 				$("#balance").html(responseText);
 				$("#successLabel").html("I fondi sono stati aggiunti con successo");
-				$("#successModal").css("display", "flex");				
+				$("#successModal").css("display", "flex");
+				$("#amountModal").css("display", "none");			
 			}	
 		});
 		
