@@ -12,6 +12,7 @@ $(document).ready(function()
 					$("#username").text(responseText);
 					$("#successLabel").html("L'username e' stato modificato con successo");
 					$("#successModal").css("display", "flex");
+					$("#usernameModal").css("display", "none");
 				}
 				else
 				{
@@ -33,6 +34,7 @@ $(document).ready(function()
 			{
 				$("#successLabel").html("La password e' stata modificata con successo");
 				$("#successModal").css("display", "flex");
+				$("#passwordModal").css("display", "none");
 			}
 		});
 		
@@ -45,6 +47,7 @@ $(document).ready(function()
 		
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
 		{
+			alert("qua");
 			if(responseText != "")
 			{
 				$("#balance").text(responseText);
