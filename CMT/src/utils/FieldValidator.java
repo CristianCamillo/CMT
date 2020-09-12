@@ -3,9 +3,7 @@ package utils;
 import java.util.regex.*; 
 
 public class FieldValidator
-{	
-	
-	
+{		
 	public static boolean validateLoginForm(String username, String password)
 	{
 		return validateUsername(username) && validatePassword(password);
@@ -16,7 +14,7 @@ public class FieldValidator
 		return validateUsername(username) && validatePassword(password) && validateBalance(balance);
 	}
 	
-	private static boolean validateUsername(String username)
+	public static boolean validateUsername(String username)
 	{
 		if(username == null) return false;
 		
@@ -27,7 +25,7 @@ public class FieldValidator
         return m.matches(); 
 	}
 	
-	private static boolean validatePassword(String password)
+	public static boolean validatePassword(String password)
 	{
 		if(password == null) return false;
 		
