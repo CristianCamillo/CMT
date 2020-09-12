@@ -27,8 +27,7 @@ public class UpdateUserDataServlet extends HttpServlet
 	{		
 		String toChange = request.getParameter("toChange");
 		
-		if(!FieldValidator.checkRange(toChange, 0, 2))
-			return;
+		System.out.println(toChange);
 		
 		String data = "";
 		
@@ -36,24 +35,25 @@ public class UpdateUserDataServlet extends HttpServlet
 		{
 			case "0":
 				data = request.getParameter("newUsername");
-				if(!FieldValidator.checkLength(data, 6, 20))
+				if(!FieldValidator.validateUsername(data))
 					return;
 				break;
 			case "1":
 				data = request.getParameter("newPassword");
-				if(!FieldValidator.checkLength(data, 6, 20))
+				if(!FieldValidator.validatePassword(data))
 					return;
 				break;
 			case "2":
 				data = request.getParameter("amount");
-				if(!FieldValidator.checkIsPos(data))
+				if(!FieldValidator.validateAmount(data))
 					return;
+			default:
+				return;
 		}
 		
 		int id = (Integer)request.getSession().getAttribute("id");
 		String userType = (String)request.getSession().getAttribute("userType");
-		
-		// setup per risposta ajax
+
 		response.setContentType("text/plain");
 	    response.setCharacterEncoding("UTF-8");
 		

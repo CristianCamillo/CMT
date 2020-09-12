@@ -96,8 +96,11 @@ public class ClientDAO
 	    DriverManagerConnectionPool.releaseConnection(con);
 	}
 	
-	public static void updateUsername(int id, String newUsername) throws SQLException
+	public static void updateUsername(int id, String newUsername) throws SQLException, UsernameTakenException
 	{
+		if(isRegistered(newUsername))
+			throw new UsernameTakenException(newUsername);
+		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
 		String update = "UPDATE client SET username = '" + newUsername + "' WHERE id = " + id;

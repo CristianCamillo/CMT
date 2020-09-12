@@ -37,6 +37,19 @@ function validateBalance(element)
 	return valid;	
 }
 
+function validateAmount(element)
+{	
+	const potNumber = parseFloat(element.value);
+	const valid = potNumber.toString() === element.value && potNumber > 0;
+	
+	if(valid)
+		setGreen(element);
+	else
+		setRed(element);
+		
+	return valid;	
+}
+
 function setGreen(element)
 {
 	element.style.borderColor = "#008000";

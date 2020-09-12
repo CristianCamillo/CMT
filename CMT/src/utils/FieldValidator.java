@@ -49,4 +49,18 @@ public class FieldValidator
 			return false;
 		}
 	}
+	
+	public static boolean validateAmount(String number)
+	{
+		if(number == null) return false;
+		
+		try
+		{
+			return Float.parseFloat(number) > 0;
+		}
+		catch(NumberFormatException e)
+		{
+			return false;
+		}
+	}
 }

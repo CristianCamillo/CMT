@@ -4,23 +4,13 @@
 	<head>	
 		<title>CMT - Area Personale Cliente</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/eye.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
+		<script src="js/alterPasswordVisibility.js"></script>
 		<script src="js/fieldValidator.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-		<script type="text/javascript">
-			$(document).on("submit", "#usernameForm", function(event)
-			{
-				var $form = $(this);
-				
-				$.post($form.attr("action"), $form.serialize(), function(responseText)
-				{
-					$("#username").text(responseText);
-				});
-				
-				event.preventDefault();
-			});
-		</script>
+		<script src="js/personalDataFormsManager.js"></script>
 	</head>
 	<body>
 		<header>
@@ -56,8 +46,8 @@
 					<button onclick="document.getElementById('usernameModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="usernameForm" class="optionsList" action="${pageContext.request.contextPath}/updateUserData" method="post">
-					<input name="newUsername" type="text" oninput="checkFieldLength(this, 6, 20)" minlength="6" maxlength="20" required>
+				<form id="usernameForm" class="optionsList" onsubmit="return validateUsername(document.getElementsByName('newUsername')[0])" action="${pageContext.request.contextPath}/updateUserData" method="post">
+					<input name="newUsername" type="text" oninput="validateUsername(this)">
 					<span>&nbsp;</span>
 					<button type="submit">Aggiorna</button>
 					<input name="toChange" type="hidden" value="0">
@@ -72,9 +62,8 @@
 					<button onclick="document.getElementById('passwordModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="passwordForm" class="optionsList" onsubmit="return password.value == confPassword.value" action="${pageContext.request.contextPath}/updateUserData" method="post">
-					<input name="newPassword" type="password" oninput="checkFieldLength(this, 6, 20); checkPswMatching('newPassword', 'confPassword');" minlength="6" maxlength="20" required>
-					<input name="confPassword" type="password" oninput="checkPswMatching('newPassword', 'confPassword')" minlength="6" maxlength="20" required>
+				<form id="passwordForm" class="optionsList" onsubmit="return validatePassword(document.getElementsByName('newPassword')[0])" action="${pageContext.request.contextPath}/updateUserData" method="post">
+					<span class="passwordSpan"><input name="newPassword" type="password" oninput="validatePassword(this)"><img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('newPassword')[0], this)"></span>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiorna</button>
 					<input name="toChange" type="hidden" value="1">
@@ -89,8 +78,8 @@
 					<button onclick="document.getElementById('amountModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="amountForm" class="optionsList" action="${pageContext.request.contextPath}/updateUserData" method="post">
-					<input name="amount" type="number" oninput="checkIsPos(this)" min="0.000000000000000001" required>
+				<form id="amountForm" class="optionsList" onsubmit="return validateAmount(document.getElementsByName('amount')[0])" action="${pageContext.request.contextPath}/updateUserData" method="post">
+					<input name="amount" type="text" oninput="validateAmount(this)">
 					<span>&nbsp;</span>
 					<button type="submit">Aggiungi</button>
 					<input name="toChange" type="hidden" value="2">
