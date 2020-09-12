@@ -50,21 +50,15 @@ public class ClientDAO
 	    
 	    DriverManagerConnectionPool.releaseConnection(con);
 
-	    if(rs.next())    
-	    	return rs.getInt("id");
-	    else
-	    	return -1;
+	    return rs.next() ? rs.getInt("id") : -1;
 	}
 	
 	public static void addClient(Client client) throws SQLException, UsernameTakenException
-	{
-		Connection con = DriverManagerConnectionPool.getConnection();
-		
+	{		
 		if(isRegistered(client.getUsername()))
-		{
-			DriverManagerConnectionPool.releaseConnection(con);
 			throw new UsernameTakenException(client.getUsername());
-		}
+		
+		Connection con = DriverManagerConnectionPool.getConnection();
 		
 		String insert = "INSERT INTO client VALUES (" + client.getId() + ", '" + client.getUsername() + "', '" + client.getPassword() + "', " + client.getBalance() + ")";
 		

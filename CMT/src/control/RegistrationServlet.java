@@ -50,16 +50,14 @@ public class RegistrationServlet extends HttpServlet
 
 			HttpSession oldSession = request.getSession(false);
 			if(oldSession != null)
-				oldSession.invalidate();
-			
+				oldSession.invalidate();			
 			HttpSession currentSession = request.getSession();
+			currentSession.setMaxInactiveInterval(60 * 60);
 			
 			currentSession.setAttribute("id", newClient.getId());
 			currentSession.setAttribute("username", newClient.getUsername());
 			currentSession.setAttribute("balance", newClient.getBalance());
 			currentSession.setAttribute("userType", "client");			
-	
-			currentSession.setMaxInactiveInterval(60 * 60);
 			
 			response.getWriter().write("0");
 		}

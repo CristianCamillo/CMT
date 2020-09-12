@@ -72,17 +72,15 @@ public class LoginServlet extends HttpServlet
 		    
 		    HttpSession oldSession = request.getSession(false);
 			if(oldSession != null)
-				oldSession.invalidate();
-			
+				oldSession.invalidate();			
 			HttpSession currentSession = request.getSession();
+			currentSession.setMaxInactiveInterval(60 * 60);
 			
 			currentSession.setAttribute("id", id);
 			currentSession.setAttribute("username", username);			
 			if(!isManager)
 				currentSession.setAttribute("balance", balance);			
 			currentSession.setAttribute("userType", !isManager ? "client" : "manager");			
-	
-			currentSession.setMaxInactiveInterval(60 * 60);
 
 			response.getWriter().write("0");
 		}
