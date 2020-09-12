@@ -6,8 +6,8 @@
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
-		<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
-		<script src="js/colorField.js"></script>
+		<script src="js/fieldValidator.js"></script>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script type="text/javascript">
 			$(document).on("submit", "#usernameForm", function(event)
 			{
@@ -34,8 +34,8 @@
 		
 		<div style="display: flex">
 			<div class="optionsList" style="margin-right: 20px">
-				<span><h3>Username</h3><label id="username"><%=request.getSession().getAttribute("username")%></label></span>
-				<span><h3>Saldo</h3><span><label id="balance" style="width: auto"><%=request.getSession().getAttribute("balance")%></label><label> </label></span></span>
+				<span><h3>Username</h3><label id="username"><%= request.getSession().getAttribute("username") %></label></span>
+				<span><h3>Saldo</h3><span><label id="balance"><%= request.getSession().getAttribute("balance") %></label><label> </label></span></span>
 				<span>&nbsp;</span>
 				<span>&nbsp;</span>
 				<button onclick="document.getElementById('usernameModal').style.display = 'flex'">Modifica username</button>
@@ -50,11 +50,11 @@
 		</div>
 		
 		<div id="usernameModal" class="modalContainer">
-			<div class="modalContent">
-				<span class="modalHeader">
+			<div>
+				<header>
 					<h2>Modifica username</h2>
 					<button onclick="document.getElementById('usernameModal').style.display = 'none'">&#x02716;</button>
-				</span>
+				</header>
 				<br>
 				<form id="usernameForm" class="optionsList" action="${pageContext.request.contextPath}/updateUserData" method="post">
 					<input name="newUsername" type="text" oninput="checkFieldLength(this, 6, 20)" minlength="6" maxlength="20" required>
@@ -66,11 +66,11 @@
 		</div>
 		
 		<div id="passwordModal" class="modalContainer">
-			<div class="modalContent">
-				<span class="modalHeader">
+			<div>
+				<header>
 					<h2>Modifica password</h2>
 					<button onclick="document.getElementById('passwordModal').style.display = 'none'">&#x02716;</button>
-				</span>
+				</header>
 				<br>
 				<form id="passwordForm" class="optionsList" onsubmit="return password.value == confPassword.value" action="${pageContext.request.contextPath}/updateUserData" method="post">
 					<input name="newPassword" type="password" oninput="checkFieldLength(this, 6, 20); checkPswMatching('newPassword', 'confPassword');" minlength="6" maxlength="20" required>
@@ -83,11 +83,11 @@
 		</div>
 		
 		<div id="amountModal" class="modalContainer">
-			<div class="modalContent">
-				<span class="modalHeader">
+			<div>
+				<header>
 					<h2>Aggiunta fondi</h2>
 					<button onclick="document.getElementById('amountModal').style.display = 'none'">&#x02716;</button>
-				</span>
+				</header>
 				<br>
 				<form id="amountForm" class="optionsList" action="${pageContext.request.contextPath}/updateUserData" method="post">
 					<input name="amount" type="number" oninput="checkIsPos(this)" min="0.000000000000000001" required>

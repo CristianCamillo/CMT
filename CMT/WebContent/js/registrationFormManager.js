@@ -1,8 +1,8 @@
 function validateRegistrationForm()
 {
-	var usr = validateUsername(document.getElementsByName("username")[0]);
-	var psw = validatePassword(document.getElementsByName("password")[0]);
-	var blc = validateBalance(document.getElementsByName("balance")[0]);
+	const usr = validateUsername(document.getElementsByName("username")[0]);
+	const psw = validatePassword(document.getElementsByName("password")[0]);
+	const blc = validateBalance(document.getElementsByName("balance")[0]);
 	
 	return usr && psw && blc;
 }
@@ -11,7 +11,7 @@ $(document).ready(function()
 {
 	$(document).on("submit", "#registrationForm", function(event)
 	{
-		var $form = $(this);
+		const $form = $(this);
 		
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
 		{	

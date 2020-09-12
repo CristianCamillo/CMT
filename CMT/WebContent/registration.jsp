@@ -12,7 +12,7 @@
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="js/registrationFormManager.js"></script>
 	</head>
-	<body id="prova">
+	<body>
 		<header>
 			<span onclick="location.href='homepage.jsp'">
 				<img src="icons/siteIcon.png">
@@ -32,7 +32,7 @@
 		</form>
 		
 		<div id="successModal" class="modalContainer">
-			<div class="modalContent">
+			<div>
 				<header>
 					<span>
 						<img src="icons/successIcon.png">
@@ -49,7 +49,7 @@
 		</div>
 		
 		<div id="errorModal" class="modalContainer">
-			<div class="modalContent">
+			<div>
 				<header>
 					<span>
 						<img src="icons/errorIcon.png">

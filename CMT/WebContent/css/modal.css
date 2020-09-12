@@ -18,7 +18,7 @@ div.modalContainer
 	background-color: rgba(0,0,0,0.5);
 }
 
-div.modalContent
+div.modalContainer > div
 {				
     padding: 15px;
 	border: 3px solid var(--brown);
@@ -28,14 +28,14 @@ div.modalContent
 	box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.75);
 }
 
-div.modalContent header
+div.modalContainer > div header
 {
 	display: flex;
 	align-items: center;	
 	justify-content: space-between;
 }
 
-div.modalContent header span
+div.modalContainer > div header span
 {	
 	display: flex;
   	align-items: center;
@@ -43,13 +43,7 @@ div.modalContent header span
   	cursor: default;
 }
 
-div.modalContent header span:hover
-{
-	filter: brightness(100%);
-}
-
-
-div.modalContent header span img
+div.modalContainer > div header span img
 {
 	min-width: 30px;
 	width: 30px;

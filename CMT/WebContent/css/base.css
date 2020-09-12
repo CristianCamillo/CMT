@@ -39,16 +39,25 @@
  	color: var(--brown); 	
 }
 
+/* body */
+
+body
+{
+	margin: 15px;
+	
+	background-color: var(--yellow);
+}
+
 /* header */
 
-header
+body header
 {	
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
-header span
+body header span
 {	
 	display: flex;
   	align-items: center;
@@ -57,12 +66,12 @@ header span
 	cursor: pointer;
 }
 
-header span:hover
+body header span:hover
 {
 	filter: brightness(115%);
 }
 
-header span img
+body header span img
 {
 	min-width: 140px;
 	width: 140px;
@@ -70,12 +79,12 @@ header span img
 	margin-right: 20px;
 }
 
-header span h1
+body header span h1
 {
 	cursor: pointer;
 }
 
-header div
+body header div
 {	
 	display: flex;
 	flex-direction: column;
@@ -83,18 +92,9 @@ header div
 	padding-left: 100px;
 }
 
-header div button + button
+body header div button + button
 {
 	margin-top: 4px;
-}
-
-/* body */
-
-body
-{
-	margin: 15px;
-	
-	background-color: var(--yellow);
 }
 
 /* h tags */
@@ -121,24 +121,10 @@ h3
 
 /* misc stuff */
 
-input[type=text], input[type=password], input[type=number]
+input[type=text], input[type=password]
 {
 	padding: 4px 6px;
 	border-radius: 4px;
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button
-{
-	-webkit-appearance: none;
-	margin: 0;
-}
-
-/* Firefox */
-input[type=number]
-{
- 	-moz-appearance: textfield;
 }
 
 button

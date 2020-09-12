@@ -11,8 +11,7 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		<link rel="stylesheet" type="text/css" href="css/poster.css">
 		<link rel="stylesheet" type="text/css" href="css/projectionRoom.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
-		<script type="text/javascript">
-		
+		<script type="text/javascript">		
 			var selectedFilm;
 			var selectedProjection;
 		

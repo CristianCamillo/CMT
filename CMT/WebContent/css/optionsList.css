@@ -18,7 +18,7 @@
 
 /**********************************************/
 
-.optionsList span
+.optionsList > span
 {
 	display: flex;
 	align-items: center;
@@ -27,30 +27,24 @@
 
 /**********************************************/
 
-.optionsList span.passwordSpan input
+.optionsList > span.passwordSpan input
 {
 	width: 100%;
 }
 
-.optionsList span.passwordSpan img
+.optionsList > span.passwordSpan img
 {
 	margin: 0px 5px;
 }
 
-
 /**********************************************/
 
-.optionsList span.checkboxSpan
+.optionsList > span.checkboxSpan
 {
 	margin: 5px 3px;
 }
 
-.optionsList span.checkboxSpan label
-{
-	width: 100%;
-}
-
-.optionsList span.checkboxSpan input
+.optionsList > span.checkboxSpan input
 {
 	margin: 0px 5px;
 }

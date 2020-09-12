@@ -31,7 +31,7 @@
 		</form>
 		
 		<div id="errorModal" class="modalContainer">
-			<div class="modalContent">
+			<div>
 				<header>
 					<span>
 						<img src="icons/errorIcon.png">

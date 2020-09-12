@@ -1,7 +1,7 @@
 function validateLoginForm()
 {
-	var usr = validateUsername(document.getElementsByName("username")[0]);
-	var psw = validatePassword(document.getElementsByName("password")[0]);
+	const usr = validateUsername(document.getElementsByName("username")[0]);
+	const psw = validatePassword(document.getElementsByName("password")[0]);
 	
 	return usr && psw;
 }			
@@ -10,7 +10,7 @@ $(document).ready(function()
 {
 	$(document).on("submit", "#loginForm", function(event)
 	{
-		var $form = $(this);
+		const $form = $(this);
 		
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
 		{											
