@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.ClientDAO;
 import DAO.ManagerDAO;
-import utils.DataChecker;
+import utils.FieldValidator;
 
 @WebServlet("/updateUserData")
 public class UpdateUserDataServlet extends HttpServlet
@@ -27,7 +27,7 @@ public class UpdateUserDataServlet extends HttpServlet
 	{		
 		String toChange = request.getParameter("toChange");
 		
-		if(!DataChecker.checkRange(toChange, 0, 2))
+		if(!FieldValidator.checkRange(toChange, 0, 2))
 			return;
 		
 		String data = "";
@@ -36,17 +36,17 @@ public class UpdateUserDataServlet extends HttpServlet
 		{
 			case "0":
 				data = request.getParameter("newUsername");
-				if(!DataChecker.checkLength(data, 6, 20))
+				if(!FieldValidator.checkLength(data, 6, 20))
 					return;
 				break;
 			case "1":
 				data = request.getParameter("newPassword");
-				if(!DataChecker.checkLength(data, 6, 20))
+				if(!FieldValidator.checkLength(data, 6, 20))
 					return;
 				break;
 			case "2":
 				data = request.getParameter("amount");
-				if(!DataChecker.checkIsPos(data))
+				if(!FieldValidator.checkIsPos(data))
 					return;
 		}
 		

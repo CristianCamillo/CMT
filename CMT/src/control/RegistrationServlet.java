@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import DAO.ClientDAO;
 import model.Client;
-import utils.DataChecker;
+import utils.FieldValidator;
 
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet
@@ -30,7 +30,7 @@ public class RegistrationServlet extends HttpServlet
 		String password = request.getParameter("password");
 		String balance = request.getParameter("balance");
 		
-		if(!DataChecker.checkForRegistration(username, password, balance))
+		if(!FieldValidator.validateRegistrationForm(username, password, balance))
 			return;
 		
 		response.setContentType("text/plain");

@@ -17,7 +17,7 @@ import model.Room;
 import DAO.FilmDAO;
 import DAO.ProjectionDAO;
 import DAO.RoomDAO;
-import utils.DataChecker;
+import utils.FieldValidator;
 
 @WebServlet("/filtre")
 public class FiltreServlet extends HttpServlet
@@ -36,7 +36,7 @@ public class FiltreServlet extends HttpServlet
 		String director = request.getParameter("director");
 		String actor = request.getParameter("actor");
 
-		if(!DataChecker.checkForFiltre(title, genre, director, actor))
+		if(!FieldValidator.checkForFiltre(title, genre, director, actor))
 			return;
 		
 		try

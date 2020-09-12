@@ -14,7 +14,7 @@ import DAO.ClientDAO;
 import DAO.ManagerDAO;
 import model.Client;
 import model.Manager;
-import utils.DataChecker;
+import utils.FieldValidator;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet
@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		if(!DataChecker.checkForLogin(username, password))
+		if(!FieldValidator.validateLoginForm(username, password))
 			return;
 		
 		boolean isManager = request.getParameter("isManager") != null;

@@ -1,5 +1,5 @@
 function validateUsername(element)
-{					   
+{						   
 	const str = /^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
 	const valid = str.test(element.value);
 	
