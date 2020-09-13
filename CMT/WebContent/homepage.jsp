@@ -11,6 +11,25 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		<link rel="stylesheet" type="text/css" href="css/poster.css">
 		<link rel="stylesheet" type="text/css" href="css/projectionRoom.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
+		<script src="js/fieldValidator.js"></script>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function()
+				{
+					$(document).on("submit", "#filtreForm", function(event)
+					{
+						const $form = $(this);
+						
+						$.post($form.attr("action"), $form.serialize(), function(responseText)
+						{											
+							alert("aaa");
+						});
+						
+						event.preventDefault();
+					});
+				});
+		</script>
+	
 		<script type="text/javascript">		
 			var selectedFilm;
 			var selectedProjection;
@@ -417,16 +436,18 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 			</div>
 		</div>
 		
+		<div id="posterContainer">
+			<!-- Lista dei poster dei film -->
+			<%
+				ArrayList<Film> films = (ArrayList<Film>)request.getSession().getAttribute("films");
+				
+				for(int i = 0, l = films != null ? films.size() : 0; i < l; i++)
+					out.println("<img src=\"posters/" + films.get(i).getPoster() + "\" class=\"presPoster\" onclick=\"openDetailsFrame('"+ i +"')\">");
+			%>
+		</div>
 		
 		
 		
-		<!-- Lista dei poster dei film -->
-		<%
-			ArrayList<Film> films = (ArrayList<Film>)request.getSession().getAttribute("films");
-			
-			for(int i = 0, l = films != null ? films.size() : 0; i < l; i++)
-				out.println("<img src=\"posters/" + films.get(i).getPoster() + "\" class=\"presPoster\" onclick=\"openDetailsFrame('"+ i +"')\">");
-		%>
 
 		<!-- DettagliFrame -->
 		<div id="detailsFrame" class="frameContainer">

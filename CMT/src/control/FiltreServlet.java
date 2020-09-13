@@ -10,13 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.TicketDAO;
-import model.Film;
-import model.Projection;
-import model.Room;
+import org.json.JSONObject;
+
 import DAO.FilmDAO;
-import DAO.ProjectionDAO;
-import DAO.RoomDAO;
+import model.Film;
 import utils.FieldValidator;
 
 @WebServlet("/filtre")
@@ -31,17 +28,49 @@ public class FiltreServlet extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		System.out.println("INIZIO FILTRE SERVLET");
+		
 		String title = request.getParameter("title");
 		String genre = request.getParameter("genre");
 		String director = request.getParameter("director");
 		String actor = request.getParameter("actor");
 
-		if(!FieldValidator.checkForFiltre(title, genre, director, actor))
+		if(!FieldValidator.validateFiltreForm(title, genre, director, actor))
 			return;
 		
+		response.setContentType("text/plain");
+	    response.setCharacterEncoding("UTF-8");
+			    
 		try
 		{
 			ArrayList<Film> films = FilmDAO.findFilm(title, genre, director, actor);
+			
+			String responseText = "";
+			
+			for(Film film : films)
+			{
+				JSONObject filmDetails = new JSONObject();
+				filmDetails.put("id", film.getId());
+				filmDetails.put("title", film.getTitle());
+				filmDetails.put("runningTime", film.getRunningTime());
+				filmDetails.put("genre", film.getGenre());
+				filmDetails.put("director", film.getDirector());
+				filmDetails.put("actor1", film.getActor1());
+				filmDetails.put("actor2", film.getActor2());
+				filmDetails.put("description", film.getDescription());
+				filmDetails.put("poster", film.getPoster());
+			         
+		        JSONObject filmObject = new JSONObject(); 
+		        filmObject.put("film", filmDetails);
+		        
+		        responseText += filmObject;
+		        
+		        System.out.println(filmObject);
+			}
+			
+			response.getWriter().write(responseText);
+			
+			/*ArrayList<Film> films = FilmDAO.findFilm(title, genre, director, actor);
 			
 			request.getSession().setAttribute("films", films);
 			
@@ -81,9 +110,13 @@ public class FiltreServlet extends HttpServlet
 			request.getSession().setAttribute("projections", projections);
 			request.getSession().setAttribute("roomStates", roomStates);
 			
-			request.getRequestDispatcher("homepage.jsp").forward(request, response);
+			request.getRequestDispatcher("homepage.jsp").forward(request, response);*/
 		}
 		catch(SQLException e)
+		{
+			System.out.println(e);
+		}
+		catch(Exception e)
 		{
 			System.out.println(e);
 		}

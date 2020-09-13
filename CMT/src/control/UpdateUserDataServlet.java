@@ -30,7 +30,7 @@ public class UpdateUserDataServlet extends HttpServlet
 		String toChange = request.getParameter("toChange");
 		
 		String data = "";
-		
+
 		switch(toChange)
 		{
 			case "0":
@@ -52,14 +52,14 @@ public class UpdateUserDataServlet extends HttpServlet
 				return;
 		}
 		
-		HttpSession currentSession = request.getSession();
+		HttpSession session = request.getSession();
 		
-		int id = (Integer)currentSession.getAttribute("id");
-		String userType = (String)currentSession.getAttribute("userType");
+		int id = (Integer)session.getAttribute("id");
+		String userType = (String)session.getAttribute("userType");
 
 		response.setContentType("text/plain");
 	    response.setCharacterEncoding("UTF-8");
-		
+
 		try
 		{
 			switch(toChange)
@@ -70,7 +70,7 @@ public class UpdateUserDataServlet extends HttpServlet
 					else
 						ManagerDAO.updateUsername(id, data);
 					
-					currentSession.setAttribute("username", data);
+					session.setAttribute("username", data);
 					
 					response.getWriter().write(data);
 				
@@ -81,17 +81,17 @@ public class UpdateUserDataServlet extends HttpServlet
 					else
 						ManagerDAO.updatePassword(id, data);
 					
-					response.getWriter().write("_success_");
+					response.getWriter().write("placeholder");
 					
 					break;
 				case "2":
 					float amount = Float.parseFloat(data);
 					
 					ClientDAO.addAmount(id, amount);
+
+					float newBalance = Float.parseFloat(session.getAttribute("balance") + "") + amount;
 					
-					float newBalance = Float.parseFloat((String)currentSession.getAttribute("balance")) + amount;
-					
-					currentSession.setAttribute("balance", newBalance + "");
+					session.setAttribute("balance", newBalance + "");
 					
 					response.getWriter().write(newBalance + "");
 			}

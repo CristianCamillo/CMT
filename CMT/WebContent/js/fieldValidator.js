@@ -7,7 +7,7 @@ function validateUsername(element)
 		setGreen(element);
 	else
 		setRed(element);
-		
+	
 	return valid;	
 }
 
@@ -20,8 +20,8 @@ function validatePassword(element)
 		setGreen(element);
 	else
 		setRed(element);
-		
-	return valid;	
+	
+	return valid;
 }
 
 function validateBalance(element)
@@ -33,7 +33,7 @@ function validateBalance(element)
 		setGreen(element);
 	else
 		setRed(element);
-		
+	
 	return valid;	
 }
 
@@ -46,10 +46,24 @@ function validateAmount(element)
 		setGreen(element);
 	else
 		setRed(element);
-		
+	
 	return valid;	
 }
 
+/* ANCORA NON USATO
+function validateNominative(element)
+{
+	const str = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+	const valid = str.test(element.value);
+	
+	if(valid)
+		setGreen(element);
+	else
+		setRed(element);
+	
+	return valid;
+}
+*/
 function setGreen(element)
 {
 	element.style.borderColor = "#008000";

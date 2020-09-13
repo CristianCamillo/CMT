@@ -4,6 +4,27 @@ import java.util.regex.*;
 
 public class FieldValidator
 {		
+	private static final String USERNAME_REGEX   = "^(?=.{6,20}$)(?![_.0-9])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$";
+	private static final String PASSWORD_REGEX   = "^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$";
+	private static final String NOMINATIVE_REGEX = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
+	
+	private static boolean validateRegex(String string, String regex)
+	{
+		if(string == null) return false;
+		
+        return Pattern.compile(regex).matcher(string).matches();
+	}
+	
+	public static boolean validateFiltreForm(String title, String genre, String director, String actor)
+	{
+		if(title == null || genre == null || director == null || actor == null) return false;
+		
+		return title.length() <= 30 &&
+			   genre.length() <= 30 &&
+			   director.length() <= 30 &&
+			   actor.length() <= 30;
+	}
+	
 	public static boolean validateLoginForm(String username, String password)
 	{
 		return validateUsername(username) && validatePassword(password);
@@ -12,28 +33,21 @@ public class FieldValidator
 	public static boolean validateRegistrationForm(String username, String password, String balance)
 	{
 		return validateUsername(username) && validatePassword(password) && validateBalance(balance);
-	}
+	}	
 	
 	public static boolean validateUsername(String username)
 	{
-		if(username == null) return false;
-		
-		String regex = "^(?=.{6,20}$)(?![_.0-9])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$";
-		
-        Matcher m = Pattern.compile(regex).matcher(username); 
-        
-        return m.matches(); 
+		return validateRegex(username, USERNAME_REGEX);
 	}
 	
 	public static boolean validatePassword(String password)
 	{
-		if(password == null) return false;
-		
-		String regex = "^(?=.{6,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$";
-		
-        Matcher m = Pattern.compile(regex).matcher(password); 
-        
-        return m.matches(); 
+		return validateRegex(password, PASSWORD_REGEX);
+	}
+	
+	public static boolean validateNominative(String nominative)
+	{
+		return validateRegex(nominative, NOMINATIVE_REGEX);
 	}
 	
 	public static boolean validateBalance(String number)

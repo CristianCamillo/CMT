@@ -16,7 +16,7 @@ $(document).ready(function()
 		{											
 			if(responseText != "")
 				if(responseText === "0")
-					window.location.href = 'homepage.jsp';
+					location.href = 'homepage.jsp';
 				else 
 				{
 					var msg = "Dati non associati ad alcun ";
