@@ -6,7 +6,7 @@
 	--orange: #DE8C3C;
 	--brown: #3D1508;
 	
-	--light-gray: #AAAAAA;
+	--light-gray: #BBBBBB;
 	--dark-gray: #666666;
 	
 	--light-green: #6EFF92;
@@ -32,9 +32,6 @@
  	
  	margin: 0px;
  	padding: 0px;
- 	
- 	list-style: none;
- 	text-decoration: none;
  	
  	color: var(--brown); 	
 }
@@ -127,6 +124,8 @@ input[type=text], input[type=password]
 	border-radius: 4px;
 }
 
+/* button */
+
 button
 {  	   	
   	padding: 4px 8px;
@@ -155,6 +154,8 @@ button:disabled
 	
 	filter: brightness(100%);
 }
+
+/* hr */
 
 hr
 {

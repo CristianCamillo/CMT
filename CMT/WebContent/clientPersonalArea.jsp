@@ -7,10 +7,13 @@
 		<link rel="stylesheet" type="text/css" href="css/eye.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
+		<link rel="stylesheet" type="text/css" href="css/table.css">
 		<script src="js/alterPasswordVisibility.js"></script>
 		<script src="js/fieldValidator.js"></script>
+		<script src="js/dataParser.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="js/personalDataFormsManager.js"></script>
+		<script src="js/loadTickets.js"></script>
 	</head>
 	<body>
 		<header>
@@ -23,7 +26,7 @@
 		<hr>
 		
 		<div style="display: flex">
-			<div class="optionsList" style="margin-right: 20px">
+			<div class="optionsList" style="min-width: 300px; margin-right: 20px;">
 				<span><h3>Username</h3><label id="username"><%= request.getSession().getAttribute("username") %></label></span>
 				<span><h3>Saldo</h3><span><label id="balance"><%= request.getSession().getAttribute("balance") %></label><label> &euro;</label></span></span>
 				<span>&nbsp;</span>
@@ -34,9 +37,17 @@
 			</div>
 			
 			<hr>
-			
-			<div>
-			</div>
+
+			<table id="ticketTable" class="table" style="margin-left: 20px">
+				<thead>
+					<tr>
+						<th>Id</th><th>Titolo film</th><th>Data di proiezione</th><th>Orario</th><th>Numero sala</th><th>Posto a sedere</th><th>Costo (&euro;)</th>
+					</tr>
+				</thead>
+				<tbody style="height: 700px">
+					<tr></tr>
+				</tbody>					
+			</table>
 		</div>
 		
 		<div id="usernameModal" class="modalContainer">

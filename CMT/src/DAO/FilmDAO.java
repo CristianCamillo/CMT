@@ -1,11 +1,14 @@
 package DAO;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.Film;
+import model.Projection;
+import model.Ticket;
 import utils.DriverManagerConnectionPool;
 
 public class FilmDAO
@@ -46,5 +49,29 @@ public class FilmDAO
 							  rs.getString("actor2"), rs.getString("description"), rs.getString("poster")));
 
 		return list;
+	}
+	
+	public static ArrayList<String> getTitles(ArrayList<Projection> projections) throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String query = "SELECT title FROM film WHERE id = ?";
+		
+		PreparedStatement ps = con.prepareStatement(query);
+		
+		ArrayList<String> titles = new ArrayList<String>();
+		
+		for(Projection projection : projections)
+		{
+			ps.setInt(1, projection.getIdFilm());
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next())
+				titles.add(rs.getString("title"));
+		}
+		
+		DriverManagerConnectionPool.releaseConnection(con);
+		
+		return titles;
 	}
 }

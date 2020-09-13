@@ -5,17 +5,21 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 	<head>
 		<title>CMT - Homepage</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
-		<link rel="stylesheet" type="text/css" href="css/filmData.css">	
+		<link rel="stylesheet" type="text/css" href="css/filmDetails.css">	
 		<link rel="stylesheet" type="text/css" href="css/modal.css">	
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
 		<link rel="stylesheet" type="text/css" href="css/poster.css">
 		<link rel="stylesheet" type="text/css" href="css/projectionRoom.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 		<script src="js/fieldValidator.js"></script>
+		<script src="js/dataParser.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="js/filtreFormManager.js"></script>
-	
-		<script type="text/javascript">		
+		<script src="js/homepagePurchaseChain.js"></script>
+	<!-- 
+		<script type="text/javascript">	
+			var filmData;
+			
 			var selectedFilm;
 			var selectedProjection;
 		
@@ -272,9 +276,10 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 				for(var i = 1; i < table.rows.length; i++)			// la riga 0 è l'intestazione, quindi viene saltata
 					table.rows[i].classList.remove("selected");
 			}
-		</script>
+		</script> -->
 	</head>
-	<body>	
+	<body>
+		<input id="filmData" type="hidden">
 		<header>
 			<span onclick="location.href='homepage.jsp'">
 				<img src="icons/siteIcon.png">
@@ -306,168 +311,66 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		</form>
 		
 		<hr>
-		
-		<table style="width: 100%; height: 100px;">
-			<thead>
-				<tr>
-					<th>Alfreds Futterkiste</th>
-				    <th>Maria Anders</th>
-				    <th>Germany</th>
-				</tr>
-			</thead>
-			<tbody style="height: 100px; overflow: auto">
-				<tr>
-					<td>Alfreds Futterkiste</td>
-				    <td>Maria Anders</td>
-				    <td>Germany</td>
-				</tr>
-				<tr>
-					<td>Alfreds Futterkiste</td>
-				    <td>Maria Anders</td>
-				    <td>Germany</td>
-				</tr>
-				<tr>
-					<td>Alfreds Futterkiste</td>
-				    <td>Maria Anders</td>
-				    <td>Germany</td>
-				</tr>
-				<tr>
-					<td>Alfreds Futterkiste</td>
-				    <td>Maria Anders</td>
-				    <td>Germany</td>
-				</tr>
-				<tr>
-					<td>Alfreds Futterkiste</td>
-				    <td>Maria Anders</td>
-				    <td>Germany</td>
-				</tr>
-				<tr>
-					<td>Alfreds Futterkiste</td>
-				    <td>Maria Anders</td>
-				    <td>Germany</td>
-				</tr>
-				<tr>
-					<td>Alfreds Futterkiste</td>
-				    <td>Maria Anders</td>
-				    <td>Germany</td>
-				</tr>
-				<tr>
-					<td>Alfreds Futterkiste</td>
-				    <td>Maria Anders</td>
-				    <td>Germany</td>
-				</tr>
-				<tr>
-					<td>Alfreds Futterkiste</td>
-				    <td>Maria Anders</td>
-				    <td>Germany</td>
-				</tr>
-				<tr>
-					<td>Alfreds Futterkiste</td>
-				    <td>Maria Anders</td>
-				    <td>Germany</td>
-				</tr>
-				<tr>
-					<td>Alfreds Futterkiste</td>
-				    <td>Maria Anders</td>
-				    <td>Germany</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<div class="table" style="width: 300px; height: 300px">
-			<span style="width: 100%; display: flex; "><h3>Data</h3><h3>Orario</h3><h3>Costo</h3></span>
-			<div>		
-				<table id="projectionsTable">
-					<tr>
-						<th>Data</th>
-					    <th>Orario</th>
-					    <th>Costo</th>
-					</tr>
-					<tr>
-						<td>Alfreds Futterkiste</td>
-					    <td>Maria Anders</td>
-					    <td>Germany</td>
-					</tr>
-					<tr>
-						<td>Alfreds Futterkiste</td>
-					    <td>Maria Anders</td>
-					    <td>Germany</td>
-					</tr>
-					<tr>
-						<td>Alfreds Futterkiste</td>
-					    <td>Maria Anders</td>
-					    <td>Germany</td>
-					</tr>
-					<tr>
-						<td>Alfreds Futterkiste</td>
-					    <td>Maria Anders</td>
-					    <td>Germany</td>
-					</tr>
-					<tr>
-						<td>Alfreds Futterkiste</td>
-					    <td>Maria Anders</td>
-					    <td>Germany</td>
-					</tr>
-					<tr>
-						<td>Alfreds Futterkiste</td>
-					    <td>Maria Anders</td>
-					    <td>Germany</td>
-					</tr>
-					<tr>
-						<td>Alfreds Futterkiste</td>
-					    <td>Maria Anders</td>
-					    <td>Germany</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-		
+				
 		<div id="posterContainer">
 		</div>		
 
-		<!-- DettagliFrame -->
-		<div id="detailsFrame" class="frameContainer">
-			<div class="frameContent">
+		<div id="detailsModal" class="modalContainer">
+			<div>
 				<header>
 					<h2>Dettagli film</h2>
-					<button onclick="closeDetailsFrame()">&#x02716;</button>
+					<button onclick="document.getElementById('detailsModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<div style="display: flex; flex-direction: column; max-width: 1000px;">
-					<div class="filmDataContainer">
-						<img id="poster" class="poster posterItem">
-						<h3>Titolo</h3>
-						<label id="title"></label>
-						<h3>Durata</h3>
-						<label id="runningTime"></label>
-						<h3>Genere</h3>
-						<label id="genre"></label>
-						<h3>Regista</h3>
-						<label id="director"></label>
-						<h3>Attori</h3>
-						<div class="multiple">
-							<label id="actor1"></label>
-							<label id="actor2"></label>
-						</div>
-						<h3>Descrizione</h3>
-						<label id="description"></label>
+				<div class="filmDetailsContainer">
+					<img id="poster" class="poster posterItem">
+					<h3>Titolo</h3>
+					<label id="title"></label>
+					<h3>Durata</h3>
+					<label id="runningTime"></label>
+					<h3>Genere</h3>
+					<label id="genre"></label>
+					<h3>Regista</h3>
+					<label id="director"></label>
+					<h3>Attori</h3>
+					<div class="actorSection">
+						<label id="actor1"></label>
+						<label id="actor2"></label>
 					</div>
-					<div>
-						<hr>
-						<h3>Proiezioni</h3>
-						<br>
-						
-						<br>
-						<button id="selectSeatsButton" onclick="openPurchaseFrame()" disabled>Procedi all'acquisto biglietti</button>
-					</div>
+					<h3>Descrizione</h3>
+					<label id="description"></label>
 				</div>
-				
+				<br>
+				<form id="projectionsForm" action="${pageContext.request.contextPath}/projections" method="post">
+					<input name="idFilm" type="hidden">
+					<button type="submit" class="projectionsButton">Seleziona proiezione</button>
+				</form>
+			</div>
+		</div>
+		
+		<div id="projectionsModal" class="modalContainer noDarkBg">
+			<div>
+				<header>
+					<h2>Proiezioni</h2>
+					<button onclick="document.getElementById('projectionsModal').style.display = 'none'">&#x02716;</button>
+				</header>
+				<br>
+				<table id="projectionsTable" class="table handable" style="width: 400px">
+					<thead>
+						<tr>
+							<th>Data</th><th>Orario</th><th>Costo (&euro;)</th>
+						</tr>
+					</thead>
+					<tbody style="max-height: 400px">
+					</tbody>					
+				</table>
+				<br>		
 			</div>
 		</div>
 		
 		<!-- AcquistoFrame -->
 		<div id="purchaseFrame" class="frameContainer">
-			<div class="frameContent">
+			<div>
 				<header>
 					<h2>Acquisto biglietti</h2>
 					<button onclick="closePurchaseFrame()">&#x02716;</button>

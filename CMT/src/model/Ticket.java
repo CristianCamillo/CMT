@@ -4,13 +4,15 @@ public class Ticket
 {
 	private int id;
 	private short seat;
+	private final float price;
 	private int idClient;
 	private int idProjection;
 	
-	public Ticket(int id, short seat, int idClient, int idProjection)
+	public Ticket(int id, short seat, float price, int idClient, int idProjection)
 	{
 		this.id = id;
 		this.seat = seat;
+		this.price = price;
 		this.idClient = idClient;
 		this.idProjection = idProjection;
 	}
@@ -33,6 +35,11 @@ public class Ticket
 	public void setSeat(short seat)
 	{
 		this.seat = seat;
+	}
+	
+	public float getPrice()
+	{
+		return price;
 	}
 	
 	public int getIdClient()

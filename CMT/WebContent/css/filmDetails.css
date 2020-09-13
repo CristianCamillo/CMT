@@ -1,0 +1,30 @@
+div.filmDetailsContainer
+{	
+	max-width: 800px;
+	
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-gap: 20px;
+}
+
+div.filmDetailsContainer > img.posterItem
+{
+	grid-row-start: 1;
+	grid-row-end: 10;
+}
+
+div.filmDetailsContainer > div.actorSection
+{
+	display: flex;
+	flex-direction: column;	
+}
+
+div.filmDetailsContainer > div.actorSection label + label
+{
+	margin-top: 4px;
+}
+
+button.projectionsButton
+{
+	width: 100%;
+}

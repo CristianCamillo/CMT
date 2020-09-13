@@ -15,9 +15,11 @@ $(document).ready(function()
 			
 			for(var i = 0, l = responseText.length; i < l; i++)
 			{
-				var img ="<img src=\"posters/" + responseText[i].poster + "\" class=\"presPoster\" onclick=\"openDetailsFrame('" + i + "')\">";				
+				var img ="<img src=\"posters/" + responseText[i].poster + "\" class=\"presPoster\" onclick=\"openDetailsModal(" + i + ")\">";				
 				$("#posterContainer").append(img);
 			}
+			
+			filmData = responseText;
 		});
 		
 		event.preventDefault();

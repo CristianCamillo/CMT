@@ -1,11 +1,13 @@
 package DAO;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.Projection;
+import model.Ticket;
 import utils.DriverManagerConnectionPool;
 
 public class ProjectionDAO
@@ -28,5 +30,29 @@ public class ProjectionDAO
 			list.add(new Projection(rs.getInt("id"), rs.getInt("date"), rs.getShort("time"), rs.getFloat("price"), rs.getInt("idroom"), rs.getInt("idfilm")));
 
 		return list;
+	}
+	
+	public static ArrayList<Projection> getProjections(ArrayList<Ticket> tickets) throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String query = "SELECT * FROM projection WHERE id = ?";
+		
+		PreparedStatement ps = con.prepareStatement(query);
+		
+		ArrayList<Projection> projections = new ArrayList<Projection>();
+		
+		for(Ticket ticket : tickets)
+		{
+			ps.setInt(1, ticket.getIdProjection());
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next())
+				projections.add(new Projection(rs.getInt("id"), rs.getInt("date"), rs.getShort("time"), rs.getFloat("price"), rs.getInt("idroom"), rs.getInt("idfilm")));
+		}
+		
+		DriverManagerConnectionPool.releaseConnection(con);
+		
+		return projections;
 	}
 }

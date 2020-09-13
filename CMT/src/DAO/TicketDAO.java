@@ -65,4 +65,22 @@ public class TicketDAO
 	    
 	    DriverManagerConnectionPool.releaseConnection(con);
 	}
+	
+	public static ArrayList<Ticket> getTickets(int idClient) throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String query = "SELECT * FROM ticket WHERE idclient = " + idClient;
+	    
+	    ResultSet rs = con.createStatement().executeQuery(query);
+	    
+	    DriverManagerConnectionPool.releaseConnection(con);
+	    
+	    ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+	    
+	    while(rs.next())
+	    	tickets.add(new Ticket(rs.getInt("id"), rs.getShort("seat"), rs.getFloat("price"), rs.getInt("idclient"), rs.getInt("idprojection")));
+	    
+	    return tickets;
+	}
 }
