@@ -13,22 +13,7 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 		<script src="js/fieldValidator.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-		<script type="text/javascript">
-		$(document).ready(function()
-				{
-					$(document).on("submit", "#filtreForm", function(event)
-					{
-						const $form = $(this);
-						
-						$.post($form.attr("action"), $form.serialize(), function(responseText)
-						{											
-							alert("aaa");
-						});
-						
-						event.preventDefault();
-					});
-				});
-		</script>
+		<script src="js/filtreFormManager.js"></script>
 	
 		<script type="text/javascript">		
 			var selectedFilm;

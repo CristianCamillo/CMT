@@ -4,6 +4,8 @@ $(document).ready(function()
 	{
 		const $form = $(this);
 		
+		alert("111");
+		
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
 		{											
 			alert("aaa");
