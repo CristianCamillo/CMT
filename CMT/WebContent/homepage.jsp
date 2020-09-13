@@ -296,7 +296,7 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		
 		<hr>
 		
-		<form id="filtreForm" class="optionsList" action="${pageContext.request.contextPath}/filtre" method="get">
+		<form id="filtreForm" class="optionsList" action="${pageContext.request.contextPath}/filtre" method="post">
 			<input name="title" type="text" placeholder="Titolo" maxlength="30">
 			<input name="genre" type="text" placeholder="Genere" maxlength="30">
 			<input name="director" type="text" placeholder="Regista" maxlength="30">
@@ -307,14 +307,15 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		
 		<hr>
 		
-		<table style="width: 100%; height: 100px; overflow: auto;">
-			
-			<tbody style="height: 200px">
+		<table style="width: 100%; height: 100px;">
+			<thead>
 				<tr>
-					<td>Alfreds Futterkiste</td>
-				    <td>Maria Anders</td>
-				    <td>Germany</td>
+					<th>Alfreds Futterkiste</th>
+				    <th>Maria Anders</th>
+				    <th>Germany</th>
 				</tr>
+			</thead>
+			<tbody style="height: 100px; overflow: auto">
 				<tr>
 					<td>Alfreds Futterkiste</td>
 				    <td>Maria Anders</td>
@@ -422,17 +423,7 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		</div>
 		
 		<div id="posterContainer">
-			<!-- Lista dei poster dei film -->
-			<%
-				ArrayList<Film> films = (ArrayList<Film>)request.getSession().getAttribute("films");
-				
-				for(int i = 0, l = films != null ? films.size() : 0; i < l; i++)
-					out.println("<img src=\"posters/" + films.get(i).getPoster() + "\" class=\"presPoster\" onclick=\"openDetailsFrame('"+ i +"')\">");
-			%>
-		</div>
-		
-		
-		
+		</div>		
 
 		<!-- DettagliFrame -->
 		<div id="detailsFrame" class="frameContainer">

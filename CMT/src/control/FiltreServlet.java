@@ -26,10 +26,8 @@ public class FiltreServlet extends HttpServlet
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
-		System.out.println("INIZIO FILTRE SERVLET");
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{		
 		String title = request.getParameter("title");
 		String genre = request.getParameter("genre");
 		String director = request.getParameter("director");
@@ -38,17 +36,19 @@ public class FiltreServlet extends HttpServlet
 		if(!FieldValidator.validateFiltreForm(title, genre, director, actor))
 			return;
 		
-		response.setContentType("text/plain");
+		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
 			    
 		try
 		{
 			ArrayList<Film> films = FilmDAO.findFilm(title, genre, director, actor);
 			
-			String responseText = "";
+			String responseText = "[";
 			
-			for(Film film : films)
+			for(int i = 0, l = films.size(); i < l; i++)
 			{
+				Film film = films.get(i);
+				
 				JSONObject filmDetails = new JSONObject();
 				filmDetails.put("id", film.getId());
 				filmDetails.put("title", film.getTitle());
@@ -59,14 +59,11 @@ public class FiltreServlet extends HttpServlet
 				filmDetails.put("actor2", film.getActor2());
 				filmDetails.put("description", film.getDescription());
 				filmDetails.put("poster", film.getPoster());
-			         
-		        JSONObject filmObject = new JSONObject(); 
-		        filmObject.put("film", filmDetails);
 		        
-		        responseText += filmObject;
-		        
-		        System.out.println(filmObject);
+		        responseText += filmDetails + (i + 1 != l ? "," : "");
 			}
+			
+			responseText += "]";
 			
 			response.getWriter().write(responseText);
 			
@@ -113,10 +110,6 @@ public class FiltreServlet extends HttpServlet
 			request.getRequestDispatcher("homepage.jsp").forward(request, response);*/
 		}
 		catch(SQLException e)
-		{
-			System.out.println(e);
-		}
-		catch(Exception e)
 		{
 			System.out.println(e);
 		}

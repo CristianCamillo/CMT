@@ -15,12 +15,12 @@ import DAO.ManagerDAO;
 import exceptions.UsernameTakenException;
 import utils.FieldValidator;
 
-@WebServlet("/updateUserData")
-public class UpdateUserDataServlet extends HttpServlet
+@WebServlet("/personalData")
+public class PersonalDataServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 	
-    public UpdateUserDataServlet()
+    public PersonalDataServlet()
     {
         super();
     }
