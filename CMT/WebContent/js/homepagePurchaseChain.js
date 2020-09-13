@@ -1,4 +1,5 @@
 var filmData;
+var projectionData;
 
 function openDetailsModal(filmNumber)
 {
@@ -18,8 +19,45 @@ function openDetailsModal(filmNumber)
 	document.getElementById("detailsModal").style.display = "flex";	
 }
 
+function selectProjection(tr)
+{
+	var table = document.getElementById("projectionsTable");
+				
+	for(var i = 1; i < table.rows.length; i++)			
+		table.rows[i].classList.remove("selected");
+		
+	tr.classList.add("selected");
+	
+	document.getElementsByName("idProjection")[0].value = tr.id;
+}
+
 $(document).ready(function()
 {
+	window.onload = function()
+	{
+		$("#filtreForm").submit();
+	}
+	
+	$(document).on("submit", "#filtreForm", function(event)
+	{
+		const $form = $(this);
+		
+		$.post($form.attr("action"), $form.serialize(), function(responseText)
+		{	
+			$("#posterContainer").empty();
+			
+			for(var i = 0, l = responseText.length; i < l; i++)
+			{
+				var img ="<img src=\"posters/" + responseText[i].poster + "\" class=\"presPoster\" onclick=\"openDetailsModal(" + i + ")\">";				
+				$("#posterContainer").append(img);
+			}
+			
+			filmData = responseText;
+		});
+		
+		event.preventDefault();
+	});
+	
 	$(document).on("submit", "#projectionsForm", function(event)
 	{
 		const $form = $(this);
@@ -32,7 +70,7 @@ $(document).ready(function()
 			{
 				var projection = responseText[i];
 				
-				var row = "<tr>" + 
+				var row = "<tr id=\"" + projection.id + "\" onclick=\"selectProjection(this); document.getElementById('seatsButton').disabled = false;\">" + 
 						  "<td>" + parseDate(projection.date) + "</td>" +
 						  "<td>" + parseTime(projection.time) + "</td>" +
 						  "<td>" + projection.price + "</td>" +
@@ -41,7 +79,22 @@ $(document).ready(function()
 				$("#projectionsTable tbody").append(row);
 			}
 			
+			$("#seatsButton").prop("disabled", true);
 			$("#projectionsModal").css("display", "flex");
+			
+			projectionData = responseText;
+		});
+		
+		event.preventDefault();
+	});
+	
+	$(document).on("submit", "#seatsForm", function(event)
+	{
+		const $form = $(this);
+		
+		$.post($form.attr("action"), $form.serialize(), function(responseText)
+		{	
+			alert("dffsdf");
 		});
 		
 		event.preventDefault();

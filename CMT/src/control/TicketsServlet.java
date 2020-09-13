@@ -18,12 +18,12 @@ import DAO.TicketDAO;
 import model.Projection;
 import model.Ticket;
 
-@WebServlet("/clientTickets")
-public class ClientTicketsServlet extends HttpServlet
+@WebServlet("/tickets")
+public class TicketsServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 	
-    public ClientTicketsServlet()
+    public TicketsServlet()
     {
         super();
     }

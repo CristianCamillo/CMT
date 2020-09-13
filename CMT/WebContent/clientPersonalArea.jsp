@@ -13,7 +13,7 @@
 		<script src="js/dataParser.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="js/personalDataFormsManager.js"></script>
-		<script src="js/loadTickets.js"></script>
+		<script src="js/ticketsLoader.js"></script>
 	</head>
 	<body>
 		<header>

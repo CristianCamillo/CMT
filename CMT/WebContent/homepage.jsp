@@ -14,7 +14,6 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		<script src="js/fieldValidator.js"></script>
 		<script src="js/dataParser.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-		<script src="js/filtreFormManager.js"></script>
 		<script src="js/homepagePurchaseChain.js"></script>
 	<!-- 
 		<script type="text/javascript">	
@@ -343,28 +342,32 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 				<br>
 				<form id="projectionsForm" action="${pageContext.request.contextPath}/projections" method="post">
 					<input name="idFilm" type="hidden">
-					<button type="submit" class="projectionsButton">Seleziona proiezione</button>
+					<button type="submit" style="width: 100%">Visualizza proiezioni</button>
 				</form>
 			</div>
 		</div>
 		
-		<div id="projectionsModal" class="modalContainer noDarkBg">
+		<div id="projectionsModal" class="modalContainer">
 			<div>
 				<header>
 					<h2>Proiezioni</h2>
 					<button onclick="document.getElementById('projectionsModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<table id="projectionsTable" class="table handable" style="width: 400px">
+				<table id="projectionsTable" class="table handable" style="width: 500px">
 					<thead>
 						<tr>
 							<th>Data</th><th>Orario</th><th>Costo (&euro;)</th>
 						</tr>
 					</thead>
-					<tbody style="max-height: 400px">
+					<tbody style="max-height: 500px">
 					</tbody>					
 				</table>
-				<br>		
+				<br>
+				<form id="seatsForm" action="${pageContext.request.contextPath}/seats" method="post">
+					<input name="idProjection" type="hidden">
+					<button id="seatsButton" type="submit" style="width: 100%">Visualizza posti a sedere</button>
+				</form>		
 			</div>
 		</div>
 		

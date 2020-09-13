@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import model.Film;
 import model.Projection;
-import model.Ticket;
 import utils.DriverManagerConnectionPool;
 
 public class FilmDAO
