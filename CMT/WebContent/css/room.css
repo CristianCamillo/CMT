@@ -1,4 +1,4 @@
-table.projectionRoom
+table.room
 {
 	width: 100%;
 	
@@ -9,7 +9,7 @@ table.projectionRoom
 	background-color: white;
 }
 
-table.projectionRoom img
+table.room img
 {
 	width: 32px;
 	height: 25px;

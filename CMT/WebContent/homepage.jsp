@@ -9,7 +9,7 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		<link rel="stylesheet" type="text/css" href="css/modal.css">	
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
 		<link rel="stylesheet" type="text/css" href="css/poster.css">
-		<link rel="stylesheet" type="text/css" href="css/projectionRoom.css">
+		<link rel="stylesheet" type="text/css" href="css/room.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 		<script src="js/fieldValidator.js"></script>
 		<script src="js/dataParser.js"></script>
@@ -387,7 +387,7 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 			 	</div>
 			 	<br>
 			 	<form onsubmit="prepareTransaction()" action="${pageContext.request.contextPath}/purchase" method="post">
-					<table id="seatsTable" class="projectionRoom">
+					<table id="seatsTable" class="room">
 						<tbody>								
 						</tbody>
 					</table>
