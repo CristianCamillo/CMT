@@ -69,9 +69,9 @@ function selectSeat(seat)
 	document.getElementById("price").innerHTML = totalPrice;
 	
 	if(selectedSeats == 0)
-		document.getElementById("endSelectionButton").disabled = true;
+		document.getElementById("basketButton").disabled = true;
 	else
-		document.getElementById("endSelectionButton").disabled = false;
+		document.getElementById("basketButton").disabled = false;
 }
 
 $(document).ready(function()
@@ -176,7 +176,7 @@ $(document).ready(function()
 			$("#projection").html(parseDate(projectionData[projectionN].date) + " - " + parseTime(projectionData[projectionN].time));
 			$("#price").html("0");
 						
-			$("#endSelectionButton").prop("disabled", true);
+			$("#basketButton").prop("disabled", true);
 			$("#seatsModal").css("display", "flex");
 		});
 		
