@@ -28,7 +28,10 @@ function selectProjection(tr)
 		
 	tr.classList.add("selected");
 	
-	document.getElementsByName("idProjection")[0].value = tr.id;
+	var ids= (tr.id + "").split(".");
+	
+	document.getElementsByName("idProjection")[0].value = ids[0];
+	document.getElementsByName("idRoom")[0].value = ids[1];
 }
 
 $(document).ready(function()
@@ -70,7 +73,7 @@ $(document).ready(function()
 			{
 				var projection = responseText[i];
 				
-				var row = "<tr id=\"" + projection.id + "\" onclick=\"selectProjection(this); document.getElementById('seatsButton').disabled = false;\">" + 
+				var row = "<tr id=\"" + projection.id + "." + projection.idroom + "\" onclick=\"selectProjection(this); document.getElementById('seatsButton').disabled = false;\">" + 
 						  "<td>" + parseDate(projection.date) + "</td>" +
 						  "<td>" + parseTime(projection.time) + "</td>" +
 						  "<td>" + projection.price + "</td>" +
@@ -94,7 +97,7 @@ $(document).ready(function()
 		
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
 		{	
-			alert("dffsdf");
+			alert(responseText[0].rows);
 		});
 		
 		event.preventDefault();

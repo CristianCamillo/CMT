@@ -366,6 +366,7 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 				<br>
 				<form id="seatsForm" action="${pageContext.request.contextPath}/seats" method="post">
 					<input name="idProjection" type="hidden">
+					<input name="idRoom" type="hidden">
 					<button id="seatsButton" type="submit" style="width: 100%">Visualizza posti a sedere</button>
 				</form>		
 			</div>
@@ -378,7 +379,6 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 					<h2>Acquisto biglietti</h2>
 					<button onclick="closePurchaseFrame()">&#x02716;</button>
 				</header>
-				<br>
 			 	<table>
 			 		<colgroup>
 						<col>

@@ -4,13 +4,13 @@ public class Room
 {
 	private int id;
 	private byte rows;
-	private byte seatsPerRow;
+	private byte columns;
 	
-	public Room(int id, byte rows, byte seatsPerRow)
+	public Room(int id, byte rows, byte columns)
 	{
 		this.id = id;
 		this.rows = rows;
-		this.seatsPerRow = seatsPerRow;
+		this.columns = columns;
 	}
 
 	public int getId()
@@ -33,13 +33,13 @@ public class Room
 		this.rows = rows;
 	}
 
-	public byte getSeatsPerRow()
+	public byte getColumns()
 	{
-		return seatsPerRow;
+		return columns;
 	}
 
-	public void setSeatsPerRow(byte seatsPerRow)
+	public void setColumns(byte columns)
 	{
-		this.seatsPerRow = seatsPerRow;
+		this.columns = columns;
 	}	
 }

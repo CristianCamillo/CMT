@@ -20,7 +20,7 @@ public class RoomDAO
 	    DriverManagerConnectionPool.releaseConnection(con);
 		
 		if(rs.next())
-			return new Room(rs.getInt("id"), rs.getByte("rows"), rs.getByte("seatsperrow"));
+			return new Room(rs.getInt("id"), rs.getByte("rows"), rs.getByte("columns"));
 		else
 			return null;
 	}
