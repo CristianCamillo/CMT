@@ -45,7 +45,6 @@
 					</tr>
 				</thead>
 				<tbody style="height: 700px">
-					<tr></tr>
 				</tbody>					
 			</table>
 		</div>

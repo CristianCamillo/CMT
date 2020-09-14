@@ -1,8 +1,13 @@
 var filmData;
 var projectionData;
 
+var filmN;
+var projectionN;
+
 function openDetailsModal(filmNumber)
 {
+	filmN = filmNumber;
+	
 	var film = filmData[filmNumber];
 	
 	document.getElementById("poster").src = "posters/" + film.poster;
@@ -19,19 +24,40 @@ function openDetailsModal(filmNumber)
 	document.getElementById("detailsModal").style.display = "flex";	
 }
 
-function selectProjection(tr)
+function selectProjection(projectionNumber)
 {
+	projectionN = projectionNumber;
+	
 	var table = document.getElementById("projectionsTable");
 				
 	for(var i = 1; i < table.rows.length; i++)			
 		table.rows[i].classList.remove("selected");
 		
-	tr.classList.add("selected");
+	table.rows[projectionNumber + 1].classList.add("selected");
 	
-	var ids= (tr.id + "").split(".");
+	var projection = projectionData[projectionNumber];
 	
-	document.getElementsByName("idProjection")[0].value = ids[0];
-	document.getElementsByName("idRoom")[0].value = ids[1];
+	document.getElementsByName("idProjection")[0].value = projection.id;
+	document.getElementsByName("idRoom")[0].value = projection.idroom;
+}
+
+function selectSeat(seat)
+{					
+	if(seat.src.includes("occupied.jpg"))
+		return;				
+	
+	if(seat.src.includes("vacant.jpg"))
+	{
+		seat.src = "seats/selected.jpg";
+		amount += parseInt(projections2D[selectedFilm][selectedProjection][3]);
+	}
+	else
+	{
+		seat.src = "seats/vacant.jpg";
+		amount -= parseInt(projections2D[selectedFilm][selectedProjection][3]);
+	}
+	
+	document.getElementById("amountA").innerHTML = amount;
 }
 
 $(document).ready(function()
@@ -66,14 +92,14 @@ $(document).ready(function()
 		const $form = $(this);
 		
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
-		{	
+		{				
 			$("#projectionsTable tbody").empty();
-									
+							
 			for(var i = 0, l = responseText.length; i < l; i++)
 			{
 				var projection = responseText[i];
 				
-				var row = "<tr id=\"" + projection.id + "." + projection.idroom + "\" onclick=\"selectProjection(this); document.getElementById('seatsButton').disabled = false;\">" + 
+				var row = "<tr onclick=\"selectProjection(" + i + "); document.getElementById('seatsButton').disabled = false;\">" + 
 						  "<td>" + parseDate(projection.date) + "</td>" +
 						  "<td>" + parseTime(projection.time) + "</td>" +
 						  "<td>" + projection.price + "</td>" +
@@ -97,7 +123,45 @@ $(document).ready(function()
 		
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
 		{	
-			alert(responseText[0].rows);
+			$("#seatsTable tbody").empty();
+			
+			var table = document.getElementById("seatsTable");
+			var tbody = table.tBodies[0];
+			
+			for(var y = 0, width = responseText[0].columns, height = responseText[0].rows; y < height; y++)
+			{
+				var tr = document.createElement('tr');
+				for(var x = 0; x < width; x++)
+				{
+					var td = document.createElement("td");
+					
+					var seat = document.createElement("img");
+					
+					seat.setAttribute("id", x + "-" + y);
+					seat.setAttribute("src", "seats/vacant.jpg");
+					
+					seat.onclick = function() { selectSeat(this.id); };
+					
+					td.appendChild(seat);
+					tr.appendChild(td);
+				}
+				
+				tbody.appendChild(tr);			
+			}
+					
+			for(var i = 1, l = responseText.length; i < l; i++)
+			{					
+				var id = responseText[i].columns + "-" + responseText[i].rows;
+				
+				document.getElementById(id).src = "seats/occupied.jpg";
+			}
+			
+			$("#film").html(filmData[filmN].title);
+			$("#projection").html(parseDate(projectionData[projectionN].date) + " - " + parseTime(projectionData[projectionN].time));
+			$("#totalPrice").html("0");
+						
+			$("#endSelectionButton").prop("disabled", true);
+			$("#seatsModal").css("display", "flex");
 		});
 		
 		event.preventDefault();

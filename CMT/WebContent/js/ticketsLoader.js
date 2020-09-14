@@ -17,7 +17,7 @@ $(document).ready(function()
 						  "<td>" + parseTime(ticket.time) + "</td>" +
 						  "<td>" + ticket.room + "</td>" +
 						  "<td>" + parseSeat(ticket.seat) + "</td>" +
-						  "<td>" + ticket.price+ "</td>" +
+						  "<td>" + ticket.price + "</td>" +
 						  "</tr>";
 				
 				$("#ticketTable tbody").append(row);

@@ -278,7 +278,6 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		</script> -->
 	</head>
 	<body>
-		<input id="filmData" type="hidden">
 		<header>
 			<span onclick="location.href='homepage.jsp'">
 				<img src="icons/siteIcon.png">
@@ -372,35 +371,28 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 			</div>
 		</div>
 		
-		<!-- AcquistoFrame -->
-		<div id="purchaseFrame" class="frameContainer">
+		<div id="seatsModal" class="modalContainer">
 			<div>
 				<header>
 					<h2>Acquisto biglietti</h2>
-					<button onclick="closePurchaseFrame()">&#x02716;</button>
+					<button onclick="document.getElementById('seatsModal').style.display = 'none'">&#x02716;</button>
 				</header>
-			 	<table>
-			 		<colgroup>
-						<col>
-						<col style="width: 20px">
-						<col style="width: 200px">
-					</colgroup>
-					<tbody>
-						<tr><td><h3>Film</h3></td><td></td><td><label id="titleA"></label></td></tr>
-						<tr><td>&nbsp;</td></tr>
-						<tr><td><h3>Proiezione</h3></td><td></td><td><label id="projectionA"></label></td></tr>
-						<tr><td>&nbsp;</td></tr>
-						<tr><td><h3>Totale</h3></td><td></td><td><label id="amountA"></label></td></tr>
-						<tr><td>&nbsp;</td></tr>
-					</tbody>
-			 	</table>
-			 	<form onsubmit="prepareTransaction()" action="${pageContext.request.contextPath}/purchase" method="POST">
-					<table id="roomTable" class="projectionRoom">
+				<br>
+				<div class="optionsList" style="width: 100%">
+			 		<span><h3>Film</h3><label id="film"></label></span>
+			 		<span>&nbsp;</span>
+			 		<span><h3>Proiezione</h3><label id="projection"></label></span>
+			 		<span>&nbsp;</span>
+			 		<span><h3>Totale</h3><span><label id="totalPrice"></label><label> &euro;</label></span></span>
+			 	</div>
+			 	<br>
+			 	<form onsubmit="prepareTransaction()" action="${pageContext.request.contextPath}/purchase" method="post">
+					<table id="seatsTable" class="projectionRoom">
 						<tbody>								
 						</tbody>
 					</table>
 					<br>
-					<button type="submit">Acquista biglietti</button>
+					<button id="endSelectionButton" type="submit" style="width: 100%">Seleziona posti</button>
 					<input id="seats" name="seats" type="hidden" value="">
 					<input id="idProjection" name="idProjection" type="hidden" value="">
 					<input id="amount" name="amount" type="hidden" value="">
