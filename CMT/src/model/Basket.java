@@ -25,4 +25,14 @@ public class Basket
 	{
 		tickets.remove(number);
 	}
+	
+	public float getTotalPrice()
+	{
+		float price = 0;
+		
+		for(Ticket ticket : tickets)
+			price += ticket.getPrice();
+		
+		return price;
+	}
 }

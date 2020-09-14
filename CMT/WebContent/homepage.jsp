@@ -383,7 +383,7 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 			 		<span>&nbsp;</span>
 			 		<span><h3>Proiezione</h3><label id="projection"></label></span>
 			 		<span>&nbsp;</span>
-			 		<span><h3>Totale</h3><span><label id="totalPrice"></label><label> &euro;</label></span></span>
+			 		<span><h3>Prezzo totale</h3><span><label id="price"></label><label> &euro;</label></span></span>
 			 	</div>
 			 	<br>
 			 	<form onsubmit="prepareTransaction()" action="${pageContext.request.contextPath}/purchase" method="post">
