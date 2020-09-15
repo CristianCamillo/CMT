@@ -4,6 +4,7 @@ $(document).ready(function()
 	({
 		url: "tickets",
 		type: "post",
+		
         success: function(responseText)
 		{
 			for(var i = 0, l = responseText.length; i < l; i++)
@@ -23,6 +24,7 @@ $(document).ready(function()
 				$("#ticketTable tbody").append(row);
 			}	
         },
+
         error: function (xhr, ajaxOptions, thrownError)
 		{
 			alert("Errore tickets servlet");

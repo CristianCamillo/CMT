@@ -64,7 +64,25 @@ function selectSeat(seat)
 
 function sendTickets()
 {	
-	var selectedSeats = document.getElementsByName("selected");
+	$.ajax
+	({
+		url: "basket",
+		type: "post",
+		dataType: "json",
+		data: JSON.stringify(article),
+		contentType: "application/json",
+		mimeType: "application/json",
+		
+        success: function(responseText)
+		{
+			
+        },
+
+        error: function (xhr, ajaxOptions, thrownError)
+		{
+			alert(xhr + "/n" + ajaxOptions + "/n" + thrownError);
+        }
+	});
 }
 
 $(document).ready(function()
