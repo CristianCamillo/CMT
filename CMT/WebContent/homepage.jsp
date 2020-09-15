@@ -298,7 +298,7 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 		</header>
 		
 		<hr>
-		<img name="aaa">
+		
 		<form id="filtreForm" class="optionsList" action="${pageContext.request.contextPath}/filtre" method="post">
 			<input name="title" type="text" placeholder="Titolo" maxlength="30">
 			<input name="genre" type="text" placeholder="Genere" maxlength="30">
@@ -365,7 +365,6 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 				<br>
 				<form id="seatsForm" action="${pageContext.request.contextPath}/seats" method="post">
 					<input name="idProjection" type="hidden">
-					<input name="idRoom" type="hidden">
 					<button id="seatsButton" type="submit" style="width: 100%">Visualizza posti a sedere</button>
 				</form>		
 			</div>
@@ -386,16 +385,14 @@ import="java.util.ArrayList,model.Film,model.Projection,model.Room,DAO.RoomDAO"%
 			 		<span><h3>Prezzo totale</h3><span><label id="price"></label><label> &euro;</label></span></span>
 			 	</div>
 			 	<br>
-			 	<form onsubmit="prepareTransaction()" action="${pageContext.request.contextPath}/basket" method="post">
+			 	<form id="basketForm" onsubmit="prepareBasketData()" action="${pageContext.request.contextPath}/basket" method="post">
 					<table id="seatsTable" class="room">
 						<tbody>								
 						</tbody>
 					</table>
 					<br>
-					<button id="basketButton" type="submit" style="width: 100%">Seleziona posti</button>
-					<input id="seats" name="seats" type="hidden" value="">
-					<input id="idProjection" name="idProjection" type="hidden" value="">
-					<input id="amount" name="amount" type="hidden" value="">
+					<input name="ticketsNumber" type="hidden">
+					<button id="basketButton" type="submit" style="width: 100%">Aggiungi posti al carrello</button>					
 				</form>
 			</div>
 		</div>

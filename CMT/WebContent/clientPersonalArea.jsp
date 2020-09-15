@@ -38,7 +38,7 @@
 			
 			<hr>
 
-			<table id="ticketTable" class="table" style="margin-left: 20px">
+			<table id="ticketTable" class="table" style="min-width: 1000px; margin-left: 20px">
 				<thead>
 					<tr>
 						<th>Id</th><th>Titolo film</th><th>Data di proiezione</th><th>Orario</th><th>Numero sala</th><th>Posto a sedere</th><th>Costo (&euro;)</th>

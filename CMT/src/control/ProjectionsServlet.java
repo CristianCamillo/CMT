@@ -48,8 +48,6 @@ public class ProjectionsServlet extends HttpServlet
 				object.put("date", projection.getDate());
 				object.put("time", projection.getTime());
 				object.put("price", projection.getPrice());
-				object.put("idroom", projection.getIdRoom());
-				object.put("idfilm", projection.getIdFilm());
 				
 				responseText += object + (i + 1 != l ? "," : "");				
 			}

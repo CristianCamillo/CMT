@@ -14,7 +14,6 @@ import org.json.JSONObject;
 
 import DAO.RoomDAO;
 import DAO.TicketDAO;
-import model.Room;
 
 @WebServlet("/seats")
 public class SeatsServlet extends HttpServlet
@@ -29,22 +28,25 @@ public class SeatsServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String idProjection = request.getParameter("idProjection");
-		String idRoom = request.getParameter("idRoom");
-				
+		
+		int id = Integer.parseInt(idProjection);
+		
+		request.getSession().setAttribute("idProjection", id);
+		
 		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
 		
 		try
 		{
-			Room room = RoomDAO.getRoom(Integer.parseInt(idRoom));
-			ArrayList<Short> seats = TicketDAO.getSeats(Integer.parseInt(idProjection));
+			byte[] roomSize = RoomDAO.getRoomSize(id);
+			ArrayList<Short> seats = TicketDAO.getSeats(id);
 			
 			String responseText = "[";
 			
 			JSONObject object = new JSONObject();
 			
-			object.put("rows", room.getRows());
-			object.put("columns", room.getColumns());
+			object.put("rows", roomSize[0]);
+			object.put("columns", roomSize[1]);
 			
 			responseText += object;
 			

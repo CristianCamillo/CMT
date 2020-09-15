@@ -19,6 +19,8 @@ public class BasketServlet extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		String selected = request.getParameter("selected");
 		
+		System.out.println(selected);
 	}
 }

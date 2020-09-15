@@ -1,15 +1,9 @@
 var filmData;
-var projectionData;
-
-var filmN;
-var projectionN;
 
 var selectedSeats;
 
 function openDetailsModal(filmNumber)
-{
-	filmN = filmNumber;
-	
+{	
 	var film = filmData[filmNumber];
 	
 	document.getElementById("poster").src = "posters/" + film.poster;
@@ -26,21 +20,16 @@ function openDetailsModal(filmNumber)
 	document.getElementById("detailsModal").style.display = "flex";	
 }
 
-function selectProjection(projectionNumber)
+function selectProjection(row, idProjection)
 {
-	projectionN = projectionNumber;
-	
 	var table = document.getElementById("projectionsTable");
 				
-	for(var i = 1; i < table.rows.length; i++)			
+	for(var i = 1; i < table.rows.length; i++)  // rows[0] is used for the header	
 		table.rows[i].classList.remove("selected");
 		
-	table.rows[projectionNumber + 1].classList.add("selected");
+	row.classList.add("selected");
 	
-	var projection = projectionData[projectionNumber];
-	
-	document.getElementsByName("idProjection")[0].value = projection.id;
-	document.getElementsByName("idRoom")[0].value = projection.idroom;
+	document.getElementsByName("idProjection")[0].value = idProjection;
 }
 
 function selectSeat(seat)
@@ -48,12 +37,13 @@ function selectSeat(seat)
 	if(seat.src.includes("occupied.jpg"))
 		return;
 		
-	var price = projectionData[projectionN].price;
+	var price = parseInt($(".selected td:last-child").html());
 	var totalPrice = parseInt(document.getElementById("price").innerHTML);			
 	
 	if(seat.src.includes("vacant.jpg"))
 	{		
 		seat.src = "seats/selected.jpg";
+		seat.name = "selected";
 		totalPrice += price;
 		
 		selectedSeats++;
@@ -61,6 +51,7 @@ function selectSeat(seat)
 	else
 	{		
 		seat.src = "seats/vacant.jpg";
+		seat.name = "";
 		totalPrice -= price;
 		
 		selectedSeats--;
@@ -68,11 +59,15 @@ function selectSeat(seat)
 	
 	document.getElementById("price").innerHTML = totalPrice;
 	
-	if(selectedSeats == 0)
-		document.getElementById("basketButton").disabled = true;
-	else
-		document.getElementById("basketButton").disabled = false;
+	document.getElementById("basketButton").disabled = selectedSeats == 0;
+	
+	document.getElementsByName("ticketsNumber")[0].value = selectedSeats;
 }
+/*
+function prepareBasketData()
+{	
+	var selectedSeats = document.getElementsByName("selected");
+}*/
 
 $(document).ready(function()
 {
@@ -113,7 +108,7 @@ $(document).ready(function()
 			{
 				var projection = responseText[i];
 				
-				var row = "<tr onclick=\"selectProjection(" + i + "); document.getElementById('seatsButton').disabled = false;\">" + 
+				var row = "<tr onclick=\"selectProjection(this, " + projection.id + "); document.getElementById('seatsButton').disabled = false;\">" + 
 						  "<td>" + parseDate(projection.date) + "</td>" +
 						  "<td>" + parseTime(projection.time) + "</td>" +
 						  "<td>" + projection.price + "</td>" +
@@ -124,8 +119,6 @@ $(document).ready(function()
 			
 			$("#seatsButton").prop("disabled", true);
 			$("#projectionsModal").css("display", "flex");
-			
-			projectionData = responseText;
 		});
 		
 		event.preventDefault();
@@ -136,12 +129,12 @@ $(document).ready(function()
 		const $form = $(this);
 		
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
-		{	
+		{				
 			$("#seatsTable tbody").empty();
 			
 			var table = document.getElementById("seatsTable");
 			var tbody = table.tBodies[0];
-			
+
 			for(var y = 0, width = responseText[0].columns, height = responseText[0].rows; y < height; y++)
 			{
 				var tr = document.createElement('tr');
@@ -154,7 +147,7 @@ $(document).ready(function()
 					seat.setAttribute("id", x + "-" + y);
 					seat.setAttribute("src", "seats/vacant.jpg");
 					
-					seat.onclick = function() {	selectSeat(this); };
+					seat.onclick = function() { selectSeat(this); };
 					
 					td.appendChild(seat);
 					tr.appendChild(td);
@@ -162,7 +155,7 @@ $(document).ready(function()
 				
 				tbody.appendChild(tr);			
 			}
-					
+				
 			for(var i = 1, l = responseText.length; i < l; i++)
 			{					
 				var id = responseText[i].columns + "-" + responseText[i].rows;
@@ -172,12 +165,27 @@ $(document).ready(function()
 			
 			selectedSeats = 0;
 			
-			$("#film").html(filmData[filmN].title);
-			$("#projection").html(parseDate(projectionData[projectionN].date) + " - " + parseTime(projectionData[projectionN].time));
+			$("#film").html($("#title").html());
+			$("#projection").html($(".selected td:first-child").html() + " - " + $(".selected td:nth-child(2)").html());
 			$("#price").html("0");
 						
+			//document.getElementsByName("ticketsNumber")[0].value = 0;
+			//document.getElementsByName("ticketPrice")[0].value = projectionData[projectionN].price;			
+	
 			$("#basketButton").prop("disabled", true);
 			$("#seatsModal").css("display", "flex");
+		});
+		
+		event.preventDefault();
+	});
+	
+	$(document).on("submit", "#basketForm", function(event)
+	{
+		const $form = $(this);
+		
+		$.post($form.attr("action"), $form.serialize(), function(responseText)
+		{	
+			
 		});
 		
 		event.preventDefault();
