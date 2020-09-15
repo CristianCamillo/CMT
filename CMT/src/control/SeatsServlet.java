@@ -56,13 +56,10 @@ public class SeatsServlet extends HttpServlet
 				
 				short seat = seats.get(i);
 				
-				byte rows = (byte)(seat / 100);
-				byte columns = (byte)(seat % 100);
-				
 				object = new JSONObject();
 				
-				object.put("rows", rows);
-				object.put("columns", columns);
+				object.put("rows", (byte)(seat / 100));
+				object.put("columns", (byte)(seat % 100));
 				
 				responseText += object;				
 			}

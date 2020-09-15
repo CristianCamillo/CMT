@@ -25,7 +25,7 @@ $(document).ready(function()
         },
         error: function (xhr, ajaxOptions, thrownError)
 		{
-			alert("Errore tickets servlet"); //xhr.responseText);
+			alert("Errore tickets servlet");
         }
 	});
 });

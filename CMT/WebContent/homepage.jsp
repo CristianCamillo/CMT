@@ -123,7 +123,7 @@
 			 		<span><h3>Prezzo totale</h3><span><label id="price"></label><label> &euro;</label></span></span>
 			 	</div>
 			 	<br>
-			 	<form id="basketForm" onsubmit="prepareBasketData()" action="${pageContext.request.contextPath}/basket" method="post">
+			 	<form id="basketForm" action="sendTickets()" method="post">
 					<table id="seatsTable" class="room">
 						<tbody>								
 						</tbody>

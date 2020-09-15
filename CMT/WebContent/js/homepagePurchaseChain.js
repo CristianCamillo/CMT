@@ -61,11 +61,11 @@ function selectSeat(seat)
 	
 	document.getElementById("basketButton").disabled = selectedSeats == 0;
 }
-/*
-function prepareBasketData()
+
+function sendTickets()
 {	
 	var selectedSeats = document.getElementsByName("selected");
-}*/
+}
 
 $(document).ready(function()
 {

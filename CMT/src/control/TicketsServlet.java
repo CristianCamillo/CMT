@@ -30,14 +30,14 @@ public class TicketsServlet extends HttpServlet
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		int id = (int)request.getSession().getAttribute("id");
+		int idClient = (int)request.getSession().getAttribute("id");
 		
 		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
 		
 		try
 		{
-			ArrayList<Ticket> tickets = TicketDAO.getTickets(id);
+			ArrayList<Ticket> tickets = TicketDAO.getTickets(idClient);
 			ArrayList<Projection> projections = ProjectionDAO.getProjections(tickets); 
 			ArrayList<String> titles = FilmDAO.getTitles(projections);
 			
@@ -45,23 +45,15 @@ public class TicketsServlet extends HttpServlet
 			
 			for(int i = 0, l = tickets.size(); i < l; i++)
 			{
-				int idticket = tickets.get(i).getId();
-				String title = titles.get(i);
-				int date = projections.get(i).getDate();
-				short time = projections.get(i).getTime();
-				int room = projections.get(i).getIdRoom();
-				int seat = tickets.get(i).getSeat();
-				float price = tickets.get(i).getPrice();
-				
 				JSONObject object = new JSONObject();
 				
-				object.put("id", idticket);
-				object.put("title", title);
-				object.put("date", date);
-				object.put("time", time);
-				object.put("room", room);
-				object.put("seat", seat);
-				object.put("price", price);
+				object.put("id", tickets.get(i).getId());
+				object.put("title", titles.get(i));
+				object.put("date", projections.get(i).getDate());
+				object.put("time", projections.get(i).getTime());
+				object.put("room", projections.get(i).getIdRoom());
+				object.put("seat", tickets.get(i).getSeat());
+				object.put("price", tickets.get(i).getPrice());
 				
 				responseText += object + (i + 1 != l ? "," : "");				
 			}
@@ -70,7 +62,7 @@ public class TicketsServlet extends HttpServlet
 			
 			response.getWriter().write(responseText);
 		}
-		catch (SQLException e)
+		catch(SQLException e)
 		{
 			System.out.println(e);
 		}
