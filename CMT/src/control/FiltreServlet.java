@@ -50,6 +50,7 @@ public class FiltreServlet extends HttpServlet
 				Film film = films.get(i);
 				
 				JSONObject object = new JSONObject();
+				
 				object.put("id", film.getId());
 				object.put("title", film.getTitle());
 				object.put("runningTime", film.getRunningTime());

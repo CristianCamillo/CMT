@@ -13,7 +13,7 @@ table.table thead
 {    
 	width: calc(100% - 0.5em);
 
-	padding-bottom: 4px;
+	padding-bottom: 5px;
 
 	display: table;
 

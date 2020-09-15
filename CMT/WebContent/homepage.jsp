@@ -12,7 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 		<script src="js/fieldValidator.js"></script>
 		<script src="js/dataParser.js"></script>
-		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="js/jquery.js"></script>
 		<script src="js/homepagePurchaseChain.js"></script>
 	</head>
 	<body>

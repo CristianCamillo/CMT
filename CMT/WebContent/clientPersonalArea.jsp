@@ -11,7 +11,7 @@
 		<script src="js/alterPasswordVisibility.js"></script>
 		<script src="js/fieldValidator.js"></script>
 		<script src="js/dataParser.js"></script>
-		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="js/jquery.js"></script>
 		<script src="js/personalDataFormsManager.js"></script>
 		<script src="js/ticketsLoader.js"></script>
 	</head>
