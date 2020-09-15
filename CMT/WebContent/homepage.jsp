@@ -97,8 +97,8 @@
 							<th>Data</th><th>Orario</th><th>Costo (&euro;)</th>
 						</tr>
 					</thead>
-					<tbody style="max-height: 500px">
-					</tbody>					
+					<tbody style="max-height: 700px">
+					</tbody>
 				</table>
 				<br>
 				<form id="seatsForm" action="${pageContext.request.contextPath}/seats" method="post">
@@ -111,7 +111,7 @@
 		<div id="seatsModal" class="modalContainer">
 			<div>
 				<header>
-					<h2>Acquisto biglietti</h2>
+					<h2>Selezione posti</h2>
 					<button onclick="document.getElementById('seatsModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
@@ -129,7 +129,6 @@
 						</tbody>
 					</table>
 					<br>
-					<input name="ticketsNumber" type="hidden">
 					<button id="basketButton" type="submit" style="width: 100%">Aggiungi posti al carrello</button>					
 				</form>
 			</div>

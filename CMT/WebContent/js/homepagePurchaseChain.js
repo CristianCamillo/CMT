@@ -60,8 +60,6 @@ function selectSeat(seat)
 	document.getElementById("price").innerHTML = totalPrice;
 	
 	document.getElementById("basketButton").disabled = selectedSeats == 0;
-	
-	document.getElementsByName("ticketsNumber")[0].value = selectedSeats;
 }
 /*
 function prepareBasketData()
@@ -138,6 +136,7 @@ $(document).ready(function()
 			for(var y = 0, width = responseText[0].columns, height = responseText[0].rows; y < height; y++)
 			{
 				var tr = document.createElement('tr');
+				
 				for(var x = 0; x < width; x++)
 				{
 					var td = document.createElement("td");
@@ -168,9 +167,6 @@ $(document).ready(function()
 			$("#film").html($("#title").html());
 			$("#projection").html($(".selected td:first-child").html() + " - " + $(".selected td:nth-child(2)").html());
 			$("#price").html("0");
-						
-			//document.getElementsByName("ticketsNumber")[0].value = 0;
-			//document.getElementsByName("ticketPrice")[0].value = projectionData[projectionN].price;			
 	
 			$("#basketButton").prop("disabled", true);
 			$("#seatsModal").css("display", "flex");
