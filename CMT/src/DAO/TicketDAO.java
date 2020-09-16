@@ -5,26 +5,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import exceptions.CannotPurchaseException;
 import model.Ticket;
 import utils.DriverManagerConnectionPool;
 
 public class TicketDAO
 {
-	public static ArrayList<Short> getSeats(int idProjection) throws SQLException
+	public static ArrayList<byte[]> getOccupiedSeats(int idProjection) throws SQLException
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String query = "SELECT seat FROM ticket WHERE idProjection = " + idProjection;
+		String query = "SELECT x, y FROM ticket WHERE idProjection = " + idProjection;
 	    
 	    ResultSet rs = con.createStatement().executeQuery(query);
 	    
 	    DriverManagerConnectionPool.releaseConnection(con);
 	    
-	    ArrayList<Short> list = new ArrayList<Short>();
+	    ArrayList<byte[]> list = new ArrayList<byte[]>();
 	    
 	    while(rs.next())
-	    	list.add(rs.getShort("seat"));
+	    	list.add(new byte[] {rs.getByte("x"), rs.getByte("y")});
 	    
 	    return list;
 	}
@@ -44,6 +43,8 @@ public class TicketDAO
 	    else
 	    	return -1;
 	}
+	
+	/*
 	
 	public static void addTicket(Ticket ticket) throws SQLException, CannotPurchaseException
 	{
@@ -65,7 +66,7 @@ public class TicketDAO
 	    
 	    DriverManagerConnectionPool.releaseConnection(con);
 	}
-	
+	*/
 	public static ArrayList<Ticket> getTickets(int idClient) throws SQLException
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
@@ -79,7 +80,7 @@ public class TicketDAO
 	    ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 	    
 	    while(rs.next())
-	    	tickets.add(new Ticket(rs.getInt("id"), rs.getShort("seat"), rs.getFloat("price"), rs.getInt("idclient"), rs.getInt("idprojection")));
+	    	tickets.add(new Ticket(rs.getInt("id"), rs.getByte("x"), rs.getByte("y"), rs.getFloat("price"), rs.getInt("idclient"), rs.getInt("idprojection")));
 	    
 	    return tickets;
 	}

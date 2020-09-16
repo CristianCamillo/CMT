@@ -194,7 +194,7 @@ $(document).ready(function()
 				
 			for(var i = 1, l = responseText.length; i < l; i++)
 			{					
-				var id = responseText[i].columns + "-" + responseText[i].rows;
+				var id = responseText[i].x + "-" + responseText[i].y;
 				
 				document.getElementById(id).src = "seats/occupied.jpg";
 			}

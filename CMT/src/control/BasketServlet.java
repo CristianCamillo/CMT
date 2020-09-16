@@ -1,11 +1,16 @@
 package control;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
 
 @WebServlet("/basket")
 public class BasketServlet extends HttpServlet
@@ -19,10 +24,17 @@ public class BasketServlet extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		response.setContentType("application/json");
-	    response.setCharacterEncoding("UTF-8");
+		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 		
-		System.out.println("aaaaaaaa");
+	 	String json = br.readLine();
+	 	
+	 	System.out.println(json);
+
+	 	JSONObject obj = new JSONObject(json);
+	 	String pageName = obj.getJSONObject("pageInfo").getString("pageName");
+	 	
+	 	response.setContentType("text/plain");
+	 	response.setCharacterEncoding("UTF-8");
 		
 		response.getWriter().write("[]");
 	}

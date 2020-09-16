@@ -32,19 +32,7 @@ function parseTime(time)
 	return h + ":" + m;
 }
 
-// ritorna il posto in a-z-1-n
-function parseSeat(seat)
-{
-	if(seat < 100)
-		return "A-" + (seat + 1);
-	
-	var seatS = seat + "";
-	var n;
-	
-	if(seatS.length == 3)
-		n = parseInt(seatS.substring(0, 1));
-	else
-		n = parseInt(seatS.substring(0, 2));
-	
-	return String.fromCharCode(65 + n) + "-" + (seat % 100 + 1);
+function parseSeat(x, y)
+{	
+	return String.fromCharCode(65 + x) + "-" + (y + 1);
 }

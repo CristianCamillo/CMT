@@ -52,7 +52,8 @@ public class TicketsServlet extends HttpServlet
 				object.put("date", projections.get(i).getDate());
 				object.put("time", projections.get(i).getTime());
 				object.put("room", projections.get(i).getIdRoom());
-				object.put("seat", tickets.get(i).getSeat());
+				object.put("x", tickets.get(i).getX());
+				object.put("y", tickets.get(i).getY());
 				object.put("price", tickets.get(i).getPrice());
 				
 				responseText += object + (i + 1 != l ? "," : "");				

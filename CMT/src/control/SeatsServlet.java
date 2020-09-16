@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import DAO.RoomDAO;
 import DAO.TicketDAO;
+import model.Room;
 
 @WebServlet("/seats")
 public class SeatsServlet extends HttpServlet
@@ -27,39 +28,35 @@ public class SeatsServlet extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String idProjection = request.getParameter("idProjection");
+		int idProjection = Integer.parseInt(request.getParameter("idProjection"));
 		
-		int id = Integer.parseInt(idProjection);
-		
-		request.getSession().setAttribute("idProjection", id);
+		request.getSession().setAttribute("idProjection", idProjection);
 		
 		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
 		
 		try
 		{
-			byte[] roomSize = RoomDAO.getRoomSize(id);
-			ArrayList<Short> seats = TicketDAO.getSeats(id);
-			
-			String responseText = "[";
+			Room room = RoomDAO.getRoom(idProjection);
+			ArrayList<byte[]> seats = TicketDAO.getOccupiedSeats(idProjection);			
 			
 			JSONObject object = new JSONObject();
 			
-			object.put("rows", roomSize[0]);
-			object.put("columns", roomSize[1]);
+			object.put("rows", room.getRows());
+			object.put("columns", room.getColumns());			
 			
-			responseText += object;
+			String responseText = "[" + object;
 			
 			for(int i = 0, l = seats.size(); i < l; i++)
 			{
 				responseText += ",";
 				
-				short seat = seats.get(i);
+				byte[] seat = seats.get(i);
 				
 				object = new JSONObject();
 				
-				object.put("rows", (byte)(seat / 100));
-				object.put("columns", (byte)(seat % 100));
+				object.put("x", seat[0]);
+				object.put("y", seat[1]);				
 				
 				responseText += object;				
 			}

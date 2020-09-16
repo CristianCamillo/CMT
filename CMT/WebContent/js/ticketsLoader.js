@@ -17,7 +17,7 @@ $(document).ready(function()
 						  "<td>" + parseDate(ticket.date) + "</td>" +
 						  "<td>" + parseTime(ticket.time) + "</td>" +
 						  "<td>" + ticket.room + "</td>" +
-						  "<td>" + parseSeat(ticket.seat) + "</td>" +
+						  "<td>" + parseSeat(ticket.x, ticket.y) + "</td>" +
 						  "<td>" + ticket.price + "</td>" +
 						  "</tr>";
 				

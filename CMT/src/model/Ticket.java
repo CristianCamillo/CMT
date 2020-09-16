@@ -3,15 +3,17 @@ package model;
 public class Ticket
 {
 	private int id;
-	private short seat;
+	private byte x;
+	private byte y;
 	private final float price;
 	private int idClient;
 	private int idProjection;
 	
-	public Ticket(int id, short seat, float price, int idClient, int idProjection)
+	public Ticket(int id, byte x, byte y, float price, int idClient, int idProjection)
 	{
 		this.id = id;
-		this.seat = seat;
+		this.x = x;
+		this.y = y;
 		this.price = price;
 		this.idClient = idClient;
 		this.idProjection = idProjection;
@@ -27,14 +29,24 @@ public class Ticket
 		this.id = id;
 	}
 	
-	public short getSeat()
+	public byte getX()
 	{
-		return seat;
+		return x;
 	}
 	
-	public void setSeat(short seat)
+	public void setX(byte x)
 	{
-		this.seat = seat;
+		this.x = x;
+	}
+	
+	public byte getY()
+	{
+		return y;
+	}
+	
+	public void setY(byte y)
+	{
+		this.y = y;
 	}
 	
 	public float getPrice()
