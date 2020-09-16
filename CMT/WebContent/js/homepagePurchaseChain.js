@@ -43,7 +43,7 @@ function selectSeat(seat)
 	if(seat.src.includes("vacant.jpg"))
 	{		
 		seat.src = "seats/selected.jpg";
-		seat.name = "selected";
+		
 		totalPrice += price;
 		
 		selectedSeats++;
@@ -51,7 +51,7 @@ function selectSeat(seat)
 	else
 	{		
 		seat.src = "seats/vacant.jpg";
-		seat.name = "";
+		
 		totalPrice -= price;
 		
 		selectedSeats--;
@@ -64,18 +64,37 @@ function selectSeat(seat)
 
 function sendTickets()
 {	
+	var seats = [];
+	
+	var table = document.getElementById("seatsTable");
+	var tbody = table.tBodies[0];
+
+	for(var y = 0, width = tbody.rows[0].cells.length, height = tbody.rows.length; y < height; y++)
+	{
+		var tr = tbody.rows[y];
+		
+		for(var x = 0; x < width; x++)
+		{
+			var td = tr.cells[x];
+			var seat = td.getElementsByTagName("img")[0];
+			
+			if(seat.src.includes("selected.jpg"))
+				seats.push({x: x, y: y});
+		}	
+	}
+	
 	$.ajax
 	({
 		url: "basket",
 		type: "post",
 		dataType: "json",
-		data: JSON.stringify(article),
+		data: JSON.stringify(seats),
 		contentType: "application/json",
 		mimeType: "application/json",
 		
         success: function(responseText)
 		{
-			
+			alert(responseText);
         },
 
         error: function (xhr, ajaxOptions, thrownError)

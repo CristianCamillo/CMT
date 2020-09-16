@@ -19,8 +19,11 @@ public class BasketServlet extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String selected = request.getParameter("selected");
+		response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
 		
-		System.out.println(selected);
+		System.out.println("aaaaaaaa");
+		
+		response.getWriter().write("[]");
 	}
 }

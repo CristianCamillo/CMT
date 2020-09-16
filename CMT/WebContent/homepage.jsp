@@ -123,14 +123,12 @@
 			 		<span><h3>Prezzo totale</h3><span><label id="price"></label><label> &euro;</label></span></span>
 			 	</div>
 			 	<br>
-			 	<form id="basketForm" action="sendTickets()" method="post">
-					<table id="seatsTable" class="room">
-						<tbody>								
-						</tbody>
-					</table>
-					<br>
-					<button id="basketButton" type="submit" style="width: 100%">Aggiungi posti al carrello</button>					
-				</form>
+				<table id="seatsTable" class="room">
+					<tbody>								
+					</tbody>
+				</table>
+				<br>
+				<button id="basketButton" onclick="sendTickets()" style="width: 100%">Aggiungi posti al carrello</button>
 			</div>
 		</div>
 	</body>
