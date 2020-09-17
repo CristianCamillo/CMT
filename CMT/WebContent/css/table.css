@@ -22,6 +22,8 @@ table.table thead
 
 table.table tbody
 {
+	min-height: 27px;
+	
 	display: block;
 	
 	overflow: auto;
