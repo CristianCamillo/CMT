@@ -26,6 +26,19 @@ public class Basket
 		tickets.remove(number);
 	}
 	
+	public void removeProjectionTickets(int idProjection)
+	{
+		
+		
+		for(int i = 0, l = tickets.size(); i < l; i++)
+			if(tickets.get(i).getIdProjection() == idProjection)
+			{				
+				tickets.remove(i);
+				i--;
+				l--;
+			}
+	}
+	
 	public float getTotalPrice()
 	{
 		float price = 0;

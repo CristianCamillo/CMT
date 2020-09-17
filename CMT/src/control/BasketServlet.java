@@ -65,6 +65,8 @@ public class BasketServlet extends HttpServlet
 	 		session.setAttribute("basket", basket);
 	 	}
 	 	
+	 	basket.removeProjectionTickets(idProjection);
+	 	
 	 	for(byte[] seat : seats)
 	 		basket.addTicket(new Ticket(0, seat[0], seat[1], price, idClient, idProjection));
 	 	

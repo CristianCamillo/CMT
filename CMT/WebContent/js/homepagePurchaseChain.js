@@ -193,18 +193,21 @@ $(document).ready(function()
 				tbody.appendChild(tr);			
 			}
 				
+			selectedSeats = 0;
+				
 			for(var i = 1, l = responseText.length; i < l; i++)
 			{					
-				var id = responseText[i].x + "-" + responseText[i].y;
+				var id = responseText[i].x + "-" + responseText[i].y;				
 				
-				document.getElementById(id).src = "seats/occupied.jpg";
+				if(!responseText[i].occupied)
+					selectedSeats++;
+				
+				document.getElementById(id).src = "seats/" + (responseText[i].occupied ? "occupied.jpg" : "selected.jpg");
 			}
-			
-			selectedSeats = 0;
 			
 			$("#film").html($("#title").html());
 			$("#projection").html($(".selected td:first-child").html() + " - " + $(".selected td:nth-child(2)").html());
-			$("#price").html("0");
+			$("#price").html(parseInt($(".selected td:last-child").html()) * selectedSeats);
 	
 			$("#basketButton").prop("disabled", true);
 			$("#seatsModal").css("display", "flex");
