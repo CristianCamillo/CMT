@@ -4,6 +4,7 @@
 	<head>
 		<title>CMT - Homepage</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/cart.css">
 		<link rel="stylesheet" type="text/css" href="css/filmDetails.css">	
 		<link rel="stylesheet" type="text/css" href="css/modal.css">	
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
@@ -24,15 +25,20 @@
 			<div>
 				<%			
 					String userType = (String)request.getSession().getAttribute("userType");
-				
-					if(userType == null)							
-						out.print("<button onclick=\"location.href='login.jsp'\">Login</button>" +
-								  "<button onclick=\"location.href='registration.jsp'\">Registrazione</button>");
-					else
-						out.print("<button onclick=\"location.href='" + userType + "PersonalArea.jsp'\">Area Personale</button>" +
-								  "<button onclick=\"location.href='logout.jsp'\">Logout</button>");
+					if(userType == "client")
+						out.print("<img src=\"svg/shoppingCart.svg\">");
 				%>
-			</div>			
+				<div>
+					<%						
+						if(userType == null)							
+							out.print("<button onclick=\"location.href='login.jsp'\">Login</button>" +
+									  "<button onclick=\"location.href='registration.jsp'\">Registrazione</button>");
+						else
+							out.print("<button onclick=\"location.href='" + userType + "PersonalArea.jsp'\">Area Personale</button>" +
+									  "<button onclick=\"location.href='logout.jsp'\">Logout</button>");
+					%>
+				</div>
+			</div>		
 		</header>
 		
 		<hr>

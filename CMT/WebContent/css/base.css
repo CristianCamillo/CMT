@@ -11,6 +11,9 @@
 	
 	--light-green: #6EFF92;
 	--green: #00FF40;
+	
+	--brown-filter: invert(11%) sepia(14%) saturate(5308%) hue-rotate(345deg) brightness(100%) contrast(99%);
+	--light-brown-filter: invert(11%) sepia(14%) saturate(5308%) hue-rotate(345deg) brightness(180%) contrast(99%);
 }
 
 /* font */
@@ -81,15 +84,36 @@ body header span h1
 	cursor: pointer;
 }
 
-body header div
+body header > div
 {	
 	display: flex;
-	flex-direction: column;
+	align-items: center;
 	
-	padding-left: 100px;
+	margin-left: 100px;
 }
 
-body header div button + button
+body header div img
+{
+	width: 50px;
+	height: 50px;
+	
+	margin-right: 20px;
+	
+	filter: var(--brown-filter);
+}
+
+body header div img:hover
+{	
+	filter: var(--light-brown-filter);
+}
+
+body header div div
+{
+	display: flex;
+	flex-direction: column;
+}
+
+body header div div button + button
 {
 	margin-top: 4px;
 }
