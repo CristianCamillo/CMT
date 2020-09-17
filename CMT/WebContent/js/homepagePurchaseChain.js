@@ -80,7 +80,7 @@ function sendTickets()
 			
 			if(seat.src.includes("selected.jpg"))
 				seats.push({x: x, y: y});
-		}	
+		}
 	}
 	
 	$.ajax

@@ -73,6 +73,7 @@ public class SeatsServlet extends HttpServlet
 					object.put("x", ticket.getX());
 					object.put("y", ticket.getY());
 					object.put("occupied", false);
+					
 					responseText += object;					
 				}			
 		}
