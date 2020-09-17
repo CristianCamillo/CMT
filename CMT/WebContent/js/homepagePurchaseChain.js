@@ -61,7 +61,7 @@ function selectSeat(seat)
 	
 	document.getElementById("basketButton").disabled = selectedSeats == 0;
 }
-
+	
 function sendTickets()
 {	
 	var seats = [];
