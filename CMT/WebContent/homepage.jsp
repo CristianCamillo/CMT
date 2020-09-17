@@ -26,7 +26,7 @@
 				<%			
 					String userType = (String)request.getSession().getAttribute("userType");
 					if(userType == "client")
-						out.print("<img src=\"svg/shoppingCart.svg\" onclick=\"location.hred = 'basket.jsp'\">");
+						out.print("<img src=\"svg/shoppingCart.svg\" onclick=\"location.href = 'basket.jsp'\">");
 				%>
 				<div>
 					<%						
