@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<header>
-			<span onclick="location.href='homepage.jsp'">
+			<span onclick="location.href = 'homepage.jsp'">
 				<img src="icons/siteIcon.png">
 				<h1>Castle Movie Theater</h1>					
 			</span>
@@ -26,7 +26,7 @@
 				<%			
 					String userType = (String)request.getSession().getAttribute("userType");
 					if(userType == "client")
-						out.print("<img src=\"svg/shoppingCart.svg\">");
+						out.print("<img src=\"svg/shoppingCart.svg\" onclick=\"location.hred = 'basket.jsp'\">");
 				%>
 				<div>
 					<%						
