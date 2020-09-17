@@ -27,9 +27,7 @@ public class Basket
 	}
 	
 	public void removeProjectionTickets(int idProjection)
-	{
-		
-		
+	{		
 		for(int i = 0, l = tickets.size(); i < l; i++)
 			if(tickets.get(i).getIdProjection() == idProjection)
 			{				
