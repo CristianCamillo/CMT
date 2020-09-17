@@ -94,7 +94,7 @@ function sendTickets()
 		
         success: function(responseText)
 		{
-			alert(responseText);
+			$("#successModal").css("display", "flex");
         },
 
         error: function (xhr, ajaxOptions, thrownError)

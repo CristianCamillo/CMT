@@ -3,6 +3,7 @@ package control;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -10,8 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import org.json.JSONObject;
+import DAO.ProjectionDAO;
+import model.Basket;
+import model.Ticket;
 
 @WebServlet("/basket")
 public class BasketServlet extends HttpServlet
@@ -25,25 +29,41 @@ public class BasketServlet extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		HttpSession session = request.getSession();
+		
+		if(!session.getAttribute("userType").equals("client"))
+			return;
+		
+		int idClient = (int)session.getAttribute("id");
+		int idProjection = (int)session.getAttribute("idProjection");
+		
+		float price = -1;
+		try
+		{
+			price = ProjectionDAO.getPrice(idProjection);
+		}
+		catch(SQLException e)
+		{
+			System.out.println(e);
+			return;
+		}
+		
 		BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
 		
 	 	String json = br.readLine();
-	 	
-	 	System.out.println(json);
 
-	 	ArrayList<byte[]> list = manualParseSeats(json);
+	 	ArrayList<byte[]> seats = manualParseSeats(json);
 	 	
-	 	for(byte[] el : list)
-	 		System.out.println(el[0] + "-" + el[1]);
+	 	Basket basket = (Basket) session.getAttribute("basket");
 	 	
-	 	//JSONObject obj = new JSONObject(json);
-	 	//String pageName = obj.getJSONObject("pageInfo").getString("pageName");
-	 	/*
-	 	 JSONArray arr = obj.getJSONArray("posts");
-        for (int i = 0; i < arr.length(); i++) {
-            String post_id = arr.getJSONObject(i).getString("post_id");
-            System.out.println(post_id);
-        }*/
+	 	if(basket == null)
+	 	{
+	 		basket = new Basket();
+	 		session.setAttribute("basket", basket);
+	 	}
+	 	
+	 	for(byte[] seat : seats)
+	 		basket.addTicket(new Ticket(0, seat[0], seat[1], price, idClient, idProjection));
 	 	
 	 	response.setContentType("text/plain");
 	 	response.setCharacterEncoding("UTF-8");

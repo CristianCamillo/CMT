@@ -55,4 +55,19 @@ public class ProjectionDAO
 		
 		return projections;
 	}
+	
+	public static float getPrice(int idProjection) throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String query = "SELECT price FROM projection WHERE id = " + idProjection;
+		
+		ResultSet rs = con.createStatement().executeQuery(query);
+	    
+	    DriverManagerConnectionPool.releaseConnection(con);
+	    
+	    rs.next();
+	    
+	    return rs.getFloat("price");		
+	}
 }

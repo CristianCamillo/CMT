@@ -137,5 +137,22 @@
 				<button id="basketButton" onclick="sendTickets()" style="width: 100%">Aggiungi posti al carrello</button>
 			</div>
 		</div>
+		
+		<div id="successModal" class="modalContainer">
+			<div>
+				<header>
+					<span>
+						<img src="icons/successIcon.png">
+						<h2>Successo</h2>
+					</span>
+				</header>
+				<br>
+				<div class="optionsList">
+					<label>Posti selezionati con successo</label>
+					<label>&nbsp;</label>
+					<button onclick="document.getElementById('successModal').style.display = 'none'">Ok</button>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
