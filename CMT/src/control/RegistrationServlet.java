@@ -36,6 +36,8 @@ public class RegistrationServlet extends HttpServlet
 		response.setContentType("text/plain");
 	    response.setCharacterEncoding("UTF-8");
 		
+	    Client newClient = null;
+	    
 		try
 		{					
 			if(ClientDAO.isRegistered(username))
@@ -44,26 +46,27 @@ public class RegistrationServlet extends HttpServlet
 				return;
 			}
 
-			Client newClient = new Client(ClientDAO.getLastId() + 1, username, password, Float.parseFloat(balance));
+			newClient = new Client(ClientDAO.getLastId() + 1, username, password, Float.parseFloat(balance));
 
 			ClientDAO.addClient(newClient);
-
-			HttpSession oldSession = request.getSession(false);
-			if(oldSession != null)
-				oldSession.invalidate();			
-			HttpSession currentSession = request.getSession();
-			currentSession.setMaxInactiveInterval(60 * 60);
-			
-			currentSession.setAttribute("id", newClient.getId());
-			currentSession.setAttribute("username", newClient.getUsername());
-			currentSession.setAttribute("balance", newClient.getBalance());
-			currentSession.setAttribute("userType", "client");			
-			
-			response.getWriter().write("0");
 		}
 		catch(SQLException e)
 		{
 			System.out.println(e);
+			return;
 		}		
+		
+		HttpSession oldSession = request.getSession(false);
+		if(oldSession != null)
+			oldSession.invalidate();			
+		HttpSession currentSession = request.getSession();
+		currentSession.setMaxInactiveInterval(60 * 60);
+		
+		currentSession.setAttribute("id", newClient.getId());
+		currentSession.setAttribute("username", newClient.getUsername());
+		currentSession.setAttribute("balance", newClient.getBalance());
+		currentSession.setAttribute("userType", "client");			
+		
+		response.getWriter().write("0");
 	}
 }

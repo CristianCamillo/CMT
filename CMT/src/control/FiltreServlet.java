@@ -36,41 +36,44 @@ public class FiltreServlet extends HttpServlet
 		if(!FieldValidator.validateFiltreForm(title, genre, director, actor))
 			return;
 		
-		response.setContentType("application/json");
-	    response.setCharacterEncoding("UTF-8");
-			    
+	    ArrayList<Film> films = null;
+	    
 		try
 		{
-			ArrayList<Film> films = FilmDAO.findFilm(title, genre, director, actor);
-			
-			String responseText = "[";
-			
-			for(int i = 0, l = films.size(); i < l; i++)
-			{
-				Film film = films.get(i);
-				
-				JSONObject object = new JSONObject();
-				
-				object.put("id", film.getId());
-				object.put("title", film.getTitle());
-				object.put("runningTime", film.getRunningTime());
-				object.put("genre", film.getGenre());
-				object.put("director", film.getDirector());
-				object.put("actor1", film.getActor1());
-				object.put("actor2", film.getActor2());
-				object.put("description", film.getDescription());
-				object.put("poster", film.getPoster());
-		        
-		        responseText += object + (i + 1 != l ? "," : "");
-			}
-			
-			responseText += "]";
-			
-			response.getWriter().write(responseText);
+			films = FilmDAO.findFilm(title, genre, director, actor);
 		}
 		catch(SQLException e)
 		{
 			System.out.println(e);
+			return;
 		}
+		
+		String responseText = "[";
+		
+		for(int i = 0, l = films.size(); i < l; i++)
+		{
+			Film film = films.get(i);
+			
+			JSONObject object = new JSONObject();
+			
+			object.put("id", film.getId());
+			object.put("title", film.getTitle());
+			object.put("runningTime", film.getRunningTime());
+			object.put("genre", film.getGenre());
+			object.put("director", film.getDirector());
+			object.put("actor1", film.getActor1());
+			object.put("actor2", film.getActor2());
+			object.put("description", film.getDescription());
+			object.put("poster", film.getPoster());
+	        
+	        responseText += object + (i + 1 != l ? "," : "");
+		}
+		
+		responseText += "]";
+		
+		response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+		
+		response.getWriter().write(responseText);
 	}
 }

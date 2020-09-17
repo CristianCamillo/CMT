@@ -39,11 +39,11 @@ public class LoginServlet extends HttpServlet
 		response.setContentType("text/plain");
 	    response.setCharacterEncoding("UTF-8");
 		
+	    int id = -1;
+		float balance = -1;
+	    
 		try
-		{
-			int id;
-			float balance = -1;
-			
+		{			
 			if(!isManager)
 			{
 				Client client = ClientDAO.getClient(username, password);
@@ -69,24 +69,25 @@ public class LoginServlet extends HttpServlet
 				
 				id = manager.getId();
 			}
-		    
-		    HttpSession oldSession = request.getSession(false);
-			if(oldSession != null)
-				oldSession.invalidate();			
-			HttpSession currentSession = request.getSession();
-			currentSession.setMaxInactiveInterval(60 * 60);
-			
-			currentSession.setAttribute("id", id);
-			currentSession.setAttribute("username", username);			
-			if(!isManager)
-				currentSession.setAttribute("balance", balance);			
-			currentSession.setAttribute("userType", !isManager ? "client" : "manager");			
-
-			response.getWriter().write("0");
 		}
 		catch(SQLException e)
 		{
 			System.out.println(e);
-		}		
+			return;
+		}
+		
+		HttpSession oldSession = request.getSession(false);
+		if(oldSession != null)
+			oldSession.invalidate();			
+		HttpSession currentSession = request.getSession();
+		currentSession.setMaxInactiveInterval(60 * 60);
+		
+		currentSession.setAttribute("id", id);
+		currentSession.setAttribute("username", username);			
+		if(!isManager)
+			currentSession.setAttribute("balance", balance);			
+		currentSession.setAttribute("userType", !isManager ? "client" : "manager");			
+
+		response.getWriter().write("0");
 	}
 }

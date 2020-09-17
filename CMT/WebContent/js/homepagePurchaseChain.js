@@ -94,7 +94,8 @@ function sendTickets()
 		
         success: function(responseText)
 		{
-			$("#successModal").css("display", "flex");
+			if(responseText == "0")
+				$("#successModal").css("display", "flex");
         },
 
         error: function (xhr, ajaxOptions, thrownError)
@@ -207,18 +208,6 @@ $(document).ready(function()
 	
 			$("#basketButton").prop("disabled", true);
 			$("#seatsModal").css("display", "flex");
-		});
-		
-		event.preventDefault();
-	});
-	
-	$(document).on("submit", "#basketForm", function(event)
-	{
-		const $form = $(this);
-		
-		$.post($form.attr("action"), $form.serialize(), function(responseText)
-		{	
-			
 		});
 		
 		event.preventDefault();

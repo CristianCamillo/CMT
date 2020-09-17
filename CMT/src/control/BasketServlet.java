@@ -31,13 +31,16 @@ public class BasketServlet extends HttpServlet
 	{
 		HttpSession session = request.getSession();
 		
-		if(!session.getAttribute("userType").equals("client"))
+		String userType = (String)session.getAttribute("userType");
+		
+		if(userType == null || !userType.equals("client"))
 			return;
 		
 		int idClient = (int)session.getAttribute("id");
 		int idProjection = (int)session.getAttribute("idProjection");
 		
 		float price = -1;
+		
 		try
 		{
 			price = ProjectionDAO.getPrice(idProjection);
@@ -54,7 +57,7 @@ public class BasketServlet extends HttpServlet
 
 	 	ArrayList<byte[]> seats = manualParseSeats(json);
 	 	
-	 	Basket basket = (Basket) session.getAttribute("basket");
+	 	Basket basket = (Basket)session.getAttribute("basket");
 	 	
 	 	if(basket == null)
 	 	{
@@ -67,7 +70,7 @@ public class BasketServlet extends HttpServlet
 	 	
 	 	response.setContentType("text/plain");
 	 	response.setCharacterEncoding("UTF-8");
-		
+	 	
 		response.getWriter().write("0");
 	}
 	

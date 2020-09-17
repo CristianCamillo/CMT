@@ -150,7 +150,7 @@
 				<div class="optionsList">
 					<label>Posti selezionati con successo</label>
 					<label>&nbsp;</label>
-					<button onclick="document.getElementById('successModal').style.display = 'none'">Ok</button>
+					<button onclick="for(var i = 0, list = document.getElementsByClassName('modalContainer'), l = list.length; i < l; i++) list[i].style.display = 'none';">Ok</button>
 				</div>
 			</div>
 		</div>

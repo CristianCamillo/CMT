@@ -99,6 +99,9 @@ body header div img
 	
 	margin-right: 20px;
 	
+	transition-duration: 0.2s;
+	cursor: pointer;
+	
 	filter: var(--brown-filter);
 }
 

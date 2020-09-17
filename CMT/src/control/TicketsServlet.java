@@ -32,40 +32,45 @@ public class TicketsServlet extends HttpServlet
 	{
 		int idClient = (int)request.getSession().getAttribute("id");
 		
-		response.setContentType("application/json");
-	    response.setCharacterEncoding("UTF-8");
-		
+	    ArrayList<Ticket> tickets;
+		ArrayList<Projection> projections;
+		ArrayList<String> titles;
+	    
 		try
 		{
-			ArrayList<Ticket> tickets = TicketDAO.getTickets(idClient);
-			ArrayList<Projection> projections = ProjectionDAO.getProjections(tickets); 
-			ArrayList<String> titles = FilmDAO.getTitles(projections);
-			
-			String responseText = "[";
-			
-			for(int i = 0, l = tickets.size(); i < l; i++)
-			{
-				JSONObject object = new JSONObject();
-				
-				object.put("id", tickets.get(i).getId());
-				object.put("title", titles.get(i));
-				object.put("date", projections.get(i).getDate());
-				object.put("time", projections.get(i).getTime());
-				object.put("room", projections.get(i).getIdRoom());
-				object.put("x", tickets.get(i).getX());
-				object.put("y", tickets.get(i).getY());
-				object.put("price", tickets.get(i).getPrice());
-				
-				responseText += object + (i + 1 != l ? "," : "");				
-			}
-			
-			responseText += "]";
-			
-			response.getWriter().write(responseText);
+			tickets = TicketDAO.getTickets(idClient);
+			projections = ProjectionDAO.getProjections(tickets); 
+			titles = FilmDAO.getTitles(projections);			
 		}
 		catch(SQLException e)
 		{
 			System.out.println(e);
+			return;
 		}
+		
+		String responseText = "[";
+		
+		for(int i = 0, l = tickets.size(); i < l; i++)
+		{
+			JSONObject object = new JSONObject();
+			
+			object.put("id", tickets.get(i).getId());
+			object.put("title", titles.get(i));
+			object.put("date", projections.get(i).getDate());
+			object.put("time", projections.get(i).getTime());
+			object.put("room", projections.get(i).getIdRoom());
+			object.put("x", tickets.get(i).getX());
+			object.put("y", tickets.get(i).getY());
+			object.put("price", tickets.get(i).getPrice());
+			
+			responseText += object + (i + 1 != l ? "," : "");				
+		}
+		
+		responseText += "]";
+		
+		response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+	    
+		response.getWriter().write(responseText);
 	}
 }

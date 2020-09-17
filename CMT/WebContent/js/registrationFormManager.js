@@ -14,12 +14,11 @@ $(document).ready(function()
 		const $form = $(this);
 		
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
-		{	
-			if(responseText != "")				
-				if(responseText === "0")
-					$("#successModal").css("display", "flex");
-				else
-					$("#errorModal").css("display", "flex");
+		{				
+			if(responseText === "0")
+				$("#successModal").css("display", "flex");
+			else if(responseText === "1")
+				$("#errorModal").css("display", "flex");
 		});
 		
 		event.preventDefault();
