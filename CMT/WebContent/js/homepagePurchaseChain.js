@@ -97,7 +97,7 @@ function sendTickets()
 			if(responseText == "0")
 				$("#successModal").css("display", "flex");
         },
-
+		
         error: function (xhr, ajaxOptions, thrownError)
 		{
 			alert(xhr + "/n" + ajaxOptions + "/n" + thrownError);
