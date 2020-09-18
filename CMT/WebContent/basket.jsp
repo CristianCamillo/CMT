@@ -7,6 +7,8 @@
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
+		<script src="js/dataParser.js"></script>
+		<script src="js/jquery.js"></script>
 	</head>
 	<body>
 		<header>
@@ -27,21 +29,26 @@
 				</tr>
 			</thead>
 			<tbody style="max-height: 500px">
-				<%
-					Basket basket = (Basket)session.getAttribute("basket");
-				
-					if(basket == null)	
-						return;
-					
-					ArrayList<Ticket> tickets = basket.getTickets();
-					
-					for(Ticket ticket : tickets)
-					{
-						
-					}
-				%>
 			</tbody>					
 		</table>
+		<br>
+		<button>Acquista biglietti</button>
 		
+		<div id="successModal" class="modalContainer">
+			<div>
+				<header>
+					<span>
+						<img src="icons/successIcon.png">
+						<h2>Successo</h2>
+					</span>
+				</header>
+				<br>
+				<div class="optionsList">
+					<label>Acquisto riuscito con successo</label>
+					<label>&nbsp;</label>
+					<button onclick="location.href = 'homepage.jsp'">Ok</button>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

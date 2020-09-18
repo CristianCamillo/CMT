@@ -69,7 +69,7 @@ public class BasketServlet extends HttpServlet
 	 	
 	 	for(byte[] seat : seats)
 	 		basket.addTicket(new Ticket(0, seat[0], seat[1], price, idClient, idProjection));
-	 	
+	 		 	
 	 	response.setContentType("text/plain");
 	 	response.setCharacterEncoding("UTF-8");
 	 	
