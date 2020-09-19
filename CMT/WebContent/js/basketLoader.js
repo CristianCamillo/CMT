@@ -7,6 +7,9 @@ $(document).ready(function()
 		
         success: function(responseText)
 		{
+			if(responseText.length > 0)
+				$("#buyButton").prop("disabled", false);
+			
 			for(var i = 0, l = responseText.length; i < l; i++)
 			{
 				var ticket = responseText[i];

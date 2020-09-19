@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.ArrayList, model.Basket, model.Ticket" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 		<script src="js/dataParser.js"></script>
 		<script src="js/jquery.js"></script>
-		<script src="js/recapLoader.js"></script>
+		<script src="js/basketLoader.js"></script>
 	</head>
 	<body>
 		<header>
@@ -33,7 +32,7 @@
 			</tbody>					
 		</table>
 		<br>
-		<button style="width: 100%" onclick="${pageContext.request.contextPath}/purchase">Acquista biglietti</button>
+		<button id="buyButton" style="width: 100%" onclick="${pageContext.request.contextPath}/purchase" disabled>Acquista biglietti</button>
 		
 		<div id="successModal" class="modalContainer">
 			<div>
@@ -45,8 +44,8 @@
 				</header>
 				<br>
 				<div class="optionsList">
-					<label>Acquisto riuscito con successo</label>
-					<label>&nbsp;</label>
+					<span>Acquisto riuscito con successo</span>
+					<span>&nbsp;</span>
 					<button onclick="location.href = 'homepage.jsp'">Ok</button>
 				</div>
 			</div>
