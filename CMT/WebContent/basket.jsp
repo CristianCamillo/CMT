@@ -9,6 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 		<script src="js/dataParser.js"></script>
 		<script src="js/jquery.js"></script>
+		<script src="js/recapLoader.js"></script>
 	</head>
 	<body>
 		<header>
@@ -25,14 +26,14 @@
 		<table id="ticketTable" class="table" style="min-width: 1000px; margin-top: 20px">
 			<thead>
 				<tr>
-					<th>Id</th><th>Titolo film</th><th>Data di proiezione</th><th>Orario</th><th>Numero sala</th><th>Posto a sedere</th><th>Costo (&euro;)</th>
+					<th>Titolo film</th><th>Data di proiezione</th><th>Orario</th><th>Numero sala</th><th>Posto a sedere</th><th>Costo (&euro;)</th>
 				</tr>
 			</thead>
 			<tbody style="max-height: 500px">
 			</tbody>					
 		</table>
 		<br>
-		<button>Acquista biglietti</button>
+		<button style="width: 100%" onclick="${pageContext.request.contextPath}/purchase">Acquista biglietti</button>
 		
 		<div id="successModal" class="modalContainer">
 			<div>

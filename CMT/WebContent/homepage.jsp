@@ -24,18 +24,18 @@
 			</span>
 			<div>
 				<%			
-					String userType = (String)request.getSession().getAttribute("userType");
+					String userType = (String)session.getAttribute("userType");
 					if(userType == "client")
 						out.print("<img src=\"svg/shoppingCart.svg\" onclick=\"location.href = 'basket.jsp'\">");
 				%>
 				<div>
 					<%						
 						if(userType == null)							
-							out.print("<button onclick=\"location.href='login.jsp'\">Login</button>" +
-									  "<button onclick=\"location.href='registration.jsp'\">Registrazione</button>");
+							out.print("<button onclick=\"location.href = 'login.jsp'\">Login</button>" +
+									  "<button onclick=\"location.href = 'registration.jsp'\">Registrazione</button>");
 						else
-							out.print("<button onclick=\"location.href='" + userType + "PersonalArea.jsp'\">Area Personale</button>" +
-									  "<button onclick=\"location.href='logout.jsp'\">Logout</button>");
+							out.print("<button onclick=\"location.href = '" + userType + "PersonalArea.jsp'\">Area Personale</button>" +
+									  "<button onclick=\"location.href = 'logout.jsp'\">Logout</button>");
 					%>
 				</div>
 			</div>		
@@ -67,20 +67,20 @@
 				<div class="filmDetailsContainer">
 					<img id="poster" class="poster posterItem">
 					<h3>Titolo</h3>
-					<label id="title"></label>
+					<span id="title"></span>
 					<h3>Durata</h3>
-					<label id="runningTime"></label>
+					<span id="runningTime"></span>
 					<h3>Genere</h3>
-					<label id="genre"></label>
+					<span id="genre"></span>
 					<h3>Regista</h3>
-					<label id="director"></label>
+					<span id="director"></span>
 					<h3>Attori</h3>
 					<div class="actorSection">
-						<label id="actor1"></label>
-						<label id="actor2"></label>
+						<span id="actor1"></span>
+						<span id="actor2"></span>
 					</div>
 					<h3>Descrizione</h3>
-					<label id="description"></label>
+					<p id="description"></p>
 				</div>
 				<br>
 				<form id="projectionsForm" action="${pageContext.request.contextPath}/projections" method="post">
@@ -103,7 +103,7 @@
 							<th>Data</th><th>Orario</th><th>Costo (&euro;)</th>
 						</tr>
 					</thead>
-					<tbody style="max-height: 700px">
+					<tbody style="max-height: 500px">
 					</tbody>
 				</table>
 				<br>
@@ -122,11 +122,11 @@
 				</header>
 				<br>
 				<div class="optionsList" style="width: 100%">
-			 		<span><h3>Film</h3><label id="film"></label></span>
+			 		<span><h3>Film</h3><span id="film"></span></span>
 			 		<span>&nbsp;</span>
-			 		<span><h3>Proiezione</h3><label id="projection"></label></span>
+			 		<span><h3>Proiezione</h3><span id="projection"></span></span>
 			 		<span>&nbsp;</span>
-			 		<span><h3>Prezzo totale</h3><span><label id="price"></label><label> &euro;</label></span></span>
+			 		<span><h3>Prezzo totale</h3><span><span id="price"></span><span> &euro;</span></span></span>
 			 	</div>
 			 	<br>
 				<table id="seatsTable" class="room">
@@ -148,8 +148,8 @@
 				</header>
 				<br>
 				<div class="optionsList">
-					<label>Posti selezionati con successo</label>
-					<label>&nbsp;</label>
+					<span>Posti selezionati con successo</span>
+					<span>&nbsp;</span>
 					<button onclick="for(var i = 0, list = document.getElementsByClassName('modalContainer'), l = list.length; i < l; i++) list[i].style.display = 'none';">Ok</button>
 				</div>
 			</div>

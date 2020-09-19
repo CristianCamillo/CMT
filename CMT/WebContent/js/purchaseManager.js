@@ -1,11 +1,3 @@
-function validateLoginForm()
-{
-	const usr = validateUsername(document.getElementsByName("username")[0]);
-	const psw = validatePassword(document.getElementsByName("password")[0]);
-	
-	return usr && psw;
-}			
-
 $(document).ready(function()
 {
 	$(document).on("submit", "#loginForm", function(event)
@@ -24,7 +16,7 @@ $(document).ready(function()
 				else
 					msg += "gestore";
 				
-				$("#errorMsg").html(msg);
+				$("#errorLabel").html(msg);
 				$("#errorModal").css("display", "flex");
 			}
 		});

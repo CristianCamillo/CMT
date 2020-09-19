@@ -25,7 +25,7 @@
 		<form id="registrationForm" class="optionsList" style="margin: 100px auto" onsubmit="return validateRegistrationForm()" action="${pageContext.request.contextPath}/registration" method="post">
 			<input name="username" type="text" placeholder="Username" oninput="validateUsername(this)">
 			<span class="passwordSpan"><input name="password" type="password" placeholder="Password" oninput="validatePassword(this)"><img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('password')[0], this)"></span>
-			<span class="euroSpan"><input name="balance" type="text" placeholder="Saldo" oninput="validateBalance(this)"><label>&euro;</label></span>
+			<span class="euroSpan"><input name="balance" type="text" placeholder="Saldo" oninput="validateBalance(this)"><span>&euro;</span></span>
 			<span class="checkboxSpan"><label for="dataTreatment">Trattamento dei dati personali</label><input id="dataTreatment" type="checkbox" required></span>
 			<span>&nbsp;</span>
 			<button type="submit">Registrati</button>
@@ -41,8 +41,8 @@
 				</header>
 				<br>
 				<div class="optionsList">
-					<label>Registrazione effettuata con successo</label>
-					<label>&nbsp;</label>
+					<span>Registrazione effettuata con successo</span>
+					<span>&nbsp;</span>
 					<button onclick="location.href = 'homepage.jsp'">Ok</button>
 				</div>
 			</div>
@@ -58,8 +58,8 @@
 				</header>
 				<br>
 				<div class="optionsList">
-					<label>L'username indicato è già memorizzato</label>
-					<label>&nbsp;</label>
+					<span>L'username indicato è già memorizzato</span>
+					<span>&nbsp;</span>
 					<button onclick="document.getElementById('errorModal').style.display = 'none'">Ok</button>
 				</div>
 			</div>

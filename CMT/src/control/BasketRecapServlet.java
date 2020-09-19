@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 
@@ -31,8 +30,6 @@ public class BasketRecapServlet extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		System.out.println("helll");
-		
 		Basket basket = (Basket)request.getSession().getAttribute("basket");
 		
 		if(basket == null)
@@ -59,7 +56,6 @@ public class BasketRecapServlet extends HttpServlet
 		{
 			JSONObject object = new JSONObject();
 			
-			object.put("id", tickets.get(i).getId());
 			object.put("title", titles.get(i));
 			object.put("date", projections.get(i).getDate());
 			object.put("time", projections.get(i).getTime());

@@ -1,7 +1,8 @@
 .optionsList
 {
 	width: 300px;
-	
+	min-width: 300px; 
+		
 	display: flex;
 	flex-direction: column;
 }
@@ -41,7 +42,7 @@
 
 .optionsList > span.checkboxSpan
 {
-	margin: 5px 3px;
+	padding: 5px 3px;
 }
 
 .optionsList > span.checkboxSpan input
@@ -56,7 +57,7 @@
 	width: 100%;
 }
 
-.optionsList > span.euroSpan label
+.optionsList > span.euroSpan span
 {
 	margin: 0px 5px;
 }

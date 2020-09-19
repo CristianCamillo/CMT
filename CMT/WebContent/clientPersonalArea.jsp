@@ -26,9 +26,9 @@
 		<hr>
 		
 		<div style="display: flex">
-			<div class="optionsList" style="min-width: 300px; margin-right: 20px;">
-				<span><h3>Username</h3><label id="username"><%= request.getSession().getAttribute("username") %></label></span>
-				<span><h3>Saldo</h3><span><label id="balance"><%= request.getSession().getAttribute("balance") %></label><label> &euro;</label></span></span>
+			<div class="optionsList" style="margin-right: 20px;">
+				<span><h3>Username</h3><span id="username"><%= request.getSession().getAttribute("username") %></span></span>
+				<span><h3>Saldo</h3><span><span id="balance"><%= request.getSession().getAttribute("balance") %></span><span> &euro;</span></span></span>
 				<span>&nbsp;</span>
 				<span>&nbsp;</span>
 				<button onclick="document.getElementById('usernameModal').style.display = 'flex'">Modifica username</button>
@@ -89,7 +89,7 @@
 				</header>
 				<br>
 				<form id="amountForm" class="optionsList" onsubmit="return validateAmount(document.getElementsByName('amount')[0])" action="${pageContext.request.contextPath}/personalData" method="post">
-					<span class="euroSpan"><input name="amount" type="text" oninput="validateAmount(this)"><label>&euro;</label></span>
+					<span class="euroSpan"><input name="amount" type="text" oninput="validateAmount(this)"><span>&euro;</span></span>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiungi</button>
 					<input name="toChange" type="hidden" value="2">
@@ -107,8 +107,8 @@
 				</header>
 				<br>
 				<div class="optionsList">
-					<label id="successLabel"></label>
-					<label>&nbsp;</label>
+					<span id="successMsg"></span>
+					<span>&nbsp;</span>
 					<button onclick="document.getElementById('successModal').style.display = 'none'">Ok</button>
 				</div>
 			</div>
@@ -124,8 +124,8 @@
 				</header>
 				<br>
 				<div class="optionsList">
-					<label id="errorLabel"></label>
-					<label>&nbsp;</label>
+					<span id="errorMsg"></span>
+					<span>&nbsp;</span>
 					<button onclick="document.getElementById('errorModal').style.display = 'none'">Ok</button>
 				</div>
 			</div>

@@ -26,8 +26,8 @@ function validatePassword(element)
 
 function validateBalance(element)
 {	
-	const potNumber = parseFloat(element.value);
-	const valid = potNumber.toString() === element.value && potNumber >= 0;
+	const f = parseFloat(element.value);	
+	const valid = f.toString() === element.value && f >= 0 && (f * 100) == parseInt(f * 100);
 	
 	if(valid)
 		setGreen(element);
@@ -39,8 +39,8 @@ function validateBalance(element)
 
 function validateAmount(element)
 {	
-	const potNumber = parseFloat(element.value);
-	const valid = potNumber.toString() === element.value && potNumber > 0;
+	const f = parseFloat(element.value);	
+	const valid = f.toString() === element.value && f > 0 && (f * 100) == parseInt(f * 100);
 	
 	if(valid)
 		setGreen(element);

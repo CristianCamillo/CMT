@@ -10,13 +10,13 @@ $(document).ready(function()
 				if(responseText != "1")
 				{
 					$("#username").html(responseText);
-					$("#successLabel").html("L'username e' stato modificato con successo");
+					$("#successMsg").html("L'username e' stato modificato con successo");
 					$("#successModal").css("display", "flex");
 					$("#usernameModal").css("display", "none");
 				}
 				else
 				{
-					$("#errorLabel").html("L'username indicato e' gia' memorizzato");
+					$("#errorMsg").html("L'username indicato e' gia' memorizzato");
 					$("#errorModal").css("display", "flex");
 				}
 		});
@@ -32,7 +32,7 @@ $(document).ready(function()
 		{
 			if(responseText != "")
 			{
-				$("#successLabel").html("La password e' stata modificata con successo");
+				$("#successMsg").html("La password e' stata modificata con successo");
 				$("#successModal").css("display", "flex");
 				$("#passwordModal").css("display", "none");
 			}
@@ -50,7 +50,7 @@ $(document).ready(function()
 			if(responseText != "")
 			{
 				$("#balance").html(responseText);
-				$("#successLabel").html("I fondi sono stati aggiunti con successo");
+				$("#successMsg").html("I fondi sono stati aggiunti con successo");
 				$("#successModal").css("display", "flex");
 				$("#amountModal").css("display", "none");			
 			}	

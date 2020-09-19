@@ -26,7 +26,7 @@
 			<input name="username" type="text" placeholder="Username" oninput="validateUsername(this)">
 			<span class="passwordSpan"><input name="password" type="password" placeholder="Password" oninput="validatePassword(this)"><img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('password')[0], this)"></span>
 			<span class="checkboxSpan"><label for="isManager">Accedi come manager</label><input id="isManager" name="isManager" type="checkbox"></span>
-			<span>&nbsp;</span>
+			&nbsp;
 			<button type="submit">Accedi</button>
 		</form>
 		
@@ -40,8 +40,8 @@
 				</header>
 				<br>
 				<div class="optionsList">
-					<label id="errorLabel"></label>
-					<label>&nbsp;</label>
+					<span id="errorMsg"></span>
+					<span>&nbsp;</span>
 					<button onclick="document.getElementById('errorModal').style.display = 'none'">Ok</button>
 				</div>
 			</div>

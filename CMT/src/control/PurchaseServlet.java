@@ -1,18 +1,15 @@
 package control;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import DAO.TicketDAO;
-import DAO.ClientDAO;
-import exceptions.CannotPurchaseException;
-import model.Ticket;
+import model.Basket;
 
 @WebServlet("/purchase")
 public class PurchaseServlet extends HttpServlet
@@ -25,60 +22,19 @@ public class PurchaseServlet extends HttpServlet
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{				
-		int idClient = (Integer)request.getSession().getAttribute("id");	
-		float amount = Float.parseFloat(request.getParameter("amount"));
+	{	
+		HttpSession session = request.getSession();
 		
-		try
-		{
-			ClientDAO.spend(idClient, amount);
-		}
-		catch(CannotPurchaseException e)
-		{
-			writeMessage(response, "Saldo non sufficiente per effettuare l'acquisto");
-		}
-		catch(SQLException e)
-		{
-			System.out.println("Purchase Servlet SQL Exception");
-		}		
-		
-		String seatsString = request.getParameter("seats");
-		int idProjection = Integer.parseInt(request.getParameter("idProjection"));
-		
-		String[] aSeats = seatsString.split("/");
-		
-		try
-		{
-			int lastId = TicketDAO.getLastId();
-			int counter = 0;
-			
-			for(String sSeat : aSeats)
-			{
-				counter++;
-				String[] aSeat = sSeat.split("-");
-				
-				short seat = (short)((Integer.parseInt(aSeat[0]) + 1) * 100 + Integer.parseInt(aSeat[1]) + 1);
-				
-				TicketDAO.addTicket(new Ticket(lastId + counter, seat, idClient, idProjection));
-			}
-			
-			response.sendRedirect("homepage.jsp");
-		}
-		catch(CannotPurchaseException e)
-		{
-			writeMessage(response, "Almeno uno dei biglietti è stato acquistato");
-		}
-		catch(SQLException e)
-		{
-			System.out.println(e);
-		}
-	}
-	
-	private void writeMessage(HttpServletResponse response, String msg) throws IOException
-	{
-		response.setContentType("text/html");	
-		response.getOutputStream().println("<script>alert(\"" + msg + "\");</script>" + 
-										   "<meta http-equiv=\"refresh\" content=\"0;URL=homepage.jsp\">");
-		response.getOutputStream().flush();
+		float balance = (float)session.getAttribute("balance");
+		Basket basket = (Basket)session.getAttribute("basket");
+
+		response.setContentType("text/plain");
+	 	response.setCharacterEncoding("UTF-8");
+	 	
+	 	if(balance < basket.getTotalPrice())
+	 	{
+	 		response.getWriter().write("1");
+	 		return;
+	 	}
 	}
 }

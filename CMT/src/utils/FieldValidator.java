@@ -56,7 +56,9 @@ public class FieldValidator
 		
 		try
 		{
-			return Float.parseFloat(number) >= 0;
+			float f = Float.parseFloat(number);
+			
+			return f >= 0 && (f * 100) == (int)(f * 100);
 		}
 		catch(NumberFormatException e)
 		{
@@ -70,7 +72,9 @@ public class FieldValidator
 		
 		try
 		{
-			return Float.parseFloat(number) > 0;
+			float f = Float.parseFloat(number);
+			
+			return f > 0 && (f * 100) == (int)(f * 100);
 		}
 		catch(NumberFormatException e)
 		{

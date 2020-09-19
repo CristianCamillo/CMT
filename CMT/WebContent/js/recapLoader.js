@@ -12,7 +12,6 @@ $(document).ready(function()
 				var ticket = responseText[i];
 				
 				var row = "<tr>" + 
-						  "<td>" + ticket.id + "</td>" +
 						  "<td>" + ticket.title + "</td>" +
 						  "<td>" + parseDate(ticket.date) + "</td>" +
 						  "<td>" + parseTime(ticket.time) + "</td>" +
