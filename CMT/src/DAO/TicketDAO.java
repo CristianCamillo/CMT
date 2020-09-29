@@ -1,10 +1,13 @@
 package DAO;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import exceptions.SeatBookedException;
+import model.Basket;
 import model.Ticket;
 import utils.DriverManagerConnectionPool;
 
@@ -28,7 +31,7 @@ public class TicketDAO
 	    return list;
 	}
 	
-	public static int getLastId() throws SQLException
+	private static int getLastId() throws SQLException
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
@@ -43,30 +46,36 @@ public class TicketDAO
 	    else
 	    	return -1;
 	}
-	
-	/*
-	
-	public static void addTicket(Ticket ticket) throws SQLException, CannotPurchaseException
-	{
+			
+	public static void addTickets(Basket basket) throws SQLException, SeatBookedException
+	{			
+		ArrayList<Ticket> tickets = basket.getTickets();
+		
+		int id = getLastId();
+		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String query = "SELECT id FROM ticket WHERE seat = " + ticket.getSeat() + " AND idprojection = " + ticket.getIdProjection();
-	    
-	    ResultSet rs = con.createStatement().executeQuery(query);
-	    
-	    if(rs.next())
-	    {
-	    	DriverManagerConnectionPool.releaseConnection(con);
-	    	throw new CannotPurchaseException();
-	    }
-	    
-	    String insert = "INSERT INTO ticket VALUES (" + ticket.getId() + ", " + ticket.getSeat() + ", " + ticket.getIdClient() + ", " + ticket.getIdProjection() + ")";
-	   
-	    con.createStatement().executeUpdate(insert);
+		String insert = "INSERT INTO ticket VALUES (?, ?, ?, ?, ?, ?)";
+		
+		PreparedStatement ps = con.prepareStatement(insert);
+		
+		for(Ticket ticket : tickets)
+		{					
+			id++;
+			
+			ps.setInt(1, id);
+			ps.setByte(2, ticket.getX());
+			ps.setByte(3, ticket.getY());
+			ps.setFloat(4, ticket.getPrice());
+			ps.setInt(5, ticket.getIdClient());
+			ps.setInt(6, ticket.getIdProjection());
+			
+			ps.executeUpdate();
+		}
 	    
 	    DriverManagerConnectionPool.releaseConnection(con);
 	}
-	*/
+	
 	public static ArrayList<Ticket> getTickets(int idClient) throws SQLException
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();

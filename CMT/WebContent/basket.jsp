@@ -21,8 +21,8 @@
 		<hr>
 		
 		<h2>Carrello</h2>
-		
-		<table id="ticketTable" class="table" style="min-width: 1000px; margin-top: 20px">
+		<br>
+		<table id="ticketTable" class="table" style="min-width: 1000px;">
 			<thead>
 				<tr>
 					<th>Titolo film</th><th>Data di proiezione</th><th>Orario</th><th>Numero sala</th><th>Posto a sedere</th><th>Costo (&euro;)</th>

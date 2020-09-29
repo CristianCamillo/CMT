@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import exceptions.CannotPurchaseException;
 import exceptions.UsernameTakenException;
 import model.Client;
 import utils.DriverManagerConnectionPool;
@@ -56,7 +55,7 @@ public class ClientDAO
 	public static void addClient(Client client) throws SQLException, UsernameTakenException
 	{		
 		if(isRegistered(client.getUsername()))
-			throw new UsernameTakenException(client.getUsername());
+			throw new UsernameTakenException();
 		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
@@ -67,29 +66,14 @@ public class ClientDAO
 	    DriverManagerConnectionPool.releaseConnection(con);
 	}
 	
-	public static void spend(int id, float amount) throws SQLException, CannotPurchaseException
+	public static void spend(int id, float amount) throws SQLException
 	{
 		if(amount <= 0)
 			return;
 		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String query = "SELECT balance FROM client WHERE id = " + id;
-	    
-	    ResultSet rs = con.createStatement().executeQuery(query);
-		
-		if(!rs.next())
-			return;
-	
-		float balance = rs.getFloat("balance");
-		
-		if(balance < amount)
-		{
-			DriverManagerConnectionPool.releaseConnection(con);
-			throw new CannotPurchaseException();
-		}
-		
-		String update = "UPDATE client SET balance = " + (balance - amount) + " WHERE id = " + id;
+		String update = "UPDATE client SET balance = balance - " + amount + " WHERE id = " + id;
 		
 	    con.createStatement().executeUpdate(update);
 	    
@@ -99,7 +83,7 @@ public class ClientDAO
 	public static void updateUsername(int id, String newUsername) throws SQLException, UsernameTakenException
 	{
 		if(isRegistered(newUsername))
-			throw new UsernameTakenException(newUsername);
+			throw new UsernameTakenException();
 		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		

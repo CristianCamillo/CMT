@@ -33,7 +33,10 @@ function selectProjection(row, idProjection)
 }
 
 function selectSeat(seat)
-{					
+{			
+	if(document.getElementById("basketButton1") == null)
+		return;
+			
 	if(seat.src.includes("occupied.jpg"))
 		return;
 		
@@ -184,7 +187,8 @@ $(document).ready(function()
 					seat.setAttribute("id", x + "-" + y);
 					seat.setAttribute("src", "seats/vacant.jpg");
 					
-					seat.onclick = function() { selectSeat(this); };
+					if(document.getElementById("basketButton") != null)
+						seat.onclick = function() { selectSeat(this); };
 					
 					td.appendChild(seat);
 					tr.appendChild(td);

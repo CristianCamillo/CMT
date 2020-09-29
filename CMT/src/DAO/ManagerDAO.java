@@ -42,7 +42,7 @@ public class ManagerDAO
 	public static void updateUsername(int id, String newUsername) throws SQLException, UsernameTakenException
 	{
 		if(isRegistered(newUsername))
-			throw new UsernameTakenException(newUsername);
+			throw new UsernameTakenException();
 		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
