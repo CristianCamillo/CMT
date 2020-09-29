@@ -5,10 +5,12 @@
 		<title>CMT - Basket</title>
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
+		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 		<script src="js/dataParser.js"></script>
 		<script src="js/jquery.js"></script>
 		<script src="js/basketLoader.js"></script>
+		<script src="js/purchaseManager.js"></script>
 	</head>
 	<body>
 		<header>
@@ -32,7 +34,9 @@
 			</tbody>					
 		</table>
 		<br>
-		<button id="buyButton" style="width: 100%" onclick="${pageContext.request.contextPath}/purchase" disabled>Acquista biglietti</button>
+		<form id="purchaseForm" action="${pageContext.request.contextPath}/purchase" method="post">
+			<button id="buyButton" type="submit" style="width: 100%" disabled>Acquista biglietti</button>
+		</form>
 		
 		<div id="successModal" class="modalContainer">
 			<div>
@@ -61,9 +65,9 @@
 				</header>
 				<br>
 				<div class="optionsList">
-					<span></span>
+					<span id="errorMsg"></span>
 					<span>&nbsp;</span>
-					<button onclick="">Ok</button>
+					<button id="errorButton" onclick="document.getElementById('errorModal').style.display = 'none'">Ok</button>
 				</div>
 			</div>
 		</div>

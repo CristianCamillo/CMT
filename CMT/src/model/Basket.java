@@ -46,4 +46,9 @@ public class Basket
 		
 		return price;
 	}
+	
+	public void clear()
+	{
+		tickets.clear();
+	}
 }

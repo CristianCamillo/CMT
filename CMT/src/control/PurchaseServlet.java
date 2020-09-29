@@ -56,6 +56,7 @@ public class PurchaseServlet extends HttpServlet
 			 	
 			 	TicketDAO.addTickets(basket);
 			 	ClientDAO.spend(id, totalPrice);
+			 	basket.clear();
 			 	
 			 	session.setAttribute("balance", balance - totalPrice);
 			 	
