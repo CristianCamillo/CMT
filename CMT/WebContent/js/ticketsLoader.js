@@ -6,9 +6,7 @@ $(document).ready(function()
 		type: "post",
 		
         success: function(responseText)
-		{
-			
-			
+		{			
 			for(var i = 0, l = responseText.length; i < l; i++)
 			{
 				var ticket = responseText[i];
@@ -29,7 +27,7 @@ $(document).ready(function()
 
         error: function (xhr, ajaxOptions, thrownError)
 		{
-			alert("Errore tickets servlet");
+			alert("Errore");
         }
 	});
 });

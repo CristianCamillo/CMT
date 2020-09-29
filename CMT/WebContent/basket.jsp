@@ -50,5 +50,22 @@
 				</div>
 			</div>
 		</div>
+		
+		<div id="errorModal" class="modalContainer">
+			<div>
+				<header>
+					<span>
+						<img src="icons/errorIcon.png">
+						<h2>Errore</h2>
+					</span>
+				</header>
+				<br>
+				<div class="optionsList">
+					<span></span>
+					<span>&nbsp;</span>
+					<button onclick="">Ok</button>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

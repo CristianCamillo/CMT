@@ -14,7 +14,7 @@
 		<script src="js/fieldValidator.js"></script>
 		<script src="js/dataParser.js"></script>
 		<script src="js/jquery.js"></script>
-		<script src="js/homepagePurchaseChain.js"></script>
+		<script src="js/homepageChain.js"></script>
 	</head>
 	<body>
 		<header>
