@@ -180,7 +180,10 @@ $(document).ready(function()
 					seat.setAttribute("src", "seats/vacant.jpg");
 					
 					if(document.getElementById("basketButton") != null)
+					{
 						seat.onclick = function() { selectSeat(this); };
+						seat.style.cursor = "pointer";
+					}
 					
 					td.appendChild(seat);
 					tr.appendChild(td);
