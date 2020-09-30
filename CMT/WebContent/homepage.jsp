@@ -117,13 +117,13 @@
 					<button onclick="document.getElementById('projectionsModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<table id="projectionsTable" class="table handable" style="width: 500px">
+				<table id="projectionsTable" class="table handable smallTable">
 					<thead>
 						<tr>
 							<th>Data</th><th>Orario</th><th>Costo (&euro;)</th>
 						</tr>
 					</thead>
-					<tbody style="max-height: 500px">
+					<tbody>
 					</tbody>
 				</table>
 				<br>
