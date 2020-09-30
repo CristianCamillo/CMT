@@ -10,7 +10,7 @@ $(document).ready(function()
 				if(responseText != "1")
 				{
 					$("#username").html(responseText);
-					$("#successMsg").html("L'username e' stato modificato con successo");
+					$("#successMsg").html("L'username e' stato modificato");
 					$("#successModal").css("display", "flex");
 					$("#usernameModal").css("display", "none");
 				}
@@ -32,7 +32,7 @@ $(document).ready(function()
 		{
 			if(responseText != "")
 			{
-				$("#successMsg").html("La password e' stata modificata con successo");
+				$("#successMsg").html("La password e' stata modificata");
 				$("#successModal").css("display", "flex");
 				$("#passwordModal").css("display", "none");
 			}
@@ -50,7 +50,7 @@ $(document).ready(function()
 			if(responseText != "")
 			{
 				$("#balance").html(responseText);
-				$("#successMsg").html("I fondi sono stati aggiunti con successo");
+				$("#successMsg").html("I fondi sono stati aggiunti");
 				$("#successModal").css("display", "flex");
 				$("#amountModal").css("display", "none");			
 			}	

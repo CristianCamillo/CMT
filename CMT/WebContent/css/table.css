@@ -9,6 +9,21 @@ table.table
     background-color: var(--orange);
 }
 
+table.smallTable
+{
+	width: 500px;
+}
+
+table.smallTable tbody
+{
+	max-height: 500px;
+}
+
+table.bigTable tbody
+{
+	max-height: 700px;
+}
+
 table.table thead
 {    
 	width: calc(100% - 0.5em);

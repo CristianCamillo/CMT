@@ -58,7 +58,7 @@
 				</header>
 				<br>
 				<div class="optionsList">
-					<span>Registrazione effettuata con successo</span>
+					<span>Registrazione effettuata</span>
 					<span>&nbsp;</span>
 					<button onclick="location.href = 'homepage.jsp'">Ok</button>
 				</div>

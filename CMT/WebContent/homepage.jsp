@@ -46,7 +46,7 @@
 				<%			
 					String userType = (String)session.getAttribute("userType");
 					if(userType == "client")
-						out.print("<img id=\"basketButton1\" src=\"svg/shoppingCart.svg\" onclick=\"location.href = 'basket.jsp'\">");
+						out.print("<img id=\"basketButton\" src=\"svg/shoppingCart.svg\" onclick=\"location.href = 'basket.jsp'\">");
 				%>
 				<div>
 					<%						
@@ -154,7 +154,7 @@
 					</tbody>
 				</table>
 				<br>
-				<button id="basketButton" onclick="sendTickets()" style="width: 100%">Aggiungi posti al carrello</button>
+				<button onclick="sendTickets()" style="width: 100%">Aggiorna il carrello</button>
 			</div>
 		</div>
 		
@@ -168,7 +168,7 @@
 				</header>
 				<br>
 				<div class="optionsList">
-					<span>Posti selezionati con successo</span>
+					<span>Carrello aggiornato</span>
 					<span>&nbsp;</span>
 					<button onclick="for(var i = 0, list = document.getElementsByClassName('modalContainer'), l = list.length; i < l; i++) list[i].style.display = 'none';">Ok</button>
 				</div>

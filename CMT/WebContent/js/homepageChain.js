@@ -1,7 +1,5 @@
 var filmData;
 
-var selectedSeats;
-
 function openDetailsModal(filmNumber)
 {	
 	var film = filmData[filmNumber];
@@ -34,35 +32,29 @@ function selectProjection(row, idProjection)
 
 function selectSeat(seat)
 {			
-	if(document.getElementById("basketButton1") == null)
+	if(document.getElementById("basketButton") == null)
 		return;
 			
 	if(seat.src.includes("occupied.jpg"))
 		return;
 		
 	var price = parseInt($(".selected td:last-child").html());
-	var totalPrice = parseInt(document.getElementById("price").innerHTML);			
+	var totalPrice = parseInt(document.getElementById("price").innerHTML);
 	
 	if(seat.src.includes("vacant.jpg"))
 	{		
 		seat.src = "seats/selected.jpg";
 		
 		totalPrice += price;
-		
-		selectedSeats++;
 	}
 	else
 	{		
 		seat.src = "seats/vacant.jpg";
 		
 		totalPrice -= price;
-		
-		selectedSeats--;
 	}
 	
 	document.getElementById("price").innerHTML = totalPrice;
-	
-	document.getElementById("basketButton").disabled = selectedSeats == 0;
 }
 	
 function sendTickets()
@@ -197,11 +189,11 @@ $(document).ready(function()
 				tbody.appendChild(tr);			
 			}
 				
-			selectedSeats = 0;
+			var selectedSeats = 0;
 				
 			for(var i = 1, l = responseText.length; i < l; i++)
 			{					
-				var id = responseText[i].x + "-" + responseText[i].y;				
+				var id = responseText[i].x + "-" + responseText[i].y;
 				
 				if(!responseText[i].occupied)
 					selectedSeats++;
@@ -213,7 +205,6 @@ $(document).ready(function()
 			$("#projection").html($(".selected td:first-child").html() + " - " + $(".selected td:nth-child(2)").html());
 			$("#price").html(parseInt($(".selected td:last-child").html()) * selectedSeats);
 	
-			$("#basketButton").prop("disabled", true);
 			$("#seatsModal").css("display", "flex");
 		});
 		

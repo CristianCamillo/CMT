@@ -26,6 +26,8 @@ div.modalContainer > div
 	
 	background-color: var(--yellow);
 	box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.75);
+	
+	overflow: auto;
 }
 
 div.modalContainer > div header

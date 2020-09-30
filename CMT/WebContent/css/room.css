@@ -26,16 +26,9 @@ table.room img
 	   only screen and (-webkit-min-device-pixel-ratio: 2), 
 	   only screen and (min-device-pixel-ratio: 2)
 {
-	table.room
-	{		
-		padding: 7px 3px 0px 3px;
-	}
-	
 	table.room img
 	{
 		width: 48px;
 		height: 37px;
-		
-		margin: 3px 7px;
 	}
 }

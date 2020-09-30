@@ -3,14 +3,17 @@
 <html>
 	<head>
 		<title>CMT - Basket</title>
+		
 		<link rel="stylesheet" type="text/css" href="css/base.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
+		
 		<script src="js/dataParser.js"></script>
 		<script src="js/jquery.js"></script>
 		<script src="js/basketLoader.js"></script>
 		<script src="js/purchaseManager.js"></script>
+		
 		<link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-icon-60x60.png">
 		<link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-icon-72x72.png">
@@ -25,6 +28,7 @@
 		<link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
 		<link rel="manifest" href="favicons/manifest.json">
+		
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="favicons/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
@@ -41,13 +45,13 @@
 		
 		<h2>Carrello</h2>
 		<br>
-		<table id="ticketTable" class="table">
+		<table id="ticketTable" class="table bigTable">
 			<thead>
 				<tr>
 					<th>Titolo film</th><th>Data di proiezione</th><th>Orario</th><th>Numero sala</th><th>Posto a sedere</th><th>Costo (&euro;)</th>
 				</tr>
 			</thead>
-			<tbody style="max-height: 500px">
+			<tbody>
 			</tbody>					
 		</table>
 		<br>
@@ -65,7 +69,7 @@
 				</header>
 				<br>
 				<div class="optionsList">
-					<span>Acquisto riuscito con successo</span>
+					<span>Acquisto riuscito</span>
 					<span>&nbsp;</span>
 					<button onclick="location.href = 'homepage.jsp'">Ok</button>
 				</div>

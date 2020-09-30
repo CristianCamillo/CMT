@@ -10,3 +10,17 @@
 {
 	filter: var(--light-brown-filter);
 }
+
+/*************************************************/
+
+@media only screen (-moz-min-device-pixel-ratio: 2), 
+	   only screen and (-o-min-device-pixel-ratio: 2/1), 
+	   only screen and (-webkit-min-device-pixel-ratio: 2), 
+	   only screen and (min-device-pixel-ratio: 2)
+{
+	.eye
+	{
+		width: 40px;
+		height: 40px;
+	}
+}
