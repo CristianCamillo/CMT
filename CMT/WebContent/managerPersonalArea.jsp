@@ -61,7 +61,7 @@
 					<button onclick="document.getElementById('usernameModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="usernameForm" class="optionsList" onsubmit="return validateUsername(document.getElementsByName('newUsername')[0])" action="${pageContext.request.contextPath}/personalData" method="post">
+				<form id="usernameForm" class="optionsList" style="width: 100%" onsubmit="return validateUsername(document.getElementsByName('newUsername')[0])" action="${pageContext.request.contextPath}/personalData" method="post">
 					<input name="newUsername" type="text" oninput="validateUsername(this)">
 					<span>&nbsp;</span>
 					<button type="submit">Aggiorna</button>
@@ -77,7 +77,7 @@
 					<button onclick="document.getElementById('passwordModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="passwordForm" class="optionsList" onsubmit="return validatePassword(document.getElementsByName('newPassword')[0])" action="${pageContext.request.contextPath}/personalData" method="post">
+				<form id="passwordForm" class="optionsList" style="width: 100%" onsubmit="return validatePassword(document.getElementsByName('newPassword')[0])" action="${pageContext.request.contextPath}/personalData" method="post">
 					<span class="passwordSpan"><input name="newPassword" type="password" oninput="validatePassword(this)"><img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('newPassword')[0], this)"></span>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiorna</button>

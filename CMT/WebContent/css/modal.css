@@ -50,3 +50,8 @@ div.modalContainer > div header span img
 	
 	margin-right: 10px;
 }
+
+div.modalContainer > div header button
+{
+	margin-left: 15px;
+}
