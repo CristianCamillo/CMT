@@ -9,7 +9,7 @@ import model.Ticket;
 
 public class BasketDAO
 {
-	public static boolean removeTakenSeats(Basket basket) throws SQLException
+	public synchronized static boolean removeTakenSeats(Basket basket) throws SQLException
 	{
 		ArrayList<Ticket> tickets = basket.getTickets();
 		

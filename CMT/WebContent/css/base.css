@@ -36,7 +36,9 @@
  	margin: 0px;
  	padding: 0px;
  	
- 	color: var(--brown); 	
+ 	color: var(--brown);
+ 	
+ 	transition-duration: 0.15s;
 }
 
 /* body */
@@ -62,7 +64,6 @@ body header span
 	display: flex;
   	align-items: center;
 	
-	transition-duration: 0.2s;
 	cursor: pointer;
 }
 
@@ -99,7 +100,6 @@ body header div img
 	
 	margin-right: 20px;
 	
-	transition-duration: 0.2s;
 	cursor: pointer;
 	
 	filter: var(--brown-filter);
@@ -163,7 +163,6 @@ button
 	
   	background-color: var(--orange);
 	
-	transition-duration: 0.2s;
   	cursor: pointer;  	
 }
 
@@ -188,4 +187,39 @@ hr
 {
 	margin: 15px 0px;
 	background: var(--brown);
+	color: var(--brown);
+}
+
+/*************************************************/
+
+@media only screen (-moz-min-device-pixel-ratio: 2), 
+	   only screen and (-o-min-device-pixel-ratio: 2/1), 
+	   only screen and (-webkit-min-device-pixel-ratio: 2), 
+	   only screen and (min-device-pixel-ratio: 2)
+{
+	*
+	{
+		font-size: 30px;
+	}
+	
+	h1
+	{
+		font-size: 60px;	
+	}
+	
+	h2
+	{
+		font-size: 38px;
+	}
+	
+	h3
+	{
+		font-size: 32px;
+	}
+	
+	body header div img
+	{
+		width: 75px;
+		height: 75px;
+	}
 }

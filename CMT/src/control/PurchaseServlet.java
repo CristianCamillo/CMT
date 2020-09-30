@@ -36,37 +36,34 @@ public class PurchaseServlet extends HttpServlet
 		response.setContentType("text/plain");
 	 	response.setCharacterEncoding("UTF-8");
 	 	
-	 	synchronized(PurchaseServlet.class)
+	 	try
 	 	{
-		 	try
+		 	if(BasketDAO.removeTakenSeats(basket))
 		 	{
-			 	if(BasketDAO.removeTakenSeats(basket))
-			 	{
-			 		response.getWriter().write("1");
-			 		return;
-			 	}
-			 	
-			 	float totalPrice = basket.getTotalPrice();
-			 	
-			 	if(balance < totalPrice)
-			 	{
-			 		response.getWriter().write("2");
-			 		return;
-			 	}
-			 	
-			 	TicketDAO.addTickets(basket);
-			 	ClientDAO.spend(id, totalPrice);
-			 	basket.clear();
-			 	
-			 	session.setAttribute("balance", balance - totalPrice);
-			 	
-			 	response.getWriter().write("0");
+		 		response.getWriter().write("1");
+		 		return;
 		 	}
-		 	catch(SQLException e)
-			{
-		 		System.out.println(e);
-				return;
-			}
+		 	
+		 	float totalPrice = basket.getTotalPrice();
+		 	
+		 	if(balance < totalPrice)
+		 	{
+		 		response.getWriter().write("2");
+		 		return;
+		 	}
+		 	
+		 	TicketDAO.addTickets(basket);
+		 	ClientDAO.spend(id, totalPrice);
+		 	basket.clear();
+		 	
+		 	session.setAttribute("balance", balance - totalPrice);
+		 	
+		 	response.getWriter().write("0");
 	 	}
+	 	catch(SQLException e)
+		{
+	 		System.out.println(e);
+			return;
+		}	 	
 	}
 }
