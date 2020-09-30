@@ -23,3 +23,21 @@ div.filmDetailsContainer > div.actorSection label + label
 {
 	margin-top: 4px;
 }
+
+/*************************************************/
+
+@media only screen (-moz-min-device-pixel-ratio: 2), 
+	   only screen and (-o-min-device-pixel-ratio: 2/1), 
+	   only screen and (-webkit-min-device-pixel-ratio: 2), 
+	   only screen and (min-device-pixel-ratio: 2)
+{
+	div.filmDetailsContainer
+	{	
+		grid-template-columns: auto auto;
+	}
+	
+	div.filmDetailsContainer > img.posterItem
+	{
+		display: none;
+	}
+}
