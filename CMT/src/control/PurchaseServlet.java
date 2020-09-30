@@ -30,7 +30,7 @@ public class PurchaseServlet extends HttpServlet
 		HttpSession session = request.getSession();
 		
 		int id = (int)session.getAttribute("id");
-		float balance = (float)session.getAttribute("balance");
+		float balance = Float.parseFloat(session.getAttribute("balance") + "");
 		Basket basket = (Basket)session.getAttribute("basket");
 
 		response.setContentType("text/plain");

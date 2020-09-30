@@ -34,5 +34,5 @@ function parseTime(time)
 
 function parseSeat(x, y)
 {	
-	return String.fromCharCode(65 + x) + "-" + (y + 1);
+	return String.fromCharCode(65 + y) + "-" + (x + 1);
 }

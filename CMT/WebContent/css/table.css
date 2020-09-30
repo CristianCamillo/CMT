@@ -74,3 +74,16 @@ table.handable tbody tr:hover
 {		
 	cursor: pointer;
 }
+
+/*************************************************/
+
+@media only screen (-moz-min-device-pixel-ratio: 2), 
+	   only screen and (-o-min-device-pixel-ratio: 2/1), 
+	   only screen and (-webkit-min-device-pixel-ratio: 2), 
+	   only screen and (min-device-pixel-ratio: 2)
+{
+	table.table tbody
+	{
+		min-height: 45px;
+	}
+}
