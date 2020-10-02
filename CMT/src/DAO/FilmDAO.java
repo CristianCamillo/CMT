@@ -21,19 +21,19 @@ public class FilmDAO
 		String toAdd = "";
 		
 		if(!title.equals(""))
-			toAdd += " AND LOWER(title) = '" + title.toLowerCase() + "'";
+			toAdd += " AND LOWER(title) LIKE '%" + title.toLowerCase() + "%'";
 		
 		if(!genre.equals(""))
-			toAdd += " AND LOWER(genre) = '" + genre.toLowerCase() + "'";
+			toAdd += " AND LOWER(genre) LIKE '%" + genre.toLowerCase() + "%'";
 		
 		if(!director.equals(""))
-			toAdd += " AND LOWER(director) = '" + director.toLowerCase() + "'";
+			toAdd += " AND LOWER(director) LIKE '%" + director.toLowerCase() + "%'";
 		
 		if(!actor.equals(""))
 		{
 			String al = actor.toLowerCase();
 			
-			toAdd += " AND (LOWER(actor1) = '" + al + "' or LOWER(actor2) = '" + al + "')";
+			toAdd += " AND (LOWER(actor1) LIKE '%" + al + "%' or LOWER(actor2) LIKE '%" + al + "%')";
 		}
 		
 		ResultSet rs = con.createStatement().executeQuery(query + toAdd);

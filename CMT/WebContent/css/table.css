@@ -45,6 +45,8 @@ table.table tbody
 	
 	border-radius: 4px;
 	
+	scrollbar-width: thin;
+	
 	background-color: white;
 }
 
