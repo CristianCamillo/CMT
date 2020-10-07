@@ -61,7 +61,7 @@
 			<table id="ticketTable" class="table bigTable">
 				<thead>
 					<tr>
-						<th>Id</th><th>Titolo film</th><th>Data di proiezione</th><th>Orario</th><th>Numero sala</th><th>Posto a sedere</th><th>Costo (&euro;)</th>
+						<th>Id</th><th>Film</th><th>Data</th><th>Orario</th><th>Sala</th><th>Posto</th><th>Costo (&euro;)</th>
 					</tr>
 				</thead>
 				<tbody>

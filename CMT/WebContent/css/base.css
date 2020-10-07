@@ -222,4 +222,14 @@ hr
 		width: 75px;
 		height: 75px;
 	}
+	
+	input[type=text], input[type=password]
+	{
+		border-radius: 8px;
+	}
+	
+	button
+	{  	   	
+		border-radius: 8px;
+	}
 }

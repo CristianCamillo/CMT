@@ -11,12 +11,17 @@ table.table
 
 table.smallTable
 {
-	width: 500px;
+	max-width: 500px;
 }
 
 table.smallTable tbody
 {
 	max-height: 500px;
+}
+
+table.bigTable 
+{
+	min-width: 700px;
 }
 
 table.bigTable tbody
@@ -26,7 +31,7 @@ table.bigTable tbody
 
 table.table thead
 {    
-	width: calc(100% - 0.5em);
+	width: calc(100% - 0.4em);
 
 	padding-bottom: 5px;
 
@@ -84,6 +89,13 @@ table.handable tbody tr:hover
 	   only screen and (-webkit-min-device-pixel-ratio: 2), 
 	   only screen and (min-device-pixel-ratio: 2)
 {
+	table.table
+	{	
+		padding: 8px;
+		
+		border-radius: 8px;
+	}
+	
 	table.table tbody
 	{
 		min-height: 45px;

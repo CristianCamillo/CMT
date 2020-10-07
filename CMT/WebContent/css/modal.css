@@ -57,3 +57,17 @@ div.modalContainer > div header button
 {
 	margin-left: 15px;
 }
+
+/*************************************************/
+
+@media only screen (-moz-min-device-pixel-ratio: 2), 
+	   only screen and (-o-min-device-pixel-ratio: 2/1), 
+	   only screen and (-webkit-min-device-pixel-ratio: 2), 
+	   only screen and (min-device-pixel-ratio: 2)
+{
+	div.modalContainer > div
+	{				
+		border-width: 5px;
+		border-radius: 8px;
+	}
+}

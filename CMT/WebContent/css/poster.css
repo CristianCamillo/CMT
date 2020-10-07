@@ -3,8 +3,7 @@ img.presPoster
 	width: 315px;
 	height: 450px;
 	  	
-  	padding: 2px;
-  	border: 1px solid var(--brown);
+  	border: 2px solid var(--brown);
   	border-radius: 4px;
   	margin: 5px;
   	
@@ -23,6 +22,19 @@ img.poster
 	width: 315px;
 	height: 450px;
 	
-	border: 1px solid var(--brown);
+	border: 2px solid var(--brown);
 	border-radius: 4px;
+}
+
+/*************************************************/
+
+@media only screen (-moz-min-device-pixel-ratio: 2), 
+	   only screen and (-o-min-device-pixel-ratio: 2/1), 
+	   only screen and (-webkit-min-device-pixel-ratio: 2), 
+	   only screen and (min-device-pixel-ratio: 2)
+{
+	img.presPoster
+	{
+	  	border-radius: 8px;
+	}
 }
