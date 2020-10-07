@@ -1,10 +1,14 @@
-img.presPoster
+img.poster
 {
 	width: 315px;
 	height: 450px;
-	  	
-  	border: 2px solid var(--brown);
-  	border-radius: 4px;
+	
+	border: 2px solid var(--brown);
+	border-radius: 4px;
+}
+
+img.presPoster
+{	  	
   	margin: 5px;
   	
   	cursor: pointer;
@@ -17,15 +21,6 @@ img.presPoster:hover
 	filter: brightness(130%);
 }
 
-img.poster
-{
-	width: 315px;
-	height: 450px;
-	
-	border: 2px solid var(--brown);
-	border-radius: 4px;
-}
-
 /*************************************************/
 
 @media only screen (-moz-min-device-pixel-ratio: 2), 
@@ -33,7 +28,7 @@ img.poster
 	   only screen and (-webkit-min-device-pixel-ratio: 2), 
 	   only screen and (min-device-pixel-ratio: 2)
 {
-	img.presPoster
+	img.poster
 	{
 	  	border-radius: 8px;
 	}
