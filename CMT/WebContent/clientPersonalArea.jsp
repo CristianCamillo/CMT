@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/eye.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
+		<link rel="stylesheet" type="text/css" href="css/personalArea.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 		
 		<script src="js/alterPasswordVisibility.js"></script>
@@ -45,11 +46,9 @@
 				<h1>Castle Movie Theater</h1>					
 			</span>
 		</header>
-		
 		<hr>
-		
-		<div style="display: flex">
-			<div class="optionsList" style="margin-right: 20px;">
+		<div class="areaBody">
+			<div class="optionsList" >
 				<span><h3>Username</h3><span id="username"><%= request.getSession().getAttribute("username") %></span></span>
 				<span><h3>Saldo</h3><span><span id="balance"><%= request.getSession().getAttribute("balance") %></span><span> &euro;</span></span></span>
 				<span>&nbsp;</span>
@@ -58,10 +57,8 @@
 				<button onclick="document.getElementById('passwordModal').style.display = 'flex'">Modifica password</button>
 				<button onclick="document.getElementById('amountModal').style.display = 'flex'">Aggiungi fondi</button>
 			</div>
-			
 			<hr>
-
-			<table id="ticketTable" class="table bigTable" style="min-width: 800px; margin-left: 20px">
+			<table id="ticketTable" class="table bigTable">
 				<thead>
 					<tr>
 						<th>Id</th><th>Titolo film</th><th>Data di proiezione</th><th>Orario</th><th>Numero sala</th><th>Posto a sedere</th><th>Costo (&euro;)</th>

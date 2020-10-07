@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/eye.css">
 		<link rel="stylesheet" type="text/css" href="css/modal.css">
 		<link rel="stylesheet" type="text/css" href="css/optionsList.css">
+		<link rel="stylesheet" type="text/css" href="css/personalArea.css">
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 		
 		<script src="js/alterPasswordVisibility.js"></script>
@@ -42,22 +43,17 @@
 				<img src="icons/siteIcon.png">
 				<h1>Castle Movie Theater</h1>					
 			</span>
-		</header>
-		
-		<hr>
-		
-		<div style="display: flex">
-			<div class="optionsList" style="margin-right: 20px;">
+		</header>		
+		<hr>		
+		<div class="areaBody">
+			<div class="optionsList">
 				<span><h3>Username</h3><span id="username"><%= request.getSession().getAttribute("username") %></span></span>
 				<span>&nbsp;</span>
 				<span>&nbsp;</span>
 				<button onclick="document.getElementById('usernameModal').style.display = 'flex'">Modifica username</button>
 				<button onclick="document.getElementById('passwordModal').style.display = 'flex'">Modifica password</button>
-			</div>
-			
-			<hr>
-			
-			
+			</div>			
+			<hr>			
 		</div>
 		
 		<div id="usernameModal" class="modalContainer">

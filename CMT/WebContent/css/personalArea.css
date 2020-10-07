@@ -1,0 +1,27 @@
+div.areaBody
+{
+	display: flex;
+}
+
+div.areaBody > hr
+{
+	margin: 0px 15px;
+}
+
+/*************************************************/
+
+@media only screen (-moz-min-device-pixel-ratio: 2), 
+	   only screen and (-o-min-device-pixel-ratio: 2/1), 
+	   only screen and (-webkit-min-device-pixel-ratio: 2), 
+	   only screen and (min-device-pixel-ratio: 2)
+{	
+	div.areaBody
+	{
+		flex-direction: column;
+	}
+
+	div.areaBody > hr
+	{
+		margin: 15px 0px;
+	}
+}
