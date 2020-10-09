@@ -8,6 +8,12 @@ div.areaBody > hr
 	margin: 0px 15px;
 }
 
+div.areaBody > div
+{
+	display: flex;
+	flex-direction: column;
+}
+
 /*************************************************/
 
 @media only screen (-moz-min-device-pixel-ratio: 2), 

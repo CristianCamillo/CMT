@@ -58,15 +58,19 @@
 				<button onclick="document.getElementById('amountModal').style.display = 'flex'">Aggiungi fondi</button>
 			</div>
 			<hr>
-			<table id="ticketTable" class="table bigTable">
-				<thead>
-					<tr>
-						<th>Id</th><th>Film</th><th>Data</th><th>Orario</th><th>Sala</th><th>Posto</th><th>Costo (&euro;)</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>					
-			</table>
+			<div>
+				<h2>Biglietti</h2>
+				<span>&nbsp;</span>
+				<table id="ticketTable" class="table bigTable">
+					<thead>
+						<tr>
+							<th>Id</th><th>Film</th><th>Data</th><th>Orario</th><th>Sala</th><th>Posto</th><th>Costo (&euro;)</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>					
+				</table>
+			</div>
 		</div>
 		
 		<div id="usernameModal" class="modalContainer">
