@@ -12,7 +12,7 @@ import utils.DriverManagerConnectionPool;
 
 public class FilmDAO
 {
-	public static ArrayList<Film> findFilm(String title, String genre, String director, String actor) throws SQLException
+	public static ArrayList<Film> findFilms(String title, String genre, String director, String actor) throws SQLException
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 
@@ -72,5 +72,49 @@ public class FilmDAO
 		DriverManagerConnectionPool.releaseConnection(con);
 		
 		return titles;
+	}
+	
+	public static ArrayList<Film> getAllFilms() throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String query = "SELECT * FROM film";
+		
+		ResultSet rs = con.createStatement().executeQuery(query);
+		
+		DriverManagerConnectionPool.releaseConnection(con);
+		
+		ArrayList<Film> films = new ArrayList<Film>();
+		
+		while(rs.next())
+			films.add(new Film(rs.getInt("id"), rs.getString("title"), rs.getShort("runningtime"), rs.getString("genre"), rs.getString("director"), rs.getString("actor1"), rs.getString("actor2"), rs.getString("description"), rs.getString("Poster")));
+		
+		return films;
+	}
+	
+	public static int getLastId() throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String query = "SELECT id FROM film ORDER BY id DESC LIMIT 1";
+		
+	    ResultSet rs = con.createStatement().executeQuery(query);
+	    
+	    DriverManagerConnectionPool.releaseConnection(con);
+
+	    return rs.next() ? rs.getInt("id") : -1;
+	}
+	
+	public static void addFilm(Film film) throws SQLException
+	{		
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String insert = "INSERT INTO film VALUES (" + film.getId() + ", '" + film.getTitle() + "', " + film.getRunningTime() + ", '" + film.getGenre() + "', '" +
+													  film.getDirector() + "', '" + film.getActor1() + "', '" + film.getActor2() + "', '" + film.getDescription() + "', '" +
+													  film.getPoster() + "')";
+		
+	    con.createStatement().executeUpdate(insert);
+	    
+	    DriverManagerConnectionPool.releaseConnection(con);
 	}
 }

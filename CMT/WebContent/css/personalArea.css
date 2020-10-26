@@ -12,6 +12,26 @@ div.areaBody > div
 {
 	display: flex;
 	flex-direction: column;
+	
+	max-height: 740px;
+}
+
+span.buttonList
+{
+	display: flex;
+	justify-content: space-between;
+	
+	margin-top: 20px;
+}
+
+span.buttonList button
+{
+	width: 100%;
+}
+
+span.buttonList button + button
+{
+	margin-left: 1%;
 }
 
 /*************************************************/

@@ -12,8 +12,10 @@
 		<link rel="stylesheet" type="text/css" href="css/table.css">
 		
 		<script src="js/alterPasswordVisibility.js"></script>
+		<script src="js/dataParser.js"></script>
 		<script src="js/fieldValidator.js"></script>
 		<script src="js/jquery.js"></script>
+		<script src="js/filmProjectionLoader.js"></script>
 		<script src="js/personalDataFormsManager.js"></script>
 		
 		<link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
@@ -53,7 +55,34 @@
 				<button onclick="document.getElementById('usernameModal').style.display = 'flex'">Modifica username</button>
 				<button onclick="document.getElementById('passwordModal').style.display = 'flex'">Modifica password</button>
 			</div>			
-			<hr>			
+			<hr>
+			<div>
+				<h2>Film</h2>
+				<span>&nbsp;</span>
+				<table id="filmTable" class="table bigTable handable">
+					<thead>
+						<tr>
+							<th>Titolo</th><th>Durata (min)</th><th>Genere</th><th>Regista</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>					
+				</table>
+				<span class="buttonList"><button>Aggiungi film</button><button disabled>Modifica film</button><button disabled>Elimina film</button></span>
+				<hr>
+				<h2>Proiezioni</h2>
+				<span>&nbsp;</span>
+				<table id="projectionsTable" class="table bigTable handable">
+					<thead>
+						<tr>
+							<th>Data</th><th>Orario</th><th>Costo (&euro;)</th><th>Sala</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>					
+				</table>
+				<span class="buttonList"><button>Aggiungi proiezione</button><button>Modifica proiezione</button><button>Elimina proiezione</button></span>
+			</div>			
 		</div>
 		
 		<div id="usernameModal" class="modalContainer">

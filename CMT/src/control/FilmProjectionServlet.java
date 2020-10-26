@@ -14,33 +14,24 @@ import org.json.JSONObject;
 
 import DAO.FilmDAO;
 import model.Film;
-import utils.FieldValidator;
 
-@WebServlet("/filtre")
-public class FiltreServlet extends HttpServlet
+@WebServlet("/filmProjection")
+public class FilmProjectionServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-       
-    public FiltreServlet()
+
+    public FilmProjectionServlet()
     {
         super();
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{		
-		String title = request.getParameter("title");
-		String genre = request.getParameter("genre");
-		String director = request.getParameter("director");
-		String actor = request.getParameter("actor");
-
-		if(!FieldValidator.validateFiltreForm(title, genre, director, actor))
-			return;
+	{
+		ArrayList<Film> films;
 		
-	    ArrayList<Film> films = null;
-	    
 		try
 		{
-			films = FilmDAO.findFilms(title, genre, director, actor);
+			films = FilmDAO.getAllFilms();
 		}
 		catch(SQLException e)
 		{
@@ -52,9 +43,9 @@ public class FiltreServlet extends HttpServlet
 		
 		for(int i = 0, l = films.size(); i < l; i++)
 		{
-			Film film = films.get(i);
-			
 			JSONObject object = new JSONObject();
+			
+			Film film = films.get(i);
 			
 			object.put("id", film.getId());
 			object.put("title", film.getTitle());
@@ -65,15 +56,15 @@ public class FiltreServlet extends HttpServlet
 			object.put("actor2", film.getActor2());
 			object.put("description", film.getDescription());
 			object.put("poster", film.getPoster());
-	        
-	        responseText += object + (i + 1 != l ? "," : "");
+			
+			responseText += object + (i + 1 != l ? "," : "");				
 		}
 		
 		responseText += "]";
 		
 		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
-		
+	    
 		response.getWriter().write(responseText);
 	}
 }
