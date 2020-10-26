@@ -15,7 +15,7 @@
 		<script src="js/dataParser.js"></script>
 		<script src="js/fieldValidator.js"></script>
 		<script src="js/jquery.js"></script>
-		<script src="js/filmProjectionLoader.js"></script>
+		<script src="js/managerData.js"></script>
 		<script src="js/personalDataFormsManager.js"></script>
 		
 		<link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
@@ -72,16 +72,16 @@
 				<hr>
 				<h2>Proiezioni</h2>
 				<span>&nbsp;</span>
-				<table id="projectionsTable" class="table bigTable handable">
+				<table id="projectionTable" class="table bigTable handable">
 					<thead>
 						<tr>
-							<th>Data</th><th>Orario</th><th>Costo (&euro;)</th><th>Sala</th>
+							<th>Titolo</th><th>Data</th><th>Orario</th><th>Costo (&euro;)</th><th>Sala</th>
 						</tr>
 					</thead>
 					<tbody>
 					</tbody>					
 				</table>
-				<span class="buttonList"><button>Aggiungi proiezione</button><button>Modifica proiezione</button><button>Elimina proiezione</button></span>
+				<span class="buttonList"><button>Aggiungi proiezione</button><button disabled>Modifica proiezione</button><button disabled>Elimina proiezione</button></span>
 			</div>			
 		</div>
 		

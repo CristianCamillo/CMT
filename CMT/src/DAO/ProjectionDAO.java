@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import model.Film;
 import model.Projection;
 import model.Ticket;
 import utils.DriverManagerConnectionPool;
