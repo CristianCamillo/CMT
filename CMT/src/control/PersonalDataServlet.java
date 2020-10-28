@@ -45,7 +45,7 @@ public class PersonalDataServlet extends HttpServlet
 				break;
 			case "2":
 				data = request.getParameter("amount");
-				if(!FieldValidator.validateAmount(data))
+				if(!FieldValidator.validatePositiveFloat(data))
 					return;
 				break;
 			default:

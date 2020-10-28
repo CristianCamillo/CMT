@@ -32,7 +32,7 @@ public class FieldValidator
 	
 	public static boolean validateRegistrationForm(String username, String password, String balance)
 	{
-		return validateUsername(username) && validatePassword(password) && validateBalance(balance);
+		return validateUsername(username) && validatePassword(password) && validateNonNegativeFloat(balance);
 	}	
 	
 	public static boolean validateFilmForm(String title, String runningTime, String genre, String director, String actor1, String actor2, String description)
@@ -40,7 +40,7 @@ public class FieldValidator
 		if(title == null || description == null) return false;
 		
 		return 0 < title.length() && title.length() <= 30 &&
-			   validateRunningTime(runningTime) &&
+			   validatePositiveInteger(runningTime) &&
 			   validateNominative(genre) &&
 			   validateNominative(director) &&
 			   validateNominative(actor1) &&
@@ -49,16 +49,12 @@ public class FieldValidator
 	}
 	
 	public static boolean validateProjectionForm(String date, String time, String price, String idroom, String idfilm)
-	{
-		if(date == null || description == null) return false;
-		
-		return 0 < title.length() && title.length() <= 30 &&
-			   validateRunningTime(runningTime) &&
-			   validateNominative(genre) &&
-			   validateNominative(director) &&
-			   validateNominative(actor1) &&
-			   validateNominative(actor2) &&
-			   description.length() <= 500;
+	{		
+		return validatePositiveInteger(date) &&
+			   validateNonNegativeInteger(time) &&
+			   validateNonNegativeFloat(price) &&
+			   validatePositiveInteger(idroom) &&
+			   validateNonNegativeInteger(idfilm);
 	}
 	
 	public static boolean validateUsername(String username)
@@ -76,7 +72,7 @@ public class FieldValidator
 		return validateRegex(nominative, NOMINATIVE_REGEX);
 	}
 	
-	public static boolean validateBalance(String number)
+	public static boolean validateNonNegativeFloat(String number)
 	{
 		if(number == null) return false;
 		
@@ -92,7 +88,7 @@ public class FieldValidator
 		}
 	}
 	
-	public static boolean validateAmount(String number)
+	public static boolean validatePositiveFloat(String number)
 	{
 		if(number == null) return false;
 		
@@ -108,15 +104,31 @@ public class FieldValidator
 		}
 	}
 	
-	public static boolean validateRunningTime(String number)
+	public static boolean validateNonNegativeInteger(String number)
 	{
 		if(number == null) return false;
 		
 		try
 		{
-			short s = Short.parseShort(number);
+			int i = Integer.parseInt(number);
 			
-			return s > 0;
+			return i >= 0;
+		}
+		catch(NumberFormatException e)
+		{
+			return false;
+		}
+	}
+	
+	public static boolean validatePositiveInteger(String number)
+	{
+		if(number == null) return false;
+		
+		try
+		{
+			int i = Integer.parseInt(number);
+			
+			return i > 0;
 		}
 		catch(NumberFormatException e)
 		{
