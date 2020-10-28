@@ -35,6 +35,32 @@ public class FieldValidator
 		return validateUsername(username) && validatePassword(password) && validateBalance(balance);
 	}	
 	
+	public static boolean validateFilmForm(String title, String runningTime, String genre, String director, String actor1, String actor2, String description)
+	{
+		if(title == null || description == null) return false;
+		
+		return 0 < title.length() && title.length() <= 30 &&
+			   validateRunningTime(runningTime) &&
+			   validateNominative(genre) &&
+			   validateNominative(director) &&
+			   validateNominative(actor1) &&
+			   validateNominative(actor2) &&
+			   description.length() <= 500;
+	}
+	
+	public static boolean validateProjectionForm(String date, String time, String price, String idroom, String idfilm)
+	{
+		if(date == null || description == null) return false;
+		
+		return 0 < title.length() && title.length() <= 30 &&
+			   validateRunningTime(runningTime) &&
+			   validateNominative(genre) &&
+			   validateNominative(director) &&
+			   validateNominative(actor1) &&
+			   validateNominative(actor2) &&
+			   description.length() <= 500;
+	}
+	
 	public static boolean validateUsername(String username)
 	{
 		return validateRegex(username, USERNAME_REGEX);
@@ -75,6 +101,22 @@ public class FieldValidator
 			float f = Float.parseFloat(number);
 			
 			return f > 0 && (f * 100) == (int)(f * 100);
+		}
+		catch(NumberFormatException e)
+		{
+			return false;
+		}
+	}
+	
+	public static boolean validateRunningTime(String number)
+	{
+		if(number == null) return false;
+		
+		try
+		{
+			short s = Short.parseShort(number);
+			
+			return s > 0;
 		}
 		catch(NumberFormatException e)
 		{

@@ -68,7 +68,7 @@
 					<tbody>
 					</tbody>					
 				</table>
-				<span class="buttonList"><button>Aggiungi film</button><button disabled>Modifica film</button><button disabled>Elimina film</button></span>
+				<span class="buttonList"><button onclick="document.getElementById('addFilmModal').style.display = 'flex'">Aggiungi film</button><button disabled>Modifica film</button><button disabled>Elimina film</button></span>
 				<hr>
 				<h2>Proiezioni</h2>
 				<span>&nbsp;</span>
@@ -147,6 +147,23 @@
 					<span id="errorMsg"></span>
 					<span>&nbsp;</span>
 					<button onclick="document.getElementById('errorModal').style.display = 'none'">Ok</button>
+				</div>
+			</div>
+		</div>
+		
+		<div id="addFilmModal" class="modalContainer">
+			<div>
+				<header>
+					<h2>Aggiunta film</h2>
+					<button onclick="document.getElementById('addFilmModal').style.display = 'none'">&#x02716;</button>
+				</header>
+				<br>
+				<div class="optionsList">
+					<span>Titolo:<input name="title" type="text" maxlength="30"></span>
+					<span>Durata:<input name="runningTime" type="text" maxlength="3"></span>
+					<span>Genere:<input name="genre" type="text" maxlength="30"></span>
+					<span>&nbsp;</span>
+					<button>Aggiungi</button>
 				</div>
 			</div>
 		</div>

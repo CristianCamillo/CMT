@@ -43,8 +43,7 @@ $(document).ready(function()
 			projectionData = [];
 			
 			for(var i = 0, l = responseText.length; i < l; i++)
-			{
-							
+			{							
 				var projection = responseText[i];
 				
 				projectionData.push({"id": projection.id,

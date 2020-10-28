@@ -156,7 +156,7 @@
 					</tbody>
 				</table>
 				<br>
-				<button onclick="sendTickets()" style="width: 100%">Aggiorna il carrello</button>
+				<button onclick="sendTickets()" style="width: 100%" <% if(userType != "client") out.print("disabled");%>>Aggiorna il carrello</button>
 			</div>
 		</div>
 		

@@ -117,4 +117,29 @@ public class FilmDAO
 	    
 	    DriverManagerConnectionPool.releaseConnection(con);
 	}
+	
+	public static void updateFilm(Film film) throws SQLException
+	{		
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String update = "UPDATE film SET title = '" + film.getTitle() + "', runningtime = " + film.getRunningTime() + ", genre = '" + film.getGenre() + "', director = '" +
+													  film.getDirector() + "', actor1 = '" + film.getActor1() + "', actor2 = '" + film.getActor2() + "', description = '" +
+													  film.getDescription() + "', poster = '" + film.getPoster() + "' " + 
+						"WHERE id = " + film.getId();
+		
+	    con.createStatement().executeUpdate(update);
+	    
+	    DriverManagerConnectionPool.releaseConnection(con);
+	}
+	
+	public static void removeFilm(int id) throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String delete = "DELETE FROM film WHERE id = " + id;
+		
+		con.createStatement().executeUpdate(delete);		
+		
+		DriverManagerConnectionPool.releaseConnection(con);
+	}
 }

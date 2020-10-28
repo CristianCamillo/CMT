@@ -88,4 +88,53 @@ public class ProjectionDAO
 	    
 	    return rs.getFloat("price");		
 	}
+	
+	public static int getLastId() throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String query = "SELECT id FROM projection ORDER BY id DESC LIMIT 1";
+		
+	    ResultSet rs = con.createStatement().executeQuery(query);
+	    
+	    DriverManagerConnectionPool.releaseConnection(con);
+
+	    return rs.next() ? rs.getInt("id") : -1;
+	}
+	
+	public static void addProjection(Projection projection) throws SQLException
+	{		
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String insert = "INSERT INTO projection VALUES (" + projection.getId() + ", " + projection.getDate() + ", " + projection.getTime() + ", " +
+													  		projection.getPrice() + ", " + projection.getIdRoom() + ", " + projection.getIdFilm() + "')";
+		
+	    con.createStatement().executeUpdate(insert);
+	    
+	    DriverManagerConnectionPool.releaseConnection(con);
+	}
+	
+	public static void updateProjection(Projection projection) throws SQLException
+	{		
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String update = "UPDATE projection SET date = " + projection.getDate() + ", time = " + projection.getTime() + ", price = " +
+														  projection.getPrice() + ", idroom = " + projection.getIdRoom() + ", idfilm = " + projection.getIdFilm() + " " + 
+						"WHERE id = " + projection.getId();
+		
+	    con.createStatement().executeUpdate(update);
+	    
+	    DriverManagerConnectionPool.releaseConnection(con);
+	}
+	
+	public static void removeProjection(int id) throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String delete = "DELETE FROM projection WHERE id = " + id;
+		
+		con.createStatement().executeUpdate(delete);		
+		
+		DriverManagerConnectionPool.releaseConnection(con);
+	}
 }
