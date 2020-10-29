@@ -71,7 +71,7 @@
 				<span class="buttonList">
 					<button onclick="openAddFilmModal()">Aggiungi film</button>
 					<button id="updateFilmButton" onclick="openUpdateFilmModal()" disabled>Modifica film</button>
-					<button id="deleteFilmButton" disabled>Elimina film</button>
+					<button id="deleteFilmButton" onclick="openDeleteFilmModal()" disabled>Elimina film</button>
 				</span>
 				<hr>
 				<h2>Proiezioni</h2>
@@ -85,7 +85,11 @@
 					<tbody>
 					</tbody>					
 				</table>
-				<span class="buttonList"><button>Aggiungi proiezione</button><button disabled>Modifica proiezione</button><button disabled>Elimina proiezione</button></span>
+				<span class="buttonList">
+					<button onclick="openAddProjectionModal()">Aggiungi proiezione</button>
+					<button id="updateProjectionButton" onclick="openUpdateProjectionModal()" disabled>Modifica proiezione</button>
+					<button id="deleteProjectionButton" onclick="openDeleteProjectionModal()" disabled>Elimina proiezione</button>
+				</span>
 			</div>			
 		</div>
 		

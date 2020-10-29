@@ -33,6 +33,12 @@ function enableFilmButtons()
 	document.getElementById('deleteFilmButton').disabled = false;
 }
 
+function enableProjectionButtons()
+{
+	document.getElementById('updateProjectionButton').disabled = false;
+	document.getElementById('deleteProjectionButton').disabled = false;
+}
+
 function loadFilms()
 {
 	$.ajax
