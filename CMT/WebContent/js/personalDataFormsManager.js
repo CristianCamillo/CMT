@@ -16,7 +16,7 @@ $(document).ready(function()
 				}
 				else
 				{
-					$("#errorMsg").html("L'username indicato e' gia' memorizzato");
+					$("#errorMsg").html("L'username indicato e' gia' utilizzato");
 					$("#errorModal").css("display", "flex");
 				}
 		});

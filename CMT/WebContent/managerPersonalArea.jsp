@@ -15,7 +15,7 @@
 		<script src="js/dataParser.js"></script>
 		<script src="js/fieldValidator.js"></script>
 		<script src="js/jquery.js"></script>
-		<script src="js/managerData.js"></script>
+		<script src="js/managerChain.js"></script>
 		<script src="js/personalDataFormsManager.js"></script>
 		
 		<link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
@@ -59,7 +59,7 @@
 			<div>
 				<h2>Film</h2>
 				<span>&nbsp;</span>
-				<table id="filmTable" class="table bigTable handable">
+				<table id="filmsTable" class="table bigTable handable">
 					<thead>
 						<tr>
 							<th>Titolo</th><th>Durata (min)</th><th>Genere</th><th>Regista</th>
@@ -72,7 +72,7 @@
 				<hr>
 				<h2>Proiezioni</h2>
 				<span>&nbsp;</span>
-				<table id="projectionTable" class="table bigTable handable">
+				<table id="projectionsTable" class="table bigTable handable">
 					<thead>
 						<tr>
 							<th>Titolo</th><th>Data</th><th>Orario</th><th>Costo (&euro;)</th><th>Sala</th>
@@ -158,13 +158,18 @@
 					<button onclick="document.getElementById('addFilmModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<div class="optionsList">
+				<form class="optionsList" action="${pageContext.request.contextPath}/addFilm" method="post">
+					<input type="hidden" name="idFilm">
 					<span>Titolo:<input name="title" type="text" maxlength="30"></span>
 					<span>Durata:<input name="runningTime" type="text" maxlength="3"></span>
 					<span>Genere:<input name="genre" type="text" maxlength="30"></span>
 					<span>&nbsp;</span>
-					<button>Aggiungi</button>
-				</div>
+					<span>Regista:<input name="director" type="text" maxlength="30"></span>
+					<span>Attore 1:<input name="actor1" type="text" maxlength="30"></span>
+					<span>Attore 2:<input name="actor2" type="text" maxlength="30"></span>
+					<span>Descrizione:<textarea name="actor2" rows="5" cols="20"></textarea></span>
+					<button type="submit">Aggiungi</button>
+				</form>
 			</div>
 		</div>
 	</body>

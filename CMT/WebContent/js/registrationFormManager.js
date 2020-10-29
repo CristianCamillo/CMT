@@ -2,7 +2,7 @@ function validateRegistrationForm()
 {
 	const usr = validateUsername(document.getElementsByName("username")[0]);
 	const psw = validatePassword(document.getElementsByName("password")[0]);
-	const blc = validateBalance(document.getElementsByName("balance")[0]);
+	const blc = validateNNegativeFloat(document.getElementsByName("balance")[0]);
 	
 	return usr && psw && blc;
 }

@@ -1,7 +1,19 @@
 var filmData;
 var projectionData;
+/*
+function selectFilm(row, idFilm)
+{
+	var table = document.getElementById("filmsTable");
+				
+	for(var i = 1; i < table.rows.length; i++)  // rows[0] is used for the header	
+		table.rows[i].classList.remove("selected");
+		
+	row.classList.add("selected");
+	
+	document.getElementsByName("idFilm")[0].value = idFilm;
+}*/
 
-$(document).ready(function()
+function loadFilms()
 {
 	$.ajax
 	({
@@ -16,7 +28,7 @@ $(document).ready(function()
 			{
 				var film = responseText[i];
 				
-				var row = "<tr>" + 
+				var row = "<tr>" +// onclick=\"selectFilm(this, " + film.id + ")\">" + 
 						  "<td>" + film.title + "</td>" +
 						  "<td>" + film.runningTime + "</td>" +
 						  "<td>" + film.genre + "</td>" +
@@ -32,7 +44,10 @@ $(document).ready(function()
 			alert("Errore filmManager servlet");
         }
 	});
-	
+}
+
+function loadProjections()
+{
 	$.ajax
 	({
 		url: "projectionManager",
@@ -70,4 +85,10 @@ $(document).ready(function()
 			alert("Errore projectionManager servlet");
         }
 	});
+}
+
+$(document).ready(function()
+{
+	loadFilms();
+	loadProjections();	
 });

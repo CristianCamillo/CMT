@@ -24,7 +24,7 @@ function validatePassword(element)
 	return valid;
 }
 
-function validateBalance(element)
+function validateNNegativeFloat(element)
 {	
 	const f = parseFloat(element.value);	
 	const valid = f.toString() === element.value && f >= 0 && (f * 100) == parseInt(f * 100);
@@ -37,7 +37,7 @@ function validateBalance(element)
 	return valid;	
 }
 
-function validateAmount(element)
+function validatePositiveFloat(element)
 {	
 	const f = parseFloat(element.value);	
 	const valid = f.toString() === element.value && f > 0 && (f * 100) == parseInt(f * 100);
@@ -50,7 +50,32 @@ function validateAmount(element)
 	return valid;	
 }
 
-/* ANCORA NON USATO
+function validateNNegativeInteger(element)
+{
+	const i = parseInt(element.value);	
+	const valid = i.toString() === element.value && i >= 0;
+	
+	if(valid)
+		setGreen(element);
+	else
+		setRed(element);
+	
+	return valid;
+}
+
+function validatePositiveInteger(element)
+{
+	const i = parseInt(element.value);	
+	const valid = i.toString() === element.value && i > 0;
+	
+	if(valid)
+		setGreen(element);
+	else
+		setRed(element);
+	
+	return valid;
+}
+
 function validateNominative(element)
 {
 	const str = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
@@ -63,7 +88,7 @@ function validateNominative(element)
 	
 	return valid;
 }
-*/
+
 function setGreen(element)
 {
 	element.style.borderColor = "#008000";

@@ -112,8 +112,8 @@
 					<button onclick="document.getElementById('amountModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="amountForm" class="optionsList" style="width: 100%" onsubmit="return validateAmount(document.getElementsByName('amount')[0])" action="${pageContext.request.contextPath}/personalData" method="post">
-					<span class="euroSpan"><input name="amount" type="text" oninput="validateAmount(this)"><span>&euro;</span></span>
+				<form id="amountForm" class="optionsList" style="width: 100%" onsubmit="return validatePositiveFloat(document.getElementsByName('amount')[0])" action="${pageContext.request.contextPath}/personalData" method="post">
+					<span class="euroSpan"><input name="amount" type="text" oninput="validatePositiveFloat(this)"><span>&euro;</span></span>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiungi</button>
 					<input name="toChange" type="hidden" value="2">
