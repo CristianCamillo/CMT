@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.FilmDAO;
+import DAO.ProjectionDAO;
 
-@WebServlet("/removeFilm")
-public class RemoveFilmServlet extends HttpServlet
+@WebServlet("/deleteProjection")
+public class DeleteProjectionServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
-    public RemoveFilmServlet()
+    public DeleteProjectionServlet()
     {
         super();
     }
@@ -27,7 +27,7 @@ public class RemoveFilmServlet extends HttpServlet
 		
 		try
 		{
-			FilmDAO.removeFilm(id);
+			ProjectionDAO.removeProjection(id);
 		}
 		catch(SQLException e)
 		{

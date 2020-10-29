@@ -68,7 +68,11 @@
 					<tbody>
 					</tbody>					
 				</table>
-				<span class="buttonList"><button onclick="document.getElementById('addFilmModal').style.display = 'flex'">Aggiungi film</button><button disabled>Modifica film</button><button disabled>Elimina film</button></span>
+				<span class="buttonList">
+					<button onclick="openAddFilmModal()">Aggiungi film</button>
+					<button id="updateFilmButton" onclick="openUpdateFilmModal()" disabled>Modifica film</button>
+					<button id="deleteFilmButton" disabled>Elimina film</button>
+				</span>
 				<hr>
 				<h2>Proiezioni</h2>
 				<span>&nbsp;</span>
@@ -151,24 +155,24 @@
 			</div>
 		</div>
 		
-		<div id="addFilmModal" class="modalContainer">
+		<div id="filmModal" class="modalContainer">
 			<div>
 				<header>
-					<h2>Aggiunta film</h2>
-					<button onclick="document.getElementById('addFilmModal').style.display = 'none'">&#x02716;</button>
+					<h2 id="filmModalTitle"></h2>
+					<button onclick="document.getElementById('filmModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
 				<form class="optionsList" action="${pageContext.request.contextPath}/addFilm" method="post">
-					<input type="hidden" name="idFilm">
-					<span>Titolo:<input name="title" type="text" maxlength="30"></span>
-					<span>Durata:<input name="runningTime" type="text" maxlength="3"></span>
-					<span>Genere:<input name="genre" type="text" maxlength="30"></span>
+					<input name="idFilm" type="hidden">
+					<input name="title" type="text" placeholder="Titolo" maxlength="30">
+					<input name="runningTime" type="text" placeholder="Durata" maxlength="3">
+					<input name="genre" type="text" placeholder="Genere" maxlength="30">
+					<input name="director" type="text" placeholder="Regista" maxlength="30">
+					<input name="actor1" type="text" placeholder="Attore 1" maxlength="30">
+					<input name="actor2" type="text" placeholder="Attore 2" maxlength="30">
+					<textarea name="description" placeholder="Descrizione" rows="5"></textarea>
 					<span>&nbsp;</span>
-					<span>Regista:<input name="director" type="text" maxlength="30"></span>
-					<span>Attore 1:<input name="actor1" type="text" maxlength="30"></span>
-					<span>Attore 2:<input name="actor2" type="text" maxlength="30"></span>
-					<span>Descrizione:<textarea name="actor2" rows="5" cols="20"></textarea></span>
-					<button type="submit">Aggiungi</button>
+					<button id="filmModalButton" type="submit"></button>
 				</form>
 			</div>
 		</div>

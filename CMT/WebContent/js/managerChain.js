@@ -1,17 +1,37 @@
 var filmData;
 var projectionData;
-/*
+
 function selectFilm(row, idFilm)
 {
 	var table = document.getElementById("filmsTable");
 				
-	for(var i = 1; i < table.rows.length; i++)  // rows[0] is used for the header	
+	for(var i = 1; i < table.rows.length; i++)	
 		table.rows[i].classList.remove("selected");
 		
 	row.classList.add("selected");
 	
 	document.getElementsByName("idFilm")[0].value = idFilm;
-}*/
+}
+
+function openAddFilmModal()
+{
+	document.getElementById("filmModalTitle").innerHTML = "Aggiunta film";
+	document.getElementById("filmModalButton").innerHTML = "Aggiungi";
+	document.getElementById("filmModal").style.display = "flex";
+}
+
+function openUpdateFilmModal()
+{
+	document.getElementById("filmModalTitle").innerHTML = "Modifica film";
+	document.getElementById("filmModalButton").innerHTML = "Modifica";
+	document.getElementById("filmModal").style.display = "flex";
+}
+
+function enableFilmButtons()
+{
+	document.getElementById('updateFilmButton').disabled = false;
+	document.getElementById('deleteFilmButton').disabled = false;
+}
 
 function loadFilms()
 {
@@ -28,14 +48,14 @@ function loadFilms()
 			{
 				var film = responseText[i];
 				
-				var row = "<tr>" +// onclick=\"selectFilm(this, " + film.id + ")\">" + 
+				var row = "<tr onclick=\"selectFilm(this, " + film.id + "); enableFilmButtons();\">" + 
 						  "<td>" + film.title + "</td>" +
 						  "<td>" + film.runningTime + "</td>" +
 						  "<td>" + film.genre + "</td>" +
 						  "<td>" + film.director + "</td>" +
 						  "</tr>";
 				
-				$("#filmTable tbody").append(row);
+				$("#filmsTable tbody").append(row);
 			}	
         },
 
@@ -76,7 +96,7 @@ function loadProjections()
 						  "<td>" + projection.idroom + "</td>" +
 						  "</tr>";
 				
-				$("#projectionTable tbody").append(row);
+				$("#projectionsTable tbody").append(row);
 			}
         },
 
