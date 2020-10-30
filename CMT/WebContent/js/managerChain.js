@@ -104,6 +104,8 @@ function loadFilms()
 		{		
 			filmData = responseText;
 				
+			$("#filmsTable tbody").empty();
+				
 			for(var i = 0, l = responseText.length; i < l; i++)
 			{
 				var film = responseText[i];
@@ -136,6 +138,8 @@ function loadProjections()
         success: function(responseText)
 		{			
 			projectionData = [];
+			
+			$("#projectionsTable tbody").empty();
 			
 			for(var i = 0, l = responseText.length; i < l; i++)
 			{							
@@ -180,12 +184,36 @@ $(document).ready(function()
 		{
 			if(responseText != "")
 			{
+				loadFilms();
+				
 				if(document.getElementsByName("idFilm")[0].value == -1)
 					$("#successMsg").html("Il film e' stato memorizzato");
 				else
 					$("#successMsg").html("Il film e' stato modificato");
 				$("#successModal").css("display", "flex");
 				$("#filmModal").css("display", "none");
+			}
+		});
+		
+		event.preventDefault();
+	});
+	
+	$(document).on("submit", "#projectionForm", function(event)
+	{
+		const $form = $(this);
+		
+		$.post($form.attr("action"), $form.serialize(), function(responseText)
+		{
+			if(responseText != "")
+			{
+				loadProjections();
+				
+				if(document.getElementsByName("idProjection")[0].value == -1)
+					$("#successMsg").html("La proiezione e' stata memorizzata");
+				else
+					$("#successMsg").html("La proiezione e' stata modificata");
+				$("#successModal").css("display", "flex");
+				$("#projectionModal").css("display", "none");
 			}
 		});
 		
