@@ -166,8 +166,30 @@
 					<button onclick="document.getElementById('filmModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form class="optionsList" action="${pageContext.request.contextPath}/addFilm" method="post">
+				<form id="filmForm" class="optionsList" onsubmit="return validateFilmForm()" method="post">
 					<input name="idFilm" type="hidden">
+					<input name="title" type="text" placeholder="Titolo" oninput="validateTitle(this)">
+					<input name="runningTime" type="text" placeholder="Durata" oninput="validatePositiveInteger(this)">
+					<input name="genre" type="text" placeholder="Genere" oninput="validateNominative(this)">
+					<input name="director" type="text" placeholder="Regista" oninput="validateNominative(this)">
+					<input name="actor1" type="text" placeholder="Attore 1" oninput="validateNominative(this)">
+					<input name="actor2" type="text" placeholder="Attore 2" oninput="validateNominative(this)">
+					<textarea name="description" placeholder="Descrizione" rows="5"></textarea>
+					<span>&nbsp;</span>
+					<button id="filmModalButton" type="submit"></button>
+				</form>
+			</div>
+		</div>
+		
+		<div id="projectionModal" class="modalContainer">
+			<div>
+				<header>
+					<h2 id="projectionModalTitle"></h2>
+					<button onclick="document.getElementById('projectionModal').style.display = 'none'">&#x02716;</button>
+				</header>
+				<br>
+				<form id="projectionForm" class="optionsList" method="post">
+					<input name="idProjection" type="hidden">
 					<input name="title" type="text" placeholder="Titolo" maxlength="30">
 					<input name="runningTime" type="text" placeholder="Durata" maxlength="3">
 					<input name="genre" type="text" placeholder="Genere" maxlength="30">
@@ -176,7 +198,7 @@
 					<input name="actor2" type="text" placeholder="Attore 2" maxlength="30">
 					<textarea name="description" placeholder="Descrizione" rows="5"></textarea>
 					<span>&nbsp;</span>
-					<button id="filmModalButton" type="submit"></button>
+					<button id="projectionModalButton" type="submit"></button>
 				</form>
 			</div>
 		</div>

@@ -38,7 +38,7 @@ public class AddFilmServlet extends HttpServlet
 		
 		try
 		{
-			Film film = new Film(FilmDAO.getLastId(), title, Short.parseShort(runningTime), genre, director, actor1, actor2, description, null);
+			Film film = new Film(FilmDAO.getLastId() + 1, title, Short.parseShort(runningTime), genre, director, actor1, actor2, description, null);
 			FilmDAO.addFilm(film);
 		}
 		catch(SQLException e)

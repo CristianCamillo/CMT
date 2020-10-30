@@ -89,6 +89,19 @@ function validateNominative(element)
 	return valid;
 }
 
+function validateTitle(element)
+{
+	const length = element.value.length;
+	const valid = 0 < length && length <= 30;
+	
+	if(valid)
+		setGreen(element);
+	else
+		setRed(element);
+	
+	return valid;
+}
+
 function setGreen(element)
 {
 	element.style.borderColor = "#008000";
