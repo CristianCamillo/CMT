@@ -33,7 +33,7 @@ public class ProjectionsServlet extends HttpServlet
 	    
 		try
 		{
-			projections = ProjectionDAO.getProjections(Integer.parseInt(idFilm), false);
+			projections = ProjectionDAO.getProjections(Integer.parseInt(idFilm));
 		}
 		catch(SQLException e)
 		{

@@ -59,7 +59,7 @@
 			<div>
 				<h2>Film</h2>
 				<span>&nbsp;</span>
-				<table id="filmsTable" class="table bigTable handable">
+				<table id="filmsTable" class="table managerTable handable">
 					<thead>
 						<tr>
 							<th>Titolo</th><th>Durata (min)</th><th>Genere</th><th>Regista</th>
@@ -76,10 +76,10 @@
 				<hr>
 				<h2>Proiezioni</h2>
 				<span>&nbsp;</span>
-				<table id="projectionsTable" class="table bigTable handable">
+				<table id="projectionsTable" class="table managerTable handable">
 					<thead>
 						<tr>
-							<th>Titolo</th><th>Data</th><th>Orario</th><th>Costo (&euro;)</th><th>Sala</th>
+							<th>Film</th><th>Data</th><th>Orario</th><th>Costo (&euro;)</th><th>Sala</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -125,6 +125,77 @@
 			</div>
 		</div>
 		
+		<div id="filmModal" class="modalContainer">
+			<div>
+				<header>
+					<h2 id="filmModalTitle"></h2>
+					<button onclick="document.getElementById('filmModal').style.display = 'none'">&#x02716;</button>
+				</header>
+				<br>
+				<form id="filmForm" class="optionsList" onsubmit="return validateFilmForm()" method="post">
+					<input name="idFilm" type="hidden">
+					<input name="title" type="text" placeholder="Titolo" oninput="validateTitle(this)">
+					<input name="runningTime" type="text" placeholder="Durata" oninput="validatePositiveInteger(this)">
+					<input name="genre" type="text" placeholder="Genere" oninput="validateNominative(this)">
+					<input name="director" type="text" placeholder="Regista" oninput="validateNominative(this)">
+					<input name="actor1" type="text" placeholder="Attore 1" oninput="validateNominative(this)">
+					<input name="actor2" type="text" placeholder="Attore 2" oninput="validateNominative(this)">
+					<textarea name="description" placeholder="Descrizione" oninput="validateDescription(this)" rows="5"></textarea>
+					<span>&nbsp;</span>
+					<button id="filmModalButton" type="submit"></button>
+				</form>
+			</div>
+		</div>
+		
+		<div id="projectionModal" class="modalContainer">
+			<div>
+				<header>
+					<h2 id="projectionModalTitle"></h2>
+					<button onclick="document.getElementById('projectionModal').style.display = 'none'">&#x02716;</button>
+				</header>
+				<br>
+				<form id="projectionForm" class="optionsList" method="post">
+					<input name="idProjection" type="hidden">
+					
+					<span>&nbsp;</span>
+					<button id="projectionModalButton" type="submit"></button>
+				</form>
+			</div>
+		</div>
+		
+		<div id="deleteFilmModal" class="modalContainer">
+			<div>
+				<header>
+					<h2>Eliminazione film</h2>
+					<button onclick="document.getElementById('deleteFilmModal').style.display = 'none'">&#x02716;</button>
+				</header>
+				<br>
+				<form id="deleteFilmForm" class="optionsList" action="deleteFilm" method="post">
+					<input name="idFilm" type="hidden">
+					<p>Confermi l'eliminazione del film selezionato?</p>
+					<span>&nbsp;</span>
+					<button type="submit">Conferma</button>
+				</form>
+			</div>
+		</div>
+		
+		<div id="deleteProjectionModal" class="modalContainer">
+			<div>
+				<header>
+					<h2>Eliminazione proiezione</h2>
+					<button onclick="document.getElementById('deleteProjectionModal').style.display = 'none'">&#x02716;</button>
+				</header>
+				<br>
+				<form id="deleteProjectionForm" class="optionsList" action="deleteProjection" method="post">
+					<input name="idProjection" type="hidden">
+					<span>Confermi l'eliminazione</span>
+					<span>della proiezione selezionata?</span>
+					<span>&nbsp;</span>
+					<button type="submit">Conferma</button>
+				</form>
+			</div>
+		</div>
+		
 		<div id="successModal" class="modalContainer">
 			<div>
 				<header>
@@ -156,50 +227,6 @@
 					<span>&nbsp;</span>
 					<button onclick="document.getElementById('errorModal').style.display = 'none'">Ok</button>
 				</div>
-			</div>
-		</div>
-		
-		<div id="filmModal" class="modalContainer">
-			<div>
-				<header>
-					<h2 id="filmModalTitle"></h2>
-					<button onclick="document.getElementById('filmModal').style.display = 'none'">&#x02716;</button>
-				</header>
-				<br>
-				<form id="filmForm" class="optionsList" onsubmit="return validateFilmForm()" method="post">
-					<input name="idFilm" type="hidden">
-					<input name="title" type="text" placeholder="Titolo" oninput="validateTitle(this)">
-					<input name="runningTime" type="text" placeholder="Durata" oninput="validatePositiveInteger(this)">
-					<input name="genre" type="text" placeholder="Genere" oninput="validateNominative(this)">
-					<input name="director" type="text" placeholder="Regista" oninput="validateNominative(this)">
-					<input name="actor1" type="text" placeholder="Attore 1" oninput="validateNominative(this)">
-					<input name="actor2" type="text" placeholder="Attore 2" oninput="validateNominative(this)">
-					<textarea name="description" placeholder="Descrizione" rows="5"></textarea>
-					<span>&nbsp;</span>
-					<button id="filmModalButton" type="submit"></button>
-				</form>
-			</div>
-		</div>
-		
-		<div id="projectionModal" class="modalContainer">
-			<div>
-				<header>
-					<h2 id="projectionModalTitle"></h2>
-					<button onclick="document.getElementById('projectionModal').style.display = 'none'">&#x02716;</button>
-				</header>
-				<br>
-				<form id="projectionForm" class="optionsList" method="post">
-					<input name="idProjection" type="hidden">
-					<input name="title" type="text" placeholder="Titolo" maxlength="30">
-					<input name="runningTime" type="text" placeholder="Durata" maxlength="3">
-					<input name="genre" type="text" placeholder="Genere" maxlength="30">
-					<input name="director" type="text" placeholder="Regista" maxlength="30">
-					<input name="actor1" type="text" placeholder="Attore 1" maxlength="30">
-					<input name="actor2" type="text" placeholder="Attore 2" maxlength="30">
-					<textarea name="description" placeholder="Descrizione" rows="5"></textarea>
-					<span>&nbsp;</span>
-					<button id="projectionModalButton" type="submit"></button>
-				</form>
 			</div>
 		</div>
 	</body>

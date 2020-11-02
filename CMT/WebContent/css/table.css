@@ -29,6 +29,16 @@ table.bigTable tbody
 	max-height: 640px;
 }
 
+table.managerTable
+{
+	min-width: 700px;
+}
+
+table.managerTable tbody
+{
+	height: 200px;
+}
+
 table.table thead
 {    
 	width: calc(100% - 0.4em);

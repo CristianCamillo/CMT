@@ -11,8 +11,18 @@ function openDetailsModal(filmNumber)
 	document.getElementById("director").innerHTML = film.director;
 	document.getElementById("actor1").innerHTML = film.actor1;
 	document.getElementById("actor2").innerHTML = film.actor2;
-	document.getElementById("description").innerHTML = film.description;
 	
+	if(film.description.length > 0)
+	{
+		document.getElementById("descriptionH").innerHTML = "Descrizione";
+		document.getElementById("description").innerHTML = film.description;
+	}
+	else
+	{
+		document.getElementById("descriptionH").innerHTML = "";
+		document.getElementById("description").innerHTML = "";		
+	}
+		
 	document.getElementsByName("idFilm")[0].value = film.id;
 	
 	document.getElementById("detailsModal").style.display = "flex";	

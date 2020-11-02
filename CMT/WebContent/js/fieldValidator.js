@@ -76,6 +76,19 @@ function validatePositiveInteger(element)
 	return valid;
 }
 
+function validateTitle(element)
+{
+	const length = element.value.length;
+	const valid = 0 < length && length <= 30;
+	
+	if(valid)
+		setGreen(element);
+	else
+		setRed(element);
+	
+	return valid;
+}
+
 function validateNominative(element)
 {
 	const str = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
@@ -89,10 +102,10 @@ function validateNominative(element)
 	return valid;
 }
 
-function validateTitle(element)
+function validateDescription(element)
 {
 	const length = element.value.length;
-	const valid = 0 < length && length <= 30;
+	const valid = length <= 300;
 	
 	if(valid)
 		setGreen(element);

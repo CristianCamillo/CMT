@@ -1,15 +1,22 @@
 // ritorna la data in forma DD-MM-YYYY
 function parseDate(date)
-{
+{	
 	date = date + "";
+	
+	if(date.includes("<i>"))
+		return date;
+	
 	return date.substring(6, 8) + "-" + date.substring(4, 6) + "-" + date.substring(0, 4);
 }
 
 // ritorna l'orario in formato HH:MM
 function parseTime(time)
-{
+{	
 	time = time + "";
 	
+	if(time.includes("<i>"))
+		return time;
+		
 	var h;
 	var m;
 	

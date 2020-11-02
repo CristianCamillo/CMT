@@ -11,6 +11,7 @@ function selectFilm(row, idFilm)
 	row.classList.add("selected");
 	
 	document.getElementsByName("idFilm")[0].value = idFilm;
+	document.getElementsByName("idFilm")[1].value = idFilm;
 }
 
 function selectProjection(row, idProjection)
@@ -23,6 +24,7 @@ function selectProjection(row, idProjection)
 	row.classList.add("selected");
 	
 	document.getElementsByName("idProjection")[0].value = idProjection;
+	document.getElementsByName("idProjection")[1].value = idProjection;
 }
 
 function openAddFilmModal()
@@ -45,7 +47,7 @@ function openUpdateFilmModal()
 
 function openDeleteFilmModal()
 {
-	
+	document.getElementById("deleteFilmModal").style.display = "flex";
 }
 
 function openAddProjectionModal()
@@ -66,7 +68,7 @@ function openUpdateProjectionModal()
 
 function openDeleteProjectionModal()
 {
-	
+	document.getElementById("deleteProjectionModal").style.display = "flex";
 }
 
 function enableFilmButtons()
@@ -81,6 +83,18 @@ function enableProjectionButtons()
 	document.getElementById('deleteProjectionButton').disabled = false;
 }
 
+function disableFilmButtons()
+{
+	document.getElementById('updateFilmButton').disabled = true;
+	document.getElementById('deleteFilmButton').disabled = true;
+}
+
+function disableProjectionButtons()
+{
+	document.getElementById('updateProjectionButton').disabled = true;
+	document.getElementById('deleteProjectionButton').disabled = true;
+}
+
 function validateFilmForm()
 {
 	const title = validateTitle(document.getElementsByName("title")[0]);
@@ -89,8 +103,9 @@ function validateFilmForm()
 	const director = validateNominative(document.getElementsByName("director")[0]);
 	const actor1 = validateNominative(document.getElementsByName("actor1")[0]);
 	const actor2 = validateNominative(document.getElementsByName("actor2")[0]);
+	const description = validateDescription(document.getElementsByName("description")[0]);
 	
-	return title && runningTime && genre && director && actor1 && actor2;
+	return title && runningTime && genre && director && actor1 && actor2 && description;
 }
 
 function loadFilms()
@@ -214,6 +229,48 @@ $(document).ready(function()
 					$("#successMsg").html("La proiezione e' stata modificata");
 				$("#successModal").css("display", "flex");
 				$("#projectionModal").css("display", "none");
+			}
+		});
+		
+		event.preventDefault();
+	});
+	
+	$(document).on("submit", "#deleteFilmForm", function(event)
+	{
+		const $form = $(this);
+		
+		$.post($form.attr("action"), $form.serialize(), function(responseText)
+		{
+			if(responseText != "")
+			{
+				loadFilms();
+				loadProjections();
+				disableFilmButtons();
+				
+				$("#successMsg").html("Il film selezionato e' stato eliminato");
+				$("#successModal").css("display", "flex");
+				$("#deleteFilmModal").css("display", "none");
+			}
+		});
+		
+		event.preventDefault();
+	});
+	
+	$(document).on("submit", "#deleteProjectionForm", function(event)
+	{
+		const $form = $(this);
+		
+		$.post($form.attr("action"), $form.serialize(), function(responseText)
+		{
+			if(responseText != "")
+			{
+				loadFilms();
+				loadProjections();
+				disableProjectionButtons();
+				
+				$("#successMsg").html("La proiezione selezionata e' stata eliminata");
+				$("#successModal").css("display", "flex");
+				$("#deleteProjectionModal").css("display", "none");
 			}
 		});
 		

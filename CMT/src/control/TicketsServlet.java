@@ -54,11 +54,24 @@ public class TicketsServlet extends HttpServlet
 		{
 			JSONObject object = new JSONObject();
 			
+			Projection projection = projections.get(i);
+			
 			object.put("id", tickets.get(i).getId());
 			object.put("title", titles.get(i));
-			object.put("date", projections.get(i).getDate());
-			object.put("time", projections.get(i).getTime());
-			object.put("room", projections.get(i).getIdRoom());
+			
+			if(projection.getId() != -1)
+			{
+				object.put("date", projection.getDate());
+				object.put("time", projection.getTime());
+				object.put("room", projection.getIdRoom());
+			}
+			else
+			{
+				object.put("date", "<i>eliminato</i>");
+				object.put("time", "<i>eliminato</i>");
+				object.put("room", "<i>eliminato</i>");
+			}
+			
 			object.put("x", tickets.get(i).getX());
 			object.put("y", tickets.get(i).getY());
 			object.put("price", tickets.get(i).getPrice());

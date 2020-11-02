@@ -101,7 +101,7 @@
 						<span id="actor1"></span>
 						<span id="actor2"></span>
 					</div>
-					<h3>Descrizione</h3>
+					<h3 id="descriptionH"></h3>
 					<p id="description"></p>
 				</div>
 				<br>

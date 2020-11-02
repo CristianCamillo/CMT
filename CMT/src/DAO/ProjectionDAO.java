@@ -12,12 +12,11 @@ import utils.DriverManagerConnectionPool;
 
 public class ProjectionDAO
 {
-	public static ArrayList<Projection> getProjections(int idFilm, boolean includePast) throws SQLException
+	public static ArrayList<Projection> getProjections(int idFilm) throws SQLException
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String query = "SELECT * FROM projection WHERE projection.idfilm = " + idFilm +
-					   (includePast ? " " : " AND STRCMP(projection.date, DATE_FORMAT(SYSDATE(), '%Y%m%d')) >= 0 ") +
+		String query = "SELECT * FROM projection WHERE projection.idfilm = " + idFilm + " AND STRCMP(projection.date, DATE_FORMAT(SYSDATE(), '%Y%m%d')) >= 0 " +
 					   "ORDER BY projection.date, projection.time";
 	    
 	    ResultSet rs = con.createStatement().executeQuery(query);
@@ -49,6 +48,8 @@ public class ProjectionDAO
 			
 			if(rs.next())
 				projections.add(new Projection(rs.getInt("id"), rs.getInt("date"), rs.getShort("time"), rs.getFloat("price"), rs.getInt("idroom"), rs.getInt("idfilm")));
+			else
+				projections.add(new Projection(-1, 0, (short) 0, 0, 0, 0));
 		}
 		
 		DriverManagerConnectionPool.releaseConnection(con);

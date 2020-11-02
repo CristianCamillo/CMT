@@ -67,6 +67,8 @@ public class FilmDAO
 			
 			if(rs.next())
 				titles.add(rs.getString("title"));
+			else
+				titles.add("<i>eliminato</i>");
 		}
 		
 		DriverManagerConnectionPool.releaseConnection(con);

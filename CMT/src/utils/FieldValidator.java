@@ -45,7 +45,7 @@ public class FieldValidator
 			   validateNominative(director) &&
 			   validateNominative(actor1) &&
 			   validateNominative(actor2) &&
-			   description.length() <= 500;
+			   description.length() <= 300;
 	}
 	
 	public static boolean validateProjectionForm(String date, String time, String price, String idroom, String idfilm)
