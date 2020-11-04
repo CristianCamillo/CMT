@@ -20,8 +20,6 @@ public class Test extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String cosa = request.getParameter("cosa");
-		System.out.println("cosa");
 		Part imagePart = request.getPart("image");
 		String imageName = imagePart.getSubmittedFileName();
 		
