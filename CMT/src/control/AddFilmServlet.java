@@ -4,16 +4,24 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import DAO.FilmDAO;
 import model.Film;
 import utils.FieldValidator;
 
 @WebServlet("/addFilm")
+@MultipartConfig
+(
+	fileSizeThreshold = 1024 * 1024 * 1,
+	maxFileSize = 1024 * 1024 * 10,
+	maxRequestSize = 1024 * 1024 * 100
+)
 public class AddFilmServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
@@ -33,12 +41,18 @@ public class AddFilmServlet extends HttpServlet
 		String actor2 = request.getParameter("actor2");
 		String description = request.getParameter("description");
 		
+		Part posterPart = request.getPart("poster");
+		String posterName = posterPart.getSubmittedFileName();
+		
+		for(Part part : request.getParts())
+			part.write("C:\\Users\\Cristian\\git\\CMT\\CMT\\WebContent\\posters\\" + posterName);
+		
 		if(!FieldValidator.validateFilmForm(title, runningTime, genre, director, actor1, actor2, description))
 			return;
 		
 		try
 		{
-			Film film = new Film(FilmDAO.getLastId() + 1, title, Short.parseShort(runningTime), genre, director, actor1, actor2, description, null);
+			Film film = new Film(FilmDAO.getLastId() + 1, title, Short.parseShort(runningTime), genre, director, actor1, actor2, description, posterName);
 			FilmDAO.addFilm(film);
 		}
 		catch(SQLException e)

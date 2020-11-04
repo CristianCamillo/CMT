@@ -25,7 +25,7 @@ public class UpdateFilmServlet extends HttpServlet
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("idFilm"));
 		String title = request.getParameter("title");
 		String runningTime = request.getParameter("runningTime");
 		String genre = request.getParameter("genre");
@@ -33,7 +33,7 @@ public class UpdateFilmServlet extends HttpServlet
 		String actor1 = request.getParameter("actor1");
 		String actor2 = request.getParameter("actor2");
 		String description = request.getParameter("description");
-		
+				
 		if(!FieldValidator.validateFilmForm(title, runningTime, genre, director, actor1, actor2, description))
 			return;
 		

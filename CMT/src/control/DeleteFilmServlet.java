@@ -1,5 +1,6 @@
 package control;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -26,7 +27,16 @@ public class DeleteFilmServlet extends HttpServlet
 		int id = Integer.parseInt(request.getParameter("idFilm"));
 		
 		try
-		{
+		{			
+			/*
+			
+			TODO: fixare (curret path è il desktop) 
+			
+			File poster = new File("posters/" + FilmDAO.getPoster(id));
+			
+			if(!poster.delete())
+				System.out.println("Impossibile eliminare il poster " + poster);*/
+			
 			FilmDAO.removeFilm(id);
 		}
 		catch(SQLException e)
@@ -34,6 +44,7 @@ public class DeleteFilmServlet extends HttpServlet
 			System.out.println(e);
 			return;
 		}
+		
 		response.setContentType("text/plain");
 	 	response.setCharacterEncoding("UTF-8");
 	 	

@@ -25,7 +25,7 @@ public class UpdateProjectionServlet extends HttpServlet
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("idProjection"));
 		String date = request.getParameter("date");
 		String time = request.getParameter("time");
 		String price = request.getParameter("price");

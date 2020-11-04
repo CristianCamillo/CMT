@@ -144,4 +144,18 @@ public class FilmDAO
 		
 		DriverManagerConnectionPool.releaseConnection(con);
 	}
+	
+	public static String getPoster(int id) throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String query = "SELECT poster FROM film WHERE id = " + id;
+		
+		 ResultSet rs = con.createStatement().executeQuery(query);
+		    
+		 DriverManagerConnectionPool.releaseConnection(con);
+		    
+
+		 return rs.next() ? rs.getString("poster") : null;
+	}	
 }

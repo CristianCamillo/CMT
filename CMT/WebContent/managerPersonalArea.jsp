@@ -132,7 +132,7 @@
 					<button onclick="document.getElementById('filmModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="filmForm" class="optionsList" onsubmit="return validateFilmForm()" method="post">
+				<form id="filmForm" class="optionsList" onsubmit="return validateFilmForm()" method="post" enctype="multipart/form-data">
 					<input name="idFilm" type="hidden">
 					<input name="title" type="text" placeholder="Titolo" oninput="validateTitle(this)">
 					<input name="runningTime" type="text" placeholder="Durata" oninput="validatePositiveInteger(this)">
@@ -141,6 +141,7 @@
 					<input name="actor1" type="text" placeholder="Attore 1" oninput="validateNominative(this)">
 					<input name="actor2" type="text" placeholder="Attore 2" oninput="validateNominative(this)">
 					<textarea name="description" placeholder="Descrizione" oninput="validateDescription(this)" rows="5"></textarea>
+					<input name="poster" type="file" accept="image/gif, image/jpeg, image/png">
 					<span>&nbsp;</span>
 					<button id="filmModalButton" type="submit"></button>
 				</form>

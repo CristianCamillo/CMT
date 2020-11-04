@@ -31,6 +31,14 @@ function openAddFilmModal()
 {
 	document.getElementsByName("idFilm")[0].value = -1;
 	
+	document.getElementsByName("title")[0].value = "";
+	document.getElementsByName("runningTime")[0].value = "";
+	document.getElementsByName("genre")[0].value = "";
+	document.getElementsByName("director")[0].value = "";
+	document.getElementsByName("actor1")[0].value = "";
+	document.getElementsByName("actor2")[0].value = "";
+	document.getElementsByName("description")[0].value = "";
+	
 	document.getElementById("filmModalTitle").innerHTML = "Aggiunta film";
 	document.getElementById("filmModalButton").innerHTML = "Aggiungi";
 	document.getElementById("filmForm").action = "/CMT/addFilm";
@@ -39,6 +47,16 @@ function openAddFilmModal()
 
 function openUpdateFilmModal()
 {
+	var id = parseInt(document.getElementsByName("idFilm")[0].value);
+
+	document.getElementsByName("title")[0].value = filmData[id].title;
+	document.getElementsByName("runningTime")[0].value = filmData[id].runningTime;
+	document.getElementsByName("genre")[0].value = filmData[id].genre;
+	document.getElementsByName("director")[0].value = filmData[id].director;
+	document.getElementsByName("actor1")[0].value = filmData[id].actor1;
+	document.getElementsByName("actor2")[0].value = filmData[id].actor2;
+	document.getElementsByName("description")[0].value = filmData[id].description;
+	
 	document.getElementById("filmModalTitle").innerHTML = "Modifica film";
 	document.getElementById("filmModalButton").innerHTML = "Modifica";
 	document.getElementById("filmForm").action = "/CMT/updateFilm";
