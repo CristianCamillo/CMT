@@ -44,6 +44,8 @@ public class AddFilmServlet extends HttpServlet
 		Part posterPart = request.getPart("poster");
 		String posterName = posterPart.getSubmittedFileName();
 		
+		System.out.println("Poster name: " + posterName);
+		
 		for(Part part : request.getParts())
 			part.write("C:\\Users\\Cristian\\git\\CMT\\CMT\\WebContent\\posters\\" + posterName);
 		
@@ -52,7 +54,7 @@ public class AddFilmServlet extends HttpServlet
 		
 		try
 		{
-			Film film = new Film(FilmDAO.getLastId() + 1, title, Short.parseShort(runningTime), genre, director, actor1, actor2, description, posterName);
+			Film film = new Film(FilmDAO.getAvailableId(), title, Short.parseShort(runningTime), genre, director, actor1, actor2, description, posterName);
 			FilmDAO.addFilm(film);
 		}
 		catch(SQLException e)

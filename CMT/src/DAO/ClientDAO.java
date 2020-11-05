@@ -39,19 +39,28 @@ public class ClientDAO
 	    return rs.next();
 	}
 	
-	public static int getLastId() throws SQLException
+	public static int getAvailableId() throws SQLException
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String query = "SELECT id FROM client ORDER BY id DESC LIMIT 1";
+		String query = "SELECT id FROM client";
 		
-	    ResultSet rs = con.createStatement().executeQuery(query);
-	    
-	    DriverManagerConnectionPool.releaseConnection(con);
-
-	    return rs.next() ? rs.getInt("id") : -1;
+		ResultSet rs = con.createStatement().executeQuery(query);
+		    
+		DriverManagerConnectionPool.releaseConnection(con);
+		
+		int id = 0;
+		
+		while(rs.next())
+		{
+			if(id != rs.getInt("id"))
+				break;
+			id++;
+		}	
+		
+		return id;
 	}
-	
+		
 	public static void addClient(Client client) throws SQLException, UsernameTakenException
 	{		
 		if(isRegistered(client.getUsername()))

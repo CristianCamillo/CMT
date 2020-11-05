@@ -46,7 +46,7 @@ public class RegistrationServlet extends HttpServlet
 				return;
 			}
 
-			newClient = new Client(ClientDAO.getLastId() + 1, username, password, Float.parseFloat(balance));
+			newClient = new Client(ClientDAO.getAvailableId(), username, password, Float.parseFloat(balance));
 
 			ClientDAO.addClient(newClient);
 		}

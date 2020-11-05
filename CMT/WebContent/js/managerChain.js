@@ -204,11 +204,44 @@ function loadProjections()
 	});
 }
 
+function addFilmFormAction()
+{
+	$.ajax
+	({
+		url: "addFilm",
+		type: "post",
+		enctype : 'multipart/form-data',
+		cache: false,
+	    contentType: false,
+	    processData: false,
+	
+		success: function(responseText)
+		{			
+			if(responseText != "")
+			{
+				loadFilms();
+				
+				if(document.getElementsByName("idFilm")[0].value == -1)
+					$("#successMsg").html("Il film e' stato memorizzato");
+				else
+					$("#successMsg").html("Il film e' stato modificato");
+				$("#successModal").css("display", "flex");
+				$("#filmModal").css("display", "none");
+			}
+    	},
+
+	    error: function (xhr, ajaxOptions, thrownError)
+		{
+			alert("Errore addFilm servlet");
+	    }
+	});
+}
+
 $(document).ready(function()
 {
 	loadFilms();
 	loadProjections();
-	
+	/*
 	$(document).on("submit", "#filmForm", function(event)
 	{
 		const $form = $(this);
@@ -229,7 +262,7 @@ $(document).ready(function()
 		});
 		
 		event.preventDefault();
-	});
+	});*/
 	
 	$(document).on("submit", "#projectionForm", function(event)
 	{

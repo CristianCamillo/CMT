@@ -36,7 +36,7 @@ public class AddProjectionServlet extends HttpServlet
 		
 		try
 		{
-			Projection projection = new Projection(ProjectionDAO.getLastId() + 1, Integer.parseInt(date), Short.parseShort(time), Float.parseFloat(price), Integer.parseInt(idroom), Integer.parseInt(idfilm));
+			Projection projection = new Projection(ProjectionDAO.getAvailableId(), Integer.parseInt(date), Short.parseShort(time), Float.parseFloat(price), Integer.parseInt(idroom), Integer.parseInt(idfilm));
 			ProjectionDAO.addProjection(projection);
 		}
 		catch(SQLException e)

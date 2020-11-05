@@ -31,27 +31,33 @@ public class TicketDAO
 	    return list;
 	}
 	
-	private static int getLastId() throws SQLException
+	public static int getAvailableId() throws SQLException
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String query = "SELECT id FROM ticket ORDER BY id DESC LIMIT 1";
+		String query = "SELECT id FROM ticket";
 		
-	    ResultSet rs = con.createStatement().executeQuery(query);
-	    
-	    DriverManagerConnectionPool.releaseConnection(con);
-
-	    if(rs.next())    
-	    	return rs.getInt("id");
-	    else
-	    	return -1;
+		ResultSet rs = con.createStatement().executeQuery(query);
+		    
+		DriverManagerConnectionPool.releaseConnection(con);
+		
+		int id = 0;
+		
+		while(rs.next())
+		{
+			if(id != rs.getInt("id"))
+				break;
+			id++;
+		}	
+		
+		return id;
 	}
 			
 	public static void addTickets(Basket basket) throws SQLException, SeatBookedException
 	{			
 		ArrayList<Ticket> tickets = basket.getTickets();
 		
-		int id = getLastId();
+		int id = getAvailableId();
 		
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
@@ -61,8 +67,6 @@ public class TicketDAO
 		
 		for(Ticket ticket : tickets)
 		{					
-			id++;
-			
 			ps.setInt(1, id);
 			ps.setByte(2, ticket.getX());
 			ps.setByte(3, ticket.getY());
@@ -71,6 +75,8 @@ public class TicketDAO
 			ps.setInt(6, ticket.getIdProjection());
 			
 			ps.executeUpdate();
+			
+			id++;
 		}
 	    
 	    DriverManagerConnectionPool.releaseConnection(con);
