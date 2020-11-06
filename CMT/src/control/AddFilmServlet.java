@@ -42,15 +42,22 @@ public class AddFilmServlet extends HttpServlet
 		String description = request.getParameter("description");
 		
 		Part posterPart = request.getPart("poster");
+		
+		System.out.println(posterPart);
 		String posterName = posterPart.getSubmittedFileName();
 		
 		System.out.println("Poster name: " + posterName);
-		
+		response.setContentType("text/plain");
+	 	response.setCharacterEncoding("UTF-8");
 		for(Part part : request.getParts())
 			part.write("C:\\Users\\Cristian\\git\\CMT\\CMT\\WebContent\\posters\\" + posterName);
 		
 		if(!FieldValidator.validateFilmForm(title, runningTime, genre, director, actor1, actor2, description))
+		{
+			System.out.println("validate error");
+			response.getWriter().write("1");
 			return;
+		}
 		
 		try
 		{
@@ -62,6 +69,7 @@ public class AddFilmServlet extends HttpServlet
 			System.out.println(e);
 			return;
 		}
+		
 		response.setContentType("text/plain");
 	 	response.setCharacterEncoding("UTF-8");
 	 	

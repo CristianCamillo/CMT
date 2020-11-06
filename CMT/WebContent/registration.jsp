@@ -41,15 +41,31 @@
 				<img src="icons/siteIcon.png">
 				<h1>Castle Movie Theater</h1>					
 			</span>
-		</header>
-		
-		<hr>
-		
+		</header>		
+		<hr>		
 		<form id="registrationForm" class="optionsList" style="margin: 100px auto" onsubmit="return validateRegistrationForm()" action="${pageContext.request.contextPath}/registration" method="post">
-			<input name="username" type="text" placeholder="Username" oninput="validateUsername(this)">
-			<span class="passwordSpan"><input name="password" type="password" placeholder="Password" oninput="validatePassword(this)"><img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('password')[0], this)"></span>
-			<span class="euroSpan"><input name="balance" type="text" placeholder="Saldo" oninput="validateNNegativeFloat(this)"><span>&euro;</span></span>
-			<span class="checkboxSpan"><label for="dataTreatment">Trattamento dei dati personali</label><input id="dataTreatment" type="checkbox" required></span>
+			<span>
+				<label for="username">Username</label>
+				<input id="username" name="username" type="text" oninput="validateUsername(this)">
+			</span>
+			<span>
+				<label for="password">Password</label>
+				<span class="passwordCombo">
+					<input id="password" name="password" type="password" oninput="validatePassword(this)">
+					<img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('password')[0], this)">
+				</span>
+			</span>
+			<span>
+				<label for="balance">Saldo</label>
+				<span class="euroCombo">
+					<input id="balance" name="balance" type="text" oninput="validateNNegativeFloat(this)">
+					<span>&euro;</span>
+				</span>
+			</span>
+			<span>
+				<label for="dataTreatment">Trattamento dei dati personali</label>
+				<input id="dataTreatment" type="checkbox" required>
+			</span>
 			<span>&nbsp;</span>
 			<button type="submit">Registrati</button>
 		</form>

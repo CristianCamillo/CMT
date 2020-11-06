@@ -10,13 +10,13 @@ $(document).ready(function()
 				if(responseText != "1")
 				{
 					$("#username").html(responseText);
-					$("#successMsg").html("L'username e' stato modificato");
+					$("#successMsg").html("L'username \u00E8 stato modificato");
 					$("#successModal").css("display", "flex");
 					$("#usernameModal").css("display", "none");
 				}
 				else
 				{
-					$("#errorMsg").html("L'username indicato e' gia' utilizzato");
+					$("#errorMsg").html("L'username indicato \u00E8 gi\u00E0 utilizzato");
 					$("#errorModal").css("display", "flex");
 				}
 		});
@@ -32,7 +32,7 @@ $(document).ready(function()
 		{
 			if(responseText != "")
 			{
-				$("#successMsg").html("La password e' stata modificata");
+				$("#successMsg").html("La password \u00E8 stata modificata");
 				$("#successModal").css("display", "flex");
 				$("#passwordModal").css("display", "none");
 			}

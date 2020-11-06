@@ -1,7 +1,7 @@
 function validateLoginForm()
 {
-	const usr = validateUsername(document.getElementsByName("username")[0]);
-	const psw = validatePassword(document.getElementsByName("password")[0]);
+	const usr = validateUsername(document.getElementById("username"));
+	const psw = validatePassword(document.getElementById("password"));
 	
 	return usr && psw;
 }			
@@ -15,7 +15,7 @@ $(document).ready(function()
 		$.post($form.attr("action"), $form.serialize(), function(responseText)
 		{	
 			if(responseText === "0")
-				location.href = 'homepage.jsp';
+				location.href = "homepage.jsp";
 			else if(responseText === "1" || responseText === "2")
 			{
 				var msg = "Dati non associati ad alcun ";

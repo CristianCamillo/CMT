@@ -81,7 +81,10 @@
 				</header>
 				<br>
 				<form id="usernameForm" class="optionsList" onsubmit="return validateUsername(document.getElementsByName('newUsername')[0])" action="${pageContext.request.contextPath}/personalData" method="post">
-					<input name="newUsername" type="text" oninput="validateUsername(this)">
+					<span>
+						<label for="newUsername">Username</label>
+						<input id="newUsername" name="newUsername" type="text" oninput="validateUsername(this)">
+					</span>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiorna</button>
 					<input name="toChange" type="hidden" value="0">
@@ -96,8 +99,14 @@
 					<button onclick="document.getElementById('passwordModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="passwordForm" class="optionsList" onsubmit="return validatePassword(document.getElementsByName('newPassword')[0])" action="${pageContext.request.contextPath}/personalData" method="post">
-					<span class="passwordSpan"><input name="newPassword" type="password" oninput="validatePassword(this)"><img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('newPassword')[0], this)"></span>
+				<form id="passwordForm" class="optionsList" onsubmit="return validatePassword(document.getElementById('newPassword'))" action="${pageContext.request.contextPath}/personalData" method="post">
+					<span>
+						<label for="newPassword">Password</label>
+						<span class="passwordCombo">
+							<input id="newPassword" name="newPassword" type="password" oninput="validatePassword(this)">
+							<img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('newPassword')[0], this)">
+						</span>
+					</span>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiorna</button>
 					<input name="toChange" type="hidden" value="1">
@@ -112,8 +121,14 @@
 					<button onclick="document.getElementById('amountModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="amountForm" class="optionsList" onsubmit="return validatePositiveFloat(document.getElementsByName('amount')[0])" action="${pageContext.request.contextPath}/personalData" method="post">
-					<span class="euroSpan"><input name="amount" type="text" oninput="validatePositiveFloat(this)"><span>&euro;</span></span>
+				<form id="amountForm" class="optionsList" onsubmit="return validatePositiveFloat(document.getElementById('amount'))" action="${pageContext.request.contextPath}/personalData" method="post">
+					<span>
+						<label for="amount">Saldo</label>
+						<span class="euroCombo">
+							<input id="amount" name="amount" type="text" oninput="validatePositiveFloat(this)">
+							<span>&euro;</span>
+						</span>
+					</span>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiungi</button>
 					<input name="toChange" type="hidden" value="2">

@@ -41,7 +41,7 @@ function openAddFilmModal()
 	
 	document.getElementById("filmModalTitle").innerHTML = "Aggiunta film";
 	document.getElementById("filmModalButton").innerHTML = "Aggiungi";
-	document.getElementById("filmForm").action = "/CMT/addFilm";
+	//document.getElementById("filmForm").action = "/CMT/addFilm";
 	document.getElementById("filmModal").style.display = "flex";
 }
 
@@ -59,7 +59,7 @@ function openUpdateFilmModal()
 	
 	document.getElementById("filmModalTitle").innerHTML = "Modifica film";
 	document.getElementById("filmModalButton").innerHTML = "Modifica";
-	document.getElementById("filmForm").action = "/CMT/updateFilm";
+	//document.getElementById("filmForm").action = "/CMT/updateFilm";
 	document.getElementById("filmModal").style.display = "flex";
 }
 
@@ -91,30 +91,30 @@ function openDeleteProjectionModal()
 
 function enableFilmButtons()
 {
-	document.getElementById('updateFilmButton').disabled = false;
-	document.getElementById('deleteFilmButton').disabled = false;
+	document.getElementById("updateFilmButton").disabled = false;
+	document.getElementById("deleteFilmButton").disabled = false;
 }
 
 function enableProjectionButtons()
 {
-	document.getElementById('updateProjectionButton').disabled = false;
-	document.getElementById('deleteProjectionButton').disabled = false;
+	document.getElementById("updateProjectionButton").disabled = false;
+	document.getElementById("deleteProjectionButton").disabled = false;
 }
 
 function disableFilmButtons()
 {
-	document.getElementById('updateFilmButton').disabled = true;
-	document.getElementById('deleteFilmButton').disabled = true;
+	document.getElementById("updateFilmButton").disabled = true;
+	document.getElementById("deleteFilmButton").disabled = true;
 }
 
 function disableProjectionButtons()
 {
-	document.getElementById('updateProjectionButton').disabled = true;
-	document.getElementById('deleteProjectionButton').disabled = true;
+	document.getElementById("updateProjectionButton").disabled = true;
+	document.getElementById("deleteProjectionButton").disabled = true;
 }
 
 function validateFilmForm()
-{
+{	
 	const title = validateTitle(document.getElementsByName("title")[0]);
 	const runningTime = validatePositiveInteger(document.getElementsByName("runningTime")[0]);
 	const genre = validateNominative(document.getElementsByName("genre")[0]);
@@ -204,53 +204,86 @@ function loadProjections()
 	});
 }
 
-function addFilmFormAction()
-{
-	$.ajax
-	({
-		url: "addFilm",
-		type: "post",
-		enctype : 'multipart/form-data',
-		cache: false,
-	    contentType: false,
-	    processData: false,
-	
-		success: function(responseText)
-		{			
-			if(responseText != "")
-			{
-				loadFilms();
-				
-				if(document.getElementsByName("idFilm")[0].value == -1)
-					$("#successMsg").html("Il film e' stato memorizzato");
-				else
-					$("#successMsg").html("Il film e' stato modificato");
-				$("#successModal").css("display", "flex");
-				$("#filmModal").css("display", "none");
-			}
-    	},
-
-	    error: function (xhr, ajaxOptions, thrownError)
-		{
-			alert("Errore addFilm servlet");
-	    }
-	});
-}
-
 $(document).ready(function()
 {
 	loadFilms();
 	loadProjections();
-	/*
+	
 	$(document).on("submit", "#filmForm", function(event)
-	{
-		const $form = $(this);
+	{		
+		event.preventDefault();
 		
-		$.post($form.attr("action"), $form.serialize(), function(responseText)
-		{
-			if(responseText != "")
-			{
+		if(!validateFilmForm())
+			return;
+				
+        var form = $("#filmForm")[0];
+
+        var formData = new FormData(form);
+
+        $("#filmModalButton").prop("disabled", true);
+		
+		$.ajax
+		({
+			type: "post",
+            enctype: "multipart/form-data",
+            url: document.getElementsByName("idFilm")[0].value == -1 ? "/CMT/addFilm" : "/CMT/updateFilm",
+            data: formData,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (responseText)
+			{				
+				alert(responseText);
+				
 				loadFilms();
+				
+				if(document.getElementsByName("idFilm")[0].value == -1)
+					$("#successMsg").html("Il film \u00E8 stato memorizzato");
+				else
+					$("#successMsg").html("Il film \u00E8 stato modificato");
+					
+				$("#successModal").css("display", "flex");
+				$("#filmModal").css("display", "none");
+				
+				$("#filmModalButton").prop("disabled", false);
+            },
+            error: function (responseText)
+			{
+				alert(responseText);
+				
+				alert("Errore addFilm servlet");
+            	$("#filmModalButton").prop("disabled", false);
+            }
+        });
+	});
+	/*
+	$("#filmModalButton").click(function (event)
+	{
+        event.preventDefault();
+
+        var form = $('#filmForm')[0];
+
+        // Create an FormData object 
+        var data = new FormData(form);
+
+        // If you want to add an extra field for the FormData
+        data.append("CustomField", "This is some extra data, testing");
+
+        // disabled the submit button
+        $("#filmModalButton").prop("disabled", true);
+
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "/CMT/addFilm",
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+			loadFilms();
 				
 				if(document.getElementsByName("idFilm")[0].value == -1)
 					$("#successMsg").html("Il film e' stato memorizzato");
@@ -258,11 +291,19 @@ $(document).ready(function()
 					$("#successMsg").html("Il film e' stato modificato");
 				$("#successModal").css("display", "flex");
 				$("#filmModal").css("display", "none");
-			}
-		});
-		
-		event.preventDefault();
-	});*/
+				
+				$("#filmModalButton").prop("disabled", false);
+            },
+            error: function (e) {
+
+                $("#result").text(e.responseText);
+                console.log("ERROR : ", e);
+               $("#filmModalButton").prop("disabled", false);
+
+            }
+        });
+
+    });*/
 	
 	$(document).on("submit", "#projectionForm", function(event)
 	{
@@ -275,9 +316,9 @@ $(document).ready(function()
 				loadProjections();
 				
 				if(document.getElementsByName("idProjection")[0].value == -1)
-					$("#successMsg").html("La proiezione e' stata memorizzata");
+					$("#successMsg").html("La proiezione \u00E8 stata memorizzata");
 				else
-					$("#successMsg").html("La proiezione e' stata modificata");
+					$("#successMsg").html("La proiezione \u00E8 stata modificata");
 				$("#successModal").css("display", "flex");
 				$("#projectionModal").css("display", "none");
 			}
@@ -298,7 +339,7 @@ $(document).ready(function()
 				loadProjections();
 				disableFilmButtons();
 				
-				$("#successMsg").html("Il film selezionato e' stato eliminato");
+				$("#successMsg").html("Il film selezionato \u00E8 stato eliminato");
 				$("#successModal").css("display", "flex");
 				$("#deleteFilmModal").css("display", "none");
 			}
@@ -319,7 +360,7 @@ $(document).ready(function()
 				loadProjections();
 				disableProjectionButtons();
 				
-				$("#successMsg").html("La proiezione selezionata e' stata eliminata");
+				$("#successMsg").html("La proiezione selezionata \u00E8 stata eliminata");
 				$("#successModal").css("display", "flex");
 				$("#deleteProjectionModal").css("display", "none");
 			}

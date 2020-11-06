@@ -12,7 +12,7 @@ $(document).ready(function()
 			}
 			else if(responseText === "1")
 			{
-				$("#errorMsg").html("Alcuni posti sono stati gia' acquistati.<br>Rimozione posti non disponibili dal carrello...");
+				$("#errorMsg").html("Alcuni posti sono stati gi\u00E0 acquistati.<br>Rimozione posti non disponibili dal carrello...");
 				$("#errorModal").css("display", "flex");
 				$("#errorButton").attr("onclick", "location.href = 'basket.jsp'");
 			}

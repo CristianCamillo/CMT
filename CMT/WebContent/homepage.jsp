@@ -61,21 +61,29 @@
 					%>
 				</div>
 			</div>		
-		</header>
-		
-		<hr>
-		
+		</header>		
+		<hr>		
 		<form id="filtreForm" class="optionsList" action="${pageContext.request.contextPath}/filtre" method="post">
-			<input name="title" type="text" placeholder="Titolo" maxlength="30">
-			<input name="genre" type="text" placeholder="Genere" maxlength="30">
-			<input name="director" type="text" placeholder="Regista" maxlength="30">
-			<input name="actor" type="text" placeholder="Attore" maxlength="30">
+			<span>
+				<label for="title">Titolo</label>
+				<input id="title" name="title" type="text" maxlength="30">
+			</span>
+			<span>
+				<label for="genre">Genere</label>
+				<input id="genre" name="genre" type="text" maxlength="30">
+			</span>
+			<span>
+				<label for="director">Regista</label>
+				<input id="director" name="director" type="text" maxlength="30">
+			</span>
+			<span>
+				<label for="actor">Attore</label>
+				<input id="actor" name="actor" type="text" maxlength="30">
+			</span>
 			<span>&nbsp;</span>
 			<button type="submit">Filtra</button>
-		</form>
-		
-		<hr>
-				
+		</form>		
+		<hr>				
 		<div id="posterContainer">
 		</div>		
 

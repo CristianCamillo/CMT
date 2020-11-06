@@ -41,15 +41,25 @@
 				<img src="icons/siteIcon.png">
 				<h1>Castle Movie Theater</h1>					
 			</span>
-		</header>
-		
-		<hr>
-		
-		<form id="loginForm" class="optionsList" style="margin: 100px auto" onsubmit="return validateLoginForm()" action="${pageContext.request.contextPath}/login" method="post">
-			<input name="username" type="text" placeholder="Username" oninput="validateUsername(this)">
-			<span class="passwordSpan"><input name="password" type="password" placeholder="Password" oninput="validatePassword(this)"><img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('password')[0], this)"></span>
-			<span class="checkboxSpan"><label for="isManager">Accedi come manager</label><input id="isManager" name="isManager" type="checkbox"></span>
-			&nbsp;
+		</header>		
+		<hr>		
+		<form id="loginForm" class="optionsList" style="margin: 100px auto" onsubmit="return validateLoginForm()" action="/CMT/login" method="post">
+			<span>
+				<label for="username">Username</label>
+				<input id="username" name="username" type="text" oninput="validateUsername(this)">
+			</span>
+			<span>
+				<label for="password">Password</label>
+				<span class="passwordCombo">
+					<input id="password" name="password" type="password" oninput="validatePassword(this)">
+					<img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementById('password'), this)">
+				</span>
+			</span>
+			<span class="checkboxSpan">
+				<label for="isManager">Accedi come manager</label>
+				<input id="isManager" name="isManager" type="checkbox">
+			</span>
+			<span>&nbsp;</span>
 			<button type="submit">Accedi</button>
 		</form>
 		

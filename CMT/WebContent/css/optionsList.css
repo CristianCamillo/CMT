@@ -1,7 +1,8 @@
 .optionsList
 {
 	width: 300px;
-	min-width: 300px; 
+	min-width: 300px;
+	max-width: 300px;
 		
 	display: flex;
 	flex-direction: column;
@@ -9,7 +10,7 @@
 
 .optionsList > *
 {
-	width: 100%;
+	min-height: 27px;
 }
 
 .optionsList > * + *
@@ -28,36 +29,32 @@
 
 /**********************************************/
 
-.optionsList > span.passwordSpan input
+.optionsList span.passwordCombo
 {
-	width: 100%;
+	width: 208px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: space-between;	
 }
 
-.optionsList > span.passwordSpan img
+.optionsList span.passwordCombo input
 {
-	margin: 0px 5px;
-}
-
-/**********************************************/
-
-.optionsList > span.checkboxSpan
-{
-	padding: 5px 3px;
-}
-
-.optionsList > span.checkboxSpan input
-{
-	margin: 0px 5px;
+	width: 175px;
 }
 
 /**********************************************/
 
-.optionsList > span.euroSpan input
+.optionsList span.euroCombo
 {
-	width: 100%;
+	width: 208px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: space-between;	
 }
 
-.optionsList > span.euroSpan span
+.optionsList span.euroCombo input
 {
-	margin: 0px 5px;
+	width: 191px;
 }

@@ -178,7 +178,7 @@ $(document).ready(function()
 
 			for(var y = 0, width = responseText[0].columns, height = responseText[0].rows; y < height; y++)
 			{
-				var tr = document.createElement('tr');
+				var tr = document.createElement("tr");
 				
 				for(var x = 0; x < width; x++)
 				{
