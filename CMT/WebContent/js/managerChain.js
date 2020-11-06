@@ -130,7 +130,7 @@ function loadFilms()
 {
 	$.ajax
 	({
-		url: "filmManager",
+		url: "filmsLoader",
 		type: "post",
 		
         success: function(responseText)
@@ -156,7 +156,7 @@ function loadFilms()
 
         error: function (xhr, ajaxOptions, thrownError)
 		{
-			alert("Errore filmManager servlet");
+			alert("Errore filmsLoader servlet");
         }
 	});
 }
@@ -199,7 +199,7 @@ function loadProjections()
 
         error: function (xhr, ajaxOptions, thrownError)
 		{
-			alert("Errore projectionManager servlet");
+			alert("Errore projectionsLoader servlet");
         }
 	});
 }
