@@ -165,7 +165,7 @@ function loadProjections()
 {
 	$.ajax
 	({
-		url: "projectionManager",
+		url: "projectionsLoader",
 		type: "post",
 		
         success: function(responseText)
