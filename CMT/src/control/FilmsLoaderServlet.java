@@ -15,12 +15,12 @@ import org.json.JSONObject;
 import DAO.FilmDAO;
 import model.Film;
 
-@WebServlet("/filmManager")
-public class FilmManagerServlet extends HttpServlet
+@WebServlet("/filmsLoader")
+public class FilmsLoaderServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
-    public FilmManagerServlet()
+    public FilmsLoaderServlet()
     {
         super();
     }

@@ -2,7 +2,7 @@ $(document).ready(function()
 {
 	$.ajax
 	({
-		url: "tickets",
+		url: "ticketsLoader",
 		type: "post",
 		
         success: function(responseText)
@@ -27,7 +27,7 @@ $(document).ready(function()
 
         error: function (xhr, ajaxOptions, thrownError)
 		{
-			alert("Errore tickets servlet");
+			alert("Errore ticketsLoader servlet");
         }
 	});
 });

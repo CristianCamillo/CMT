@@ -63,7 +63,7 @@
 			</div>		
 		</header>		
 		<hr>		
-		<form id="filtreForm" class="optionsList" action="${pageContext.request.contextPath}/filtre" method="post">
+		<form id="filtreForm" class="optionsList" action="${pageContext.request.contextPath}/filmFiltre" method="post">
 			<span>
 				<label for="title">Titolo</label>
 				<input id="title" name="title" type="text" maxlength="30">
@@ -113,7 +113,7 @@
 					<p id="description"></p>
 				</div>
 				<br>
-				<form id="projectionsForm" action="${pageContext.request.contextPath}/projections" method="post">
+				<form id="projectionsForm" action="${pageContext.request.contextPath}/filmProjectionsLoader" method="post">
 					<input name="idFilm" type="hidden">
 					<button type="submit" style="width: 100%">Visualizza proiezioni</button>
 				</form>
@@ -137,7 +137,7 @@
 					</tbody>
 				</table>
 				<br>
-				<form id="seatsForm" action="${pageContext.request.contextPath}/seats" method="post">
+				<form id="seatsForm" action="${pageContext.request.contextPath}/seatsLoader" method="post">
 					<input name="idProjection" type="hidden">
 					<button id="seatsButton" type="submit" style="width: 100%">Visualizza posti a sedere</button>
 				</form>		
@@ -180,7 +180,7 @@
 				<div class="optionsList">
 					<span>Carrello aggiornato</span>
 					<span>&nbsp;</span>
-					<button onclick="for(var i = 0, list = document.getElementsByClassName('modalContainer'), l = list.length; i < l; i++) list[i].style.display = 'none';">Ok</button>
+					<button onclick="closeAllModals()">Ok</button>
 				</div>
 			</div>
 		</div>

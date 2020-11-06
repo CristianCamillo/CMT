@@ -14,33 +14,31 @@ import org.json.JSONObject;
 
 import DAO.FilmDAO;
 import DAO.ProjectionDAO;
-import model.Basket;
+import DAO.TicketDAO;
 import model.Projection;
 import model.Ticket;
 
-@WebServlet("/basketRecap")
-public class BasketRecapServlet extends HttpServlet
+@WebServlet("/ticketsLoader")
+public class TicketsLoaderServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
- 
-	public BasketRecapServlet()
+	
+    public TicketsLoaderServlet()
     {
         super();
     }
-
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		Basket basket = (Basket)request.getSession().getAttribute("basket");
+		int idClient = (int)request.getSession().getAttribute("id");
 		
-		if(basket == null)
-			return;
-		
-		ArrayList<Ticket> tickets = basket.getTickets();
+	    ArrayList<Ticket> tickets;
 		ArrayList<Projection> projections;
 		ArrayList<String> titles;
 	    
 		try
 		{
+			tickets = TicketDAO.getTickets(idClient);
 			projections = ProjectionDAO.getProjections(tickets); 
 			titles = FilmDAO.getTitles(projections);			
 		}
@@ -56,10 +54,24 @@ public class BasketRecapServlet extends HttpServlet
 		{
 			JSONObject object = new JSONObject();
 			
+			Projection projection = projections.get(i);
+			
+			object.put("id", tickets.get(i).getId());
 			object.put("title", titles.get(i));
-			object.put("date", projections.get(i).getDate());
-			object.put("time", projections.get(i).getTime());
-			object.put("room", projections.get(i).getIdRoom());
+			
+			if(projection.getId() != -1)
+			{
+				object.put("date", projection.getDate());
+				object.put("time", projection.getTime());
+				object.put("room", projection.getIdRoom());
+			}
+			else
+			{
+				object.put("date", "<i>eliminato</i>");
+				object.put("time", "<i>eliminato</i>");
+				object.put("room", "<i>eliminato</i>");
+			}
+			
 			object.put("x", tickets.get(i).getX());
 			object.put("y", tickets.get(i).getY());
 			object.put("price", tickets.get(i).getPrice());

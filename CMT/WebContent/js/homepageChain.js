@@ -90,7 +90,7 @@ function sendTickets()
 	
 	$.ajax
 	({
-		url: "basket",
+		url: "addToBasket",
 		type: "post",
 		dataType: "json",
 		data: JSON.stringify(seats),
@@ -108,6 +108,12 @@ function sendTickets()
 			alert(xhr + "/n" + ajaxOptions + "/n" + thrownError);
         }
 	});
+}
+
+function closeAllModals()
+{
+	for(var i = 0, list = document.getElementsByClassName('modalContainer'), l = list.length; i < l; i++)
+		list[i].style.display = "none";
 }
 
 $(document).ready(function()

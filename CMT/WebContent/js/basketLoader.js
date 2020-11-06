@@ -2,7 +2,7 @@ $(document).ready(function()
 {
 	$.ajax
 	({
-		url: "basketRecap",
+		url: "basketLoader",
 		type: "post",
 		
         success: function(responseText)
@@ -29,7 +29,7 @@ $(document).ready(function()
 
         error: function (xhr, ajaxOptions, thrownError)
 		{
-			alert("Errore basketRecap servlet");
+			alert("Errore basketLoader servlet");
         }
 	});
 });

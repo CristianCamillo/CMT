@@ -12,28 +12,29 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
+import DAO.FilmDAO;
 import DAO.ProjectionDAO;
 import model.Projection;
 
-@WebServlet("/projections")
-public class ProjectionsServlet extends HttpServlet
+@WebServlet("/projectionsLoader")
+public class ProjectionsLoaderServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
        
-    public ProjectionsServlet()
+    public ProjectionsLoaderServlet()
     {
         super();
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String idFilm = request.getParameter("idFilm");
+		ArrayList<Projection> projections;
+		ArrayList<String> titles;
 		
-	    ArrayList<Projection> projections = null;
-	    
 		try
 		{
-			projections = ProjectionDAO.getProjections(Integer.parseInt(idFilm));
+			projections = ProjectionDAO.getAllProjections();
+			titles = FilmDAO.getTitles(projections);
 		}
 		catch(SQLException e)
 		{
@@ -44,15 +45,18 @@ public class ProjectionsServlet extends HttpServlet
 		String responseText = "[";
 		
 		for(int i = 0, l = projections.size(); i < l; i++)
-		{			
-			Projection projection = projections.get(i);
-			
+		{
 			JSONObject object = new JSONObject();
 			
+			Projection projection = projections.get(i);
+			
+			object.put("title", titles.get(i));
 			object.put("id", projection.getId());
 			object.put("date", projection.getDate());
 			object.put("time", projection.getTime());
 			object.put("price", projection.getPrice());
+			object.put("idroom", projection.getIdRoom());
+			object.put("idfilm", projection.getIdFilm());
 			
 			responseText += object + (i + 1 != l ? "," : "");				
 		}
@@ -61,7 +65,7 @@ public class ProjectionsServlet extends HttpServlet
 		
 		response.setContentType("application/json");
 	    response.setCharacterEncoding("UTF-8");
-		
+	    
 		response.getWriter().write(responseText);
 	}
 }

@@ -356,7 +356,6 @@ $(document).ready(function()
 		{
 			if(responseText != "")
 			{
-				loadFilms();
 				loadProjections();
 				disableProjectionButtons();
 				

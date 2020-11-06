@@ -41,10 +41,8 @@
 				<img src="icons/siteIcon.png">
 				<h1>Castle Movie Theater</h1>
 			</span>
-		</header>
-		
-		<hr>
-		
+		</header>		
+		<hr>		
 		<h2>Carrello</h2>
 		<br>
 		<table id="ticketTable" class="table bigTable">

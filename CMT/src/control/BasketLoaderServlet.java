@@ -14,27 +14,35 @@ import org.json.JSONObject;
 
 import DAO.FilmDAO;
 import DAO.ProjectionDAO;
+import model.Basket;
 import model.Projection;
+import model.Ticket;
 
-@WebServlet("/projectionManager")
-public class ProjectionManagerServlet extends HttpServlet
+@WebServlet("/basketLoader")
+public class BasketLoaderServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-       
-    public ProjectionManagerServlet()
+ 
+	public BasketLoaderServlet()
     {
         super();
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		Basket basket = (Basket)request.getSession().getAttribute("basket");
+		
+		if(basket == null)
+			return;
+		
+		ArrayList<Ticket> tickets = basket.getTickets();
 		ArrayList<Projection> projections;
 		ArrayList<String> titles;
-		
+	    
 		try
 		{
-			projections = ProjectionDAO.getAllProjections();
-			titles = FilmDAO.getTitles(projections);
+			projections = ProjectionDAO.getProjections(tickets); 
+			titles = FilmDAO.getTitles(projections);			
 		}
 		catch(SQLException e)
 		{
@@ -44,19 +52,17 @@ public class ProjectionManagerServlet extends HttpServlet
 		
 		String responseText = "[";
 		
-		for(int i = 0, l = projections.size(); i < l; i++)
+		for(int i = 0, l = tickets.size(); i < l; i++)
 		{
 			JSONObject object = new JSONObject();
 			
-			Projection projection = projections.get(i);
-			
 			object.put("title", titles.get(i));
-			object.put("id", projection.getId());
-			object.put("date", projection.getDate());
-			object.put("time", projection.getTime());
-			object.put("price", projection.getPrice());
-			object.put("idroom", projection.getIdRoom());
-			object.put("idfilm", projection.getIdFilm());
+			object.put("date", projections.get(i).getDate());
+			object.put("time", projections.get(i).getTime());
+			object.put("room", projections.get(i).getIdRoom());
+			object.put("x", tickets.get(i).getX());
+			object.put("y", tickets.get(i).getY());
+			object.put("price", tickets.get(i).getPrice());
 			
 			responseText += object + (i + 1 != l ? "," : "");				
 		}

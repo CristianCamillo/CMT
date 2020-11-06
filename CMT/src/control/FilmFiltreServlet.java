@@ -16,12 +16,12 @@ import DAO.FilmDAO;
 import model.Film;
 import utils.FieldValidator;
 
-@WebServlet("/filtre")
-public class FiltreServlet extends HttpServlet
+@WebServlet("/filmFiltre")
+public class FilmFiltreServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
        
-    public FiltreServlet()
+    public FilmFiltreServlet()
     {
         super();
     }

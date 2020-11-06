@@ -17,12 +17,12 @@ import DAO.ProjectionDAO;
 import model.Basket;
 import model.Ticket;
 
-@WebServlet("/basket")
-public class BasketServlet extends HttpServlet
+@WebServlet("/addToBasket")
+public class AddToBasketServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
        
-    public BasketServlet()
+    public AddToBasketServlet()
     {
         super();
     }

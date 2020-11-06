@@ -18,12 +18,12 @@ import model.Basket;
 import model.Room;
 import model.Ticket;
 
-@WebServlet("/seats")
-public class SeatsServlet extends HttpServlet
+@WebServlet("/seatsLoader")
+public class SeatsLoaderServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
-    public SeatsServlet()
+    public SeatsLoaderServlet()
     {
         super();
     }
