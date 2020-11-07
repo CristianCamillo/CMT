@@ -51,12 +51,11 @@
 	
 	display: flex;
 	align-items: center;
-	justify-content: space-between;	
 }
 
 .optionsList span.euroCombo input
 {
-	width: 191px;
+	width: 45px;
 }
 
 /**********************************************/

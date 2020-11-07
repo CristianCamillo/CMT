@@ -16,6 +16,8 @@ import DAO.FilmDAO;
 public class DeleteFilmServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
+	
+	private static final String POSTERS_PATH = "C:\\Users\\Cristian\\git\\CMT\\CMT\\WebContent\\posters\\";
 
     public DeleteFilmServlet()
     {
@@ -28,14 +30,8 @@ public class DeleteFilmServlet extends HttpServlet
 		
 		try
 		{			
-			/*
-			
-			TODO: fixare (curret path è il desktop) 
-			
-			File poster = new File("posters/" + FilmDAO.getPoster(id));
-			
-			if(!poster.delete())
-				System.out.println("Impossibile eliminare il poster " + poster);*/
+			String posterName = FilmDAO.getPoster(id);
+			new File(POSTERS_PATH + posterName).delete();
 			
 			FilmDAO.removeFilm(id);
 		}
@@ -43,7 +39,7 @@ public class DeleteFilmServlet extends HttpServlet
 		{
 			System.out.println(e);
 			return;
-		}
+		}	
 		
 		response.setContentType("text/plain");
 	 	response.setCharacterEncoding("UTF-8");

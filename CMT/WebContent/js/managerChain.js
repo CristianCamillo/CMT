@@ -84,7 +84,7 @@ function loadRoomNumbers()
 {
 	$.ajax
 	({
-		url: "roomNumbers",
+		url: "roomNumbersLoader",
 		type: "post",
 		
 		success: function(responseText)
@@ -153,6 +153,7 @@ function openUpdateFilmModal()
 	document.getElementById("actor1").value = filmData[id].actor1;
 	document.getElementById("actor2").value = filmData[id].actor2;
 	document.getElementById("description").value = filmData[id].description;
+	document.getElementById("poster").value = "";
 	
 	document.getElementById("filmModalTitle").innerHTML = "Modifica film";
 	document.getElementById("filmModalButton").innerHTML = "Modifica";
@@ -207,17 +208,18 @@ function disableProjectionButtons()
 	document.getElementById("deleteProjectionButton").disabled = true;
 }
 
-function validateFilmForm()
+function validateFilmForm(isUpdate)
 {	
-	const title = validateTitle(document.getElementsByName("title")[0]);
-	const runningTime = validatePositiveInteger(document.getElementsByName("runningTime")[0]);
-	const genre = validateNominative(document.getElementsByName("genre")[0]);
-	const director = validateNominative(document.getElementsByName("director")[0]);
-	const actor1 = validateNominative(document.getElementsByName("actor1")[0]);
-	const actor2 = validateNominative(document.getElementsByName("actor2")[0]);
-	const description = validateDescription(document.getElementsByName("description")[0]);
+	const title = validateTitle(document.getElementById("title"));
+	const runningTime = validatePositiveInteger(document.getElementById("runningTime"));
+	const genre = validateNominative(document.getElementById("genre"));
+	const director = validateNominative(document.getElementById("director"));
+	const actor1 = validateNominative(document.getElementById("actor1"));
+	const actor2 = validateNominative(document.getElementById("actor2"));
+	const description = validateDescription(document.getElementById("description"));
+	const poster = validatePoster(document.getElementById("poster"));
 	
-	return title && runningTime && genre && director && actor1 && actor2 && description;
+	return title && runningTime && genre && director && actor1 && actor2 && description && (poster || isUpdate);
 }
 
 $(document).ready(function()
@@ -233,7 +235,9 @@ $(document).ready(function()
 	{		
 		event.preventDefault();
 		
-		if(!validateFilmForm())
+		const isUpdate = document.getElementsByName("idFilm")[0].value == -1;
+		
+		if(!validateFilmForm(isUpdate))
 			return;
 				
         var form = $("#filmForm")[0];
@@ -246,7 +250,7 @@ $(document).ready(function()
 		({
 			type: "post",
             enctype: "multipart/form-data",
-            url: document.getElementsByName("idFilm")[0].value == -1 ? "/CMT/addFilm" : "/CMT/updateFilm",
+            url: isUpdate ? "/CMT/addFilm" : "/CMT/updateFilm",
             data: formData,
             processData: false,
             contentType: false,

@@ -115,6 +115,18 @@ function validateDescription(element)
 	return valid;
 }
 
+function validatePoster(element)
+{
+	const valid = element.value.length > 0;
+	
+	if(valid)
+		setGreen(element);
+	else
+		setRed(element);
+	
+	return valid;
+}
+
 function setGreen(element)
 {
 	element.style.borderColor = "#008000";

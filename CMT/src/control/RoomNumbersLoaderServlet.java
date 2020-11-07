@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.RoomDAO;
 
-@WebServlet("/roomNumbers")
+@WebServlet("/roomNumbersLoader")
 public class RoomNumbersLoaderServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;

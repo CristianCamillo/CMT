@@ -173,7 +173,7 @@
 						<label for="description">Descrizio.</label>
 						<textarea id="description" name="description" oninput="validateDescription(this)" rows="5"></textarea>
 					</span>					
-					<input name="poster" type="file" accept="image/gif, image/jpeg, image/png">
+					<input id="poster" name="poster" type="file" accept="image/gif, image/jpeg, image/png" oninput="validatePoster(this)">
 					<span>&nbsp;</span>
 					<button id="filmModalButton" type="submit"></button>
 					<input name="idFilm" type="hidden">
@@ -188,7 +188,32 @@
 					<button onclick="document.getElementById('projectionModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="projectionForm" class="optionsList" method="post">					
+				<form id="projectionForm" class="optionsList" onsubmit="" method="post">
+					<span>
+						<label for="titles">Film</label>
+						<select id="titles">
+						</select>
+					</span>
+					<span>
+						<label for="date">Data</label>
+						<input id="date" name="date" type="date">
+					</span>	
+					<span>
+						<label for="time">Orario</label>
+						<input id="time" name="time" type="time">
+					</span>
+					<span>
+						<label for="price">Costo</label>
+						<span class="euroCombo">
+							<input id="price" name="price" type="text" oninput="validateNNegativeFloat(this)">
+							<span>&euro;</span>
+						</span>
+					</span>
+					<span>
+						<label for="rooms">Sala</label>
+						<select id="rooms">
+						</select>
+					</span>
 					<span>&nbsp;</span>
 					<button id="projectionModalButton" type="submit"></button>
 					<input name="idProjection" type="hidden">

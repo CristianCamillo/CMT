@@ -81,7 +81,7 @@ public class FilmDAO
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
-		String query = "SELECT * FROM film";
+		String query = "SELECT * FROM film ORDER BY title";
 		
 		ResultSet rs = con.createStatement().executeQuery(query);
 		
