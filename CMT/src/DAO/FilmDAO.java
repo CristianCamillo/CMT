@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import model.Film;
 import model.Projection;
@@ -12,7 +13,7 @@ import utils.DriverManagerConnectionPool;
 
 public class FilmDAO
 {
-	public static ArrayList<Film> findFilms(String title, String genre, String director, String actor) throws SQLException
+	public static ArrayList<Film> filtreFilms(String title, String genre, String director, String actor) throws SQLException
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 
@@ -160,11 +161,29 @@ public class FilmDAO
 		
 		String query = "SELECT poster FROM film WHERE id = " + id;
 		
-		 ResultSet rs = con.createStatement().executeQuery(query);
+		ResultSet rs = con.createStatement().executeQuery(query);
 		    
-		 DriverManagerConnectionPool.releaseConnection(con);
+		DriverManagerConnectionPool.releaseConnection(con);
 		    
-
-		 return rs.next() ? rs.getString("poster") : null;
-	}	
+		return rs.next() ? rs.getString("poster") : null;
+	}
+	
+	public static HashMap<Integer, String> getIdTitles() throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String query = "SELECT id, title FROM film";
+		
+		ResultSet rs = con.createStatement().executeQuery(query);
+		
+		DriverManagerConnectionPool.releaseConnection(con);
+		
+		HashMap<Integer, String> data = new HashMap<Integer, String>();
+		
+		while(rs.next())
+			data.put(rs.getInt("id"), rs.getString("title"));
+		
+		return data;
+			
+	}
 }

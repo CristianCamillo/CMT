@@ -1,130 +1,6 @@
 var filmData;
 var projectionData;
-
-function selectFilm(row, idFilm)
-{
-	var table = document.getElementById("filmsTable");
-				
-	for(var i = 1; i < table.rows.length; i++)	
-		table.rows[i].classList.remove("selected");
-		
-	row.classList.add("selected");
-	
-	document.getElementsByName("idFilm")[0].value = idFilm;
-	document.getElementsByName("idFilm")[1].value = idFilm;
-}
-
-function selectProjection(row, idProjection)
-{
-	var table = document.getElementById("projectionsTable");
-				
-	for(var i = 1; i < table.rows.length; i++)	
-		table.rows[i].classList.remove("selected");
-		
-	row.classList.add("selected");
-	
-	document.getElementsByName("idProjection")[0].value = idProjection;
-	document.getElementsByName("idProjection")[1].value = idProjection;
-}
-
-function openAddFilmModal()
-{
-	document.getElementsByName("idFilm")[0].value = -1;
-	
-	document.getElementsByName("title")[0].value = "";
-	document.getElementsByName("runningTime")[0].value = "";
-	document.getElementsByName("genre")[0].value = "";
-	document.getElementsByName("director")[0].value = "";
-	document.getElementsByName("actor1")[0].value = "";
-	document.getElementsByName("actor2")[0].value = "";
-	document.getElementsByName("description")[0].value = "";
-	
-	document.getElementById("filmModalTitle").innerHTML = "Aggiunta film";
-	document.getElementById("filmModalButton").innerHTML = "Aggiungi";
-	//document.getElementById("filmForm").action = "/CMT/addFilm";
-	document.getElementById("filmModal").style.display = "flex";
-}
-
-function openUpdateFilmModal()
-{
-	var id = parseInt(document.getElementsByName("idFilm")[0].value);
-
-	document.getElementsByName("title")[0].value = filmData[id].title;
-	document.getElementsByName("runningTime")[0].value = filmData[id].runningTime;
-	document.getElementsByName("genre")[0].value = filmData[id].genre;
-	document.getElementsByName("director")[0].value = filmData[id].director;
-	document.getElementsByName("actor1")[0].value = filmData[id].actor1;
-	document.getElementsByName("actor2")[0].value = filmData[id].actor2;
-	document.getElementsByName("description")[0].value = filmData[id].description;
-	
-	document.getElementById("filmModalTitle").innerHTML = "Modifica film";
-	document.getElementById("filmModalButton").innerHTML = "Modifica";
-	//document.getElementById("filmForm").action = "/CMT/updateFilm";
-	document.getElementById("filmModal").style.display = "flex";
-}
-
-function openDeleteFilmModal()
-{
-	document.getElementById("deleteFilmModal").style.display = "flex";
-}
-
-function openAddProjectionModal()
-{
-	document.getElementById("projectionModalTitle").innerHTML = "Aggiunta proiezione";
-	document.getElementById("projectionModalButton").innerHTML = "Aggiungi";
-	document.getElementById("projectionForm").action = "/CMT/addProjection";
-	document.getElementById("projectionModal").style.display = "flex";
-}
-
-function openUpdateProjectionModal()
-{
-	document.getElementById("projectionModalTitle").innerHTML = "Modifica proiezione";
-	document.getElementById("projectionModalButton").innerHTML = "Modifica";
-	document.getElementById("projectionForm").action = "/CMT/updateProjection";
-	document.getElementById("projectionModal").style.display = "flex";
-}
-
-function openDeleteProjectionModal()
-{
-	document.getElementById("deleteProjectionModal").style.display = "flex";
-}
-
-function enableFilmButtons()
-{
-	document.getElementById("updateFilmButton").disabled = false;
-	document.getElementById("deleteFilmButton").disabled = false;
-}
-
-function enableProjectionButtons()
-{
-	document.getElementById("updateProjectionButton").disabled = false;
-	document.getElementById("deleteProjectionButton").disabled = false;
-}
-
-function disableFilmButtons()
-{
-	document.getElementById("updateFilmButton").disabled = true;
-	document.getElementById("deleteFilmButton").disabled = true;
-}
-
-function disableProjectionButtons()
-{
-	document.getElementById("updateProjectionButton").disabled = true;
-	document.getElementById("deleteProjectionButton").disabled = true;
-}
-
-function validateFilmForm()
-{	
-	const title = validateTitle(document.getElementsByName("title")[0]);
-	const runningTime = validatePositiveInteger(document.getElementsByName("runningTime")[0]);
-	const genre = validateNominative(document.getElementsByName("genre")[0]);
-	const director = validateNominative(document.getElementsByName("director")[0]);
-	const actor1 = validateNominative(document.getElementsByName("actor1")[0]);
-	const actor2 = validateNominative(document.getElementsByName("actor2")[0]);
-	const description = validateDescription(document.getElementsByName("description")[0]);
-	
-	return title && runningTime && genre && director && actor1 && actor2 && description;
-}
+var roomNumbers;
 
 function loadFilms()
 {
@@ -204,10 +80,154 @@ function loadProjections()
 	});
 }
 
+function loadRoomNumbers()
+{
+	$.ajax
+	({
+		url: "roomNumbers",
+		type: "post",
+		
+		success: function(responseText)
+		{
+			roomNumbers = responseText;
+        },
+		
+        error: function (xhr, ajaxOptions, thrownError)
+		{
+			alert("Errore roomNumbers servlet");
+        }
+	});
+}
+
+function selectFilm(row, idFilm)
+{
+	var table = document.getElementById("filmsTable");
+				
+	for(var i = 1, l = table.rows.length; i < l; i++)	
+		table.rows[i].classList.remove("selected");
+		
+	row.classList.add("selected");
+	
+	document.getElementsByName("idFilm")[0].value = idFilm;
+	document.getElementsByName("idFilm")[1].value = idFilm;
+}
+
+function selectProjection(row, idProjection)
+{
+	var table = document.getElementById("projectionsTable");
+				
+	for(var i = 1, l = table.rows.length; i < l; i++)	
+		table.rows[i].classList.remove("selected");
+		
+	row.classList.add("selected");
+	
+	document.getElementsByName("idProjection")[0].value = idProjection;
+	document.getElementsByName("idProjection")[1].value = idProjection;
+}
+
+function openAddFilmModal()
+{
+	document.getElementsByName("idFilm")[0].value = -1;
+	
+	document.getElementById("title").value = "";
+	document.getElementById("runningTime").value = "";
+	document.getElementById("genre").value = "";
+	document.getElementById("director").value = "";
+	document.getElementById("actor1").value = "";
+	document.getElementById("actor2").value = "";
+	document.getElementById("description").value = "";
+	
+	document.getElementById("filmModalTitle").innerHTML = "Aggiunta film";
+	document.getElementById("filmModalButton").innerHTML = "Aggiungi";
+	document.getElementById("filmModal").style.display = "flex";
+}
+
+function openUpdateFilmModal()
+{
+	var id = parseInt(document.getElementsByName("idFilm")[0].value);
+
+	document.getElementById("title").value = filmData[id].title;
+	document.getElementById("runningTime").value = filmData[id].runningTime;
+	document.getElementById("genre").value = filmData[id].genre;
+	document.getElementById("director").value = filmData[id].director;
+	document.getElementById("actor1").value = filmData[id].actor1;
+	document.getElementById("actor2").value = filmData[id].actor2;
+	document.getElementById("description").value = filmData[id].description;
+	
+	document.getElementById("filmModalTitle").innerHTML = "Modifica film";
+	document.getElementById("filmModalButton").innerHTML = "Modifica";
+	document.getElementById("filmModal").style.display = "flex";
+}
+
+function openDeleteFilmModal()
+{
+	document.getElementById("deleteFilmModal").style.display = "flex";
+}
+
+function openAddProjectionModal()
+{
+	document.getElementById("projectionModalTitle").innerHTML = "Aggiunta proiezione";
+	document.getElementById("projectionModalButton").innerHTML = "Aggiungi";
+	document.getElementById("projectionModal").style.display = "flex";
+}
+
+function openUpdateProjectionModal()
+{
+	document.getElementById("projectionModalTitle").innerHTML = "Modifica proiezione";
+	document.getElementById("projectionModalButton").innerHTML = "Modifica";
+	document.getElementById("projectionModal").style.display = "flex";
+}
+
+function openDeleteProjectionModal()
+{
+	document.getElementById("deleteProjectionModal").style.display = "flex";
+}
+
+function enableFilmButtons()
+{
+	document.getElementById("updateFilmButton").disabled = false;
+	document.getElementById("deleteFilmButton").disabled = false;
+}
+
+function enableProjectionButtons()
+{
+	document.getElementById("updateProjectionButton").disabled = false;
+	document.getElementById("deleteProjectionButton").disabled = false;
+}
+
+function disableFilmButtons()
+{
+	document.getElementById("updateFilmButton").disabled = true;
+	document.getElementById("deleteFilmButton").disabled = true;
+}
+
+function disableProjectionButtons()
+{
+	document.getElementById("updateProjectionButton").disabled = true;
+	document.getElementById("deleteProjectionButton").disabled = true;
+}
+
+function validateFilmForm()
+{	
+	const title = validateTitle(document.getElementsByName("title")[0]);
+	const runningTime = validatePositiveInteger(document.getElementsByName("runningTime")[0]);
+	const genre = validateNominative(document.getElementsByName("genre")[0]);
+	const director = validateNominative(document.getElementsByName("director")[0]);
+	const actor1 = validateNominative(document.getElementsByName("actor1")[0]);
+	const actor2 = validateNominative(document.getElementsByName("actor2")[0]);
+	const description = validateDescription(document.getElementsByName("description")[0]);
+	
+	return title && runningTime && genre && director && actor1 && actor2 && description;
+}
+
 $(document).ready(function()
 {
-	loadFilms();
-	loadProjections();
+	window.onload = function()
+	{
+		loadFilms();
+		loadProjections();
+		loadRoomNumbers();
+	}
 	
 	$(document).on("submit", "#filmForm", function(event)
 	{		
@@ -233,9 +253,7 @@ $(document).ready(function()
             cache: false,
             timeout: 600000,
             success: function (responseText)
-			{				
-				alert(responseText);
-				
+			{								
 				loadFilms();
 				
 				if(document.getElementsByName("idFilm")[0].value == -1)
@@ -249,9 +267,7 @@ $(document).ready(function()
 				$("#filmModalButton").prop("disabled", false);
             },
             error: function (responseText)
-			{
-				alert(responseText);
-				
+			{				
 				alert("Errore addFilm servlet");
             	$("#filmModalButton").prop("disabled", false);
             }

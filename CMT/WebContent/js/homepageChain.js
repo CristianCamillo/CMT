@@ -105,7 +105,7 @@ function sendTickets()
 		
         error: function (xhr, ajaxOptions, thrownError)
 		{
-			alert(xhr + "/n" + ajaxOptions + "/n" + thrownError);
+			alert("Errore addToBasket servlet");
         }
 	});
 }

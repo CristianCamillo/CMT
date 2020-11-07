@@ -142,17 +142,41 @@
 				</header>
 				<br>
 				<form id="filmForm" class="optionsList">
-					<input name="idFilm" type="hidden">
-					<input name="title" type="text" placeholder="Titolo" oninput="validateTitle(this)">
-					<input name="runningTime" type="text" placeholder="Durata" oninput="validatePositiveInteger(this)">
-					<input name="genre" type="text" placeholder="Genere" oninput="validateNominative(this)">
-					<input name="director" type="text" placeholder="Regista" oninput="validateNominative(this)">
-					<input name="actor1" type="text" placeholder="Attore 1" oninput="validateNominative(this)">
-					<input name="actor2" type="text" placeholder="Attore 2" oninput="validateNominative(this)">
-					<textarea name="description" placeholder="Descrizione" oninput="validateDescription(this)" rows="5"></textarea>
+					<span>
+						<label for="title">Titolo</label>
+						<input id="title" name="title" type="text" oninput="validateTitle(this)">
+					</span>
+					<span>
+						<label for="runningTime">Durata</label>
+						<span class="minCombo">
+							<input id="runningTime" name="runningTime" type="text" oninput="validatePositiveInteger(this)">
+							<span>min</span>
+						</span>						
+					</span>
+					<span>
+						<label for="genre">Genere</label>
+						<input id="genre" name="genre" type="text" oninput="validateNominative(this)">
+					</span>
+					<span>
+						<label for="director">Regista</label>
+						<input id="director" name="director" type="text" oninput="validateNominative(this)">
+					</span>
+					<span>
+						<label for="actor1">Attore 1</label>
+						<input id="actor1" name="actor1" type="text" oninput="validateNominative(this)">
+					</span>
+					<span>
+						<label for="actor2">Attore 2</label>
+						<input id="actor2" name="actor2" type="text" oninput="validateNominative(this)">
+					</span>
+					<span class="textareaSpan">
+						<label for="description">Descrizio.</label>
+						<textarea id="description" name="description" oninput="validateDescription(this)" rows="5"></textarea>
+					</span>					
 					<input name="poster" type="file" accept="image/gif, image/jpeg, image/png">
 					<span>&nbsp;</span>
 					<button id="filmModalButton" type="submit"></button>
+					<input name="idFilm" type="hidden">
 				</form>
 			</div>
 		</div>
@@ -164,11 +188,10 @@
 					<button onclick="document.getElementById('projectionModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="projectionForm" class="optionsList" method="post">
-					<input name="idProjection" type="hidden">
-					
+				<form id="projectionForm" class="optionsList" method="post">					
 					<span>&nbsp;</span>
 					<button id="projectionModalButton" type="submit"></button>
+					<input name="idProjection" type="hidden">
 				</form>
 			</div>
 		</div>
@@ -181,10 +204,10 @@
 				</header>
 				<br>
 				<form id="deleteFilmForm" class="optionsList" action="deleteFilm" method="post">
-					<input name="idFilm" type="hidden">
 					<p>Confermi l'eliminazione del film selezionato?</p>
 					<span>&nbsp;</span>
 					<button type="submit">Conferma</button>
+					<input name="idFilm" type="hidden">
 				</form>
 			</div>
 		</div>
@@ -196,12 +219,12 @@
 					<button onclick="document.getElementById('deleteProjectionModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="deleteProjectionForm" class="optionsList" action="deleteProjection" method="post">
-					<input name="idProjection" type="hidden">
+				<form id="deleteProjectionForm" class="optionsList" action="deleteProjection" method="post">					
 					<span>Confermi l'eliminazione</span>
 					<span>della proiezione selezionata?</span>
 					<span>&nbsp;</span>
 					<button type="submit">Conferma</button>
+					<input name="idProjection" type="hidden">
 				</form>
 			</div>
 		</div>

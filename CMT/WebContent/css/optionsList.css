@@ -58,3 +58,36 @@
 {
 	width: 191px;
 }
+
+/**********************************************/
+
+.optionsList span.minCombo
+{
+	width: 208px;
+	
+	display: flex;
+	align-items: center;
+}
+
+.optionsList span.minCombo input
+{
+	width: 45px;
+	margin-right: 6px;
+}
+
+/**********************************************/
+
+.optionsList span.textareaSpan
+{
+	align-items: initial;
+}
+
+.optionsList span.textareaSpan label
+{
+	margin-top: 6px;
+}
+
+.optionsList span.textareaSpan textarea
+{
+	width: 208px;
+}

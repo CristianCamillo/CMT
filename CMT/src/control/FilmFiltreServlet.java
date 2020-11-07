@@ -40,7 +40,7 @@ public class FilmFiltreServlet extends HttpServlet
 	    
 		try
 		{
-			films = FilmDAO.findFilms(title, genre, director, actor);
+			films = FilmDAO.filtreFilms(title, genre, director, actor);
 		}
 		catch(SQLException e)
 		{

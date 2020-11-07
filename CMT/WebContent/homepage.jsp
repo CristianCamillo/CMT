@@ -65,20 +65,20 @@
 		<hr>		
 		<form id="filtreForm" class="optionsList" action="${pageContext.request.contextPath}/filmFiltre" method="post">
 			<span>
-				<label for="title">Titolo</label>
-				<input id="title" name="title" type="text" maxlength="30">
+				<label for="titleF">Titolo</label>
+				<input id="titleF" name="title" type="text" maxlength="30">
 			</span>
 			<span>
-				<label for="genre">Genere</label>
-				<input id="genre" name="genre" type="text" maxlength="30">
+				<label for="genreF">Genere</label>
+				<input id="genreF" name="genre" type="text" maxlength="30">
 			</span>
 			<span>
-				<label for="director">Regista</label>
-				<input id="director" name="director" type="text" maxlength="30">
+				<label for="directorF">Regista</label>
+				<input id="directorF" name="director" type="text" maxlength="30">
 			</span>
 			<span>
-				<label for="actor">Attore</label>
-				<input id="actor" name="actor" type="text" maxlength="30">
+				<label for="actorF">Attore</label>
+				<input id="actorF" name="actor" type="text" maxlength="30">
 			</span>
 			<span>&nbsp;</span>
 			<button type="submit">Filtra</button>
@@ -114,8 +114,8 @@
 				</div>
 				<br>
 				<form id="projectionsForm" action="${pageContext.request.contextPath}/filmProjectionsLoader" method="post">
-					<input name="idFilm" type="hidden">
 					<button type="submit" style="width: 100%">Visualizza proiezioni</button>
+					<input name="idFilm" type="hidden">
 				</form>
 			</div>
 		</div>
@@ -138,8 +138,8 @@
 				</table>
 				<br>
 				<form id="seatsForm" action="${pageContext.request.contextPath}/seatsLoader" method="post">
-					<input name="idProjection" type="hidden">
 					<button id="seatsButton" type="submit" style="width: 100%">Visualizza posti a sedere</button>
+					<input name="idProjection" type="hidden">
 				</form>		
 			</div>
 		</div>
