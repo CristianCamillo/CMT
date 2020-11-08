@@ -63,23 +63,11 @@
 			</div>		
 		</header>		
 		<hr>		
-		<form id="filtreForm" class="optionsList" action="${pageContext.request.contextPath}/filmFiltre" method="post">
-			<span>
-				<label for="titleF">Titolo</label>
-				<input id="titleF" name="title" type="text" maxlength="30">
-			</span>
-			<span>
-				<label for="genreF">Genere</label>
-				<input id="genreF" name="genre" type="text" maxlength="30">
-			</span>
-			<span>
-				<label for="directorF">Regista</label>
-				<input id="directorF" name="director" type="text" maxlength="30">
-			</span>
-			<span>
-				<label for="actorF">Attore</label>
-				<input id="actorF" name="actor" type="text" maxlength="30">
-			</span>
+		<form id="filtreForm" class="optionsList" action="/CMT/filmFiltre" method="post">
+			<label>Titolo<input name="title" type="text" maxlength="30"></label>
+			<label>Genere<input name="genre" type="text" maxlength="30"></label>
+			<label>Regista<input name="director" type="text" maxlength="30"></label>
+			<label>Attore<input name="actor" type="text" maxlength="30"></label>
 			<span>&nbsp;</span>
 			<button type="submit">Filtra</button>
 		</form>		
@@ -113,7 +101,7 @@
 					<p id="description"></p>
 				</div>
 				<br>
-				<form id="projectionsForm" action="${pageContext.request.contextPath}/filmProjectionsLoader" method="post">
+				<form id="projectionsForm" action="/CMT/filmProjectionsLoader" method="post">
 					<button type="submit" style="width: 100%">Visualizza proiezioni</button>
 					<input name="idFilm" type="hidden">
 				</form>
@@ -137,7 +125,7 @@
 					</tbody>
 				</table>
 				<br>
-				<form id="seatsForm" action="${pageContext.request.contextPath}/seatsLoader" method="post">
+				<form id="seatsForm" action="/CMT/seatsLoader" method="post">
 					<button id="seatsButton" type="submit" style="width: 100%">Visualizza posti a sedere</button>
 					<input name="idProjection" type="hidden">
 				</form>		

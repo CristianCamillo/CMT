@@ -1,7 +1,6 @@
 .eye
 {
-	width: 27px;
-	height: 27px;
+	height: 100%;
 	
 	filter: var(--brown-filter);
 }
@@ -9,18 +8,4 @@
 .eye:hover
 {
 	filter: var(--light-brown-filter);
-}
-
-/*************************************************/
-
-@media only screen (-moz-min-device-pixel-ratio: 2), 
-	   only screen and (-o-min-device-pixel-ratio: 2/1), 
-	   only screen and (-webkit-min-device-pixel-ratio: 2), 
-	   only screen and (min-device-pixel-ratio: 2)
-{
-	.eye
-	{
-		width: 40px;
-		height: 40px;
-	}
 }

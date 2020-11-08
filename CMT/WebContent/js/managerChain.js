@@ -129,13 +129,14 @@ function openAddFilmModal()
 {
 	document.getElementsByName("idFilm")[0].value = -1;
 	
-	document.getElementById("title").value = "";
-	document.getElementById("runningTime").value = "";
-	document.getElementById("genre").value = "";
-	document.getElementById("director").value = "";
-	document.getElementById("actor1").value = "";
-	document.getElementById("actor2").value = "";
-	document.getElementById("description").value = "";
+	document.getElementsByName("title")[0].value = "";
+	document.getElementsByName("runningTime")[0].value = "";
+	document.getElementsByName("genre")[0].value = "";
+	document.getElementsByName("director")[0].value = "";
+	document.getElementsByName("actor1")[0].value = "";
+	document.getElementsByName("actor2")[0].value = "";
+	document.getElementsByName("description")[0].value = "";
+	document.getElementsByName("poster")[0].value = "";
 	
 	document.getElementById("filmModalTitle").innerHTML = "Aggiunta film";
 	document.getElementById("filmModalButton").innerHTML = "Aggiungi";
@@ -146,14 +147,20 @@ function openUpdateFilmModal()
 {
 	var id = parseInt(document.getElementsByName("idFilm")[0].value);
 
-	document.getElementById("title").value = filmData[id].title;
-	document.getElementById("runningTime").value = filmData[id].runningTime;
-	document.getElementById("genre").value = filmData[id].genre;
-	document.getElementById("director").value = filmData[id].director;
-	document.getElementById("actor1").value = filmData[id].actor1;
-	document.getElementById("actor2").value = filmData[id].actor2;
-	document.getElementById("description").value = filmData[id].description;
-	document.getElementById("poster").value = "";
+	var i = 0;
+	while(filmData[i].id != id)
+		i++;
+		
+	var film = filmData[i];
+
+	document.getElementsByName("title")[0].value = film.title;
+	document.getElementsByName("runningTime")[0].value = film.runningTime;
+	document.getElementsByName("genre")[0].value = film.genre;
+	document.getElementsByName("director")[0].value = film.director;
+	document.getElementsByName("actor1")[0].value = film.actor1;
+	document.getElementsByName("actor2")[0].value = film.actor2;
+	document.getElementsByName("description")[0].value = film.description;
+	document.getElementsByName("poster")[0].value = "";
 	
 	document.getElementById("filmModalTitle").innerHTML = "Modifica film";
 	document.getElementById("filmModalButton").innerHTML = "Modifica";
@@ -210,16 +217,19 @@ function disableProjectionButtons()
 
 function validateFilmForm(isUpdate)
 {	
-	const title = validateTitle(document.getElementById("title"));
-	const runningTime = validatePositiveInteger(document.getElementById("runningTime"));
-	const genre = validateNominative(document.getElementById("genre"));
-	const director = validateNominative(document.getElementById("director"));
-	const actor1 = validateNominative(document.getElementById("actor1"));
-	const actor2 = validateNominative(document.getElementById("actor2"));
-	const description = validateDescription(document.getElementById("description"));
-	const poster = validatePoster(document.getElementById("poster"));
+	const title = validateTitle(document.getElementsByName("title")[0]);
+	const runningTime = validatePositiveInteger(document.getElementsByName("runningTime")[0]);
+	const genre = validateNominative(document.getElementsByName("genre")[0]);
+	const director = validateNominative(document.getElementsByName("director")[0]);
+	const actor1 = validateNominative(document.getElementsByName("actor1")[0]);
+	const actor2 = validateNominative(document.getElementsByName("actor2")[0]);
+	const description = validateDescription(document.getElementsByName("description")[0]);
+	var poster = true;
 	
-	return title && runningTime && genre && director && actor1 && actor2 && description && (poster || isUpdate);
+	if(!isUpdate)
+		poster = validatePoster(document.getElementsByName("poster")[0]);
+	
+	return title && runningTime && genre && director && actor1 && actor2 && description && poster;
 }
 
 $(document).ready(function()
@@ -235,7 +245,7 @@ $(document).ready(function()
 	{		
 		event.preventDefault();
 		
-		const isUpdate = document.getElementsByName("idFilm")[0].value == -1;
+		const isUpdate = document.getElementsByName("idFilm")[0].value != -1;
 		
 		if(!validateFilmForm(isUpdate))
 			return;
@@ -250,7 +260,7 @@ $(document).ready(function()
 		({
 			type: "post",
             enctype: "multipart/form-data",
-            url: isUpdate ? "/CMT/addFilm" : "/CMT/updateFilm",
+            url: !isUpdate ? "/CMT/addFilm" : "/CMT/updateFilm",
             data: formData,
             processData: false,
             contentType: false,
@@ -277,53 +287,6 @@ $(document).ready(function()
             }
         });
 	});
-	/*
-	$("#filmModalButton").click(function (event)
-	{
-        event.preventDefault();
-
-        var form = $('#filmForm')[0];
-
-        // Create an FormData object 
-        var data = new FormData(form);
-
-        // If you want to add an extra field for the FormData
-        data.append("CustomField", "This is some extra data, testing");
-
-        // disabled the submit button
-        $("#filmModalButton").prop("disabled", true);
-
-        $.ajax({
-            type: "POST",
-            enctype: 'multipart/form-data',
-            url: "/CMT/addFilm",
-            data: data,
-            processData: false,
-            contentType: false,
-            cache: false,
-            timeout: 600000,
-            success: function (data) {
-			loadFilms();
-				
-				if(document.getElementsByName("idFilm")[0].value == -1)
-					$("#successMsg").html("Il film e' stato memorizzato");
-				else
-					$("#successMsg").html("Il film e' stato modificato");
-				$("#successModal").css("display", "flex");
-				$("#filmModal").css("display", "none");
-				
-				$("#filmModalButton").prop("disabled", false);
-            },
-            error: function (e) {
-
-                $("#result").text(e.responseText);
-                console.log("ERROR : ", e);
-               $("#filmModalButton").prop("disabled", false);
-
-            }
-        });
-
-    });*/
 	
 	$(document).on("submit", "#projectionForm", function(event)
 	{

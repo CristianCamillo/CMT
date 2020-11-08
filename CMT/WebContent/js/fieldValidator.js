@@ -140,3 +140,10 @@ function setRed(element)
 	element.style.color = "#b22222";
 	element.style.background = "#fff0f0";
 }
+
+function resetColor(element)
+{
+	element.style.borderColor = "#b22222";
+	element.style.color = "#b22222";
+	element.style.background = "#fff0f0";
+}

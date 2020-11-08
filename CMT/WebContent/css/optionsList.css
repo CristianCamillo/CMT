@@ -1,8 +1,8 @@
 .optionsList
 {
-	width: 300px;
-	min-width: 300px;
-	max-width: 300px;
+	width: 400px;
+	min-width: 400px;
+	max-width: 400px;
 		
 	display: flex;
 	flex-direction: column;
@@ -18,75 +18,60 @@
 	margin-top: 4px;
 }
 
-/**********************************************/
-
-.optionsList > span
+.optionsList > label, .optionsList > span
 {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
-/**********************************************/
-
-.optionsList span.passwordCombo
+.optionsList > label > *
 {
-	width: 208px;
+	width: 67%;
 	
 	display: flex;
 	align-items: center;
-	justify-content: space-between;	
+	justify-content: space-between;
 }
 
-.optionsList span.passwordCombo input
+.optionsList > label > input[type=checkbox]
 {
-	width: 175px;
+	width: 1px;
 }
 
-/**********************************************/
-
-.optionsList span.euroCombo
+.optionsList > label > span > input
 {
-	width: 208px;
+	width: calc(100% - 35px);
+}
+
+.optionsList > label > span > input + *
+{
+	width: 30px;
 	
 	display: flex;
 	align-items: center;
+	justify-content: center;	
 }
 
-.optionsList span.euroCombo input
-{
-	width: 45px;
-}
-
-/**********************************************/
-
-.optionsList span.minCombo
-{
-	width: 208px;
-	
-	display: flex;
-	align-items: center;
-}
-
-.optionsList span.minCombo input
-{
-	width: 45px;
-	margin-right: 6px;
-}
-
-/**********************************************/
-
-.optionsList span.textareaSpan
+.optionsList label.textareaSpan
 {
 	align-items: initial;
 }
 
-.optionsList span.textareaSpan label
+@media only screen (-moz-min-device-pixel-ratio: 2), 
+	   only screen and (-o-min-device-pixel-ratio: 2/1), 
+	   only screen and (-webkit-min-device-pixel-ratio: 2), 
+	   only screen and (min-device-pixel-ratio: 2)
 {
-	margin-top: 6px;
-}
-
-.optionsList span.textareaSpan textarea
-{
-	width: 208px;
+	.optionsList
+	{
+		width: 600px;
+		min-width: 600px;
+		max-width: 600px;
+	}
+	
+	.optionsList > *
+	{
+		min-height: 47px;
+	}
 }

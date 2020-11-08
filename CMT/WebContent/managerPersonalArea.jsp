@@ -100,11 +100,8 @@
 					<button onclick="document.getElementById('usernameModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="usernameForm" class="optionsList" onsubmit="return validateUsername(document.getElementsByName('newUsername')[0])" action="${pageContext.request.contextPath}/personalData" method="post">
-					<span>
-						<label for="newUsername">Username</label>
-						<input id="newUsername" name="newUsername" type="text" oninput="validateUsername(this)">
-					</span>
+				<form id="usernameForm" class="optionsList" onsubmit="return validateUsername(document.getElementsByName('newUsername')[0])" action="/CMT/personalData" method="post">
+					<label>Username<input name="newUsername" type="text" oninput="validateUsername(this)"></label>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiorna</button>
 					<input name="toChange" type="hidden" value="0">
@@ -119,14 +116,14 @@
 					<button onclick="document.getElementById('passwordModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="passwordForm" class="optionsList" onsubmit="return validatePassword(document.getElementById('newPassword'))" action="${pageContext.request.contextPath}/personalData" method="post">
-					<span>
-						<label for="newPassword">Password</label>
-						<span class="passwordCombo">
-							<input id="newPassword" name="newPassword" type="password" oninput="validatePassword(this)">
+				<form id="passwordForm" class="optionsList" onsubmit="return validatePassword(document.getElementsByName('newPassword')[0])" action="/CMT/personalData" method="post">
+					<label>
+						Password
+						<span>
+							<input name="newPassword" type="password" oninput="validatePassword(this)">
 							<img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('newPassword')[0], this)">
 						</span>
-					</span>
+					</label>
 					<span>&nbsp;</span>
 					<button type="submit">Aggiorna</button>
 					<input name="toChange" type="hidden" value="1">
@@ -142,38 +139,20 @@
 				</header>
 				<br>
 				<form id="filmForm" class="optionsList">
-					<span>
-						<label for="title">Titolo</label>
-						<input id="title" name="title" type="text" oninput="validateTitle(this)">
-					</span>
-					<span>
-						<label for="runningTime">Durata</label>
-						<span class="minCombo">
-							<input id="runningTime" name="runningTime" type="text" oninput="validatePositiveInteger(this)">
+					<label>Titolo<input name="title" type="text" oninput="validateTitle(this)"></label>
+					<label>
+						Durata
+						<span>
+							<input name="runningTime" type="text" oninput="validatePositiveInteger(this)">
 							<span>min</span>
-						</span>						
-					</span>
-					<span>
-						<label for="genre">Genere</label>
-						<input id="genre" name="genre" type="text" oninput="validateNominative(this)">
-					</span>
-					<span>
-						<label for="director">Regista</label>
-						<input id="director" name="director" type="text" oninput="validateNominative(this)">
-					</span>
-					<span>
-						<label for="actor1">Attore 1</label>
-						<input id="actor1" name="actor1" type="text" oninput="validateNominative(this)">
-					</span>
-					<span>
-						<label for="actor2">Attore 2</label>
-						<input id="actor2" name="actor2" type="text" oninput="validateNominative(this)">
-					</span>
-					<span class="textareaSpan">
-						<label for="description">Descrizio.</label>
-						<textarea id="description" name="description" oninput="validateDescription(this)" rows="5"></textarea>
-					</span>					
-					<input id="poster" name="poster" type="file" accept="image/gif, image/jpeg, image/png" oninput="validatePoster(this)">
+						</span>
+					</label>
+					<label>Genere<input name="genre" type="text" oninput="validateNominative(this)"></label>
+					<label>Regista<input name="director" type="text" oninput="validateNominative(this)"></label>
+					<label>Attore 1<input name="actor1" type="text" oninput="validateNominative(this)"></label>
+					<label>Attore 2<input name="actor2" type="text" oninput="validateNominative(this)"></label>
+					<label>Descrizione<textarea name="description" oninput="validateDescription(this)" rows="5"></textarea></label>					
+					<input name="poster" type="file" accept="image/gif, image/jpeg, image/png" oninput="validatePoster(this)">
 					<span>&nbsp;</span>
 					<button id="filmModalButton" type="submit"></button>
 					<input name="idFilm" type="hidden">

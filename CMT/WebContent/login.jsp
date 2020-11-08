@@ -44,21 +44,15 @@
 		</header>		
 		<hr>		
 		<form id="loginForm" class="optionsList" style="margin: 100px auto" onsubmit="return validateLoginForm()" action="/CMT/login" method="post">
-			<span>
-				<label for="username">Username</label>
-				<input id="username" name="username" type="text" oninput="validateUsername(this)">
-			</span>
-			<span>
-				<label for="password">Password</label>
-				<span class="passwordCombo">
-					<input id="password" name="password" type="password" oninput="validatePassword(this)">
-					<img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementById('password'), this)">
+			<label>Username<input name="username" type="text" oninput="validateUsername(this)"></label>
+			<label>
+				Password
+				<span>
+					<input name="password" type="password" oninput="validatePassword(this)">
+					<img src="svg/eyeSlash.svg" class="eye" onclick="alterPasswordVisibility(document.getElementsByName('password')[0], this)">
 				</span>
-			</span>
-			<span class="checkboxSpan">
-				<label for="isManager">Accedi come manager</label>
-				<input id="isManager" name="isManager" type="checkbox">
-			</span>
+			</label>
+			<label>Accedi come manager<input name="isManager" type="checkbox"></label>
 			<span>&nbsp;</span>
 			<button type="submit">Accedi</button>
 		</form>

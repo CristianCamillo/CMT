@@ -1,9 +1,9 @@
 function validateLoginForm()
 {
-	const usr = validateUsername(document.getElementById("username"));
-	const psw = validatePassword(document.getElementById("password"));
+	const username = validateUsername(document.getElementsByName("username")[0]);
+	const password = validatePassword(document.getElementsByName("password")[0]);
 	
-	return usr && psw;
+	return username && password;
 }			
 
 $(document).ready(function()

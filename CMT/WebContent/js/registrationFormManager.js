@@ -1,10 +1,10 @@
 function validateRegistrationForm()
 {
-	const usr = validateUsername(document.getElementById("username"));
-	const psw = validatePassword(document.getElementById("password"));
-	const blc = validateNNegativeFloat(document.getElementById("balance"));
+	const username = validateUsername(document.getElementsByName("username")[0]);
+	const password = validatePassword(document.getElementsByName("password")[0]);
+	const balance = validateNNegativeFloat(document.getElementsByName("balance")[0]);
 	
-	return usr && psw && blc;
+	return username && password && balance;
 }
 
 $(document).ready(function()
