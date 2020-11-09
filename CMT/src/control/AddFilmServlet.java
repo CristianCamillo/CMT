@@ -53,6 +53,8 @@ public class AddFilmServlet extends HttpServlet
 		
 		posterName = counter + "." + extension;
 		
+		System.out.println(POSTERS_PATH + posterName);
+		
 		try
 		{
 			Film film = new Film(FilmDAO.getAvailableId(), title, Short.parseShort(runningTime), genre, director, actor1, actor2, description, posterName);
