@@ -9,6 +9,17 @@ function parseDate(date)
 	return date.substring(6, 8) + "-" + date.substring(4, 6) + "-" + date.substring(0, 4);
 }
 
+// ritorna la data in forma YYYY-MM-DD
+function parseDate2(date)
+{	
+	date = date + "";
+	
+	if(date.includes("<i>"))
+		return date;
+	
+	return date.substring(0, 4) + "-" + date.substring(4, 6) + "-" + date.substring(6, 8);
+}
+
 // ritorna l'orario in formato HH:MM
 function parseTime(time)
 {	

@@ -1,5 +1,5 @@
-var filmData;
-var projectionData;
+var films;
+var projections;
 var roomNumbers;
 
 function loadFilms()
@@ -11,13 +11,19 @@ function loadFilms()
 		
         success: function(responseText)
 		{		
-			filmData = responseText;
+			films = responseText;
 				
 			$("#filmsTable tbody").empty();
+			$("#titles").empty();
+			
+			if(films.length > 0)
+				$("#addProjectionButton").prop("disabled", false);
+			else
+				$("#addProjectionButton").prop("disabled", true);
 				
-			for(var i = 0, l = responseText.length; i < l; i++)
+			for(var i = 0, l = films.length; i < l; i++)
 			{
-				var film = responseText[i];
+				var film = films[i];
 				
 				var row = "<tr onclick=\"selectFilm(this, " + film.id + "); enableFilmButtons();\">" + 
 						  "<td>" + film.title + "</td>" +
@@ -26,7 +32,10 @@ function loadFilms()
 						  "<td>" + film.director + "</td>" +
 						  "</tr>";
 				
+				var option = "<option value=\"" + film.id + "\">" + film.title + "</select>";
+				
 				$("#filmsTable tbody").append(row);
+				$("#titles").append(option);
 			}	
         },
 
@@ -46,7 +55,7 @@ function loadProjections()
 		
         success: function(responseText)
 		{			
-			projectionData = [];
+			projections = [];
 			
 			$("#projectionsTable tbody").empty();
 			
@@ -54,12 +63,12 @@ function loadProjections()
 			{							
 				var projection = responseText[i];
 				
-				projectionData.push({"id": projection.id,
-									 "date": projection.date,
-									 "time": projection.time,
-									 "price": projection.price,
-									 "idroom": projection.idroom,
-									 "idfilm": projection.idfilm});
+				projections.push({"id": projection.id,
+								  "date": projection.date,
+								  "time": projection.time,
+								  "price": projection.price,
+								  "idroom": projection.idroom,
+								  "idfilm": projection.idfilm});
 				
 				var row = "<tr onclick=\"selectProjection(this, " + projection.id + "); enableProjectionButtons();\">" + 
 						  "<td>" + projection.title + "</td>" +
@@ -90,6 +99,13 @@ function loadRoomNumbers()
 		success: function(responseText)
 		{
 			roomNumbers = responseText;
+			
+			for(var i = 0, l = roomNumbers.length; i < l; i++)
+			{
+				var option = "<option value=\"" + (i + 1) + "\">" + (i + 1) + "</select>";
+				
+				$("#rooms").append(option);
+			}
         },
 		
         error: function (xhr, ajaxOptions, thrownError)
@@ -145,13 +161,13 @@ function openAddFilmModal()
 
 function openUpdateFilmModal()
 {
-	var id = parseInt(document.getElementsByName("idFilm")[0].value);
+	var id = parseInt(document.getElementsByName("idFilm")[1].value);
 
 	var i = 0;
-	while(filmData[i].id != id)
+	while(films[i].id != id)
 		i++;
 		
-	var film = filmData[i];
+	var film = films[i];
 
 	document.getElementsByName("title")[0].value = film.title;
 	document.getElementsByName("runningTime")[0].value = film.runningTime;
@@ -174,14 +190,42 @@ function openDeleteFilmModal()
 
 function openAddProjectionModal()
 {
+	document.getElementsByName("idProjection")[0].value = -1;
+	
+	document.getElementById("titles").selectedIndex = 0;
+	document.getElementsByName("date")[0].value = "";
+	document.getElementsByName("time")[0].value = "";
+	document.getElementsByName("price")[0].value = "";
+	document.getElementById("rooms").selectedIndex = 0;
+	
+	document.getElementById("titles").disabled = false;
+	
 	document.getElementById("projectionModalTitle").innerHTML = "Aggiunta proiezione";
+	document.getElementById("projectionForm").action = "/CMT/addProjection";
 	document.getElementById("projectionModalButton").innerHTML = "Aggiungi";
 	document.getElementById("projectionModal").style.display = "flex";
 }
 
 function openUpdateProjectionModal()
 {
+	var id = parseInt(document.getElementsByName("idProjection")[1].value);
+
+	var i = 0;
+	while(projections[i].id != id)
+		i++;
+		
+	var projection = projections[i];
+	
+	document.getElementById("titles").selectedIndex = 0;
+	document.getElementsByName("date")[0].value = parseDate2(projection.date);
+	document.getElementsByName("time")[0].value = parseTime(projection.time);
+	document.getElementsByName("price")[0].value = projection.price;
+	document.getElementById("rooms").selectedIndex = projection.idroom - 1;
+	
+	document.getElementById("titles").disabled = true;
+	
 	document.getElementById("projectionModalTitle").innerHTML = "Modifica proiezione";
+	document.getElementById("projectionForm").action = "/CMT/updateProjection";
 	document.getElementById("projectionModalButton").innerHTML = "Modifica";
 	document.getElementById("projectionModal").style.display = "flex";
 }
@@ -230,6 +274,15 @@ function validateFilmForm(isUpdate)
 		poster = validatePoster(document.getElementsByName("poster")[0]);
 	
 	return title && runningTime && genre && director && actor1 && actor2 && description && poster;
+}
+
+function validateProjectionForm()
+{
+	const date = validateDate(document.getElementsByName("date")[0]);
+	const time = validateTime(document.getElementsByName("time")[0]);
+	const price = validateNNegativeFloat(document.getElementsByName("price")[0]);
+	
+	return date && time && price;
 }
 
 $(document).ready(function()
@@ -287,7 +340,54 @@ $(document).ready(function()
             }
         });
 	});
-	
+	/*
+	$(document).on("submit", "#projectionForm", function(event)
+	{		
+		event.preventDefault();
+		
+		const isUpdate = document.getElementsByName("idProjection")[0].value != -1;
+		
+		if(!validateFilmForm(isUpdate))
+			return;
+				
+        var form = $("#projectionForm")[0];
+
+        var formData = new FormData(form);
+
+        $("#filmModalButton").prop("disabled", true);
+		
+		$.ajax
+		({
+			type: "post",
+            enctype: "multipart/form-data",
+            url: !isUpdate ? "/CMT/addFilm" : "/CMT/updateFilm",
+            data: formData,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (responseText)
+			{								
+				loadFilms();
+				
+				if(document.getElementsByName("idFilm")[0].value == -1)
+					$("#successMsg").html("Il film \u00E8 stato memorizzato");
+				else
+					$("#successMsg").html("Il film \u00E8 stato modificato");
+					
+				$("#successModal").css("display", "flex");
+				$("#filmModal").css("display", "none");
+				
+				$("#filmModalButton").prop("disabled", false);
+            },
+            error: function (responseText)
+			{				
+				alert("Errore addFilm servlet");
+            	$("#filmModalButton").prop("disabled", false);
+            }
+        });
+	});
+	*/
 	$(document).on("submit", "#projectionForm", function(event)
 	{
 		const $form = $(this);

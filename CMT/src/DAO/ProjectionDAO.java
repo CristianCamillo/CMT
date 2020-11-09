@@ -117,7 +117,7 @@ public class ProjectionDAO
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
 		String insert = "INSERT INTO projection VALUES (" + projection.getId() + ", " + projection.getDate() + ", " + projection.getTime() + ", " +
-													  		projection.getPrice() + ", " + projection.getIdRoom() + ", " + projection.getIdFilm() + "')";
+													  		projection.getPrice() + ", " + projection.getIdRoom() + ", " + projection.getIdFilm() + ")";
 		
 	    con.createStatement().executeUpdate(insert);
 	    
@@ -129,7 +129,7 @@ public class ProjectionDAO
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
 		String update = "UPDATE projection SET date = " + projection.getDate() + ", time = " + projection.getTime() + ", price = " +
-														  projection.getPrice() + ", idroom = " + projection.getIdRoom() + ", idfilm = " + projection.getIdFilm() + " " + 
+														  projection.getPrice() + ", idroom = " + projection.getIdRoom() + " " + 
 						"WHERE id = " + projection.getId();
 		
 	    con.createStatement().executeUpdate(update);

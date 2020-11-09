@@ -127,6 +127,32 @@ function validatePoster(element)
 	return valid;
 }
 
+function validateDate(element)
+{
+	const date = element.value;
+	const valid = parseInt(date.substring(0, 4) + date.substring(5, 7) + date.substring(8)) > 0;
+	
+	if(valid)
+		setGreen(element);
+	else
+		setRed(element);
+	
+	return valid;
+}
+
+function validateTime(element)
+{
+	const time = element.value;
+	const valid = parseInt(time.substring(0, 2) + time.substring(3)) >= 0;
+	
+	if(valid)
+		setGreen(element);
+	else
+		setRed(element);
+	
+	return valid;
+}
+
 function setGreen(element)
 {
 	element.style.borderColor = "#008000";

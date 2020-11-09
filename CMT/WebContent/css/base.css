@@ -145,7 +145,7 @@ h3
 
 /* input */
 
-input[type=text], input[type=password]
+input[type=text], input[type=password], input[type=date], input[type=time], select
 {
 	padding: 4px 6px;
 	border-radius: 4px;

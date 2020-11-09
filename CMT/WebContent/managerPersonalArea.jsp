@@ -86,7 +86,7 @@
 					</tbody>					
 				</table>
 				<span class="buttonList">
-					<button onclick="openAddProjectionModal()">Aggiungi proiezione</button>
+					<button id="addProjectionButton" onclick="openAddProjectionModal()">Aggiungi proiezione</button>
 					<button id="updateProjectionButton" onclick="openUpdateProjectionModal()" disabled>Modifica proiezione</button>
 					<button id="deleteProjectionButton" onclick="openDeleteProjectionModal()" disabled>Elimina proiezione</button>
 				</span>
@@ -167,32 +167,26 @@
 					<button onclick="document.getElementById('projectionModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="projectionForm" class="optionsList" onsubmit="" method="post">
-					<span>
-						<label for="titles">Film</label>
-						<select id="titles">
+				<form id="projectionForm" class="optionsList" onsubmit="return validateProjectionForm()" method="post">
+					<label>
+						Film
+						<select id="titles" name="idFilm">
 						</select>
-					</span>
-					<span>
-						<label for="date">Data</label>
-						<input id="date" name="date" type="date">
-					</span>	
-					<span>
-						<label for="time">Orario</label>
-						<input id="time" name="time" type="time">
-					</span>
-					<span>
-						<label for="price">Costo</label>
-						<span class="euroCombo">
-							<input id="price" name="price" type="text" oninput="validateNNegativeFloat(this)">
+					</label>
+					<label>Data<input name="date" type="date" oninput="validateDate(this)"></label>
+					<label>Orario<input name="time" type="time" oninput="validateTime(this)"></label>
+					<label>
+						Costo
+						<span>
+							<input name="price" type="text" oninput="validateNNegativeFloat(this)">
 							<span>&euro;</span>
 						</span>
-					</span>
-					<span>
-						<label for="rooms">Sala</label>
-						<select id="rooms">
+					</label>
+					<label>
+						Sala
+						<select id="rooms" name="idRoom">
 						</select>
-					</span>
+					</label>
 					<span>&nbsp;</span>
 					<button id="projectionModalButton" type="submit"></button>
 					<input name="idProjection" type="hidden">

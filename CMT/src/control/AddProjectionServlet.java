@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.ProjectionDAO;
 import model.Projection;
+import utils.DataParser;
 import utils.FieldValidator;
 
 @WebServlet("/addProjection")
@@ -25,12 +26,12 @@ public class AddProjectionServlet extends HttpServlet
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String date = request.getParameter("date");
-		String time = request.getParameter("time");
+		String date = DataParser.parseDate(request.getParameter("date"));
+		String time = DataParser.parseTime(request.getParameter("time"));
 		String price = request.getParameter("price");
-		String idroom = request.getParameter("idroom");
-		String idfilm = request.getParameter("idfilm");
-		
+		String idroom = request.getParameter("idRoom");
+		String idfilm = request.getParameter("idFilm");
+
 		if(!FieldValidator.validateProjectionForm(date, time, price, idroom, idfilm))
 			return;
 		

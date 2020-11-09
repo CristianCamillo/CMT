@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.ProjectionDAO;
 import model.Projection;
+import utils.DataParser;
 import utils.FieldValidator;
 
 @WebServlet("/updateProjection")
@@ -26,18 +27,17 @@ public class UpdateProjectionServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		int id = Integer.parseInt(request.getParameter("idProjection"));
-		String date = request.getParameter("date");
-		String time = request.getParameter("time");
+		String date = DataParser.parseDate(request.getParameter("date"));
+		String time = DataParser.parseTime(request.getParameter("time"));
 		String price = request.getParameter("price");
-		String idroom = request.getParameter("idroom");
-		String idfilm = request.getParameter("idfilm");
+		String idroom = request.getParameter("idRoom");
 		
-		if(!FieldValidator.validateProjectionForm(date, time, price, idroom, idfilm))
+		if(!FieldValidator.validateProjectionForm(date, time, price, idroom, "0"))
 			return;
 		
 		try
 		{
-			Projection projection = new Projection(id, Integer.parseInt(date), Short.parseShort(time), Float.parseFloat(price), Integer.parseInt(idroom), Integer.parseInt(idfilm));
+			Projection projection = new Projection(id, Integer.parseInt(date), Short.parseShort(time), Float.parseFloat(price), Integer.parseInt(idroom), 0);
 			ProjectionDAO.updateProjection(projection);
 		}
 		catch(SQLException e)
