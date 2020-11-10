@@ -27,11 +27,11 @@ public class Test extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String test = request.getParameter("test");
+		//String test = request.getParameter("test");
 		
-		System.out.println("Test: " + test);
+		//System.out.println("Test: " + test);
 		
-		Part posterPart = request.getPart("image");
+		Part posterPart = request.getPart("poster");
 		String posterName = posterPart.getSubmittedFileName();
 		
 		System.out.println("PosterName: " + posterName);

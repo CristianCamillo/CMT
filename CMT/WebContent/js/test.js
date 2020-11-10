@@ -12,7 +12,7 @@ $(document).ready(function()
 		({
 			type: "post",
             enctype: "multipart/form-data",
-            url: "/CMT/test",
+            url: "/CMT/addFilm",
             data: formData,
             processData: false,
             contentType: false,
