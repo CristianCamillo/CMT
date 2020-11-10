@@ -12,7 +12,7 @@
 		<script src="js/test.js"></script>
 	</head>
 	<body>
-		<form id="form" class="optionsList">
+		<form id="filmForm" class="optionsList">
 			<label>Titolo<input name="title" type="text" oninput="validateTitle(this)"></label>
 			<label>
 				Durata

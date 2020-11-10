@@ -299,7 +299,7 @@ $(document).ready(function()
 	}
 	
 	$(document).on("submit", "#filmForm", function(event)
-	{		
+	{				
 		event.preventDefault();
 		
 		const isUpdate = document.getElementsByName("idFilm")[0].value != -1;

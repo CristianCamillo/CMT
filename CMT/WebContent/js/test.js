@@ -1,10 +1,10 @@
 $(document).ready(function()
 {
-	$(document).on("submit", "#form", function(event)
+	$(document).on("submit", "#filmForm", function(event)
 	{		
 		event.preventDefault();
 		
-	    var form = $("#form")[0];
+	    var form = $("#filmForm")[0];
 	
 	    var formData = new FormData(form);
 		
