@@ -39,7 +39,7 @@ public class UpdateFilmServlet extends HttpServlet
 		String actor1 = request.getParameter("actor1");
 		String actor2 = request.getParameter("actor2");
 		String description = request.getParameter("description");
-				
+		
 		Part posterPart = request.getPart("poster");
 		String posterName = posterPart.getSubmittedFileName();
 		
