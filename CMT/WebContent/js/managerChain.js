@@ -344,54 +344,7 @@ $(document).ready(function()
             }
         });
 	});
-	/*
-	$(document).on("submit", "#projectionForm", function(event)
-	{		
-		event.preventDefault();
-		
-		const isUpdate = document.getElementsByName("idProjection")[0].value != -1;
-		
-		if(!validateFilmForm(isUpdate))
-			return;
-				
-        var form = $("#projectionForm")[0];
-
-        var formData = new FormData(form);
-
-        $("#filmModalButton").prop("disabled", true);
-		
-		$.ajax
-		({
-			type: "post",
-            enctype: "multipart/form-data",
-            url: !isUpdate ? "/CMT/addFilm" : "/CMT/updateFilm",
-            data: formData,
-            processData: false,
-            contentType: false,
-            cache: false,
-            timeout: 600000,
-            success: function (responseText)
-			{								
-				loadFilms();
-				
-				if(document.getElementsByName("idFilm")[0].value == -1)
-					$("#successMsg").html("Il film \u00E8 stato memorizzato");
-				else
-					$("#successMsg").html("Il film \u00E8 stato modificato");
-					
-				$("#successModal").css("display", "flex");
-				$("#filmModal").css("display", "none");
-				
-				$("#filmModalButton").prop("disabled", false);
-            },
-            error: function (responseText)
-			{				
-				alert("Errore addFilm servlet");
-            	$("#filmModalButton").prop("disabled", false);
-            }
-        });
-	});
-	*/
+	
 	$(document).on("submit", "#projectionForm", function(event)
 	{
 		const $form = $(this);
