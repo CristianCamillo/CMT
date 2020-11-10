@@ -40,6 +40,13 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0"> <!-- used for proper media query functionality on mobile -->
 	</head>
 	<body>
+		<%
+			String userType = (String) session.getAttribute("userType");
+				
+			if(userType != "client")
+				response.sendRedirect("login.jsp");
+		%>
+	
 		<header>
 			<span onclick="location.href = 'homepage.jsp'">
 				<img src="icons/siteIcon.png">

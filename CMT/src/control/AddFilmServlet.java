@@ -17,7 +17,10 @@ import model.Film;
 import utils.FieldValidator;
 
 @WebServlet("/addFilm")
-@MultipartConfig
+@MultipartConfig(
+		fileSizeThreshold = 1024 * 1024 * 2,
+		maxFileSize = 1024 * 1024 * 10,
+		maxRequestSize = 1024 * 1024 * 50)
 public class AddFilmServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
@@ -69,8 +72,8 @@ public class AddFilmServlet extends HttpServlet
 			return;
 		}
 		
-		for(Part part : request.getParts())
-			part.write(POSTERS_PATH + posterName);
+		//for(Part part : request.getParts())
+		//	part.write(POSTERS_PATH + posterName);
 		
 		response.setContentType("text/plain");
 	 	response.setCharacterEncoding("UTF-8");
