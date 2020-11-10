@@ -146,6 +146,7 @@
 				</header>
 				<br>
 				<form id="filmForm" class="optionsList">
+					<input name="idFilm" type="hidden">
 					<label>Titolo<input name="title" type="text" oninput="validateTitle(this)"></label>
 					<label>
 						Durata
@@ -161,8 +162,7 @@
 					<label>Descrizione<textarea name="description" oninput="validateDescription(this)" rows="5"></textarea></label>					
 					<input name="poster" type="file" accept="image/gif, image/jpeg, image/png" oninput="validatePoster(this)">
 					<span>&nbsp;</span>
-					<button id="filmModalButton" type="submit"></button>
-					<input name="idFilm" type="hidden">
+					<button id="filmModalButton" type="submit"></button>					
 				</form>
 			</div>
 		</div>

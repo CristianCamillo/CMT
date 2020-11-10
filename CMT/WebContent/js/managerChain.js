@@ -324,7 +324,7 @@ $(document).ready(function()
             cache: false,
             timeout: 600000,
             success: function (responseText)
-			{								
+			{												
 				loadFilms();
 				
 				if(document.getElementsByName("idFilm")[0].value == -1)
@@ -338,7 +338,7 @@ $(document).ready(function()
 				$("#filmModalButton").prop("disabled", false);
             },
             error: function (responseText)
-			{				
+			{								
 				alert("Errore addFilm servlet");
             	$("#filmModalButton").prop("disabled", false);
             }
