@@ -1,6 +1,5 @@
 var films;
 var projections;
-var roomNumbers;
 
 function loadFilms()
 {
@@ -32,7 +31,7 @@ function loadFilms()
 						  "<td>" + film.director + "</td>" +
 						  "</tr>";
 				
-				var option = "<option value=\"" + film.id + "\">" + film.title + "</select>";
+				var option = "<option id=\"" + film.id + "\" value=\"" + film.id + "\">" + film.title + "</select>";
 				
 				$("#filmsTable tbody").append(row);
 				$("#titles").append(option);
@@ -98,7 +97,7 @@ function loadRoomNumbers()
 		
 		success: function(responseText)
 		{
-			roomNumbers = responseText;
+			var roomNumbers = responseText;
 			
 			for(var i = 0, l = roomNumbers.length; i < l; i++)
 			{
@@ -126,6 +125,7 @@ function selectFilm(row, idFilm)
 	
 	document.getElementsByName("idFilm")[0].value = idFilm;
 	document.getElementsByName("idFilm")[1].value = idFilm;
+	document.getElementsByName("idFilm")[2].value = idFilm;
 }
 
 function selectProjection(row, idProjection)
@@ -216,7 +216,11 @@ function openUpdateProjectionModal()
 		
 	var projection = projections[i];
 	
-	document.getElementById("titles").selectedIndex = 0;
+	var j = 0;
+	while(projection.idfilm != films[j].id)
+		j++;
+	
+	document.getElementById("titles").selectedIndex = j;
 	document.getElementsByName("date")[0].value = parseDate2(projection.date);
 	document.getElementsByName("time")[0].value = parseTime(projection.time);
 	document.getElementsByName("price")[0].value = projection.price;

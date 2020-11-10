@@ -42,6 +42,11 @@ public class AddFilmServlet extends HttpServlet
 		Part posterPart = request.getPart("poster");
 		String posterName = posterPart.getSubmittedFileName();
 		
+		System.out.println(posterName);
+		
+		for(Part part : request.getParts())
+			part.write(POSTERS_PATH + posterName);
+		
 		if(!FieldValidator.validateFilmForm(title, runningTime, genre, director, actor1, actor2, description) || posterName.equals(""))
 			return;
 		
@@ -52,8 +57,6 @@ public class AddFilmServlet extends HttpServlet
 			counter++;
 		
 		posterName = counter + "." + extension;
-		
-		System.out.println(POSTERS_PATH + posterName);
 		
 		try
 		{

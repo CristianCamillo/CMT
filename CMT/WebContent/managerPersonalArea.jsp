@@ -201,7 +201,7 @@
 					<button onclick="document.getElementById('deleteFilmModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="deleteFilmForm" class="optionsList" action="deleteFilm" method="post">
+				<form id="deleteFilmForm" class="optionsList" action="/CMT/deleteFilm" method="post">
 					<p>Confermi l'eliminazione del film selezionato?</p>
 					<span>&nbsp;</span>
 					<button type="submit">Conferma</button>
@@ -217,9 +217,8 @@
 					<button onclick="document.getElementById('deleteProjectionModal').style.display = 'none'">&#x02716;</button>
 				</header>
 				<br>
-				<form id="deleteProjectionForm" class="optionsList" action="deleteProjection" method="post">					
-					<span>Confermi l'eliminazione</span>
-					<span>della proiezione selezionata?</span>
+				<form id="deleteProjectionForm" class="optionsList" action="/CMT/deleteProjection" method="post">
+					<p>Confermi l'eliminazione della proiezione selezionata?</p>
 					<span>&nbsp;</span>
 					<button type="submit">Conferma</button>
 					<input name="idProjection" type="hidden">
