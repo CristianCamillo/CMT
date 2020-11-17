@@ -144,7 +144,7 @@ public class FilmDAO
 	    DriverManagerConnectionPool.releaseConnection(con);
 	}
 	
-	public static void removeFilm(int id) throws SQLException
+	public static void deleteFilm(int id) throws SQLException
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 		

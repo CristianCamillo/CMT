@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.FilmDAO;
+import DAO.ProjectionDAO;
 
 @WebServlet("/deleteFilm")
 public class DeleteFilmServlet extends HttpServlet
@@ -33,7 +34,8 @@ public class DeleteFilmServlet extends HttpServlet
 			String posterName = FilmDAO.getPoster(id);
 			new File(POSTERS_PATH + posterName).delete();
 			
-			FilmDAO.removeFilm(id);
+			FilmDAO.deleteFilm(id);
+			ProjectionDAO.deleteFilmProjections(id);
 		}
 		catch(SQLException e)
 		{

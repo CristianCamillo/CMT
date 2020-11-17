@@ -27,7 +27,7 @@ public class DeleteProjectionServlet extends HttpServlet
 		
 		try
 		{
-			ProjectionDAO.removeProjection(id);
+			ProjectionDAO.deleteProjection(id);
 		}
 		catch(SQLException e)
 		{

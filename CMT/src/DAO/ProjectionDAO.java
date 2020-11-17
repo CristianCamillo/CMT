@@ -137,11 +137,22 @@ public class ProjectionDAO
 	    DriverManagerConnectionPool.releaseConnection(con);
 	}
 	
-	public static void removeProjection(int id) throws SQLException
+	public static void deleteProjection(int id) throws SQLException
 	{
 		Connection con = DriverManagerConnectionPool.getConnection();
 		
 		String delete = "DELETE FROM projection WHERE id = " + id;
+		
+		con.createStatement().executeUpdate(delete);		
+		
+		DriverManagerConnectionPool.releaseConnection(con);
+	}
+	
+	public static void deleteFilmProjections(int idFilm) throws SQLException
+	{
+		Connection con = DriverManagerConnectionPool.getConnection();
+		
+		String delete = "DELETE FROM projection WHERE idfilm = " + idFilm;
 		
 		con.createStatement().executeUpdate(delete);		
 		
